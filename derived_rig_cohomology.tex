@@ -187,7 +187,7 @@ in \cite[Definition 7.3 and Definition 2.5.]{Porta_Yu_Derived_non-archimedean_an
     the induced morphism at the level of $\cTank$-structures.
 \end{notation}
 
-\begin{lem}
+\begin{lem} \label{lem:affine_morphisms_are_compatible_with_Zariski_localization_on_the_base}
     Let $f \colon X \to Y$ be an affine morphism in $\dAn_k$. Suppose that we are given a Zariski open immersion
     $g \colon Z \to Y$ such that $Z \in \dAfdk$ which corresponds to the completement of the zero locus of a
     section $s \in \pi_0(\cO_Y)$. Then the fiber product
@@ -229,7 +229,7 @@ We start with the following definition:
     spanned by nil-isomorphisms $X \to Y$ of finite type.
 \end{defin}
 
-\begin{lem}
+\begin{lem} \label{lem:nil-isos_are_affine_morphisms}
     Let $f \colon X \to Y$ be a nil-isomorphism in $\dAnk$. Then:
     \begin{enumerate}
         \item Given any morphism $Z \to Y$ in $\dAnk$, the induced morphism
@@ -238,6 +238,7 @@ We start with the following definition:
             \]
         is again an nil-isomoprhism.
         \item $f$ is an affine morphism.
+        \item $f$ is a finite morphism.
     \end{enumerate}
 \end{lem}
 
@@ -263,6 +264,10 @@ We start with the following definition:
         \]
     is an isomorphism of ordinary $k$-analytic spaces. In particular, $(Z \times_X Y)_\red$ is a $k$-affinoid space. The result now follows from
     \cref{lem:derived_k_analytic_space_whose_reduction_is_affinoid_is_also_affinoid}.
+
+    To prove (iii), we shall show that the induced morphism on the $0$-th truncations $\trunc(X) \to \trunc(Y)$ is a finite morphism of ordinary $k$-affinoid spaces.
+    But this follows immeaditely from the fact that both $\trunc(X)$ and $\trunc(Y)$ can be obtained from the reduced $X_\red$ by means of a finite sequence of finite
+    coherent $X_\red$-modules.
 \end{proof}
 
 
@@ -301,8 +306,60 @@ We start with the following definition:
             X_0^i \coloneqq X \coprod_{\trunc(X)} X_0^{\mathrm{ord}, i}.
         \]
     By construction, we have that the natural morphism $\trunc(X_0^n) \to \trunc(Y)$ is an isomorphism of ordinary $k$-analytic spaces.
-    Suppose that for each $i \ge 0$ we have constructed $X_i$ together with morphisms $X \to X_i$ and $X_i \to Y$ satisfying the conditions of the Lemma.
-    
+    We now argue by induction on the Postnikov towers associated to the morphism $f \colon X \to Y$.
+    Suppose that for a certain integer $i \ge 0$, we have constructed a derived $k$-analytic space $X_i$ together with morphisms $g_i \colon
+    X \to X_i$ and $h_i \colon X_i \to Y$ such that $f \simeq h_i \circ g_i$
+    and the induced morphism
+        \[
+            \mathrm{t}_{\le i}(X_i) \to \mathrm{t}_{\le i}(Y)
+        \]
+    is an equivalence of derived $k$-analytic spaces. We shall proceed as follows: by the assumption that $h_i$ is $(i+1)$-connective, we deduce from
+    \cite[Proposition 5.34]{Porta_Yu_Representability} the existence of a natural equivalence
+        \[
+            \tau_{\le i}(\bbL_{X_i/Y}\an) \simeq 0,
+        \]
+    in $\Mod_{\cO_{X_i}}$. Consider the natural fiber sequence
+        \[
+            h_i^* \bbL\an_{Y} \to \bbL\an_{X_i} \to \bbL\an_{X_i/Y},
+        \]
+    in $\Mod_{\cO_{X_i}}$. The natural morphism
+        \[
+            \bbL\an_{X_i/ Y} \to \pi_{i+1}(\bbL\an_{X_i/Y})[i+1],  
+        \]
+    induces a morphism $\bbL\an_{X_i} \to \pi_{i+1}(\bbL\an_{X_i/Y})[i+1]$, such that the composite
+        \begin{equation} \label{eq:fiber_sequence_of_cotangent_complexes_to_produce_the_existence_of_the_desired_square_zero_extension_approximating_Y_in_degree_i+1}
+            h_i^* \bbL\an_{Y} \to \bbL\an_{X_i} \to \pi_{i+1}(\bbL\an_{X_i/Y}),  
+        \end{equation}
+    is null-homotopic, in $\Mod_{\cO_{X_i}}$. The existence of
+    \eqref{eq:fiber_sequence_of_cotangent_complexes_to_produce_the_existence_of_the_desired_square_zero_extension_approximating_Y_in_degree_i+1}
+    produces a square-zero extension
+        \[
+            X_i  \to X_{i+1},
+        \]
+    together with a morphism $h_{i+1} \colon X_{i+1} \to Y$, factoring $h_i \colon X_i \to Y$. We  are reduced to show that the morphism
+        \[
+            \cO_Y \to h_{i+1, *}(\cO_{X_{i+1}}), 
+        \]
+    is $(i+2)$-connective. Consider the commutative diagram
+        \begin{equation} \label{eq:commutative_diagram_of_fiber_sequences_exhibiting_O_X_i+1_as_an_approximation_of_level_i+1_of_Y}
+        \begin{tikzcd}
+            h_{i, *}(\pi_{i+1}(\bbL\an_{X_i/Y}))[i] \ar{r} & h_{i+1, *}(\cO_{X_{i+1}}) \ar{r} & h_{i, *}(\cO_{X_i}) \\
+            \cI \ar{r} \ar{u}{s_i} & \cO_Y \ar{r} \ar{u} & h_*(\cO_{X_i}) \ar{u} \\
+            \cJ \ar{r} \ar{u} & \cJ \ar{r} \ar{u} & 0 \ar{u}
+        \end{tikzcd},
+        \end{equation}
+    where both the vertical and horizontal composites are fiber sequences. Thanks to \cite[Proposition 5.34]{Porta_Yu_Representability} we can identify the natural
+    morphism    
+        \[
+           s_i \colon \cI \to h_{i, *}(\pi_{i+1}(\bbL\an_{X_i/Y}))[i]
+        \]
+    with the natural morphism $\cI \to \tau_{\ge i}(I)$. We deduce that the fiber of the morphism $s_i$ must be necessarily $(i+1)$-connective. The latter observation
+    combined with the structure of \eqref{eq:commutative_diagram_of_fiber_sequences_exhibiting_O_X_i+1_as_an_approximation_of_level_i+1_of_Y}
+    implies that $h_{i+1} \colon X_{i+1} \to Y$ induces an equivalence of derived $k$-analytic spaces
+        \[
+            \rt_{\le i+1}(X_{i+1}) \to \rt_{\le i+1}(Y),  
+        \]
+    as desired.
 \end{proof}
 
 \begin{cor}
@@ -313,8 +370,13 @@ We start with the following definition:
     in $\dAnk$, can be \emph{approximated} by successive square zero extensions.
 \end{cor}
 
+\begin{proof}
+    The assertion of the Corollary follows readily from \cref{prop:filtered_colimit_for_nil-embeddings} by observing that the
+    canonical morphism $X_\red \to X$ has the structure of a nil-embedding.
+\end{proof}
 
-\begin{lem}
+
+\begin{lem} \label{lem:f^*_admits_a_right_adjoint_whenever_f_is_nil-iso}
     Let $f \colon S \to S'$ be a nil-isomorphism between derived $k$-analytic spaces. Then the pullback functor
         \[
             f^* \colon \Coh^+(S') \to \Coh^+(S),  
@@ -322,20 +384,23 @@ We start with the following definition:
     admits a well defined right adjoint, $f_*$.
 \end{lem}
 
-\begin{proof} \personal{affineness should be used in an essential way here, check this very carefully}
-    Since $f \colon S \to S'$ is a nil-isomorphism it is furthermore an affine map. By flat descent of $\Coh^+$ it follows that
-    we can reduce the statement to the case where $S$ and thus $S'$ are both derived $k$-affinoid spaces. In this case, by Tate acyclicity theorem we reduce ourselves
+\begin{proof}
+    Since $f \colon S \to S'$ is a nil-isomorphism, we conclude from \cref{lem:nil-isos_are_affine_morphisms} that $f$ is an affine morphism
+    between derived $k$-analytic spaces. By Zariski descent of $\Coh^+$, cf. \cite[Theorem 3.7]{Antonio_Porta_Nonarchimedean_Hilbert},
+    together with \cref{lem:affine_morphisms_are_compatible_with_Zariski_localization_on_the_base} we reduce the statement of the Lemma to the case
+    where both $S$ and $S'$ are equivalent to derived $k$-affinoid spaces. In this case, by Tate acyclicity theorem we reduce ourselves
     to show that the usual base change functor
         \[
            f^* \colon  \Coh^+(A) \to \Coh^+(B)  ,
         \]
-    where $A \coloneqq \Gamma(S, \cO_S \alg)$ and $B \coloneqq \Gamma(S', \cO_{S'} \alg)$, admits a right adjoint. The result now follows from the fact that
-    from the fact that $\pi_0(A) \to \pi_0(B)$ is a finite morphism of derived rings, as it can be obtained via a finite sequence of finite extensions
-    of ordinary rings (since the corresponding Jacobson ideals are necessarily finitely generated). 
+    where $A \coloneqq \Gamma(S, \cO_S \alg)$ and $B \coloneqq \Gamma(S', \cO_{S'} \alg)$, admits a right adjoint. The result now follows from the observation
+    that the canonical induced morphism $\pi_0(A) \to \pi_0(B)$ is a finite morphism of ordinary rings. Indeed, the latter morphism can be obtained
+    by means of a finite sequence of (classical) square-zero extensions with respect to the corresponding Jacobson ideals of both $\pi_0(A)$ and $\pi_0(B)$.
+    Such ideals are necessarily finitely generated as $\pi_0(A)$-modules, and the result follows.
 \end{proof}
 
 \begin{lem}
-    Let $f \colon S \to S'$ be a square-zero extension and $S \to T$ a nil-isomorphism in $\dAnk$. Suppose we are given a pushout diagram
+    Let $f \colon S \to S'$ be a square-zero extension and $g \colon S \to T$ a nil-isomorphism in $\dAnk$. Suppose we are given a pushout diagram
         \[
         \begin{tikzcd}
             S \ar{r}{f} \ar{d} & S' \ar{d} \\
@@ -346,57 +411,108 @@ We start with the following definition:
 \end{lem}
 
 \begin{proof}
-    Since $g$ is a nil-isomorphism of derived $k$-analytic spaces, it induces a well defined pushforward functor
+    Since $g$ is a nil-isomorphism of derived $k$-analytic spaces, \cref{lem:f^*_admits_a_right_adjoint_whenever_f_is_nil-iso}
+    implies that the pullback functor $g^* \colon \Coh^+(T) \to \Coh^+(S)$ admits a well defined right adjoint
         \[
-            g_* \colon \Coh^+(T ) \to \Coh^+(T')  ,
+            g_* \colon \Coh^+(S ) \to \Coh^+(T) .
         \]
-    right adjoint to the usual pullback functor $g^*$. Let $\cF \in \Coh^+(S)^{\ge }$ and $d \colon \bbL\an_S \to \cF$ be a derivation
-    associated with the morphism $f \colon S \to S'$. Then we have a natural composite morphism
+    Let $\cF \in \Coh^+(S)^{\ge 0}$ and $d \colon \bbL\an_S \to \cF$ be a derivation
+    associated with the morphism $f \colon S \to S'$. Consider now the natural composite
         \[
-            d ' \colon \bbL\an_T \to g_* \bbL\an_S \xrightarrow{d} g_* \cF,  
+            d ' \colon \bbL\an_T \to g_* (\bbL\an_S) \xrightarrow{g_*(d)} g_* (\cF),  
         \]
-    in the \infcat $\Coh^+(T)$. It now follows that $T \to T'$ exhibits $T'$ with the required pushout.
+    in the \infcat $\Coh^+(T)$. By the universal property of the analytic cotangent complex, we deduce the existence of a square-zero extension
+        \[
+            T \to T',  
+        \]
+    in the \infcat $\dAnk$. Let $X \in \dAnk$ together with morphisms $S' \to X$ and $T \to X$ compatible with both $f$ and $g$. By the universal property of
+    the relative analytic cotangent complex, the morphism $S' \to X$ induces a uniquely defined (up to a contractible indeterminacy space)
+        \[
+            \bbL\an_{S/X} \to \cF,
+        \]
+    in $\Coh^+(S)$, such that the compositve $\bbL\an_S \to \bbL\an_{S/X} \to \cF$ agrees with $d$. By applying the right adjoint $g_*$ above we obtain a
+    commutative diagram
+        \[
+        \begin{tikzcd}
+            \bbL\an_T \ar{r}{\mathrm{can}} \ar{d} & \bbL\an_{T/X} \ar{d} \ar{rd}{d''} & \\
+            g_*(\bbL\an_S) \ar{r} & g_*(\bbL\an_{S/X}) \ar{r} & g_*(\cF),
+        \end{tikzcd}
+        \]
+    in the \infcat $\Coh^+(T)$. From this, we conclude again by the universal property of the relative analytic cotangent complex the existence
+    of a natural morphism $T' \to X$ extending both $T \to X$ and $S' \to X$ and compatible with the restriction to $S$. The latter assertion is equivalent to state
+    that the commutative square
+        \[
+        \begin{tikzcd}
+            S \ar{r} \ar{d} & S' \ar{d} \\
+            T \ar{r} & T',
+        \end{tikzcd}
+        \]
+    is a pushout diagram in $\dAnk$. The proof is thus concluded.
 \end{proof}
 
 \begin{prop} \label{prop:existence_of_pushouts_along_closed_nil-isomorphisms}
-    Let $f \colon X \to Y$ be a \emph{closed} nil-isomorphism in $\dAnk$. Given any \emph{affine} morphism
-    $g \colon X \to Z$, the diagram 
+    Let $f \colon X \to Y$ be a nil-embedding of derived $k$-analytic spaces. Let
+    $g \colon X \to Z$ be a finite morphism in $\dAnk$. The the diagram
         \[
         \begin{tikzcd}
             X \ar{r}{f} \ar{d}{g} & Y \\
             Z
         \end{tikzcd}  
         \]
-    admits a pushout in $\dAnk$, $Z \coprod_X Y$, such that the induced morphism $Z \to Z \coprod_X Y$ is again a closed nil-isomorphism. \personal{Do we need to assume both $X$ and $Y$ affinoid?}
+    admits a colimit in $\dAnk$, denoted $Z'$. Moreover, the natural morphism
+    $Z \to Z'$ is also a nil-embedding.
 \end{prop}
 
-\todo{One must prove that every nil-isomorphisms, or at least closed nil-isomorphism is affine. The latter case follows since closed morphisms are themselves affine, for nil-isomorphism
-in general one might use the proposition in preliminaries.}
 
-\begin{proof}
-    The morphism $g$ being affine implies that the question is local with respect to the \'etale topology. We can thus assume that both $X, Y$ and $Z$
-    are derived $k$-affinoid. Consider the pushout 
+\begin{proof} The \infcat of $\cTank$-structured \inftopos $\RTop(\cTank)$ is a presentable \infcat. Consider the pushout diagram
         \[
-            Z' \coloneqq Z \coprod_X Y,  
+        \begin{tikzcd}
+            X \ar{r}{f} \ar{d}{g} & Y \\
+            Z \ar{r} & Z',
+        \end{tikzcd}
         \]
-    computed in the presentable \infcat $\RTop(\cTan(k))$. We first claim that $Z'$ has the structure of a derived $k$-affinoid space. Since the underlying \inftopos
-    of $Z'$ is computed as the pushout in $\RTop$ of the underlying \inftopoi \ of $X$, $Y$ and $Z$ respectively, and the morphism $f$ is a nil-isomorphism
-    (thus it induces an equivalence on the underlying \inftopoi \ of $X$ and $Y$) we conclude that
-    $Z$ and $Z'$ have equivalent underlying \inftopoi, as well. Moreover, since the $f$ is a nil-isomorphism of derived $k$-affinoid spaces so it
-    the induced morphism $Z \to Z'$. \personal{Why?}
-
-    Thanks to \cref{lem:derived_k_analytic_space_whose_reduction_is_affinoid_is_also_affinoid} it follows that $Z'$ is derived $k$-affinoid, as desired.
-    \todo{add more details. In particular, answer the question Why? above and add details on how you construct the pushout in $\RTop(\cTank)$. Need to prove
-    the second assertion}
+    in the \infcat $\RTop(\cTank)$. By construction, the underlying \inftopos of $Z'$ can be computed as the pushout in the \infcat $\RTop$ of
+    the induced diagram on the underlying \inftopoi of $X$, $Z$ and $Y$. Moreover, since $g$ is a nil-isomorphism it induces an equivalence on underlying \inftopoi
+    of both $X$ and $Y$. It follows that the induced morphism $Z \to Z'$ in $\RTop(\cTank)$ induces an equivalence on the underlying \inftopoi.
+    Moreover, it follows essentially by construction that we have a natural equivalence
+        \[
+            \cO_{Z'} \simeq g_*(\cO_Y) \times_{g_*(\cO_Y)} \cO_Z \in \Str_{\cTank}\loc(Z).
+        \]
+    As effective epimorphisms are preserved under fiber products in an \inftopos, it follows that the natural morphism
+        \[
+            \cO_{Z'} \to \cO_Z,  
+        \]
+    is an effective epimorphism (since $g_*(\cO_Y) \to g_*(\cO_X)$ it is so).
+    Consider now the commutative diagram of fiber sequences
+        \[
+        \begin{tikzcd}
+            \cJ ' \ar{r} \ar{d} & \cO_{Z'} \ar{r} \ar{d}  & \cO_Z \ar{d} \\
+            \cJ \ar{r} & g_*(\cO_Y) \ar{r} & g_*(\cO_X),
+        \end{tikzcd}
+        \]
+    in the stable \infcat $\Mod_{\cO_Z'}$. Since the right commutative square is a pullback square it follows that the morphism
+        \[
+            \cJ' \to \cJ,  
+        \]
+    is an equivalence. In particular, $\pi_0(\cJ')$ is a finitely generated
+    nilpotent ideal of $\pi_0(\cO\alg_{\cJ'})$. Indeed, finitely generation follows from our assumption that $g$ is a finite morphism.
+    Thanks to \cref{lem:derived_k_analytic_space_whose_reduction_is_affinoid_is_also_affinoid},
+    it follows that $\trunc(Z')$ is an ordinary $k$-analytic space and the morphism $\trunc(Z') \to \trunc(Z)$ is a nil-embedding. We are thus reduced to show that
+    for every $i>0$, the homotopy sheaf $\pi_i(\cO_{Z'}) \in \Coh^+(\trunc(Z'))$. But this follows immediately from the existence of a fiber sequence
+        \[
+            \cO_{Z'} \to g_*(\cO_Y) \oplus \cO_Z \to g_*(\cO_X),  
+        \]
+    in the \infcat $\Mod_{\cO_{Z'}}$ together with the fact that $g_*(\cO_Y)$ and $g_*(\cO_Z)$ have coherent homotopy sheaves, by our assumption that $g$ is a
+    finite morphism combined with \cref{lem:nil-isos_are_affine_morphisms}.
 \end{proof}
 
-
-\begin{defin}
+\begin{defin} \label{defin:analytic_formal_moduli_problems_under}
     An \emph{analytic formal moduli problem under $X$} corresponds to the datum of a functor
         \[F \colon (\anNil_{X/})\op \to \cS,\]
     satisfying the following two conditions:
     \begin{enumerate}
         \item $F(X) \simeq *$ in $\cS$;
+        \item $F \simeq \mathbf{res}^{< \infty} \circ F$, where $\mathbf{res}^{< \infty}_!$ denotes the right Kan extension along the natural inclusion
         \item Given any pushout diagram
             \[\begin{tikzcd}
                 S \ar{r}{f} \ar{d} & S' \ar{d} \\
@@ -410,8 +526,36 @@ in general one might use the proposition in preliminaries.}
     under $X$.
 \end{defin}
 
+\begin{construction}
+We have a composite diagram
+    \[
+        h \colon \anNil_{X/} \to \dAnk \hookrightarrow \anPreStk.
+    \]
+Therefore, given any analytic pre-stack regarded as a limit-preserving functor $F \colon \anPreStk\op \to \cS$, one can consider its restriction to the \infcat
+$\anNil_{X/}$:
+    \[
+        F \circ h \colon \anNil_{X/} \op \to \cS.      
+    \]
+We have thus a natural restriction functor
+    \[
+        h_* \colon \anPreStk \to \Fun(\anNil_{X/} \op, \cS).  
+    \]
+\end{construction}
+
+
+\begin{eg}
+    Let $X \in \dAnk$. As in the algebraic case, we can consider the \emph{de Rham pre-stack associated to $X$}, $X_\mathrm{dR} \colon \dAfd_k\op \to \cS$,
+    determined by the formula
+        \[
+            X_{\mathrm{dR}}(Z) \coloneqq X(Z_\red), \quad Z \in \dAfd_k.  
+        \]
+    We have a natural morphism $X \to X_\mathrm{dR}$ induced from the natural morphism $Z_\red \to Z$.
+    We claim that $h_*(X_\mathrm{dR}) \in \Fun(\anNil_{X/}\op, \cS)$ belongs to the full subcategory $\anFMP_{X/}$. Indeed, in this case it is clear that
+    $h_*(X_\red)$ is the final object in $\anFMP_{X/}$ which clearly satisfies conditions i) and ii) in \cref{defin:analytic_formal_moduli_problems_under}.
+\end{eg}
+
 \begin{notation}
-    Denote by $\anNil_{X/}^\cl \subset \anNil_{X/}$ the full subcategory spanned by those objects consisting of closed nil-isomorphisms
+    We set $\anNil_{X/}^\cl \subseteq \anNil_{X/}$ to be the full subcategory spanned by those objects corresponding to nil-embeddings of the form
         \[
             X \to S,  
         \]
@@ -436,16 +580,119 @@ in general one might use the proposition in preliminaries.}
 \end{prop}
 
 \begin{proof}
-    We start by proving claim (i). Let $(X \to S \to Y)$ be an object in $\anNil_{X//Y}$. Consider the pushout
+    We start by proving claim (i). Consider the usual restriction along the natural morphism $X_\red \to X$ functor 
+        \[\mathbf{res} \colon \anNil_{X/} \to \anNil_{X_\red/}.\]
+    Such functor admits a well defined left adjoint
+        \[\mathbf{push} \colon \anNil_{X_\red/} \to \anNil_{X/},\]
+    which is determined by the formula
         \[
-            X' \coloneqq X \coprod_{X_\red} S \in \anNil_{X/},  
+            (X_\red \to T) \in \anNil_{X_\red /} \mapsto (X \to T') \in \anNil_{X/},   
         \]
-    whose existence is guaranteed by \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}. Since $X_\red \simeq S_\red$ by the very
-    definition of the \infcat $\anNil_{X/}$. In particular, the natural morphism $X_\red \to S$ is a closed nil-isomorphism.
-    It thus follows that $X \to X'$ is a closed nil-isomorphism, again thanks to \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}.
-    Therefore, in order to conclude the proof of claim(i) we are reduced to show that $X'$ admits an induced morphism to $Y$ compatible with the datum
-    of $(X \to S \to Y)$ in $\anNil_{X//Y}$. But this latter assertion follows from the fact that $Y$ is required to send pushouts along square zero extensions
-    to fiber products of spaces together with \cref{prop:filtered_colimit_for_nil-embeddings}.
+    where we set
+        \begin{equation} \label{eq:set_definition_of_T'_as_pushout_of_T_along_the_inclusion_X_red_to_X}
+            T' \coloneqq X \coprod_{X_\red} T \in \anNil_{X/}.  
+        \end{equation}
+    We claim that $T' \in \anNil_{X/}$ belongs to the full subcategory $\anNil^\cl_{X/} \subseteq \anNil_{X/}$.
+    Indeed, since the structural morphism
+        $X_\red \to T$,
+    is necessarily a nil-embedding we deduce that the claim follows readily from \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}.
+    We shall denote
+        \[
+            \mathbf{res}_!(Y) \colon \anNil\op_{X_\red /} \to \cS,
+        \]
+    the left Kan extension of $Y$ along the functor $\mathbf{res}$ above. By the colimit formula
+    for left Kan extensions, c.f. \cite[Lemma 4.3.2.13]{HTT}, it follows that $\mathbf{res}_!(Y)$ is given by the formula
+        \[
+            (X_\red \to T) \in  \anNil_{X_\red /} \mapsto Y(T') \in \cS,
+        \]
+    where $T'$ is as in \eqref{eq:set_definition_of_T'_as_pushout_of_T_along_the_inclusion_X_red_to_X}.
+    Let $g \colon X_\red \to T$ in $\anNil_{X_\red/}$ and assume that $g$ factors through the natural morphism $X_\red \to X$. Then we have a natural morphism
+        \[
+           i_{T, *} \colon Y(T) \to \mathbf{res}_!(Y)(T) ,  
+        \]
+    in $\cS$, which exhibits the former as a retract of the latter. Denote by
+        \[
+            p_{T, *} \colon \mathbf{res}_!(Y)(T) \to Y(T),  
+        \]
+    be a right inverse to $i_{S, *}$. Consider the functor
+        \[
+            \mathbf{res}_Y \colon \anNil_{X//Y} \to \anNil_{X_\red / /\mathbf{res}_!(Y)},  
+        \]
+    given by the formula
+        \[
+            (X \to S \to Y) \in \anNil_{X//Y} \mapsto (X_\red \to S \xrightarrow{f} \mathbf{res}_!(Y)),  
+        \]
+    where $f \colon S \to \mathbf{res}_!(Y)$ corresponds to the morphism
+        \[  
+            S_X \xrightarrow{p_S} S \to Y,
+        \]
+    where $S_X \coloneqq X \coprod_{X_\red} S$. We claim that the functor $\mathbf{res}_Y$ is a right adjoint to the functor
+        \[
+            \mathbf{push}_Y \colon \anNil_{X_\red // \mathbf{res}_!(Y)} \to \anNil_{X//Y},  
+        \]
+    the latter given by the formula
+        \[
+            (X_\red \to T \to \mathbf{res}_!(Y)) \in \anNil_{X_\red // \mathbf{res}_!(Y)} \mapsto (X \to T_X \to Y)  \in \anNil_{X//Y}.
+        \]
+    Indeed, the datum of a morphism
+        \[
+            (X_\red \to T \to \mathbf{res}_!(Y)) \to \mathbf{res}_Y(X \to S \to Y),  
+        \]
+    in $\anNil_{X_\red / \mathbf{res}_!(Y)}$ corresponds to the datum of a commutative diagram
+        \[
+        \begin{tikzcd}
+          X_\red \ar{r} \ar{d} & T \ar{r} \ar{d} & \mathbf{res}_!(Y) \ar{d}{=} \\
+          X_\red \ar{r} & S \ar{r} & \mathbf{res}_!(Y),  
+        \end{tikzcd}
+        \]
+    where the right bottom morphism corresponds to the composite $S_X \to S \to Y$. For this reason, the given datum is equivalent to a commutative diagram
+        \[
+        \begin{tikzcd}
+            X_\red \ar{r} \ar{d} & T \ar{r} &  T_X \ar{r} \ar{rd} \ar{d}  & Y \ar{rd}{=} \\
+            X_\red \ar{r} & S \ar{r} &  S_X \ar{r} & S \ar{r} & Y,
+        \end{tikzcd}
+        \]
+    which on the other hand is equivalent to the datum of a commutative diagram
+        \[
+        \begin{tikzcd}
+            X \ar{r} \ar{d}{=} & T_X \ar{r} \ar{d} & Y \ar{d}{=} \\
+            X \ar{r} & S \ar{r} & Y
+        \end{tikzcd}
+        \]
+    The previous observations combined together then imply that we have a well defined adjunction
+        \[
+            \mathbf{res} \colon \anNil_{X/ /Y} \rightleftarrows \anNil_{X_\red // \mathbf{res}_!(Y)} \colon \mathrm{push}.
+        \]
+    We thus conclude that $\anNil_{X//Y} \to \anNil_{X_\red // \mathbf{res}_!(Y)}$ is a cofinal functor (as it admits a left adjoint). Claim (i) now follows
+    immediately from the observation that the functor
+        \[
+            \mathrm{push} \colon \anNil_{X_\red / \mathbf{res}_!(Y)} \to \anNil_{X//Y},  
+        \]
+    factors through the natural inclusion $\anNil_{X//Y}^\cl \to \anNil_{X//Y}$.
+    given by the formulas
+        \[
+            (X \to S \to Y) \in \anNil_{X//Y} \mapsto (X_\red \to X \to S \to Y) \in \anNil_{X_\red// Y}
+        \]
+    
+    We further observe that it suffices to prove that $(\anNil_{X//Y}^\cl)_{S/}$ admits an initial object.
+    Consider the pushout diagram
+        \[
+        \begin{tikzcd}
+            X_\red \ar{r} \ar{d} & S \ar{d} \\
+            X \ar{r} & S'
+        \end{tikzcd},
+        \]
+    computed in the \infcat $\dAnk$,
+    whose existence is guaranteed by \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}. Indeed, the natural morphism 
+        \[X_\red \simeq S_\red \to S\]
+    is a nil-isomorphism and $X_\red \to X$ is finite, thanks to \cref{lem:nil-isos_are_affine_morphisms}). Thanks to c\ref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}
+    we further deduce that the morphism $X \to X'$ is a closed nil-isomorphism. These observations combined together imply that
+    $X' \in \anNil_{X/}^\cl$.
+    
+    We further observe that $X'$ admits an induced morphism to $Y$, in the \infcat $\Fun((\anNil_{X/})\op, \cS)$, compatible with the datum
+    of $(X \to S \to Y)$ in $\anNil_{X//Y}$. The latter assertion follows immediately from the fact that $Y$, being an analytic formal moduli problem under $X$,
+    is required to send pushouts along square zero extensions
+    to fiber products of spaces. together with \cref{prop:filtered_colimit_for_nil-embeddings}.
 
     Claim (ii) follows immediately from (i) combined with Yoneda Lemma. To prove (iii) we simply notice that the \infcat $\anNil^\cl_{X//Y}$ admits
     finite colimits, thanks to \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}.
