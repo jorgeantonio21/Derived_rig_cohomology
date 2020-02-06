@@ -927,6 +927,38 @@ We start with the analogue of \cref{prop:analytic_FMP_under_X_are_ind_inf_scheme
     to finite limits.
 \end{proof}
 
+\begin{lem} \label{formal_moduli_under_induce_formal_moduli_over_via_base_change}
+    Let $X \in \dAnk$. Given any $Y \in \anFMP_{X/ }$, then for each $i= 0, 1$ the $i$-th projection morphism
+        \[
+            p_0 \colon X \times_Y X \to X,  
+        \]
+    computed in the \infcat $\anPreStk_k$ lies in the essential image of $\anFMP_{/X}$ via \cref{const:anFMP_as_ind_inf_schemes}.
+\end{lem}
+
+\personal{This lemma might be as well erase, as it is a direct consequence of the previous proposition. We will need nonetheless this result in the construction
+of $\rB_X(Y)$.}
+
+\begin{proof}
+    Consider the pullback diagram
+        \[
+        \begin{tikzcd}
+            X \times_Y X \ar{r}{p_1} \ar{d}{p_0} & X \ar{d} \\
+            X \ar{r} & Y ,
+        \end{tikzcd}
+        \]
+    computed in the \infcat $\anPreStk$. Thanks to \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} together with the fact that fiber products commute with filtered colimis in the \infcat $\anPreStk_k$,
+    we deduce that
+        \[
+            X \times_Y X \simeq \colim_{Z \in \anNil^\cl_{X//Y}} X \times_Z X, 
+        \]
+    in $\anPreStk_k$. It is clear that $(p_i \colon X \times_Z X \to X)$ lies in the essential image of $ \anFMP_{/X}$, for $i = 0, 1$. Thus also the filtered colimit
+        \[
+            (p_i \colon X \times_Y X ) \in \anFMP_{/X}, \quad \mathrm{for \ } i = 0, 1,
+        \]  
+    as desired.
+\end{proof}
+
+
 Just as in the previous section we deduce that every analytic formal moduli problem over $X$ admits the structure of an \emph{ind}-\emph{inf}-object
 in $\anPreStk_k$:
 
@@ -965,7 +997,7 @@ in $\anPreStk_k$:
 \end{defin}
 
 
-\begin{rem} Let $Y \in \anFMP_{/X}$.
+\begin{rem} \label{rem:construction_of_analytic_cotangent_complex_of_analytic_FMP_over_X} Let $Y \in \anFMP_{/X}$.
     The equivalence of ind-objects
         \[
             Y \simeq \colim_{S \in (\anNil^\cl_{/X})_{/Y}} S,
@@ -1002,6 +1034,104 @@ in $\anPreStk_k$:
 \begin{proof}
     It follows immediately from the natural equivalences displayed in \eqref{eq:description_of_cotangent_complex_of_a_formal_moduli_problem_in_terms_of_its_tangent_space}
     combined with the description of mapping spaces in \infcats of pro-objects.
+\end{proof}
+
+We now introduce the notion of square-zero extensions of analytic formal moduli problems over $X$:
+
+\begin{construction} \label{const:square_zero_extensions_of_analytic_FMP_over_X}
+    Let $(f \colon Y \to X) \in \anFMP_{/X}$. Let $d \colon \bbL\an_Y \to \cF[1]$ be an \emph{analytic derivation} in $\pro(\Coh^+(Y))$, where
+    $\cF \in \Coh^+(Y)^{\ge 0}$, such that
+        \[  
+            \cF \simeq f^*(\cF'),
+        \]
+    for some suitable object $\cF' \in \Coh^+(X)^{\ge 0}$. Thanks to \cref{rem:construction_of_analytic_cotangent_complex_of_analytic_FMP_over_X}
+    one has the following natural equivalences of mapping spaces
+        \begin{align*}
+            \Map_{\pro(\Coh^+(Y))} (\bbL\an_Y , \cF[1])  & \simeq 
+            \lim_{S \in (\anNil_{/X})_{/Y}} \colim_{S' \in (\anNil_{/X})_{S//Y}} \Map_{\pro(\Coh^+(S))}(f_{S, S'}^*(\bbL\an_S), g_{S}^*(\cF')[1]) \\
+                                                         & \simeq
+            \lim_{S \in (\anNil_{/X})_{/Y}} \colim_{S' \in (\anNil_{/X})_{S//Y}} \Map_{\pro(\Coh^+(S))}(\bbL\an_S, (f_{S, S'})_{ *} g_S^*(\cF')[1]),
+        \end{align*}
+    where $g_{S} \colon S \to X$ denotes the structural morphism in $\anNil_{/X}$ and $f_{S, S'} \colon S \to S'$ a given transition morphism
+    in the \infcat $(\anNil_{/X})_{/Y}$. For this reason, we can form the filtered colimit
+        \[
+            Y' \coloneqq \colim_{S \in (\anNil_{/X})_{/Y}}  \colim_{S' \in (\anNil_{/X})_{S//Y}} \oS' \in \anPreStk.
+        \]
+    By construction, one has a natural morphism $Y \hookrightarrow Y'$ in the \infcat $\anPreStk$.
+    Moreover, thanks to \cref{prop:sufficient_conditions_for_a_prestack_to_be_equiv_to_an_analytic_FMP} it follows that $Y' \in \anFMP_{/X}$.
+\end{construction}
+
+\begin{defin}
+    Let $Y \in \anFMP_{/X}$. Suppose we are given an analytic derivation
+        \[
+            d \colon \bbL\an_Y \to \cF [1],  
+        \]
+    in $\pro(\Coh^+(Y))$ where $\cF \in \Coh^+(Y)^{\ge 0}$ is such that $\cF \simeq f^*(\cF')$, for some $\cF' \in \Coh^+(X)^{\ge 0}$. We shall
+    say that the induced morphism
+        \[
+            h \colon Y \to Y',  
+        \] 
+    defined in \cref{const:square_zero_extensions_of_analytic_FMP_over_X}, is a \emph{square-zero extension} of $Y$
+    associated to the analytic derivation $d$. 
+\end{defin}
+
+\begin{cor} \label{cor:construction_of_square_zero_extensions_for_analytic_FMP_using_univ_property_of_cotangent_complex}
+    Let $Y \in \anFMP_{/X}$. Given any square-zero extension $h \colon X \hookrightarrow S$ in $\dAnk$. Then the space of cartesian squares
+        \[
+        \begin{tikzcd}
+            Y \ar{r}{h'} \ar{d}{f} & Y' \ar{d}{g} \\
+            X \ar{r}{h} & S,
+        \end{tikzcd}
+        \]
+    such that $h' \colon Y \to Y'$ is a square-zero extension and $g \colon Y' \to S$ exhibits the former
+    as an analytic formal moduli problem over $S$ is naturally equivalent to the space of factorizations
+        \[
+            f^* \bbL\an_X \to \bbL\an_Y \to f^*( \cF')[1],
+        \]
+    in $\pro(\Coh^+(Y))$, of the analytic derivation $d \colon \bbL\an_X \to \cF'[1]$ associated to the morphism $h$ above.
+\end{cor}
+
+\begin{proof}
+    By the universal property of ind-objects we reduce the statement to the case where $Y \in \anNil_{/X}$ and thus $Y' \in \anNil_{/S}$, in which
+    case the statement follows immediately by the universal property of the cotangent complex. \todo{Add details in this proof.}
+\end{proof}
+
+\begin{cor} \label{cor:universal_property_of_relative_cotangent_complex_for_morphisms_between_analytic_FMP}
+    Let $f \colon Z \to X$ be a morphism in the \infcat $\dAnk$. Suppose we are given analytic formal moduli problems
+        \[
+            f \colon Y \to X \quad \mathrm{and} \quad g \colon \tZ \to Z
+        \]
+    together with a commutative diagram
+        \[
+        \begin{tikzcd}
+            \tZ \ar{r}{s} \ar{d} & Y \ar{d} \\
+            Z \ar{r}{f} & X,  
+        \end{tikzcd}
+        \]
+    in the \infcat $\anPreStk$. Let $d \colon \bbL\an_Z \to \cF[1]$ be an analytic derivation corresponding to a square-zero extension morphism
+    $Z \to Z'$ in the \infcat $\dAnk$. Denote by
+    $\widetilde{d} \colon \bbL\an_{\tZ} \to \cF[1]$ the induced analytic derivation as in \cref{const:square_zero_extensions_of_analytic_FMP_over_X}
+    and let $h \colon \tZ \hookrightarrow \tZ'$ the induced square-zero extension in $\anPreStk$ such that we have a cartesian diagram
+        \[
+        \begin{tikzcd}
+            \tZ \ar{r} \ar{d} & \tZ' \ar{d} \\
+            Z \ar{r} & Z'  
+        \end{tikzcd}
+        \]
+    in the \infcat $\anPreStk$. Then the space of factorizations
+        \[
+            s \colon \tZ \to \tZ' \to Y,  
+        \]
+    is naturally equivalent to the space of factorizations
+        \[
+            \widetilde{d} \colon \bbL\an_{\tZ} \to  \bbL\an_{\tZ/ Y} \to \cF[1]  ,
+        \]
+    in the \infcat $\pro(\Coh^+(\tZ))$.
+\end{cor}
+
+\begin{proof}
+    The statement holds true in the case where $\tZ \in \anNil_{/Z}$ and $Y \in \anNil_{/X}$, by the universal property of the relative cotangent complex.
+    The general case is reduced to the previous one by a standard argument with ind-objects in $\anPreStk$.
 \end{proof}
 
 
@@ -1041,13 +1171,18 @@ the former as an analytic formal moduli problem over $X$.
     the statement of the proposition follows due to \cite[Theorem 3.3.1]{preygel_Leistner_Mapping_stacks_properness}.
 \end{proof}
 
-\begin{cor}
+\begin{cor} \label{cor:pseudo_nil-descent_for_pro_Coh^+}
     Let $X \in \dAnk$ and $f \colon Y \to X$ a morphism in $\anPreStk$ which exhibits $Y$ as an analytic formal moduli problem over $X$.
     Then the natural functor 
         \[
             f_\bullet^* \colon \pro(\Coh^+ (X)) \to \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))),
         \]
-    is an equivalence of \infcats, where $Y^\bullet$ denotes the \v{C}ech nerve of the morphism $f$.
+    is fully faithful, where $Y^\bullet$ denotes the \v{C}ech nerve of the morphism $f$.. Moreover, the essential image of the functor $f_\bullet^*$ identifies canonically with the full subcategory
+        \[
+            \mathrm{Tot}'(\pro(\Coh^+(X))) \subseteq \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/ X)))  ,
+        \]
+    spanned by those $\{\cF_{i, [n]} \}_{i \in I\op_{[n]}, [n]} \in \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X)))$, such that for every $[n] \in \bDelta \op$,
+    the \infcats $I_{[n]} = I$, for some fixed filtered \infcat $I$.
 \end{cor}
 
 \begin{proof}
@@ -1057,7 +1192,8 @@ the former as an analytic formal moduli problem over $X$.
         \[
             f_\bullet^* \colon \pro(\Coh^+(X)) \to \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))),  
         \]
-    is fully faithful. \cref{lem:f^*_admits_a_right_adjoint_whenever_f_is_nil-iso} that we have a well defined right adjoint
+    is fully faithful. We now proceed to prove the second claim of the corollary. Notice that,
+    \cref{lem:f^*_admits_a_right_adjoint_whenever_f_is_nil-iso} implies that there exists a well defined right adjoint
         \[
             f_* \colon \Coh^+(S) \to \Coh^+(X),  
         \]
@@ -1069,7 +1205,7 @@ the former as an analytic formal moduli problem over $X$.
         \[
             \lim_{[n] \in \bDelta \op} f_{\bullet, *} \colon \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))) \to \pro(\Coh^+(X)),  
         \]
-    which further commutes with filtered limits. We claim that $\lim_{[n] \in \bDelta \op} f_{\bullet, *}$ is a right adjoint to $f_\bullet^*$ above. Indeed, given
+    which further commutes with cofiltered limits. We claim that $\lim_{[n] \in \bDelta \op} f_{\bullet, *}$ is a right adjoint to $f_\bullet^*$ above. Indeed, given
     any $\{ \cF_i \}_{i \in I\op}  \in \pro(\Coh^+(X))$ and $\{ \cG_{j, [n]} \}_{j \in J_{[n]} \op, [n] \in \bDelta \op} \in \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X)))$,
     we compute
         \begin{align*}
@@ -1077,78 +1213,138 @@ the former as an analytic formal moduli problem over $X$.
             \lim_{[n] \in \bDelta \op} \lim_{j \in J\op_{[n]}} \mathrm{colim}_{i \in I} \Map_{\Coh^+(Y^{[n]})} ( f_{[n]}^\bullet(\cF_i),   \cG_{i, [n]}) & \simeq \lim_{[n] \in \bDelta \op} \lim_{j \in J\op_{[n]}} \colim_{i \in I} \Map_{\Coh^+(X)} (\cF_i, f_{[n], *}(\cG_{i, [n]})) \\
             \lim_{[n] \in \bDelta \op} \Map_{\pro(\Coh^+(X))}( \{\cF_i\}_{i \in I\op}, \{f_{[n], *}(\cG_{i, [n]}) \}_{i \in I_{[n]} \op}) & \simeq \Map_{\pro(\Coh^+(X))}( \{\cF_i\}_{i \in I\op}, \lim_{[n] \in \bDelta \op} \{f_{[n], *}(\cG_{i, [n]}) \}_{i \in I_{[n]} \op}),
         \end{align*}
-    as desired. In order to conclude, we will show that the functor
+    as desired. 
+    It is clear that the functor $f_{\bullet
+    }^*$ above factors through the full subcategory
         \[
-            \lim_{[n] \in \bDelta \op} f_{\bullet, *} \colon \pro(\Coh^+(X)) \to \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))),  
+            \mathrm{Tot}'(\pro( \Coh^+(Y^\bullet / X)))  \subseteq \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))).
         \]
-    is conservative. Since both the \infcats $\mathrm{Tot}(\pro(\Coh^+(X)))$ and $\mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X)))$ are stable, we are reduced to prove that given any
+    For this reason, the pair $(f_\bullet^*, \lim_{[n] \in \bDelta \op} f_{\bullet, *})$ restricts to a well defined adjunction
         \[
-            \{ \cG_{i, [n]} \}_{i \in I\op, [n]} \in \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))),  
+            f^*_{\bullet} \colon \pro(\Coh^+(X))  \rightleftarrows  \mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/ X))) \colon \lim_{[n] \in \bDelta \op} f_{\bullet, *}.  
+        \]
+    In order to conclude, we will show that the functor
+        \[
+            \lim_{[n] \in \bDelta \op} f_{\bullet, *} \colon  \mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/X))) \to \pro(\Coh^+(X)) ,  
+        \]
+    is conservative. Since both the \infcats $\pro(\Coh^+(X))$ and $\mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/X)))$ are stable, we are reduced to prove that given any
+        \[
+            \{ \cG_{i, [n]} \}_{i \in I\op} \in \mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/X))),  
         \]
     such that 
         \begin{equation} \label{eq:conservativity_of_lim_f_bullet_*}
-            \lim_{[n] \in \bDelta \op} f_{\bullet, *}( \{ \cG_{i, [n]} \}_{i \in I\op, [n]})  \simeq 0,
+            \lim_{[n] \in \bDelta \op} f_{\bullet, *}( \{ \cG_{i, [n]} \}_{i \in I\op})  \simeq 0,
         \end{equation}
-    then we necessarily have
+    we necessarily have
         \[
-            \{ \cG_{i, [n]} \}_{i \in I\op, [n]} \simeq 0  .
+            \{ \cG_{i, [n]} \}_{i \in I\op} \simeq 0  ,
         \]
-    Assume then \cref{eq:conservativity_of_lim_f_bullet_*}. Then, given any 
-\end{proof}
-
-\subsection{Non-archimedean formal groupoids}
-Let $X \in \dAfd_k$ denote a derived $k$-affinoid space. We denote by
-$\mathrm{AnFGrpd}(X)$ the full subcategory of the \infcat of simplicial objects
-    \[
-        \Fun( \bDelta \op, \anFMP_{/X}),
-    \]
-spanned by those objects $F \colon \mathbf \Delta \op \to \anFMP_{/X}$ satisfiying the following requirements:
-    \begin{enumerate}
-        \item $F([0]) \simeq X$ ;
-        \item For each $n \ge 1$, the morphism
-            \[
-                F([n]) \to F([1]) \times_{F([0])} \dots \times_{F([0])} F([1])  ,
-            \]
-        induced by the morphisms $s^i \colon [1] \to [n]$ given by $(0,1) \mapsto (i, i+1)$, is an equivalence
-        in $\anFMP_{/X}$.
-    \end{enumerate}
-\todo{Put the above as a definition + introduce analytic formal moduli problems over.}
-
-\begin{lem} \label{formal_moduli_under_induce_formal_moduli_over_via_base_change}
-    Let $X \in \dAnk$. Given any $Y \in \anFMP_{X/ }$, then for each $i= 0, 1$ the $i$-th projection morphism
+    in $\mathrm{Tot}'(\pro(\Coh^+(Y^\bullet / X)))$.
+    Assume then \eqref{eq:conservativity_of_lim_f_bullet_*}. Since the the object $\{ \cG_{i, [n]} \}_{i \in I \op, [n] \in \bDelta \op}$ has fixed cofiltered \infcat $I \op$
+    at the pro-level, we have an equivalence
+        \begin{align*}
+            \lim_{[n] \in \bDelta \op} \{ \cG_{i [n]} \}_{i \in I\op}   & \simeq \{ \lim_{[n] \in \bDelta \op} \cG_{i, [n]} \}_{i \in I\op} \\
+                                                                        & \simeq \{ \cG_i \}_{i \in I\op},                                      
+        \end{align*}
+    in the \infcat $\pro(\Coh^+(X))$, where the $\cG_i \in \Coh^+(X)$, for each $i \in I$, satisfying
         \[
-            p_0 \colon X \times_Y X \to X,  
+            f_{[n]}^* (\cG_i) \simeq \cG_{i , [n]} \in \Coh^+(Y^{[n]}),  
         \]
-    computed in the \infcat $\anPreStk_k$ lies in the essential image of $\anFMP_{/X}$ via \cref{const:anFMP_as_ind_inf_schemes}.
-\end{lem}
-
-\begin{proof}
-    Consider the pullback diagram
-        \[
-        \begin{tikzcd}
-            X \times_Y X \ar{r}{p_1} \ar{d}{p_0} & X \ar{d} \\
-            X \ar{r} & Y ,
-        \end{tikzcd}
-        \]
-    computed in the \infcat $\anPreStk$. Thanks to \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} together with the fact that fiber products commute with filtered colimis in the \infcat $\anPreStk_k$,
-    we deduce that
-        \[
-            X \times_Y X \simeq \colim_{Z \in \anNil^\cl_{X//Y}} X \times_Z X, 
-        \]
-    in $\anPreStk_k$. It is clear that $(p_i \colon X \times_Z X \to X)$ lies in the essential image of $ \anFMP_{/X}$, for $i = 0, 1$. Thus also the filtered colimit
-        \[
-            (p_i \colon X \times_Y X ) \in \anFMP_{/X}, \quad \mathrm{for \ } i = 0, 1,
-        \]  
+    thanks to \cref{prop:nil_descent_for_Coh^+}. For this reason, we conclude that  
+        \begin{align*}
+            f^*_{\bullet}(\{ \cG_i \}_{i \in I\op}) \simeq \{\cG_{i, [n]} \}_{i \in I\op, [n]} \simeq 0,  
+        \end{align*}
     as desired.
 \end{proof}
 
+We now use the \emph{pseudo-nil-descent} for $\pro(\Coh^+(X))$ \todo{define what this means}, to compute relative cotangent complexes of
+analytic formal moduli problems over $X$:
 
-\begin{construction} Thanks to \cref{formal_moduli_under_induce_formal_moduli_over_via_base_change},
+\begin{cor} \label{cor:analytic_relative_cotangent_complex_defines_cartesian_sections_in_the_totalization}
+    Let $f \colon Z \to X$ be a morphism in $\dAnk$. Suppose we are given a pullback square
+        \[
+        \begin{tikzcd}
+            \tZ \ar{r}{h} \ar{d} & Y \ar{d} \\
+            Z \ar{r} & X,
+        \end{tikzcd}
+        \]
+    in the \infcat $\anPreStk$, where $( Y \to X) \in \anFMP_{/X}$ and $(g \colon\tZ \to Z) \in \anFMP_{/Z}$. Then the lax-limit object
+        \[
+            \{ \bbL\an_{\tZ^{[n]} / Y^{[n]}} \} \in \mathrm{Tot}^\mathrm{lax}(\pro(\Coh^+(\tZ^\bullet/Z))),  
+        \]
+    defines an actual cartesian section
+        \[
+            \{ \bbL\an_{(\tZ)^{[n]}/ Y^{[n]}} \} \in \mathrm{Tot}(\pro(\Coh^+((\tZ)^\bullet /Z))),
+        \]
+    which furthermore belongs to the essential image of the natural functor
+        \[
+            g^*_\bullet \colon \pro(\Coh^+(Z)) \to \mathrm{Tot}(\pro(\Coh^+(\tZ^\bullet / Z)))
+        \]
+\end{cor}
+
+\begin{proof}
+    We first show that the $\{ \bbL\an_{(\tZ)^{[n]}/ Y^{[n]}} \}  \in \mathrm{Tot}^\mathrm{lax}(\pro(\Coh^+((\tZ)^\bullet/ Z)))$
+    defines a cartesian section in the totalizations
+        \[
+            \mathrm{Tot}(\pro(\Coh^+((\tZ)^\bullet / Z))).  
+        \]
+    In order to show this assertion, it is sufficient to prove for every $[n ] \in \bDelta \op$ we have a natural equivalence
+        \[
+            h^*(\bbL\an_{(\tZ)^{[n]} / Y^{[n]}}) \simeq \bbL\an_{(\tZ)^{[n+1]}/ Y^{[n+1]}},  
+        \]
+    in the \infcat $\pro(\Coh^+((\tZ)^{[n+1]}))$. The latter claim is an immediate consequence of the base change property for the analytic
+    cotangent complex in the case where $Y \in \anNil_{/X}$ (and thus so do $\tZ \in \anNil_{/Z})$), which follows readily from
+    \cite[Proposition 5.12]{Porta_Yu_Representability}. In the general case where $Y \in \anFMP_{/X}$, we reduce to the case
+    where $Y \in \anNil_{/X}$ by combining \cref{prop:required_conditions_for_formal_moduli_problems} with the observation that filtered colimits
+    commute with finite limits in the \infcat $\anPreStk$. 
+
+    We now prove the second assertion. Thanks to characterization of the essential image of natural functor
+        \[
+            g^*_{\bullet} \colon \pro(\Coh^+(Z)) \to \mathrm{Tot}(\pro(\Coh^+((\tZ)^\bullet /Z))),  
+        \]
+    provided in \cref{cor:pseudo_nil-descent_for_pro_Coh^+}, we are reduced to show that for each $[n] \in \bDelta \op$, we have a natural
+    equivalence of pro-objects
+        \[
+            \bbL\an_{\tZ^{[n]} / Y^{[n]}} \simeq \{ \bbL\an_{\tS^{[n]}/ S^{[n]}} \}_{\tS \in (\anNil_{/ Z})_{/\tZ}, S \in (\anNil_{/X})_{/ Y}}.
+        \]
+    The latter statement follows readily from the first part of the proof by a direct inductive argument.
+\end{proof}
+
+
+\subsection{Non-archimedean formal groupoids} Let $X \in \dAn_k$.
+We start with the definition of the notion of \emph{analytic formal groupoids over $X$}:
+
+\begin{defin}We denote by
+    $\mathrm{AnFGrpd}(X)$ the full subcategory of the \infcat of simplicial objects
+        \[
+            \Fun( \bDelta \op, \anFMP_{/X}),
+        \]
+    spanned by those objects $F \colon \mathbf \Delta \op \to \anFMP_{/X}$ satisfiying the following requirements:
+        \begin{enumerate}
+            \item $F([0]) \simeq X$ ;
+            \item For each $n \ge 1$, the morphism
+                \[
+                    F([n]) \to F([1]) \times_{F([0])} \dots \times_{F([0])} F([1])  ,
+                \]
+            induced by the morphisms $s^i \colon [1] \to [n]$ given by $(0,1) \mapsto (i, i+1)$, is an equivalence
+            in $\anFMP_{/X}$.
+        \end{enumerate}
+    We shall refer to objects in $\anFGrpd(X)$ as \emph{analytic formal groupoids over $X$}.
+\end{defin}
+
+\begin{rem}
+    Note that \cref{prop:required_conditions_for_formal_moduli_problems} implies that the the fiber products exist in $\anFMP_{/X}$. Therefore, the previous
+    definition is reasonable.
+\end{rem}
+
+
+
+\begin{construction} \label{const:formal_completion_construction_Phi} Thanks to \cref{formal_moduli_under_induce_formal_moduli_over_via_base_change},
 there exists a well defined functor $\Phi \colon \anFMP_{X/} \to \anFGrpd(X)$ given by the formula
     \[
         (X \to Y ) \in \anFMP_{X/ } \mapsto Y^\wedge_X \in \anFGrpd(X),
     \]
-where $Y^\wedge_X \in \anFGrpd(X)$ denotes the analytic formal groupoid over $X$ whose presentation is given by
+where $Y^\wedge_X \in \anFGrpd(X)$ denotes the analytic formal groupoid over $X$ admitting
     \[
     \begin{tikzcd}
       \dots \ar[r, shift left=2] \ar[r, shift left=0.75] 
@@ -1156,44 +1352,130 @@ where $Y^\wedge_X \in \anFGrpd(X)$ denotes the analytic formal groupoid over $X$
       & X \times_Y X \times_Y X \ar[r, shift left=-1] \ar[r, shift left=1] \ar[r] 
       & X \times_Y X \ar[r, shift left=-0.25ex] \ar[r, shift left=0.25ex] 
       & X 
-    \end{tikzcd}.
+    \end{tikzcd},
     \] 
-Moreover, given any $\cG \in \anFGrpd(X)$, we can associate it an analytic formal moduli problem under $X$,
-denoted $\rB_{X}(\cG)$, as follows: let $X \to S$ be an object
-in $\anNil_{X/}$, then we let
-    \[
-        \rB_{X}(\cG) (S) \coloneqq  \big\{ (\tS \to S) \in \anFMP_{/S}, \tS \to X, \mathrm{a \ morphism \ of \ groupoid \ objects \ }\tS \times_S \tS \to \cG \mathrm{ \ satisfying \  (*) 
-        } \big\}
-    \]
-where condition (*) is determined by requiring that the commutative squares
-    \[
-    \begin{tikzcd}
-        \tS \times_S \tS \ar{r} \ar{d}{p_i} & \cG \ar{d}{p_i} \\
-        \tS \ar{r}   & X
-    \end{tikzcd}
-    \]
-for $i=0, 1$ are cartesian. Such association is functorial in $(X \to S) \in \anNil_{X/}$ and thus it defines a well defined functor
-    \[
-        \rB_{X}(\cG) \colon \anNil_{X/ }\op \to \cS.  
-    \]
+as simplicial presentation.
 \end{construction}
 
-\begin{rem}
-    Let $X \in \dAnk$ and $\cG \in \anFGrpd(X)$. There exists a canonical morphism $X \to \rB_X(\cG)$ given by associating every 
+\begin{construction} \label{const:formal_classifying_stack_construction}
+    Let $\cG \in \anFGrpd(X)$. Consider the \emph{$k$-analytic classifying pre-stack}, $\rB_X(\cG)^{\mathrm{pre}} \in \anPreStk$, obtained as the geometric realization
+    of the simplicial object
         \[
-            Z \in \dAfd_k
+            \cG \colon \bDelta \op \to \anPreStk.  
         \]
-\end{rem}
+    Given any $Z \in \dAfd_k$, the \emph{space of $Z$-points of $\rB_X(\cG)^{\mathrm{pre}}$},
+        \[
+            \rB_X(\cG)^\mathrm{pre}(Z),  
+        \]
+    can be identified with the space whose objects correspond to the datum of:
+        \begin{enumerate}
+            \item A morphism $\tZ \to X$, where $\tZ \in \anPreStk$, such that
+                \[
+                    \tZ \simeq Z \times_{\rB_X(\cG)^\mathrm{pre}} X;  
+                \]
+            \item A morphism of groupoid-objects in $\anPreStk$ $\tZ \times_Z \tZ \to \cG$.
+        \end{enumerate}
+    We now define $\rB_X(\cG)$ as the sub-object spanned by those connected components of $\rB_X(\cG)^\mathrm{pre}$ corresponding to
+    $\tZ \to Z$ which exhibit $\tZ \in \anFMP_{/Z}$. Denote by
+        \[
+            \mathrm{can} \colon \rB_X(\cG) \to \rB_X(\cG)^\mathrm{pre},  
+        \]
+    the canonical morphism. It follows from the constructions that the natural morphism    
+        \[
+            X \to \rB_X(\cG)^\mathrm{pre},  
+        \]
+    factors as $X \to \rB_X(\cG) \xrightarrow{\mathrm{can}} \rB_X(\cG)^\mathrm{pre}$.
+\end{construction}
 
 \begin{lem}
-    The functor $\rB_X(\cG) \colon \anNil_{X/}\op \to \cS$ is equivalent to an analytic formal moduli problem.
+    The natural morphism $X \to \rB_X(\cG)$ exhibits the latter as an object in the \infcat $\anFMP_{X/}$ of analytic formal moduli problems
+    under $X$.
 \end{lem}
 
 \begin{proof}
     Thanks to \cref{prop:sufficient_conditions_for_a_prestack_to_be_equiv_to_an_analytic_FMP} it suffices to prove that $\rB_X(\cG)$ is
-    infinitesimally cartesian and it admits furthermore a pro-cotagent complex. Infinitesimally cartesian follows from the modular description
+    infinitesimally cartesian and it admits furthermore a pro-cotagent complex. The fact that $\rB_X(\cG)$ is infinitesimally cartesian follows from the
+    modular description
     of $\rB_X(\cG)$ combined with the fact that $\cG$ is infinitesimally cartesian, as well. We are thus required to show that $\rB_X(\cG)$ admits
-    a \emph{global} pro-cotangent complex. 
+    a \emph{global} pro-cotangent complex. Let $Z \in \dAnk$ and suppose we are given an arbitrary morphism
+        \[
+            q \colon Z \to \rB_X(\cG),    
+        \]
+    in the \infcat $\anPreStk$.
+    Thanks to \cref{cor:pseudo_nil-descent_for_pro_Coh^+} combined with \cref{cor:analytic_relative_cotangent_complex_defines_cartesian_sections_in_the_totalization}
+    it follows that the object
+        \[
+            \{ \bbL\an_{\tZ^{[n]} / \cG^{[n]}} \}_{[n] \in \bDelta \op} \in \mathrm{Tot}(\pro(\Coh^+((\tZ)^\bullet / Z)))), 
+        \]
+    defines a well defined object $ \bbL^{\mathrm{an} ' }_{Z/ \rB_X(\cG)} \in \pro(\Coh^+(Z))$. Moreover, it is clear that we there exists a natural morphism
+        \[
+            \theta \colon \bbL\an_Z \to \bbL^{\mathrm{an} '}_{Z /  \rB_X(\cG)},
+        \]
+    in the \infcat $\pro(\Coh^+(Z))$. Let
+        \[
+            q^* \bbL^{\mathrm{an} '}_{\rB_X(\cG)}  \coloneqq \mathrm{fib}(\theta),
+        \]
+    computed in the \infcat $\pro(\Coh^+(Z))$. We claim that $q^* \bbL^{\mathrm{an} '}_{\rB_X(\cG)}$ identifies with the analytic cotangent
+    complex of $\rB_X(\cG)$ at the point $q \colon Z \to \rB_X(\cG)$. Let
+        \[
+            Z \hookrightarrow Z',  
+        \]
+    denote a square-zero extension which corresponds to a certain analytic derivation
+        \[
+            d \colon \bbL\an_Z \to \cF[1],  
+        \]
+    for some $\cF \in \Coh^+(Z)^{\ge 0}$. Using \cref{cor:construction_of_square_zero_extensions_for_analytic_FMP_using_univ_property_of_cotangent_complex}
+    we deduce that the space of cartesian squares of the form 
+        \[
+        \begin{tikzcd}
+            \tZ \ar{r} \ar{d} & \tZ' \ar{d} \\
+            Z \ar{r} & Z'
+        \end{tikzcd}
+        \]
+    where the morphism $\tZ \to \tZ'$ is a square-zero extension in the \infcat $\anPreStk$ is equivalent to the space of factorizations
+        \[
+            d \colon g^*  \bbL\an_Z \to \bbL\an_{\tZ} \xrightarrow{{d'}} g^*(\cF)[1],
+        \]
+    in the \infcat $\pro(\Coh^+(\tZ))$. Apply the same reasoning to the each object in the \v{C}ech nerve
+        \[
+            \tZ^\bullet \to Z.  
+        \]
+    Furthermore, \cref{cor:universal_property_of_relative_cotangent_complex_for_morphisms_between_analytic_FMP}
+    implies that the space of factorizations
+        \[
+            \tZ^\bullet \to (\tZ')^\bullet \to \cG^\bullet,  
+        \]
+    identifies with the space of factorizations
+        \[
+            d' \colon \bbL\an_{\tZ} \to \bbL\an_{\tZ/ \cG} \to g^*(\cF)[1],
+        \]  
+    in the \infcat $\pro(\Coh^+(\tZ))$. By pseudo-pro-nildescent we then deduce that the above factorization space identified with the space
+    of factorizations
+        \[
+            d \colon \bbL\an_Z \to \bbL\an_{Z/ \rB_X(\cG)} \to \cF[1],
+        \]
+    as desired.
+\end{proof}
+
+\begin{thm}
+    The functor $\Phi \colon \anFMP_{/X} \to \anFGrpd(X)$ of \cref{const:formal_completion_construction_Phi} is an equivalence of \infcats.
+\end{thm}
+
+\begin{proof} Let $\cG \in \anFGrpd$.
+    Thanks to (1) in \cref{const:formal_classifying_stack_construction} it follows that one has a canonical equivalence
+        \[
+            X \times_{\rB_X(\cG)} X \simeq \cG,
+        \]
+    in $\anPreStk$. This shows that the construction
+        \[
+            \rB_X(\cG) \colon \anFGrpd(X) \to \anFMP_{X/},  
+        \]
+    is a right inverse to $\Phi$. As a consequence the functor $\Phi$ is essentially surjective. By the same reasoning we deduce that
+    given $X \to Y $ in $\anFMP_{X/}$ the natural morphism
+        \[
+              Y \to \rB_X(Y \times_X Y),
+        \]
+    is also an equivalence in $\anPreStk$.
 \end{proof}
 
 
