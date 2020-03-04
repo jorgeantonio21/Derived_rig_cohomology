@@ -68,6 +68,9 @@ We will then exploit this ideas to come up with analogues concerning \emph{deriv
 in characteristic zero. In particular, our main goal is to extrapolate the main result of \cite{Bhatt_Derived_Completions} to the setting of
 derived rigid cohomology.
 
+\subsection{Notations and Conventions} We shall denote the \emph{analytic mapping stack} as $\bfMap_{\dAnSt_k}(X, Y)$.
+
+
 \subsection{Preliminaries}
 Let $\cX$ be an \inftopos. The notion of a \emph{local $\cTank$-structure on $\cX$} was first introduced in \cite[Definition 2.4]{Porta_Yu_Derived_non-archimedean_analytic_spaces},
 see also \cite[\S 2]{antonio2018p}.
@@ -108,9 +111,18 @@ $\pi_0(\cO)_\red \in \Str_{\cTank}(\cX)$ actually lies in the full subcategory $
     We shall refer to it as the \emph{underlying reduced $k$-analytic space}.
 \end{notation}
 
+\begin{defin}
+    Let $f \colon X \to Y$ be a morphism in $\dAnk$. We shall say that $f$ is an \emph{admissible open immersion} if the induced morphism on $0$-th truncations
+        \[
+            \trunc(f) \colon \trunc(X) \to \trunc(Y),  
+        \]
+    is an admissible open immersion in the sense of \cite[\S 1.3]{Berkovich_Etale_1993}.
+\end{defin}
+
+
 \begin{lem}
-    Let $f \colon X \to Y$ be a Zariski open immersion of derived $k$-analytic spaces. Then $f^\red \colon X^\red \to Y^\red$ is also
-    a Zariski open immersion.
+    Let $f \colon X \to Y$ be an admissible open immersion of derived $k$-analytic spaces. Then $f^\red \colon X^\red \to Y^\red$ is also
+    an admissible open immersion.
 \end{lem}
 
 \begin{proof}
@@ -118,7 +130,7 @@ $\pi_0(\cO)_\red \in \Str_{\cTank}(\cX)$ actually lies in the full subcategory $
         \[
             \trunc(f) \colon \trunc(X) \to \trunc(Y),  
         \]
-    is a Zariski open immersion of ordinary $k$-analytic spaces. In the case of ordinary $k$-analytic spaces it is clear from the construction
+    is an admissible open immersion of ordinary $k$-analytic spaces. In the case of ordinary $k$-analytic spaces it is clear from the construction
     that the reduction of Zariski open immersions is again a Zariski open immersion.
 \end{proof}
 
@@ -136,29 +148,37 @@ in \cite[Definition 7.3 and Definition 2.5.]{Porta_Yu_Derived_non-archimedean_an
         \[
             \cJ \to \cO_X \to \cO_X/\cJ,  
         \]
-    in the \infcat $\Coh^+(X)$. It corresponds to a well defined morphism $d \colon \cO_X / \cJ \to \cJ[1]$ admitting $\cO_X$ as fiber. The morphism $d$ defines
-    a derivation $d \colon \bbL\an_{\cO_X/ \cJ} \to \cJ[1]$, by pre-composing with the natural map $\cO_X/ \cJ \to \bbL\an_{\cO_X/ \cJ}$.
-    In particular, we can consider the square-zero extension of $\cO_X$ by $\cJ$ induced by $\cJ$ defined by $d$. The latter object
-    must then be equivalent to $\cO_X$ itself. We conclude that $\cO_X$ is a square-zero extension of $\cO_X/\cJ$.
+    in the \infcat $\Coh^+(X)$. We have a fiber sequence of the form
+        \[
+            \bbL_{\cO_X}\an \to \bbL_{\cO_X / \cJ}\an \to \bbL_{\cO_X / \cJ / \cO_X}\an,
+        \]
+    and we have a further identification $\tau_{\le 1} (\bbL_{\cO_X/ \cJ / \cO_X}) \simeq \cJ[1]$. For this reason, we obtain a well defined morphism
+        \[
+            d \colon \bbL_{\cO_X/ \cJ} \to \cJ[1],
+        \]
+    in the derived \infcat $\Mod_{\cO_X/ \cJ}$. This derivation classifies a square-zero extension of $\cO_X/ \cJ$ by $\cJ[1]$ which can be identified with the
+    object $\cO_X$ itself. In particular, we deduce that $X$ is a square-zero extension of $X_\red$.
 \end{rem}
 
 \begin{lem} \label{lem:derived_k_analytic_space_whose_reduction_is_affinoid_is_also_affinoid}
-    Let $Z \coloneqq (\cZ, \cO_Z) \in \RTop(\cTank)$ denote a $\cTank$-structure \inftopos. Suppose that the reduction
+    Let $Z \coloneqq (\cZ, \cO_Z) \in \RTop(\cTank)$ denote a $\cTank$-structure \inftopos such that $\pi_0(\cO_Z\alg) $ is Noetherian derived $k$-algebra on $\cZ$.
+    Suppose that the reduction
     $Z_\red$ is equivalent to a derived $k$-affinoid space. Then the truncation $\trunc(Z)$ is isomorphic to an ordinary $k$-affinoid space.
     If we assume further that for every $i>0$, the homotopy sheaves $\pi_i(\cO_Z)$ are
     coherent $\pi_0(\cO_Z)$-modules, then $Z$ itself is equivalent to a derived $k$-affinoid space.
 \end{lem}
 
-\begin{proof} We first observe that the second claim of the Lemma follows readily from the first one. We thus are thus reduced to prove that $\trunc(Z)$ is isomorphic to an ordinary $k$-affinoid space.
+\begin{proof} The second claim of the Lemma follows readily from the first assertion together with the definitions.
+    We are thus reduced to prove that $\trunc(Z)$ is isomorphic to an ordinary $k$-affinoid space.
     Let $\cJ \subseteq \pi_0(\cO_Z)$, denote the coherent ideal sheaf associated to the closed immersion $Z_\red \hookrightarrow Z$. Notice that the ideal $\cJ$
-    agrees with the Jacobson ideal of $\pi_0(\cO_Z)$. Since derived $k$-analytic spaces are Noetherian, it follows that there exists
+    agrees with the Jacobson ideal of $\pi_0(\cO_Z)$. Thanks to our assumption that $\pi_0(\cO_Z)$ is a Noetherian derived $k$-algebra on $\cZ$, it follows that there exists
     a sufficiently large integer $n \ge 2$ such that
         \[
             \cJ^n = 0.  
         \]
-    Arguing by induction we can suppose that $n = 2$, that is to say that
+    Arguing by induction, we can suppose that $n = 2$, that is to say that
         \[\cJ^2 = 0.\]
-    In particular, \cref{rem:construction_of_nilpotent_extensions_as_square_zero_extensions} implies that the above map has
+    In particular, \cref{rem:construction_of_nilpotent_extensions_as_square_zero_extensions} implies that the
     the natural morphism $Z_\red \to Z$ has the structure of a square zero extension.
     The assertion now follows from \cite[Proposition 6.1]{Porta_Yu_Representability}
     and its proof.
@@ -171,7 +191,7 @@ in \cite[Definition 7.3 and Definition 2.5.]{Porta_Yu_Derived_non-archimedean_an
 \end{rem}
 
 \begin{defin}
-    Let $f \colon X \to Y$ be a morhpism in the \infcat $\dAnk$. We shall say that $f$ is an \emph{affine morphism} if
+    Let $f \colon X \to Y$ be a morphism in the \infcat $\dAnk$. We shall say that $f$ is an \emph{affine morphism} if
     for every morphism $Z \to Y$ in $\dAnk$ such that $Z$ is equivalent to a derived $k$-affinoid space, the pullback
         \[
             Z' \coloneqq Z \times_Y X \in \dAnk,  
@@ -179,39 +199,22 @@ in \cite[Definition 7.3 and Definition 2.5.]{Porta_Yu_Derived_non-archimedean_an
     is also equivalent to a derived $k$-affinoid space.
 \end{defin}
 
-\begin{notation}
-    Let $f \colon X \to Y$ be a morphism of derived $k$-analytic spaces. We shall denote by
-        \[
-            f^\# \colon \cO_Y \to f_* \cO_X,
-        \]  
-    the induced morphism at the level of $\cTank$-structures.
-\end{notation}
-
 \begin{lem} \label{lem:affine_morphisms_are_compatible_with_Zariski_localization_on_the_base}
-    Let $f \colon X \to Y$ be an affine morphism in $\dAn_k$. Suppose that we are given a Zariski open immersion
-    $g \colon Z \to Y$ such that $Z \in \dAfdk$ which corresponds to the completement of the zero locus of a
-    section $s \in \pi_0(\cO_Y)$. Then the fiber product
+    Let $f \colon X \to Y$ be an affine morphism in $\dAn_k$. Suppose we are given an admissible open covering
         \[
-            Z' \coloneqq Z \times_Y X \in \dAn_k,  
+            g \colon \coprod_{j \in J} U_j \to Y,  
         \]
-    is equivalent to a derived $k$-affinoid space and moreover $\Gamma(Z', \cO_{Z'}\alg) \simeq B[1/f^\#(s)]$, where
-    $B \coloneqq \Gamma(X, \cO_X\alg)$.
+    where for each $j \in J$, $U_j \in \dAfd_k$. For each $j \in J$, let 
+        \[
+            V_j \coloneqq U_j \times_X Y \in \dAfd_k,  
+        \]
+    then $\coprod_{j \in J} V_j \to Y$ is an admissible open covering.
 \end{lem}
 
-\begin{proof} The first assertion of the Lemma follows readily from the definition of affine morphisms.
-    We shall now prove the second claim. Let $A \coloneqq \Gamma(Y, \cO_Y\alg)$. In this case, we have a natural equivalence of
-    derived $k$-algebras
-        \[
-            A[1/f] \simeq \Gamma(Z, \cO_Z\alg).  
-        \]
-    Since Zariski open immersions are stable under pullbacks, it follows that the natural morphism $g' \colon Z' \to X$ is itself a Zariski
-    open immersion. In particular, it follows that we can identify
-        \[
-            \Gamma(Z', \cO_{Z'}) \simeq B[1/t],
-        \]
-    where $t \in \pi_0(B)$. In order to conclude the proof, we observe that the $0$-th truncation, $\trunc(g)$, is again a Zariski
-    open immersion. For this reason, one should have forcibly that $t = f^\#(s)$, by the universal
-    property of fiber products of ordinary $k$-analytic spaces.
+\begin{proof} It is clear from our assumption that $f$ is an affine morphism that for every index $j \in J$, the objects $V_j \in \dAfd_k$. The claim of the Lemma
+    follows immediately from the observation that
+    both the classes of effective epimorphisms of \inftopoi and admissible open immersions of derived $k$-analytic spaces are stable under pullbacks,
+    cf. \cite[Proposition 6.2.3.15]{HTT} and \cite[Corollary 5.11, Proposition 5.12]{Porta_Yu_Representability}, respectively.
 \end{proof}
 
 
@@ -224,13 +227,21 @@ setting, presented in the next section.
 We start with the following definition:
 
 \begin{defin}
-    Let $f \colon X \to Y$ be a morphism in $\dAnk$. We say that $f$ is a \emph{nil-isomorphism} if $f_\red \colon X_\red \to
-    Y_\red$ is an isomorphism of $k$-analytic spaces. We denote by $\anNil_{/ X}$ the full subcategory of $(\dAnk)^{\mathrm{ft}}_{X/}$
-    spanned by nil-isomorphisms $X \to Y$ of finite type.
+    \begin{enumerate}
+        \item Let $f \colon X \to Y$ be a morphism in $\dAnk$. We say that $f$ is a \emph{nil-isomorphism} if $f_\red \colon X_\red \to
+        Y_\red$ is an isomorphism of $k$-analytic spaces. 
+        \item Let $X = (\cX, \cO_X)$ be a derived $k$-analytic space. We shall say that a nil-isomorphism $f \colon X \to Y$ is \emph{of finite type} if for every
+            \[
+                \cO_Y \to \cO_X,   
+            \]
+        induces an equivalence $\tau_{\ge m }(\cO_Y) \to \tau_{\ge m}(\cO_X)$ in the \infcat $\cD_\mathrm{Ab}(\cX)$.
+        \item We will denote by $\anNil_{/ X}$ the full subcategory of $(\dAnk)_{X/}$
+        spanned by nil-isomorphisms $X \to Y$ of finite type.
+    \end{enumerate}
 \end{defin}
 
 \begin{lem} \label{lem:nil-isos_are_affine_morphisms}
-    Let $f \colon X \to Y$ be a nil-isomorphism in $\dAnk$. Then:
+    Let $f \colon X \to Y$ be a nil-isomorphism of derived $k$-analytic spaces. Then:
     \begin{enumerate}
         \item Given any morphism $Z \to Y$ in $\dAnk$, the induced morphism
             \[
@@ -247,15 +258,15 @@ We start with the following definition:
         \[
             \trunc \colon \dAnk \to \Ank,  
         \]
-    commutes with finite limits. So we further reduce ourselves to the prove that the usual underlying reduced functor
+    commutes with finite limits, c.f. \cite[Proposition 6.2 (v)]{Porta_Yu_Derived_non-archimedean_analytic_spaces}. It suffices then to prove that the usual underlying reduced functor
         \[
             (-)^\red \colon \Ank \to \Ank^\red,
         \]
     commutes with finite limits. By construction,
     the latter assertion is equivalent to the claim that
-    the complete tensor product of ordinary $k$-affinoid algebras commutes with the operation of taking the quotient by the Jacobson radical, which is immediate.
+    the usual complete tensor product of ordinary $k$-affinoid algebras commutes with the operation of taking the quotient by the Jacobson radical, which is immediate.
 
-    We now prove (ii). Let $Z \to Y$ be a Zariski open immersion such that $Z$ is a derived $k$-affinoid space. Then we claim that the pullback
+    We now prove (ii). Let $Z \to Y$ be an admissible open immersion such that $Z$ is a derived $k$-affinoid space. We claim that the pullback
     $Z \times_X Y$ is again a derived $k$-affinoid space. Thanks to \cref{lem:derived_k_analytic_space_whose_reduction_is_affinoid_is_also_affinoid}
     we reduced to prove that $(Z \times_X Y)_\red$ is equivalent to an
     ordinary $k$-affinoid space. Thanks to (i), we deduce that the induced morphism
@@ -266,28 +277,27 @@ We start with the following definition:
     \cref{lem:derived_k_analytic_space_whose_reduction_is_affinoid_is_also_affinoid}.
 
     To prove (iii), we shall show that the induced morphism on the $0$-th truncations $\trunc(X) \to \trunc(Y)$ is a finite morphism of ordinary $k$-affinoid spaces.
-    But this follows immeaditely from the fact that both $\trunc(X)$ and $\trunc(Y)$ can be obtained from the reduced $X_\red$ by means of a finite sequence of finite
-    coherent $X_\red$-modules.
+    But this follows immeaditely from the fact that both $\trunc(X)$ and $\trunc(Y)$ can be obtained from the reduced $X_\red$ by means of a finite sequence of square-zero extensions
+    as in \cref{rem:construction_of_nilpotent_extensions_as_square_zero_extensions}.
 \end{proof}
 
 
 \begin{defin}
-    A morphism $X \to Y$ be a morphism in $\dAnk$ is called a \emph{nil-embedding} if the induced map of ordinary $k$-analytic spaces
-    $\trunc(X) \to \trunc(Y)$ is a closed immersion, such that the ideal of $\trunc(X)$ in $\trunc(Y)$ is nilpotent. 
+    A morphism $X \to Y$ be a morphism in $\dAnk$ is called a \emph{nil-embedding} if the induced morphism of ordinary $k$-analytic spaces
+    $\trunc(X) \to \trunc(Y)$ is a closed immersion whose ideal of definition assumed to be nilpotent. 
 \end{defin}
 
 \begin{prop} \label{prop:filtered_colimit_for_nil-embeddings}
     Let $f \colon X \to Y$ be a nil-embedding of derived $k$-analytic spaces. Then there exists a sequence of morphisms
         \[X = X_0^0 \hookrightarrow X_0^1 \hookrightarrow \dots \hookrightarrow X_0^n = X_0 
         \hookrightarrow X_1 \dots X_n \hookrightarrow \dots \hookrightarrow Y,\]
-    such that for each $0 \le i \le n$ the morphism $X_0^i \hookrightarrow X_0^{i+1}$ has the structure of a square zero extension.
-    Similarly, for every $i \ge 0$, the morphism $X_i \hookrightarrow X_{i+1}$ has the structure of a square-zero extension.
-    Furthermore, the induced morphisms $\mathrm{t}_{\le i}(X_i) \to \mathrm{t}_{\le i}(Y)$ are equivalences of derived
-    $k$-analytic spaces.
+    such that for each $0 \le i \le n$ and $j \ge 0$ the morphisms $X_0^i \hookrightarrow X_0^{i+1}$ and $X_j \to X_{j+1}$ have the structure of square-zero extensions.
+    Furthermore, the induced morphisms $\mathrm{t}_{\le j}(X_j) \to \mathrm{t}_{\le j}(Y)$ are equivalences of derived
+    $k$-analytic spaces, for every $j \ge 0$.
 \end{prop}
 
 \begin{proof}
-    The proof follows the same scheme of reasoning as of \cite[Proposition 5.5.3]{Gaitsgory_Study_II}. For the sake of completeness we present the complete here.
+    The proof follows the same scheme of reasoning as of \cite[Proposition 5.5.3]{Gaitsgory_Study_II}. For the sake of completeness we present the complete argument here.
     Consider the induced morphism on the underlying truncations
         \[
             \trunc(f) \colon \trunc(X) \to \trunc(Y).   
@@ -306,7 +316,7 @@ We start with the following definition:
             X_0^i \coloneqq X \bigsqcup_{\trunc(X)} X_0^{\mathrm{ord}, i}.
         \]
     By construction, we have that the natural morphism $\trunc(X_0^n) \to \trunc(Y)$ is an isomorphism of ordinary $k$-analytic spaces.
-    We now argue by induction on the Postnikov towers associated to the morphism $f \colon X \to Y$.
+    We now argue by induction on the Postnikov tower associated to the morphism $f \colon X \to Y$.
     Suppose that for a certain integer $i \ge 0$, we have constructed a derived $k$-analytic space $X_i$ together with morphisms $g_i \colon
     X \to X_i$ and $h_i \colon X_i \to Y$ such that $f \simeq h_i \circ g_i$
     and the induced morphism
@@ -328,9 +338,9 @@ We start with the following definition:
         \]
     induces a morphism $\bbL\an_{X_i} \to \pi_{i+1}(\bbL\an_{X_i/Y})[i+1]$, such that the composite
         \begin{equation} \label{eq:fiber_sequence_of_cotangent_complexes_to_produce_the_existence_of_the_desired_square_zero_extension_approximating_Y_in_degree_i+1}
-            h_i^* \bbL\an_{Y} \to \bbL\an_{X_i} \to \pi_{i+1}(\bbL\an_{X_i/Y}),  
+            h_i^* \bbL\an_{Y} \to \bbL\an_{X_i} \to \pi_{i+1}(\bbL\an_{X_i/Y})[i+1],  
         \end{equation}
-    is null-homotopic, in $\Mod_{\cO_{X_i}}$. The existence of
+    is null-homotopic, in $\Mod_{\cO_{X_i}}$. By the universal property of the relative analytic cotangent complex,
     \eqref{eq:fiber_sequence_of_cotangent_complexes_to_produce_the_existence_of_the_desired_square_zero_extension_approximating_Y_in_degree_i+1}
     produces a square-zero extension
         \[
@@ -345,15 +355,16 @@ We start with the following definition:
         \begin{tikzcd}
             h_{i, *}(\pi_{i+1}(\bbL\an_{X_i/Y}))[i] \ar{r} & h_{i+1, *}(\cO_{X_{i+1}}) \ar{r} & h_{i, *}(\cO_{X_i}) \\
             \cI \ar{r} \ar{u}{s_i} & \cO_Y \ar{r} \ar{u} & h_*(\cO_{X_i}) \ar{u} \\
-            \cJ \ar{r} \ar{u} & \cJ \ar{r} \ar{u} & 0 \ar{u}
+            \cJ \ar{r}{=} \ar{u} & \cJ \ar{r} \ar{u} & 0 \ar{u}
         \end{tikzcd},
         \end{equation}
-    where both the vertical and horizontal composites are fiber sequences. Thanks to \cite[Proposition 5.34]{Porta_Yu_Representability} we can identify the natural
+    in $\mathrm{Mod}_{\cO_Y}$, where both the vertical and horizontal composites are fiber sequences. By our inductive hypothesis, $\cJ$ is $(i+1)$-connective.
+    Moreover, thanks to \cite[Proposition 5.34]{Porta_Yu_Representability} we can identify the natural
     morphism    
         \[
            s_i \colon \cI \to h_{i, *}(\pi_{i+1}(\bbL\an_{X_i/Y}))[i]
         \]
-    with the natural morphism $\cI \to \tau_{\ge i}(I)$. We deduce that the fiber of the morphism $s_i$ must be necessarily $(i+1)$-connective. The latter observation
+    with the natural morphism $\cI \to \tau_{\le i}(\cI)$. We deduce that the fiber of the morphism $s_i$ must be necessarily $(i+2)$-connective. The latter observation
     combined with the structure of \eqref{eq:commutative_diagram_of_fiber_sequences_exhibiting_O_X_i+1_as_an_approximation_of_level_i+1_of_Y}
     implies that $h_{i+1} \colon X_{i+1} \to Y$ induces an equivalence of derived $k$-analytic spaces
         \[
@@ -362,44 +373,117 @@ We start with the following definition:
     as desired.
 \end{proof}
 
-\begin{cor}
-    Let $X \in \dAnk$. Then the natural morphism
-        \[
-            X_\red \to X,  
-        \]
-    in $\dAnk$, can be \emph{approximated} by successive square zero extensions.
+\begin{cor} The following assertions hold:
+    \begin{enumerate}
+        \item Let $X \in \dAnk$. Then the natural morphism
+          \[
+                X_\red \to X,  
+            \]
+        in $\dAnk$, can be \emph{approximated} by successive square zero extensions.
+        \item If $f \colon X \to Y$ is a nil-embedding of finite type then it can be approximated by a finite sequence of square-zero extensions.
+    \end{enumerate}
 \end{cor}
 
 \begin{proof}
-    The assertion of the Corollary follows readily from \cref{prop:filtered_colimit_for_nil-embeddings} by observing that the
-    canonical morphism $X_\red \to X$ has the structure of a nil-embedding.
+    Both the assertions of the Corollary follow readily from \cref{prop:filtered_colimit_for_nil-embeddings} by observing that the
+    canonical morphism $X_\red \to X$ has the structure of a nil-embedding and that the finiteness assumption on $f$ forces the finiteness of the approximation
+    sequence.
 \end{proof}
 
+\begin{lem} \label{lem:pullbacks_of_derived_affinoid_spaces_along_finite_morphisms_are_algebraic}
+    Let $f \colon X \to Y$ be a finite morphism of derived $k$-affinoid spaces. Let $Z \to Y$ be an admissible open immersion and denote by
+        \[
+            A \coloneqq \Gamma(X, \cO_X\alg), \quad B \coloneqq \Gamma(Y, \cO_Y\alg), \quad C \coloneqq \Gamma(Z, \cO_Z\alg),  
+        \]
+    the corresponding derived $k$-algebras of derived global sections. Denote by
+        \[
+            Z' \coloneqq Z \times_Y X \in \dAfd_k,   
+        \]
+    then one has a natural equivalence
+        \[
+            \Gamma(Z', \cO_{Z'}\alg) \simeq A \otimes_B C,  
+        \]
+    in the \infcat $\CAlg_k$.
+\end{lem}
 
-\begin{lem} \label{lem:f^*_admits_a_right_adjoint_whenever_f_is_nil-iso}
+\begin{proof}
+    Consider the natural morphism of derived $k$-algebras
+        \[
+            \theta \colon A \otimes_B \to C \to \Gamma(Z', \cO_{Z'} \alg).
+        \]
+    Our goal is to show that $\theta$ is an equivalence. We start by observing that
+    since the morphism $f \colon X \to Y$ is finite,
+    the induced morphism $B \to A$ in $\CAlg_k$ is finite as well. In particular, the (ordinary) complete tensor product coincides with the (ordinary) algebraic tensor product, i.e.,
+    the natural morphism
+        \[
+            \pi_0(A) \otimes_{\pi_0(B)} \pi_0(C) 
+            \to \pi_0(A) \widehat{\otimes}_{\pi_0(B)} \pi_0(C)   ,
+        \]
+    is an equivalence of ordinary rings. In particular, thanks to \cite[Proposition 6.2 (v) and Theorem 6.5]{Porta_Yu_Derived_non-archimedean_analytic_spaces} we deduce that
+        \[
+            \pi_0(A \otimes_B C) \to \pi_0(\Gamma(Z', \cO_{Z'}\alg)),  
+        \]
+    is an equivalence of derived rings, as well. In order to conclude, we shall prove that for every $i> 0$, the natural morphism
+        \[
+            \pi_i(A \otimes_B C) \to \pi_i(\Gamma(Z', \cO_{Z'})),   
+        \]
+    is an equivalence as well. Since the morphism $f \colon X \to Y$ is a finite morphism we deduce that
+    $\pi_i(\cO_X)$ is a coherent $\pi_0(\cO_Y)$-module, for every $i \ge 0$. By unwinding the definitions, we deduce then that we have a natural identification
+        \[
+            \pi_i(\cO_{Z'}) \simeq \pi_i0(\cO_Z) \otimes_{\pi_0(\cO_Y)} \pi_i(\cO_X),  
+        \]
+    in the \infcat $\Mod_{\pi_0(\cO_Z')}$. The result now follows by taking global sections and analyzing the spectral sequence
+        \[
+            \pi_i(\Gamma(Z', \pi_j(\cO_{Z'})\alg)) \Rightarrow \pi_{i+j}(\Gamma(Z', \cO_{Z'}\alg)), 
+        \]
+    whose existence is guaranteed by \cite[1.2.2.14]{Lurie_Higher_algebra}.
+\end{proof}
+
+\begin{lem} \label{lem:Beck_Chevalley_natural_transformation_equivalence}
+    Let $f \colon X \to Y$ be a finite morphism of derived $k$-affinoid spaces and $g \colon Z \to Y$ an admissible open immersion in $\dAfd_k$. Form the pullback diagram
+        \[
+        \begin{tikzcd}
+            Z' \ar{r}{g'}  \ar{d}{f'} & X \ar{d}{f} \\
+            Z \ar{r}{g} & Y,
+        \end{tikzcd}
+        \]
+    in the \infcat $\dAfd_k$.
+    Then the commutative diagram
+        \[
+        \begin{tikzcd}
+            \Coh^+(Y) \ar{r}{f^*} \ar{d}{g^*} & \Coh^+(X) \ar{d}{(g')^*} \\
+            \Coh^+(Z) \ar{r}{(f')^*} & \Coh^+(Z'),
+        \end{tikzcd}
+        \]
+    is right adjointable. In other words, the Beck-Chevalley natural transformation
+        \[
+            \alpha \colon g^* \circ f_* \to (f')_* \circ g'_* 
+        \]
+    is an equivalence of functors.
+\end{lem}
+
+\begin{proof}
+    Since $f$ is assumed to be a finite morphism of derived $k$-affinoid spaces, it follows from the derive Tate aciclicity theorem, c.f. \cite[Theorem 3.1]{Porta_Yu_Derived_Hom_spaces}
+    that the right adjoint $f_* \colon \Coh^+(X) \to \Coh^+(Y)$ is well defined. The assertion of the Lemma is now an immediate consequence of \cref{lem:pullbacks_of_derived_affinoid_spaces_along_finite_morphisms_are_algebraic}
+    together with \cite[Proposition 2.5.4.5]{Lurie_SAG} and the derived Tate aciclicity theorem.
+\end{proof}
+
+\begin{prop} \label{lem:f^*_admits_a_right_adjoint_whenever_f_is_nil-iso}
     Let $f \colon S \to S'$ be a nil-isomorphism between derived $k$-analytic spaces. Then the pullback functor
         \[
             f^* \colon \Coh^+(S') \to \Coh^+(S),  
         \]
     admits a well defined right adjoint, $f_*$.
-\end{lem}
+\end{prop}
 
 \begin{proof}
     Since $f \colon S \to S'$ is a nil-isomorphism, we conclude from \cref{lem:nil-isos_are_affine_morphisms} that $f$ is an affine morphism
-    between derived $k$-analytic spaces. By Zariski descent of $\Coh^+$, cf. \cite[Theorem 3.7]{Antonio_Porta_Nonarchimedean_Hilbert},
-    together with \cref{lem:affine_morphisms_are_compatible_with_Zariski_localization_on_the_base} we reduce the statement of the Lemma to the case
-    where both $S$ and $S'$ are equivalent to derived $k$-affinoid spaces. In this case, by Tate acyclicity theorem we reduce ourselves
-    to show that the usual base change functor
-        \[
-           f^* \colon  \Coh^+(A) \to \Coh^+(B)  ,
-        \]
-    where $A \coloneqq \Gamma(S, \cO_S \alg)$ and $B \coloneqq \Gamma(S', \cO_{S'} \alg)$, admits a right adjoint. The result now follows from the observation
-    that the canonical induced morphism $\pi_0(A) \to \pi_0(B)$ is a finite morphism of ordinary rings. Indeed, the latter morphism can be obtained
-    by means of a finite sequence of (classical) square-zero extensions with respect to the corresponding Jacobson ideals of both $\pi_0(A)$ and $\pi_0(B)$.
-    Such ideals are necessarily finitely generated as $\pi_0(A)$-modules, and the result follows.
+    between derived $k$-analytic spaces. By admissible descent of $\Coh^+$, cf. \cite[Theorem 3.7]{Antonio_Porta_Nonarchimedean_Hilbert},
+    together with \cref{lem:affine_morphisms_are_compatible_with_Zariski_localization_on_the_base} and \cref{lem:Beck_Chevalley_natural_transformation_equivalence} we reduce the statement of the Lemma to the case
+    where both $S$ and $S'$ are equivalent to derived $k$-affinoid spaces. In this case, the result follows by our assumptions on $f$ and \cref{lem:nil-isos_are_affine_morphisms}.
 \end{proof}
 
-\begin{lem} \label{lem:pushouts_of_square_zero_extensions_have_the_structure_of_a_square_zero_extension}
+\begin{cor} \label{lem:pushouts_of_square_zero_extensions_have_the_structure_of_a_square_zero_extension}
     Let $f \colon S \to S'$ be a square-zero extension and $g \colon S \to T$ a nil-isomorphism in $\dAnk$. Suppose we are given a pushout diagram
         \[
         \begin{tikzcd}
@@ -408,7 +492,7 @@ We start with the following definition:
         \end{tikzcd},
         \]
     in $\dAnk$. Then the induced morphism $T \to T'$ is a square-zero extension.
-\end{lem}
+\end{cor}
 
 \begin{proof}
     Since $g$ is a nil-isomorphism of derived $k$-analytic spaces, \cref{lem:f^*_admits_a_right_adjoint_whenever_f_is_nil-iso}
@@ -416,30 +500,30 @@ We start with the following definition:
         \[
             g_* \colon \Coh^+(S ) \to \Coh^+(T) .
         \]
-    Let $\cF \in \Coh^+(S)^{\ge 0}$ and $d \colon \bbL\an_S \to \cF$ be a derivation
+    Let $\cF \in \Coh^+(S)^{\ge 0}$ and $d \colon \bbL\an_S \to \cF[1]$ be a derivation
     associated with the morphism $f \colon S \to S'$. Consider now the natural composite
         \[
-            d ' \colon \bbL\an_T \to g_* (\bbL\an_S) \xrightarrow{g_*(d)} g_* (\cF),  
+            d ' \colon \bbL\an_T \to g_* (\bbL\an_S) \xrightarrow{g_*(d)} g_* (\cF)[1],  
         \]
-    in the \infcat $\Coh^+(T)$. By the universal property of the analytic cotangent complex, we deduce the existence of a square-zero extension
+    in the \infcat $\Coh^+(T)$. By the universal property of the relative analytic cotangent complex, we deduce the existence of a square-zero extension
         \[
             T \to T',  
         \]
     in the \infcat $\dAnk$. Let $X \in \dAnk$ together with morphisms $S' \to X$ and $T \to X$ compatible with both $f$ and $g$. By the universal property of
-    the relative analytic cotangent complex, the morphism $S' \to X$ induces a uniquely defined (up to a contractible indeterminacy space)
+    the relative analytic cotangent complex, the morphism $S' \to X$ induces a uniquely defined (up to a contractible indeterminacy space) morphism
         \[
-            \bbL\an_{S/X} \to \cF,
+            \bbL\an_{S/X} \to \cF[1],
         \]
-    in $\Coh^+(S)$, such that the compositve $\bbL\an_S \to \bbL\an_{S/X} \to \cF$ agrees with $d$. By applying the right adjoint $g_*$ above we obtain a
+    in $\Coh^+(S)$, such that the compositve $\bbL\an_S \to \bbL\an_{S/X} \to \cF[1]$ agrees with $d$. By applying the right adjoint $g_*$ above we obtain a
     commutative diagram
         \[
         \begin{tikzcd}
             \bbL\an_T \ar{r}{\mathrm{can}} \ar{d} & \bbL\an_{T/X} \ar{d} \ar{rd}{d''} & \\
-            g_*(\bbL\an_S) \ar{r} & g_*(\bbL\an_{S/X}) \ar{r} & g_*(\cF),
+            g_*(\bbL\an_S) \ar{r}{g_*(\mathrm{can})} & g_*(\bbL\an_{S/X}) \ar{r} & g_*(\cF)[1],
         \end{tikzcd}
         \]
     in the \infcat $\Coh^+(T)$. From this, we conclude again by the universal property of the relative analytic cotangent complex the existence
-    of a natural morphism $T' \to X$ extending both $T \to X$ and $S' \to X$ and compatible with the restriction to $S$. The latter assertion is equivalent to state
+    of a uniquely defined natural morphism $T' \to X$ extending both $T \to X$ and $S' \to X$ and compatible with the restriction to $S$. The latter assertion is equivalent to state
     that the commutative square
         \[
         \begin{tikzcd}
@@ -459,30 +543,32 @@ We start with the following definition:
             Z
         \end{tikzcd}  
         \]
-    admits a colimit in $\dAnk$, denoted $Z'$. Moreover, the natural morphism
+    admits a pushout in $\dAnk$, denoted $Z'$. Moreover, the natural morphism
     $Z \to Z'$ is also a nil-embedding.
 \end{prop}
 
 
-\begin{proof} The \infcat of $\cTank$-structured \inftopos $\RTop(\cTank)$ is a presentable \infcat. Consider the pushout diagram
+\begin{proof} The \infcat of $\cTank$-structured \inftopoi \ $\RTop(\cTank)$ is a presentable \infcat. Consider the pushout diagram
         \[
         \begin{tikzcd}
-            X \ar{r}{f} \ar{d}{g} & Y \\
+            X \ar{r}{f} \ar{d}{g} & Y \ar{d} \\
             Z \ar{r} & Z',
         \end{tikzcd}
         \]
     in the \infcat $\RTop(\cTank)$. By construction, the underlying \inftopos of $Z'$ can be computed as the pushout in the \infcat $\RTop$ of
-    the induced diagram on the underlying \inftopoi of $X$, $Z$ and $Y$. Moreover, since $g$ is a nil-isomorphism it induces an equivalence on underlying \inftopoi
+    the induced diagram on the underlying \inftopoi \ of $X$, $Z$ and $Y$. Moreover, since $g$ is a nil-isomorphism it induces an equivalence on underlying \inftopoi \
     of both $X$ and $Y$. It follows that the induced morphism $Z \to Z'$ in $\RTop(\cTank)$ induces an equivalence on the underlying \inftopoi.
     Moreover, it follows essentially by construction that we have a natural equivalence
-        \[
-            \cO_{Z'} \simeq g_*(\cO_Y) \times_{g_*(\cO_Y)} \cO_Z \in \Str_{\cTank}\loc(Z).
-        \]
-    As effective epimorphisms are preserved under fiber products in an \inftopos, it follows that the natural morphism
+        \begin{align*}
+            \cO_{Z'}  & \simeq g_*(\cO_Y) \times_{g_*(\cO_Y)} \cO_Z \\
+                      & \in \Str_{\cTank}^\loc(Z).
+        \end{align*}
+    As the morphism $g_*(\cO_Y) \to g_*(\cO_X)$ is an effective epimorphism and the latter are preserved under fiber products in an \inftopos, c.f. \cite[Proposition 6.2.3.15]{HTT},
+    it follows that the natural morphism
         \[
             \cO_{Z'} \to \cO_Z,  
         \]
-    is an effective epimorphism (since $g_*(\cO_Y) \to g_*(\cO_X)$ it is so).
+    is an effective epimorphism, as well.
     Consider now the commutative diagram of fiber sequences
         \[
         \begin{tikzcd}
@@ -512,46 +598,76 @@ We start with the following definition:
     satisfying the following two conditions:
     \begin{enumerate}
         \item $F(X) \simeq *$ in $\cS$;
-        \item $F \simeq \mathbf{res}^{< \infty} \circ F$, where $\mathbf{res}^{< \infty}_!$ denotes the right Kan extension along the natural inclusion
         \item Given any pushout diagram
             \[\begin{tikzcd}
                 S \ar{r}{f} \ar{d} & S' \ar{d} \\
                 T \ar{r} & T',
             \end{tikzcd}\]
-        in $\anNil_{X/}$ for which $f$ is has the structure of a square zero extension, the induced morphism
+        in the \infcat $\anNil_{X/}$, such that $f$ is has the structure of a square zero extension, the induced morphism
             \[F(T') \to F(T) \times_{F(S)}F(S),\]
         is an equivalence in $\cS$.
+        \item For each $n \ge 0$, consider the well defined functor
+            \[
+                 \anNil_{\mathrm{t}_{\le n}(X)/ } \to \anNil_{X/ },  
+            \]
+        given by the formula
+            \[
+                (\rt_{\le n}(X) \to S) \in \anNil_{\rt_{\le n}(X)/ } \mapsto ( X \to S \bigsqcup_{\rt_{\le n}(X)} X ).
+            \]
+        Define $F^{\le n} \colon \anNil_{\rt_{\le n}(X)/ } \to \cS$ as the functor given on objects by the association
+            \[
+                (rt_{\le n}(X) \to S) \in \anNil_{\rt_{\le n}(X)/ } \mapsto  F^{\le n}(S \bigsqcup_{\rt_{\le n}(X)} X) \in \cS  
+            \]
+        Given any $S \in \anNil\op_{X/ }$, we then require that the natural morphism
+            \[
+                F(S) \to \lim_{n \ge 0} F^{\le n}(\rt_{\le n}(S)),  
+            \]
+        to be an equivalence in $\cS$
     \end{enumerate}
     We shall denote by $\anFMP_{X/}$ the full subcategory of $\Fun((\anNil_{X/ })\op, \cS)$ spanned by analytic formal moduli problems
     under $X$.
 \end{defin}
 
-\begin{construction}
-We have a composite diagram
-    \[
-        h \colon \anNil_{X/} \to \dAnk \hookrightarrow \anPreStk.
-    \]
-Therefore, given any analytic pre-stack regarded as a limit-preserving functor $F \colon \anPreStk\op \to \cS$, one can consider its restriction to the \infcat
-$\anNil_{X/}$:
-    \[
-        F \circ h \colon \anNil_{X/} \op \to \cS.      
-    \]
-We have thus a natural restriction functor
-    \[
-        h_* \colon \anPreStk \to \Fun(\anNil_{X/} \op, \cS).  
-    \]
-\end{construction}
+\begin{rem}
+    In the previous definition we remark that the functor
+        \[
+            F^{\le n} \colon \anNil\op_{\rt_{\le n}(X)/ } \to \cS,  
+        \]
+    is itself an analytic formal moduli problem under $\rt_{\le n}(X)$.
+\end{rem}
 
+We shall give some important examples of formal moduli problems under $X$:
 
 \begin{eg}
-    Let $X \in \dAnk$. As in the algebraic case, we can consider the \emph{de Rham pre-stack associated to $X$}, $X_\mathrm{dR} \colon \dAfd_k\op \to \cS$,
-    determined by the formula
-        \[
-            X_{\mathrm{dR}}(Z) \coloneqq X(Z_\red), \quad Z \in \dAfd_k.  
-        \]
-    We have a natural morphism $X \to X_\mathrm{dR}$ induced from the natural morphism $Z_\red \to Z$.
-    We claim that $h_*(X_\mathrm{dR}) \in \Fun(\anNil_{X/}\op, \cS)$ belongs to the full subcategory $\anFMP_{X/}$. Indeed, in this case it is clear that
-    $h_*(X_\red)$ is the final object in $\anFMP_{X/}$ which clearly satisfies conditions i) and ii) in \cref{defin:analytic_formal_moduli_problems_under}.
+    \begin{enumerate}
+        \item Let $X \in \dAnk$. As in the algebraic case, we can consider the \emph{de Rham pre-stack associated to $X$}, $X_\mathrm{dR} \colon \dAfd_k\op \to \cS$,
+        determined by the formula
+            \[
+                X_{\mathrm{dR}}(Z) \coloneqq X(Z_\red), \quad Z \in \dAfd_k.  
+            \]
+        We have a natural morphism $X \to X_\mathrm{dR}$ induced from the natural morphism $Z_\red \to Z$.
+        We claim that $h_*(X_\mathrm{dR}) \in \Fun(\anNil_{X/}\op, \cS)$ belongs to the full subcategory $\anFMP_{X/}$. Indeed, in this case it is clear that
+        $h_*(X_\red)$ is the final object in $\anFMP_{X/}$ which clearly satisfies conditions i) and ii) in \cref{defin:analytic_formal_moduli_problems_under}.
+        \item Let $f \colon X \to Y$ be a morphism in the \infcat $\dAnk$. We define the \emph{formal completion of $X$ in $Y$ along $f$} as the pullback 
+            \begin{align*}
+                Y^\wedge_X  & \coloneqq Y \times_{Y_\mathrm{dR}} X_\mathrm{dR} \\
+                            & \in \dAnSt_k.
+            \end{align*}
+        By construction we have a natural factorization $X \to Y^\wedge_X \to Y$ in $\dAnSt_k$, and moreover the restriction of $X \to Y^\wedge_X$ to the \infcat
+        $\anNil\op_{X/}$ along the natural functor
+            \[
+                \anNil\op_{X/ } \to (\dAnSt_k)_{X/ } \op,  
+            \]
+        exhibits $Y^\wedge_X$ as a formal moduli problem under $X$.
+        \item Let $f \colon X \to Y$ be a closed immersion in the \infcat $\dAnk$. Consider the shifted tangent bundle associated to $f$ together with the zero section
+            \[
+            \begin{tikzcd}
+                X \ar{r}{s_0} \ar{rd}{=} & \bT\an_{X/ Y}[-1] \ar{d}{p} \\
+                    & X.
+            \end{tikzcd}
+            \]
+        The completion $\bT\an_{X/Y} [-1]^\wedge_X$ will play an important role in what follows.
+    \end{enumerate}
 \end{eg}
 
 \begin{notation}
@@ -580,95 +696,103 @@ We have thus a natural restriction functor
 \end{prop}
 
 \begin{proof}
-    We start by proving claim (i). Consider the usual restriction along the natural morphism $X_\red \to X$ functor 
-        \[\mathbf{res} \colon \anNil_{X/} \to \anNil_{X_\red/}.\]
+    We start by proving claim (i). Let $n \ge 0$, and consider the usual restriction along the natural morphism $X_\red \to \rt_{\le n}(X)$ functor 
+        \[\mathbf{res}^{\le n} \colon \anNil_{\rt_{\le n}(X)/} \to \anNil_{X_\red/}.\]
     Such functor admits a well defined left adjoint
-        \[\mathbf{push} \colon \anNil_{X_\red/} \to \anNil_{X/},\]
+        \[\mathbf{push}^{\le n} \colon \anNil_{X_\red/} \to \anNil_{\rt_{\le n}(X)/},\]
     which is determined by the formula
         \[
-            (X_\red \to T) \in \anNil_{X_\red /} \mapsto (X \to T') \in \anNil_{X/},   
+            (X_\red \to T) \in \anNil_{X_\red /} \mapsto (\rt_{\le n}(X) \to T') \in \anNil_{X/},   
         \]
     where we set
         \begin{equation} \label{eq:set_definition_of_T'_as_pushout_of_T_along_the_inclusion_X_red_to_X}
-            T' \coloneqq X \bigsqcup_{X_\red} T \in \anNil_{X/}.  
+            T' \coloneqq \rt_{\le n}(X) \bigsqcup_{X_\red} T \in \anNil_{X/}.  
         \end{equation}
-    We claim that $T' \in \anNil_{X/}$ belongs to the full subcategory $\anNil^\cl_{X/} \subseteq \anNil_{X/}$.
+    We claim that $T' \in \anNil_{\rt_{\le n}(X)/}$ belongs to the full subcategory $\anNil^\cl_{\rt_{\le n}(X)/} \subseteq \anNil_{\rt_{\le n}(X)/}$.
     Indeed, since the structural morphism
         $X_\red \to T$,
-    is necessarily a nil-embedding we deduce that the claim follows readily from \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}.
-    We shall denote
+    is necessarily a nil-embedding we deduce the claim from \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}.
+    We shall denote by
         \[
-            \mathbf{res}_!(Y) \colon \anNil\op_{X_\red /} \to \cS,
+            \mathbf{res}^{\le n}_!(Y) \colon \anNil\op_{X_\red /} \to \cS,
         \]
-    the left Kan extension of $Y$ along the functor $\mathbf{res}$ above. By the colimit formula
-    for left Kan extensions, c.f. \cite[Lemma 4.3.2.13]{HTT}, it follows that $\mathbf{res}_!(Y)$ is given by the formula
+    the left Kan extension of $Y$ along the functor $\mathbf{res}^{\le n}$ above. By the colimit formula
+    for left Kan extensions, c.f. \cite[Lemma 4.3.2.13]{HTT}, it follows that $\mathbf{res}^{\le n}_!(Y)$ is given by the formula
         \[
-            (X_\red \to T) \in  \anNil_{X_\red /} \mapsto Y(T') \in \cS,
+            (X_\red \to T) \in  \anNil_{X_\red /} \mapsto Y^{\le n}(T') \in \cS,
         \]
-    where $T'$ is as in \eqref{eq:set_definition_of_T'_as_pushout_of_T_along_the_inclusion_X_red_to_X}.
-    Let $g \colon X_\red \to T$ in $\anNil_{X_\red/}$ and assume that $g$ factors through the natural morphism $X_\red \to X$. Then we have a natural morphism
+    where $T'$ is as in \eqref{eq:set_definition_of_T'_as_pushout_of_T_along_the_inclusion_X_red_to_X}. 
+    We thus have a diagram of functors
         \[
-           i_{T, *} \colon Y(T) \to \mathbf{res}_!(Y)(T) ,  
+            \mathbf{res}^{\le n} \colon \anNil_{\rt_{\le n}(X)/ /Y^{\le n}} \rightleftarrows \anNil_{X_\red // \mathbf{res}^{\le n}_!(Y)} \colon \mathbf{push}^{\le n},
         \]
-    in $\cS$, which exhibits the former as a retract of the latter. Denote by
+    where $\mathbf{res}^{\le n}$ is given on objects by the formula
         \[
-            p_{T, *} \colon \mathbf{res}_!(Y)(T) \to Y(T),  
+            (\rt_{\le n}(X) \to S \to Y^{\le n}) \in \anNil_{\rt_{\le n}(X)/ /Y^{\le n}} \mapsto (X_\red \to S \to \mathbf{res}_!^{\le n}(Y) ) 
         \]
-    be a right inverse to $i_{S, *}$. Consider the functor
+    and the functor $\mathbf{push}^{\le n}$ is given by the association
         \[
-            \mathbf{res}_Y \colon \anNil_{X//Y} \to \anNil_{X_\red / /\mathbf{res}_!(Y)},  
+            (X_\red \to T \to Y^{\le n}) \in \anNil_{X_\red/ /Y^{\le n}} \mapsto (\rt_{\le n}(X) \to T \sqcup_{X_\red} \rt_{\le n}(X) \to Y^{\le n}) \in \anNil_{\rt_{\le n}(X)/ /Y^{\le n}}.  
         \]
-    given by the formula
+    We claim that the pair $(\mathbf{res}^{\le n}, \mathbf{push}^{\le n})$ form an adjunction. Indeed, a morphism
         \[
-            (X \to S \to Y) \in \anNil_{X//Y} \mapsto (X_\red \to S \xrightarrow{f} \mathbf{res}_!(Y)),  
+            (X_\red \to S \to \mathbf{res}^{\le n}_!(Y)) \to \mathbf{res}_!^{\le n}(\rt_{\le n}(X) \to T \to Y^{\le n}),  
         \]
-    where $f \colon S \to \mathbf{res}_!(Y)$ corresponds to the morphism
-        \[  
-            S_X \xrightarrow{p_S} S \to Y,
-        \]
-    where $S_X \coloneqq X \bigsqcup_{X_\red} S$. We claim that the functor $\mathbf{res}_Y$ is a right adjoint to the functor
-        \[
-            \mathbf{push}_Y \colon \anNil_{X_\red // \mathbf{res}_!(Y)} \to \anNil_{X//Y},  
-        \]
-    the latter given by the formula
-        \[
-            (X_\red \to T \to \mathbf{res}_!(Y)) \in \anNil_{X_\red // \mathbf{res}_!(Y)} \mapsto (X \to T_X \to Y)  \in \anNil_{X//Y}.
-        \]
-    Indeed, the datum of a morphism
-        \[
-            (X_\red \to T \to \mathbf{res}_!(Y)) \to \mathbf{res}_Y(X \to S \to Y),  
-        \]
-    in $\anNil_{X_\red / \mathbf{res}_!(Y)}$ corresponds to the datum of a commutative diagram
+    corresponds to a commutative diagram
         \[
         \begin{tikzcd}
-          X_\red \ar{r} \ar{d} & T \ar{r} \ar{d} & \mathbf{res}_!(Y) \ar{d}{=} \\
-          X_\red \ar{r} & S \ar{r} & \mathbf{res}_!(Y),  
+            X_\red \ar{r} \ar{d}{=} & S \ar{r} \ar{d} & \mathbf{res}_!^{\le n}(Y) \ar{d}{=} \\
+            X_\red \ar{r} & T \ar{r} & \mathbf{res}_!^{\le n}(Y),
         \end{tikzcd}
         \]
-    where the right bottom morphism corresponds to the composite $S_X \to S \to Y$. For this reason, the given datum is equivalent to a commutative diagram
+    in the \infcat $\Fun(\anNil_{X_\red/ }\op, \cS)$. The latter datum is equivalent to the datum of a commutative diagram
+        \begin{equation} \label{eq:com_diagram_expliciting_datum_of_res_push_adjunctions}
+        \begin{tikzcd}
+                                 &                 & \rt_{\le n}(X) \ar{d}   \ar{rd}    &   \\
+            X_\red \ar{r} \ar{d} & S \ar{r} \ar{d} & S' \ar{r} \ar{d}                   & Y^{\le n} \ar{d}{=} \\
+            X_\red \ar{r}        & T \ar{r}        & T' \ar{r}                          & Y^{\le n}  
+        \end{tikzcd}.
+        \end{equation}
+    Since the morphism $\rt_{\le n}(X) \to T'$ factors through the structural map
+        \[
+            \rt_{\le n}(X) \to T,  
+        \]
+    we deduce that the datum of \eqref{eq:com_diagram_expliciting_datum_of_res_push_adjunctions} is equivalent to the datum of a commutative diagram
         \[
         \begin{tikzcd}
-            X_\red \ar{r} \ar{d} & T \ar{r} &  T_X \ar{r} \ar{rd} \ar{d}  & Y \ar{rd}{=} \\
-            X_\red \ar{r} & S \ar{r} &  S_X \ar{r} & S \ar{r} & Y,
+            \rt_{\le n}(X) \ar{r} \ar{d} & S' \ar{r} \ar{d} & Y^{\le n} \ar{d}{=} \\
+            \rt_{\le n}(X) \ar{r}        & T \ar{r}        & Y^{\le n}, 
         \end{tikzcd}
         \]
-    which on the other hand is equivalent to the datum of a commutative diagram
+    which corresponds to a uniquelly well defined morphism
+        \[
+            \mathbf{push}^{\le n}(X_\red \to S \to \mathbf{res}^{\le n}_!(Y)) \to (\rt_{\le n}(Y) \to T \to Y^{\le n}),
+        \]
+    in the \infcat $\anNil_{\rt_{\le n}(X)/ /Y^{\le n}}$. We further observe that for every $n \ge m \ge 0$, the objects
+        \[
+            \mathbf{res}^{\le n}_!(Y) \quad \mathrm{and} \quad \mathbf{res}^{\le m}_!(Y),  
+        \]
+    are equivalent as functors $\anNil_{X_\red/ } \op \to \cS$, we shall denote this functor simply by $\mathbf{res}_!(Y)$.
+    
+    Passing to the limit over $n \ge 0$ we obtain a commutative diagram of the form
         \[
         \begin{tikzcd}
-            X \ar{r} \ar{d}{=} & T_X \ar{r} \ar{d} & Y \ar{d}{=} \\
-            X \ar{r} & S \ar{r} & Y
+            \anNil_{X_\red/ /\mathbf{res}_!(Y)} \ar{rr} \ar{rd} & & \lim_{n \ge 0} \anNil_{\rt_{\le n}(X)/ /Y^{\le n}} \\
+                                                & \anNil_{X/ /Y} \ar{ur}.
         \end{tikzcd}
-        \]
-    The previous observations combined together then imply that we have a well defined adjunction
+        \]  
+    The horizontal morphism is cofinal since it fits into an adjunction, by our previous considerations. Thanks to \cite[]{HTT} in order to show that the natural morphism
         \[
-            \mathbf{res} \colon \anNil_{X/ /Y} \rightleftarrows \anNil_{X_\red // \mathbf{res}_!(Y)} \colon \mathrm{push}.
+            \anNil_{X_\red/ /\mathbf{res}_!(Y)} \to \anNil_{X/ /Y},
         \]
-    We thus conclude that $\anNil_{X//Y} \to \anNil_{X_\red // \mathbf{res}_!(Y)}$ is a cofinal functor (as it admits a left adjoint). Claim (i) now follows
-    immediately from the observation that the functor
+    is cofinal, it suffices to prove that $\anNil_{X/ /Y} \to \lim_{n \ge 0} \anNil_{\rt_{\le n}(X)/ /Y^{\le n}}$ is itself cofinal. But the latter is an immediate consequence of
+    the fact that derived $k$-analytic spaces are nilcomplete, c.f. \cite[Lemma 7.7]{Porta_Yu_Representability}, together with our assumption (iii) in \cref{defin:analytic_formal_moduli_problems_under}.
+    Assertion (i) of the Proposition now follows from the observation that the functor
         \[
-            \mathrm{push} \colon \anNil_{X_\red / \mathbf{res}_!(Y)} \to \anNil_{X//Y},  
+            \anNil_{X_\red/ /\mathbf{res}_!(Y)} \to \anNil_{X/ /Y},
         \]
-    factors through the natural inclusion $\anNil_{X//Y}^\cl \to \anNil_{X//Y}$.
+    factors through the full subcategory $\anNil_{X/ /Y}^{\mathrm{cl}} \subseteq \anNil_{X/ /Y}$.
+    
     Claim (ii) follows immediately from (i) combined with Yoneda Lemma. To prove (iii) we shall make use of \cite[Lemma 5.3.1.12]{HTT}. Let
         \[
             F \colon \partial \Delta^n \to \anNil^\cl_{X//Y}.  
@@ -677,9 +801,9 @@ We have thus a natural restriction functor
         \[
             S_n \bigsqcup_X S_{n-1},  
         \]
-    exists in $\anNil^\cl_{X/}$. We wish to show that $S_n \bigsqcup_X S_n$ admits a morphism
+    exists in $\anNil^\cl_{X/}$. We wish to show that $S_n \bigsqcup_X S_{n-1}$ admits a morphism
         \[S_n \bigsqcup_X S_{n-1} \to Y,\]
-    compatible with the diagram $F$. In order to show this, we can filter the diagram $F$ by diagrams $F_i \to F$ such that $X \to F_0$ is formed by square-zero
+    compatible with the diagram $F$. In order to prove the latter assertion, we observe that \cref{prop:filtered_colimit_for_nil-embeddings} can filter the diagram $F$ by diagrams $F_i \to F$ such that $X \to F_0$ is formed by square-zero
     extensions and so are each $F_i \to F_{i+1}$. Moreover, by the fact that $Y$ satisfies condition (ii) in \cref{defin:analytic_formal_moduli_problems_under}
     it follows that we can find a well defined morphism
         \[
@@ -689,36 +813,15 @@ We have thus a natural restriction functor
 \end{proof}
 
 
-\begin{construction}\label{const:anFMP_as_ind_inf_schemes} Let $X \in \dAnk$. Consider the natural functor
-    \[
-        F \colon \anNil_{X/} \op \to \dAnk \op.
-    \]
-Left Kan extension along $F$ induces a functor
-    \[
-        F_! \colon \Fun( \anNil_{X/ }\op, \cS) \to \Fun  (\dAnk\op, \cS),
-    \]
-and thus an induced functor
-    \[
-        F_! \colon \anFMP_{X/} \to \Fun(\dAnk\op, \cS),
-    \]
-as well. We denote the latter \infcat by $\anPreStk_k$, the \infcat
-of \emph{$k$-analytic pre-stacks}. \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} implies that the functor $F_!$ preserves filtered colimits.
-In particular, if we regard $Y$ as a $k$-analytic prestack can be presented
-as an \emph{ind}-\emph{inf}-object in the \infcat $\dAnk$, i.e., it can be written as a filtered colimit of nil-embeddings $X \to Z$.
-We refer the reader to \cite{Gaitsgory_Study_II} for a precise meaning
-of the latter notion in the algebraic setting.
-\end{construction}
-
-
-
 \begin{defin}
     Let $Y \in \anFMP_{X/}$ denote an analytic formal moduli problem under $X$. The \emph{relative pro-analytic cotangent complex of $Y$ under $X$} is defined as the pro-object
-        \[
-            \bbL\an_{X/Y} \coloneqq \{ \bbL\an_{X/Z} \}_{Z \in \anNil^\cl_{X//Y}}  \in \pro(\Coh^+(X)),
-        \]
+        \begin{align*}
+            \bbL\an_{X/Y} &  \coloneqq \{ \bbL\an_{X/Z} \}_{Z \in \anNil^\cl_{X//Y}} \\
+                          &  \in \pro(\Coh^+(X)),
+        \end{align*}
     where, for each $Z \in \anNil^\cl_{X//Y}$
         \[\bbL\an_{X/Z} \in \Coh^+(X),\]
-    denotes the usual analytic cotangent complex associated to
+    denotes the usual analytic relative cotangent complex associated to
     the structural morphism $X \to Z$ in $\anNil^\cl_{X//Y}$.
 \end{defin}
 
@@ -726,11 +829,11 @@ of the latter notion in the algebraic setting.
 
 
 \begin{rem}
-    Let $Y \in \anFMP_{X/}$. Let $Z \in \dAnk$, there exists a natural morphism
+    Let $Y \in \anFMP_{X/}$. For a general $Z \in \dAnk$, there exists a natural morphism
         \[
             \bbL\an_X \to \bbL\an_{X/Z} ,  
         \]
-    in $\Coh^+(X)$. Passing to the limit over $Z \in \anNil^\cl_{X//Z}$, we obtain a natural map
+    in the infcat $\Coh^+(X)$. Passing to the limit over $Z \in \anNil^\cl_{X//Z}$, we obtain a natural map
         \[
             \bbL\an_X \to \bbL\an_{X/Y},  
         \]
@@ -742,7 +845,7 @@ The following result provides justifies our choice of terminology for the object
 \begin{lem} \label{lem:pro_cot_complex_classifies_nil_extensions_for_analytic_moduli_problems}
     Let $Y \in \anFMP_{X/}$. Let $X \hookrightarrow S$ be a square zero extension associated to an analytic derivation
         \[
-            d \colon \bbL\an_S \to \cF ,  
+            d \colon \bbL\an_S \to \cF [1] ,  
         \]
     where $\cF \in \Coh^+(X)^{\ge 0}$. Then there exists a natural morphism
         \[
@@ -752,17 +855,19 @@ The following result provides justifies our choice of terminology for the object
 \end{lem}
 
 \begin{proof}
-    Thanks to \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} we can identify the space of liftings of the map $X \to Y$ along $X \to S$ with the mapping space
+    Thanks to \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} combined with the Yoneda Lemma
+    we can identify the space of liftings of the map $X \to Y$ along $X \to S$ with the mapping space
         \[
             \Map_{\anFMP_{X/}}(S, Y) \simeq \colim_{Z \in \anNil_{X//Y}} \Map_{\anNil_{X/}} (S, Z).  
         \]
-    Fix $Z \in \anNil_{X//Y}$. Then we have a natural identification of mapping spaces
+    Fix $Z \in \anNil_{X//Y}^\cl$. Then we have a natural identification of mapping spaces
         \begin{align} \label{eq:identification_of_universal_property_of_rel_an_cotagent_complex}
             \Map_{\anNil_{X/}} (S, Z) & \simeq \Map_{(\dAnk)_{X/}} (S, Z) \\
                                       & \simeq \Map_{\Coh^+(X)}(\bbL\an_{X/Z}, \cF) \times_{\Map_{\Coh^+(X)}(\bbL\an_X, \cF)} \{ d \},
         \end{align}
     see \cite[\S 5.4]{Porta_Yu_Representability} for a justification of the latter assertion.
-    Passing to the colimit over $Z \in \anNil_{X//Y}^\cl$, we conclude that
+    Passing to the colimit over $Z \in \anNil_{X//Y}^\cl$, we conclude thanks to the formula for mapping spaces in pro-\infcats that we have
+    a natural equivalence
         \[
             \Map_{\anFMP_{X/}}(S, Y) \simeq \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/Y}, \cF) \times_{\Map_{\Coh^+(X)}(\bbL\an, \cF)} \{ d \},
         \]
@@ -770,11 +875,11 @@ The following result provides justifies our choice of terminology for the object
 \end{proof}
 
 \begin{construction} \label{rem:morphisms_of_AnFMP_induce_transition_morphisms_on_relative_analytic_cot_complexes}
-    Let $f \colon Y \to Z$ denote a morphism in $\anFMP_{X/}$. Then, for every $S \in \anNil_{X//Y}^\cl$ the induced morphism
+    Let $f \colon Y \to Z$ denote a morphism in $\anFMP_{X/}$. Then, for every $S \in \anNil_{X/ /Y}^\cl$ the induced morphism
         \[
             S \to Z,   
         \]
-    in $\anFMP_{X/}$ factors through some $S' \in \anNil^\cl_{X/Z}$. For this reason, we obtain a natural morphism
+    in $\anFMP_{X/}$ factors necessarily through some $S' \in \anNil^\cl_{X/ /Z}$. For this reason, we obtain a natural morphism
         \[
             \bbL\an_{X/S'} \to \bbL\an_{X/S},  
         \]
@@ -782,16 +887,26 @@ The following result provides justifies our choice of terminology for the object
         \[
             \theta (f) \colon \bbL\an_{X/Z} \to \bbL\an_{X/Y},  
         \]
-    in $\pro(\Coh^+(X))$.
+    in $\pro(\Coh^+(X))$. Moreover, this association is functorial and thus we obtain a well defined functor
+        \[
+            \bbL\an_{X/ \bullet} \colon \anFMP_{X/ } \to \pro(\Coh^+(X)),  
+        \]
+    given by the formula
+        \[
+            (X \to Y) \in \anFMP_{X/ } \mapsto \bbL\an_{X/ Y} \in \pro(\Coh^+(X)).  
+        \]
 \end{construction}
 
-\begin{prop}
-    Let $f \colon Y \to Z$ be a morphism in the \infcat $\anFMP_{X/}$. Suppose that $f$ induces an equivalence of relative pro-analytic cotangent complexes via
-    \cref{rem:morphisms_of_AnFMP_induce_transition_morphisms_on_relative_analytic_cot_complexes}.
-    Then $f$ is itself an equivalence of analytic formal moduli problems under $X$.
+\begin{prop} \label{prop:conservativity_of_relative_an_cot_complex}
+    Let $X \in \dAnk$ be a derived $k$-analytic space. Then the functor
+    \[
+        \bbL\an_{X/ \bullet} \colon \anFMP_{X/} \to \pro(\Coh^+(X)),
+    \]
+    obtained via \cref{rem:morphisms_of_AnFMP_induce_transition_morphisms_on_relative_analytic_cot_complexes,rem:morphisms_of_AnFMP_induce_transition_morphisms_on_relative_analytic_cot_complexes},
+    is conservative.
 \end{prop}
 
-\begin{proof}
+\begin{proof} Let $f \colon Y \to Z $ be a morphism in $\anFMP_{X/}$.
     Thanks to \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} we are reduced to show that given any
         \[
             S \in \anNil_{X//Z}^\cl,  
@@ -802,12 +917,57 @@ The following result provides justifies our choice of terminology for the object
     combined with our hypothesis.
 \end{proof}
 
+Our goal now is to give an alternative description of analytic formal moduli problems under $X \in \dAnk$, in terms of derived $k$-analytic stacks: 
+
+\begin{construction} \label{const:anFMP_as_ind_inf_schemes} Consider the \infcat of derived $k$-analytic stacks, $\dAnSt_k$.
+    We have a natural functor
+        \[
+            h \colon \anNil_{X/} \to \dAnk \hookrightarrow \dAnSt_k.
+        \]
+    Therefore, given any derived $k$-analytic stack $Y$ equipped with a morphism $X \to Y$, one can consider its restriction to the \infcat
+    $\anNil_{X/}$:
+        \[
+            Y \circ h \colon \anNil_{X/} \op \to \cS.      
+        \]
+    We have thus a natural restriction functor
+        \[
+            h_* \colon \dAnSt_k \to \Fun(\anNil_{X/} \op, \cS).  
+        \]
+On the other hand, \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} allows us to define a natural functor
+    \[
+        F \colon \anNil_{X/} \op \to \dAnSt_k
+    \]
+via the formula
+    \[
+        (X \to Y) \in \anFMP_{X/ } \mapsto \colim_{S \in \anNil_{X/ /Y}^\cl} S,  
+    \]
+the colimit being computed in the \infcat $\dAnSt_k$. The latter agrees with the left Kan extension of the functor 
+    \[
+        h \colon \anNil_{X/ } \to \dAnSt_k,  
+    \]
+along the natural inclusion functor $\anNil_{X/ } \hookrightarrow \anFMP_{X/ }$.
+In particular, any analytic formal moduli under $X$ when regarded as a derived $k$-analytic stack can be realized
+as an \emph{ind}-\emph{inf}-object, i.e. it can be written as a filtered colimit of nil-embeddings $X \to Z$.
+We refer the reader to \cite[\S1]{Gaitsgory_Study_II} for a precise meaning
+of the latter notion in the algebraic setting.
+\end{construction}
+
+
+
+
+
 \begin{defin}
-    Let $Y \in \anPreStk$, we shall say that $Y$ is \emph{infinitesimally cartesian} if it satisfies \cite[Definition 7.3]{Porta_Yu_Representability}.
+    Let $Y \in \dAnSt_k$. We shall say that $Y$ has a deformation theory if it satisfies the following conditions:
+    \begin{enumerate}
+        \item $Y$ is \emph{nilcomplete}, c.f. \cite[Definition 7.4]{Porta_Yu_Representability};
+        \item $Y$ is \emph{infinitesimally cartesian} if it satisfies \cite[Definition 7.3]{Porta_Yu_Representability};
+        \item $Y$ admits a \emph{pro-cotangent complex}, i.e., if it satisfies \cite[Definition 7.6]{Porta_Yu_Representability} under the weaker assumption
+        that the corresponding derivation functor is pro-corepresentable.
+    \end{enumerate}
 \end{defin}
 
 \begin{prop} \label{prop:sufficient_conditions_for_a_prestack_to_be_equiv_to_an_analytic_FMP}
-    Let $Y \in \anPreStk_{X/}^{< \infty}$. Assume further that $Y$ is infinitesimally cartesian and it admits a relative pro-cotangent complex, $\bbL_{X/Y}\an \in \pro(\Coh^+(X))$.
+    Let $Y \in (\dAnSt_k)_{X/}$. Assume further that $Y$ admits a deformation theory.
     Then $Y$ is equivalent to an analytic formal moduli problem under $X$.
 \end{prop}
 
@@ -823,17 +983,20 @@ The following result provides justifies our choice of terminology for the object
         \[
             Y(T') \to Y(T) \times_{Y(S)} Y(S'),  
         \]
-    is an equivalence in the \infcat $\cS$. Suppose further that $S \hookrightarrow S'$ is associated to some derivation
-    $d \colon \bbL\an_S \to \cF$ for some $\cF \in \Coh^+(S)^{\ge 0}$.
+    is an equivalence in the \infcat $\cS$. Suppose further that $S \hookrightarrow S'$ is associated to some analytic derivation
+        \[
+            d \colon \bbL\an_S \to \cF[1],
+        \]
+    for some $\cF \in \Coh^+(S)^{\ge 0}$.
     Thanks to \cref{lem:pushouts_of_square_zero_extensions_have_the_structure_of_a_square_zero_extension} we deduce
-    that the induced morphism $T \to T'$ admits a structure of a square-zero extension.
+    that the induced morphism $T \to T'$ admits a structure of a square-zero extension, as well.
     Then, by our assumptions of $Y$ being infinitesimally cartesian and admitting a relative pro-cotangent complex, we have a chain of natural equivalences of the form.
         \begin{align*}
-            Y(T') & \simeq \bigsqcup_{f \colon T \to Y} \Map_{T/ } (T', Y) \\
-                  & \simeq \bigsqcup_{ f \colon T \to Y} \Map_{\pro(\Coh^+(T))_{ \bbL\an_Z / }}(\bbL\an_{T/Y}, g_*(\cF)) \\
-                  & \simeq \bigsqcup_{f \colon T \to Y} \Map_{\pro(\Coh^+(S))_{g^* \bbL\an_T / }} (g^*\bbL\an_{T/Y}, \cF) \\
-                  & \simeq \bigsqcup_{f \colon T \to Y } \Map_{\pro(\Coh^+(S))_{\bbL\an_S/}} (\bbL\an_{S, Y}, \cF) \\
-                  & \simeq \bigsqcup_{f \colon T \to Y} \Map_{S/ }(S', Y) \\
+            Y(T') & \simeq \bigsqcup_{f \colon T \to Y} \Map_{T/ }(T', Y) \\
+                  & \simeq \bigsqcup_{f \colon T \to Y} \Map_{\pro(\Coh^+(T))_{\bbL\an_T/ }}(\bbL\an_{T/ Y}, g_*(\cF)[1]) \\
+                  & \simeq \bigsqcup_{f \colon T \to Y} \Map_{\pro(\Coh^+(S))_{g^* \bbL\an_T/ }}(g^* \bbL\an_{T/ Y}, \cF[1]) \\
+                  & \simeq \bigsqcup_{f \colon T \to Y} \Map_{\pro(\Coh^+(S))_{\bbL\an_S/ }}(\bbL\an_{S/ Y}, \cF[1]) \\
+                  & \simeq \bigsqcup_{f \colon t \to Y} \Map_{S/ }(S', Y) \\
                   & \simeq Y(T) \times_{Y(S)} Y(S'),
         \end{align*}
     where the third equivalence follows from the existence of a commutative diagram between fiber sequences
@@ -843,12 +1006,106 @@ The following result provides justifies our choice of terminology for the object
             (f\circ g)^*\bbL\an_Y \ar{r} & \bbL\an_{S} \ar{r} & \bbL\an_{S/Y},
         \end{tikzcd}
         \]
-    in the \infcat $\pro(\Coh^+(S))$ combined with the fact that the derivation $d_T \colon \bbL\an_T \to g_*(\cF)$ is induced from
+    in the \infcat $\pro(\Coh^+(S))$ combined with the fact that the derivation $d_T \colon \bbL\an_T \to g_*(\cF)[1]$ is induced from
         \[
-            d \colon \bbL\an_S \to \cF,
+            d \colon \bbL\an_S \to \cF[1],
         \]
     as in the proof of \cref{lem:pushouts_of_square_zero_extensions_have_the_structure_of_a_square_zero_extension}. The result now follows.
 \end{proof}
+
+\begin{prop} \label{prop:stacks_under_X_with_deformation_theory_are_analytic_FMP}
+    Let $Z \in (\dAnSt_k)_{X/ }$. Suppose further that $Z$ admits a deformation theory. Then the natural morphism
+        \[
+            \colim_{S \in \anNil_{X/ /Z}^\cl} S \to Z,  
+        \]
+    in the \infcat $(\dAnSt_k)_{/X}$, is an equivalence.
+\end{prop}
+
+\begin{proof}
+    We shall prove that for every derived $k$-analytic space $T \in \dAnk$, any diagram of the form
+        \[
+        \begin{tikzcd}
+            X \ar{rr}{f} \ar{rd}{g} & & Z \\
+                & T \ar{ru}{h} &  
+        \end{tikzcd},
+        \]
+    factors through an object
+        \[
+            X \to S \to Z,  
+        \]
+    in $\anNil_{X/ /Z}^\cl$. Consider the commutative diagram
+        \begin{equation} \label{eq:comm_diagram_T_T_red_X_to_Z}
+        \begin{tikzcd}
+            X_{\red} \ar{r} \ar{d} & T_\red \ar{d} \ar{dr} & \\
+            X \ar{r} & T \ar{r} & Z,
+        \end{tikzcd}
+        \end{equation}
+    in the \infcat $\dAnSt_k$. Since $Z_\red \simeq X_\red$ we obtain that $T_\red \to Z$ factors necessarily through the colimit
+        \[
+            \colim_{S \in \anNil^\cl_{X/ /Z}} S \in \anPreStk.  
+        \]
+    Assume first that $T$ is bounded, i.e. $T \in \dAnk^{< \infty}$. Then we can construct $T$ out of $T_\red$ via a finite sequence of square-zero extensions,
+    as in \cref{prop:filtered_colimit_for_nil-embeddings}. Therefore, in order to construct
+    a factorization
+        \[
+            T \to S \to Z,  
+        \]
+    in $\anPreStk_{X/}$, we reduce ourselves to the case where the morphism $T_\red \to T$ is itself a square-zero extension.
+    In this case, let
+        \[
+            d \colon \bbL\an_{T_\red} \to \cF[1],  
+        \]
+    where $\cF \in \Coh^+(T_\red)^{\ge 0}$ be the associated derivation. The existence of the diagram \eqref{eq:comm_diagram_T_T_red_X_to_Z} implies that
+    we have a commutative diagram of the form
+        \[
+        \begin{tikzcd}
+                g^*\bbL\an_{T_\red} \ar{r} & \bbL\an_{X_\red} \ar{r} & \bbL\an_{X_\red/ T_\red} \\
+                f^* \bbL\an_{Z} \ar{r} \ar{u} & \bbL\an_{X_\red} \ar{u} \ar{r}& \bbL\an_{X_\red/ Z} \ar{u},
+        \end{tikzcd}
+        \]
+    in the \infcat $\pro(\Coh^+(X))$. For this reason, the limit-colimit formula for mapping spaces in pro-\infcats implies that the natural morphism
+        \[
+            \bbL\an_{X_\red/ Z} \to \bbL\an_{X_\red/ T_\red},
+        \]
+    in the \infcat $\pro(\Coh^+(X))$ factors necessarily via a morphism of the form
+        \[
+            \bbL\an_{X_\red/ S} \to \bbL\an_{X_\red/ T_\red},  
+        \]
+    for some suitable $S \in \anNil^\cl_{X/ /Z}$. Thus the existence problem
+        \[
+        \begin{tikzcd}
+            T_\red \ar{r} \ar{d} & T \arrow[d, dashrightarrow] \ar{rd} & \\
+            X_\red = S_\red \ar{r} & S  \ar{r} & Z,
+        \end{tikzcd}
+        \]
+    admits a solution $T \to S \to Z$, as desired. If $T \in \dAnk$ is a general derived $k$-analytic space, we reduce ourselves to the bounded case
+    using the fact that $Y$ is nilcomplete.
+\end{proof}
+
+
+\begin{cor}
+    The functor
+        \[
+            F \colon \anFMP_{X/ } \to (\dAnSt_k)_{X/ },  
+        \]
+    is fully faithful. Moreover, its essential image coincides with those $Z \in (\dAnSt_k)_{X/ }$ which admit deformation theory.
+\end{cor}
+
+\begin{proof}
+    Let $(\dAnSt_k)^{\mathrm{def}}_{X/ } \subseteq (\dAnSt_k)_{X/ }$ denote the full subcategory spanned by derived $k$-analytic stacks under $X$ admitting
+    a deformation theory. It is clear that the natural functor
+        \[
+            F \colon \anFMP_{X/ } \to (\dAnSt_k)_{X/ },  
+        \]
+    factors through the full subcategory $(\dAnSt_k)_{X/ }^\mathrm{def}$. Moreover, the restriction functor
+        \[
+            \mathrm{res} \colon (\dAnSt_k)_{X/ }^\mathrm{def} \to \Fun(\anNil_{X/ }\op, \cS),  
+        \]
+    factors through $\anFMP_{X/ } \subseteq \Fun(\anNil_{X/ }\op, \cS)$. Moreover,
+    \cref{prop:stacks_under_X_with_deformation_theory_are_analytic_FMP} implies that the restriction functor that $F$ and $\mathrm{res}$ are mutually inverse functors,
+    proving the claim.
+\end{proof}
+
 
 
 \subsection{Analytic formal moduli problems over a base}
@@ -858,16 +1115,17 @@ the authors introduced the \infcat of \emph{analytic formal moduli problems over
 \begin{notation}
     Let $X \in \dAnk$. We shall denote by $\anNil_{/X}$ the full subcategory of $(\dAnk)_{/X}$ spanned by nil-isomorphisms
         \[
-            Z \to X.  
+            Z \to X,
         \]
+    in the \infcat $\dAnk$.
 \end{notation}
 
 \begin{defin}
-    We shall denote by $\anNil_{/X}^\cl \subseteq \anNil_{/X}$ the faithful subcategory in which we only allow morphisms
+    We shall denote by $\anNil_{/X}^\cl \subseteq \anNil_{/X}$ the faithful subcategory in wich we allow morphisms
         \[
-            S \to S'  
+            i \colon S \to S'  ,
         \]
-    in $\anNil_{/X}$ which are closed nil-isomorphisms.
+    where $i$ is a nil-embedding in $\dAnk$.
 \end{defin}
 
 We start with the analogue of \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} in the setting of analytic formal moduli problems over $X$:
@@ -877,7 +1135,7 @@ We start with the analogue of \cref{prop:analytic_FMP_under_X_are_ind_inf_scheme
     \begin{enumerate}
         \item The inclusion functor
             \[
-                (\anNil^{\cl}_{/X})_{/Y}  \to (\anNil^{\cl}_{/X})_{/Y},
+                (\anNil^{\cl}_{/X})_{/Y}  \to (\anNil_{/X})_{/Y},
             \]
         is cofinal.
         \item The natural morphism
@@ -898,9 +1156,8 @@ We start with the analogue of \cref{prop:analytic_FMP_under_X_are_ind_inf_scheme
         \end{tikzcd}
         \end{equation}
     in the \infcat $\anNil_{/X}$ whose existence is guaranteed by \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms}. Since
-    the upper horizontal morphism in \eqref{eq:diagram_pushout_of_nil_isomorphisms_with_ltv_being_the_reduced_subspace} is a closed nil-isomorphism, we can reduce
-    ourselves to the case where the latter is an actual square-zero extension. Indeed, the latter assertion follows by
-    arguing by induction combined with \cref{prop:filtered_colimit_for_nil-embeddings}.
+    the upper horizontal morphism in \eqref{eq:diagram_pushout_of_nil_isomorphisms_with_ltv_being_the_reduced_subspace} is a nil-embedding, we can reduce
+    ourselves via \cref{prop:filtered_colimit_for_nil-embeddings} to the case where the latter is an actual square-zero extension.
     Since $Y$ is assumed to be an analytic formal moduli problem over $X$ we then deduce that the canonical morphism
         \begin{align*}
             Y(Z') & \to Y(Z) \times_{Y(S_\red)} Y(S) \\
@@ -909,14 +1166,16 @@ We start with the analogue of \cref{prop:analytic_FMP_under_X_are_ind_inf_scheme
     is an equivalence (we implicitly used above the fact that $S_\red \simeq X_\red$). As a consequence the object $(Z' \to X)$ in $\anNil_{/X}$ admits an induced morphism
     $Z' \to Y$ making the required diagram commute.
     Thanks \cref{prop:existence_of_pushouts_along_closed_nil-isomorphisms} we deduce that both
-    $S \to Z'$ and $Z \to Z'$ are closed nil-isomorphisms. Therefore, we can factor the diagram
+    $S \to Z'$ and $Z \to Z'$ are nil-embedding. Therefore, we can factor the diagram
         \[
         \begin{tikzcd}
             S \ar{rr} \ar{rd} & & Z \ar{dl} \\
                 &               Y       &  
         \end{tikzcd}
         \]
-    via a closed nil-isomorphism $Z \to Z'$. We conclude that the inclusion functor $(\anNil^\cl_{/X})_{/Y} \to (\anNil_{/X})_{/Y}$ is cofinal.
+    via a closed nil-isomorphism $Z \to Z'$. As a consequence, we deduce readily that the inclusion functor
+        \[(\anNil^\cl_{/X})_{/Y} \to (\anNil_{/X})_{/Y},\]
+    is cofinal.
     It is clear that assertion (ii) follows immediately from (i). We now prove (iii). Let 
         \[\theta \colon K \to (\anNil^\cl_{/X})_{/Y},\]
     be a functor where
@@ -932,11 +1191,8 @@ We start with the analogue of \cref{prop:analytic_FMP_under_X_are_ind_inf_scheme
         \[
             p_0 \colon X \times_Y X \to X,  
         \]
-    computed in the \infcat $\anPreStk_k$ lies in the essential image of $\anFMP_{/X}$ via \cref{const:anFMP_as_ind_inf_schemes}.
+    computed in the \infcat $\dAnSt_k$ lies in the essential image of $\anFMP_{/X}$ via \cref{const:anFMP_as_ind_inf_schemes}.
 \end{lem}
-
-\personal{This lemma might be as well erase, as it is a direct consequence of the previous proposition. We will need nonetheless this result in the construction
-of $\rB_X(Y)$.}
 
 \begin{proof}
     Consider the pullback diagram
@@ -946,14 +1202,14 @@ of $\rB_X(Y)$.}
             X \ar{r} & Y ,
         \end{tikzcd}
         \]
-    computed in the \infcat $\anPreStk$. Thanks to \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} together with the fact that fiber products commute with filtered colimis in the \infcat $\anPreStk_k$,
+    computed in the \infcat $\dAnSt_k$. Thanks to \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes} together with the fact that fiber products commute with filtered colimis in the \infcat $\dAnSt_k$,
     we deduce that
         \[
             X \times_Y X \simeq \colim_{Z \in \anNil^\cl_{X//Y}} X \times_Z X, 
         \]
-    in $\anPreStk_k$. It is clear that $(p_i \colon X \times_Z X \to X)$ lies in the essential image of $ \anFMP_{/X}$, for $i = 0, 1$. Thus also the filtered colimit
+    in $\dAnSt_k$. It is clear that $(p_i \colon X \times_Z X \to X)$ lies in the essential image of $ \anFMP_{/X}$, for $i = 0, 1$. Thus also the filtered colimit
         \[
-            (p_i \colon X \times_Y X ) \in \anFMP_{/X}, \quad \mathrm{for \ } i = 0, 1,
+            (p_i \colon X \times_Y X \to X) \in \anFMP_{/X}, \quad \mathrm{for \ } i = 0, 1,
         \]  
     as desired.
 \end{proof}
@@ -963,8 +1219,10 @@ Just as in the previous section we deduce that every analytic formal moduli prob
 in $\anPreStk_k$:
 
 \begin{cor} \label{cor:formal_moduli_problems_over_X_are_ind_inf_objects}
-    Let $Y \in (\anPreStk_k)_{/X}$. Then $Y$ is equivalent to an analytic formal moduli problem over $X$ if and only if there exists
-    a presentation $Y \colim_{i \in I} Z_i$, where $I$ is a filtered \infcat and for every $i \to j$ in $I$, the induced morphism
+    Let $Y \in (\dAnSt_k)_{/X}$. Then $Y$ is equivalent to an analytic formal moduli problem over $X$ if and only if there exists
+    a presentation 
+        \[Y \simeq \colim_{i \in I} Z_i,\]
+    where $I$ is a filtered \infcat and for every $i \to j$ in $I$, the induced morphism
         \[
           Z_i \to Z_j,  
         \]
@@ -980,9 +1238,9 @@ in $\anPreStk_k$:
         \[
             \Coh^+(Y) \coloneqq \lim_{Z \in (\dAnk)_{/Y}}  \Coh^+(Z),
         \]
-    computed in the \infcat $\Catst$. We define the \infcat of \emph{pro-coherent modules on $Y$}, denoted $\pro(\Coh^+(Y))$, as
+    computed in the \infcat $\Catst$. We define the \infcat of \emph{pseudo-pro-coherent modules on $Y$}, denoted $\pro^{\mathrm{ps}}(\Coh^+(Y))$, as
         \[
-            \pro(\Coh^+(Y)) \coloneqq \lim_{Z \in (\dAnk)_{/Y}} \pro(\Coh^+(Z)),  
+            \pro^\mathrm{ps}(\Coh^+(Y)) \coloneqq \lim_{Z \in (\anNil_{/X}^\cl)_{/Y}} \pro(\Coh^+(Z)),  
         \]
     where the limit is computed in the \infcat $\Catst$.
 \end{defin}
@@ -1002,9 +1260,9 @@ in $\anPreStk_k$:
         \[
             Y \simeq \colim_{S \in (\anNil^\cl_{/X})_{/Y}} S,
         \]
-    in the \infcat $\dAnk$, implies that, for any $Z \in \dAfd_k$, one has an equivalence of mapping spaces
+    in the \infcat $\dAnSt_k$, implies that, for any $Z \in \dAfd_k$, one has an equivalence of mapping spaces
         \[
-            \Map_{\anPreStk}(Z, Y) \simeq \colim_{S \in (\anNil^\cl_{/X})_{/Y}}  \Map_{\anPreStk}(Z,S ).
+            \Map_{\dAnSt_k}(Z, Y) \simeq \colim_{S \in (\anNil^\cl_{/X})_{/Y}}  \Map_{\anPreStk}(Z,S ).
         \]
     For this reason, given any morphism $f \colon Z \to Y$ and any
     $\cF \in \Coh^+(Z)^{\ge 0}$, we can identify the tangent space $\bbT\an_{Y, Z, \cF}$
@@ -1014,17 +1272,19 @@ in $\anPreStk_k$:
                                 & \simeq \colim_{S \in (\anNil^\cl_{/X})_{Z/ /Y}} \bbT\an_{S, Z , \cF } \\
                                 & \simeq \colim_{S \in (\anNil^\cl_{/X})_{Z/ /Y}} \Map_{\Coh^+(Z)} (f_{S,Z}^* (\bbL\an_S), \cF),
         \end{align}
-    where we have denoted by $f_{S, Z} \colon Z \to S$ any morphism, in $(\dAnk)_{/X}$, factoring $f \colon Z \to Y$.
-    Moreover, the latter equivalence follows readily from \cite[Lemma 7.7]{Porta_Yu_Representability}. Therefore, we deduce that
+    where we have denoted by $f_{S, Z} \colon Z \to S$ any morphism, in $(\dAnk)_{/X}$, factoring $f \colon Z \to Y$ such that
+        \[(S \to X) \in \anNil^\cl_{/X}.\]
+    The final equivalence in \eqref{eq:description_of_cotangent_complex_of_a_formal_moduli_problem_in_terms_of_its_tangent_space}, follows from \cite[Lemma 7.7]{Porta_Yu_Representability}.
+    Therefore, we deduce that
     the analytic formal moduli problem
     $Y \in \anFMP_{/X}$ admits an \emph{absolute pro-cotangent complex} given as
         \[
-           \bbL\an_Y \coloneqq \{ f^*_{S,Z}( \bbL\an_S )  \}_{Z \in (\dAnk)_{/Y}, S \in (\anNil^\cl_{/X})_{/Y}} \in \pro(\Coh^+(Y)).
+           \bbL\an_Y \coloneqq \{ f^*_{S,Z}( \bbL\an_S )  \}_{Z, S \in (\anNil^\cl_{/X})_{/Y}} \in \pro(\Coh^+(Y)).
         \]
 \end{rem}   
 
 \begin{cor}
-    Let $Y \in \anFMP_{/X}$. Then its absolute cotangent complex $\bbL\an_Y$ classifies analytic deformations on $Y$. More precisely, given $Z \to Y$ a morphism
+    Let $Y \in \anFMP_{/X}$. Then its absolute cotangent complex $\bbL\an_Y$ classifies analytic deformations on $Y$. More precisely, given any morphism $Z \to Y$
     where $Z \in \dAfd_k$ and $\cF \in \Coh^+(Z)^{\ge 0}$ one has a natural equivalence of mapping spaces
         \[
             \bbT\an_{Y, Z, \cF} \simeq \Map_{\pro(\Coh^+(Y))}(\bbL\an_Y, \cF).  
@@ -1048,14 +1308,14 @@ We now introduce the notion of square-zero extensions of analytic formal moduli 
     one has the following natural equivalences of mapping spaces
         \begin{align*}
             \Map_{\pro(\Coh^+(Y))} (\bbL\an_Y , \cF[1])  & \simeq 
-            \lim_{S \in (\anNil_{/X})_{/Y}} \colim_{S' \in (\anNil_{/X})_{S//Y}} \Map_{\pro(\Coh^+(S))}(f_{S, S'}^*(\bbL\an_S), g_{S}^*(\cF')[1]) \\
+            \lim_{S \in (\anNil^\cl_{/X})_{/Y}} \colim_{S' \in (\anNil^\cl_{/X})_{S//Y}} \Map_{\pro(\Coh^+(S))}(f_{S, S'}^*(\bbL\an_{S'}), g_{S}^*(\cF')[1]) \\
                                                          & \simeq
-            \lim_{S \in (\anNil_{/X})_{/Y}} \colim_{S' \in (\anNil_{/X})_{S//Y}} \Map_{\pro(\Coh^+(S))}(\bbL\an_S, (f_{S, S'})_{ *} g_S^*(\cF')[1]),
+            \lim_{S \in (\anNil^\cl_{/X})_{/Y}} \colim_{S' \in (\anNil^\cl_{/X})_{S//Y}} \Map_{\pro(\Coh^+(S))}(\bbL\an_{S'}, (f_{S, S'})_{ *} g_S^*(\cF')[1]),
         \end{align*}
-    where $g_{S} \colon S \to X$ denotes the structural morphism in $\anNil_{/X}$ and $f_{S, S'} \colon S \to S'$ a given transition morphism
-    in the \infcat $(\anNil_{/X})_{/Y}$. For this reason, we can form the filtered colimit
+    where $g_{S} \colon S \to X$ denotes the structural morphism in $\anNil^\cl_{/X}$ and $f_{S, S'} \colon S \to S'$ a given transition morphism
+    in the \infcat $(\anNil^\cl_{/X})_{/Y}$. For this reason, we can form the filtered colimit
         \[
-            Y' \coloneqq \colim_{S \in (\anNil_{/X})_{/Y}}  \colim_{S' \in (\anNil_{/X})_{S//Y}} \oS' \in \anPreStk.
+            Y' \coloneqq \colim_{S \in (\anNil^\cl_{/X})_{/Y}}  \colim_{S' \in (\anNil^\cl_{/X})_{S//Y}} \oS' \in \dAnSt_k.
         \]
     By construction, one has a natural morphism $Y \hookrightarrow Y'$ in the \infcat $\anPreStk$.
     Moreover, thanks to \cref{prop:sufficient_conditions_for_a_prestack_to_be_equiv_to_an_analytic_FMP} it follows that $Y' \in \anFMP_{/X}$.
@@ -1092,8 +1352,8 @@ We now introduce the notion of square-zero extensions of analytic formal moduli 
 \end{cor}
 
 \begin{proof}
-    By the universal property of ind-objects we reduce the statement to the case where $Y \in \anNil_{/X}$ and thus $Y' \in \anNil_{/S}$, in which
-    case the statement follows immediately by the universal property of the cotangent complex. \todo{Add details in this proof.}
+    By the universal property of filtered colimits together with the fact that these preserve fiber products we reduce the statement to the case where $Y \in \anNil_{/X}$ and thus $Y' \in \anNil_{/S}$, in which
+    case the statement follows immediately by the universal property of the relative analytic cotangent complex.
 \end{proof}
 
 \begin{cor} \label{cor:universal_property_of_relative_cotangent_complex_for_morphisms_between_analytic_FMP}
@@ -1108,17 +1368,17 @@ We now introduce the notion of square-zero extensions of analytic formal moduli 
             Z \ar{r}{f} & X,  
         \end{tikzcd}
         \]
-    in the \infcat $\anPreStk$. Let $d \colon \bbL\an_Z \to \cF[1]$ be an analytic derivation corresponding to a square-zero extension morphism
+    in the \infcat $\dAnSt_k$. Let $d \colon \bbL\an_Z \to \cF[1]$, where $\cF \in \Coh^+(Z)^{\ge 0}$, be an analytic derivation corresponding to a square-zero extension morphism
     $Z \to Z'$ in the \infcat $\dAnk$. Denote by
     $\widetilde{d} \colon \bbL\an_{\tZ} \to \cF[1]$ the induced analytic derivation as in \cref{const:square_zero_extensions_of_analytic_FMP_over_X}
-    and let $h \colon \tZ \hookrightarrow \tZ'$ the induced square-zero extension in $\anPreStk$ such that we have a cartesian diagram
+    and let $h \colon \tZ \hookrightarrow \tZ'$ be the induced square-zero extension in $\dAnSt_k$ such that we have a cartesian diagram
         \[
         \begin{tikzcd}
             \tZ \ar{r} \ar{d} & \tZ' \ar{d} \\
             Z \ar{r} & Z'  
         \end{tikzcd}
         \]
-    in the \infcat $\anPreStk$. Then the space of factorizations
+    in the \infcat $\dAnSt_k$. Then the space of factorizations
         \[
             s \colon \tZ \to \tZ' \to Y,  
         \]
@@ -1131,7 +1391,7 @@ We now introduce the notion of square-zero extensions of analytic formal moduli 
 
 \begin{proof}
     The statement holds true in the case where $\tZ \in \anNil_{/Z}$ and $Y \in \anNil_{/X}$, by the universal property of the relative cotangent complex.
-    The general case is reduced to the previous one by a standard argument with ind-objects in $\anPreStk$.
+    The general case is reduced to the previous one by a standard argument with ind-objects in $\dAnSt_k$.
 \end{proof}
 
 
@@ -1141,16 +1401,16 @@ the former as an analytic formal moduli problem over $X$.
 
 \begin{prop} \label{prop:nil_descent_for_Coh^+}
     Let $f \colon Y \to X$, where $X \in \dAnk$ and $Y \in \anFMP_{/X}$. Consider the \v{C}ech nerve
-    $Y^\bullet \colon \mathbf \Delta \op \to \anPreStk$ associated to $f$.
+    $Y^\bullet \colon \mathbf \Delta \op \to \dAnSt_k$ associated to $f$.
     Then the natural functor
         \[
-            f_\bullet^* \colon \Coh^+(X) \to \mathrm{Tot}(\Coh^+(Y^\bullet)),  
+            f_\bullet^* \colon \Coh^+(X) \to \lim_{\bDelta \op}(\Coh^+(Y^\bullet)),  
         \]
     is an equivalence of \infcats.
 \end{prop}
 
 \begin{proof}
-    Consider the natural equivalence of $k$-analytic prestacks
+    Consider the natural equivalence of derived $k$-analytic stacks
         \[
             Y \simeq \colim_{Z \in (\anNil^\cl_{/X})_{/Y}}  Z.
         \]
@@ -1160,10 +1420,10 @@ the former as an analytic formal moduli problem over $X$.
         \]
     of \infcats. In particular, since totalizations commute with cofiltered limits in $\Catinf$, it follows that we can suppose from
     the beginning that $Y \simeq Z$ for some $Z \in \anNil_{/X}$. In this case, the morphism $f \colon Y \to X$ is affine. In particular, the fact that
-    $\Coh^+(-)$ satisfies Zariski descent combined with \cref{lem:affine_morphisms_are_compatible_with_Zariski_localization_on_the_base} we further reduce ourselves
-    to the case where we might assume both $X$ and $Y$ to be both equivalent to derived $k$-affinoid spaces. In this case, by Tate acyclicity
-    theorem it follows that letting $A \coloneqq \Gamma(X, \cO_X \alg)$ and $B \coloneqq \Gamma(Y, \cO_Y\alg)$ the pullback functor $f^*$ can be identified with
-    the base change functor
+    $\Coh^+(-)$ satisfies descent along admissible open immersions, combined with \cref{lem:affine_morphisms_are_compatible_with_Zariski_localization_on_the_base} we further reduce ourselves
+    to the case where both $X$ and $Y$ are derived $k$-affinoid spaces. In this case, by Tate acyclicity
+    theorem it follows that letting $A \coloneqq \Gamma(X, \cO_X \alg)$ and $B \coloneqq \Gamma(Y, \cO_Y\alg),$ the pullback functor $f^*$ can be identified with
+    the usual base change functor
         \[
             \Coh^+(A) \to \Coh^+(B).  
         \]
@@ -1171,26 +1431,31 @@ the former as an analytic formal moduli problem over $X$.
     the statement of the proposition follows due to \cite[Theorem 3.3.1]{preygel_Leistner_Mapping_stacks_properness}.
 \end{proof}
 
+We now deduce \emph{pseudo-pro-nil-descent} for moprhisms of the form $Y \to X$, which exhibit $Y$ as an analytic formal moduli problem over $X$:
+
 \begin{cor} \label{cor:pseudo_nil-descent_for_pro_Coh^+}
-    Let $X \in \dAnk$ and $f \colon Y \to X$ a morphism in $\anPreStk$ which exhibits $Y$ as an analytic formal moduli problem over $X$.
+    Let $X \in \dAnk$ and $f \colon Y \to X$ a morphism in $\dAnSt_k$ which exhibits $Y$ as an analytic formal moduli problem over $X$.
     Then the natural functor 
         \[
-            f_\bullet^* \colon \pro(\Coh^+ (X)) \to \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))),
+            f_\bullet^* \colon \pro(\Coh^+ (X)) \to \lim_{\bDelta \op}(\pro^\mathrm{ps}\Coh^+(Y^\bullet/X)),
         \]
-    is fully faithful, where $Y^\bullet$ denotes the \v{C}ech nerve of the morphism $f$.. Moreover, the essential image of the functor $f_\bullet^*$ identifies canonically with the full subcategory
+    is fully faithful, where $Y^\bullet$ denotes the \v{C}ech nerve associated to the morphism $f$. Moreover, the essential image of the functor $f_\bullet^*$ identifies canonically with the full subcategory
         \[
-            \mathrm{Tot}'(\pro(\Coh^+(X))) \subseteq \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/ X)))  ,
+            \lim_{\bDelta \op}'\pro^\mathrm{ps}(\Coh^+(X)) \subseteq \lim_{\bDelta \op} \pro^\mathrm{ps}(\Coh^+(Y^\bullet/ X)),
         \]
-    spanned by those $\{\cF_{i, [n]} \}_{i \in I\op_{[n]}, [n]} \in \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X)))$, such that for every $[n] \in \bDelta \op$,
-    the \infcats $I_{[n]} = I$, for some fixed filtered \infcat $I$.
+    spanned by those $\{\cF_{i, [n]} \}_{i \in I\op, [n]} \in \lim_{\bDelta}(\pro^\mathrm{ps}(\Coh^+(Y^\bullet/X)))$, for some filtered \infcat $I$, which belong to the essential image of the natural
+    functor
+        \[
+            \lim_{\bDelta \op} \Fun(I\op, \Coh^+(Y^\bullet/X)) \to \lim_{\bDelta \op} \pro^\mathrm{ps}(\Coh^+(Y^\bullet/X)) . 
+        \]
 \end{cor}
 
 \begin{proof}
-    By the very definition of the \infcat $\pro(\Coh^+(Y))$, we reduce ourselves as in
+    By the very definition of the \infcat $\pro^\mathrm{ps}(\Coh^+(Y))$, we reduce ourselves as in
     \cref{prop:nil_descent_for_Coh^+} to the case where $Y = S$, for some $S \in \anNil_{/X}$. In this case, it follows readily from
     \cref{prop:nil_descent_for_Coh^+} that the natural functor
         \[
-            f_\bullet^* \colon \pro(\Coh^+(X)) \to \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))),  
+            f_\bullet^* \colon \pro(\Coh^+(X)) \to \lim_{\bDelta \op} \pro^\mathrm{ps}(\Coh^+(Y^\bullet/X)),  
         \]
     is fully faithful. We now proceed to prove the second claim of the corollary. Notice that,
     \cref{lem:f^*_admits_a_right_adjoint_whenever_f_is_nil-iso} implies that there exists a well defined right adjoint
@@ -1203,33 +1468,33 @@ the former as an analytic formal moduli problem over $X$.
         \]
     which commutes with cofiltered limits. For this reason, we have a well defined functor
         \[
-            \lim_{[n] \in \bDelta \op} f_{\bullet, *} \colon \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))) \to \pro(\Coh^+(X)),  
+            f_{\bullet, *} \colon \lim_{\bDelta\op}(\pro(\Coh^+(Y^\bullet/X))) \to \pro(\Coh^+(X)),  
         \]
-    which further commutes with cofiltered limits. We claim that $\lim_{[n] \in \bDelta \op} f_{\bullet, *}$ is a right adjoint to $f_\bullet^*$ above. Indeed, given
-    any $\{ \cF_i \}_{i \in I\op}  \in \pro(\Coh^+(X))$ and $\{ \cG_{j, [n]} \}_{j \in J_{[n]} \op, [n] \in \bDelta \op} \in \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X)))$,
+    which further commutes with cofiltered limits. We claim that $ f_{\bullet, *}$ is a right adjoint to $f_\bullet^*$ above. Indeed, given
+    any $\{ \cF_i \}_{i \in I\op}  \in \pro(\Coh^+(X))$ and $\{ \cG_{j, [n]} \}_{j \in J_{[n]} \op, [n] \in \bDelta \op} \in \lim_{\bDelta \op}(\pro(\Coh^+(Y^\bullet/X)))$,
     we compute
         \begin{align*}
-            \Map_{\mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X)))}( f_\bullet^*( \{ \cF_i \}_{i \in I\op}), \{ \cG_{j, [n]} \}_{j \in J\op_{[n]}, [n] \in \bDelta \op}) & \simeq \lim_{[n] \in \bDelta \op} \Map_{\pro(\Coh^+(Y^{[n]}))} ( \{f_{[n]}^\bullet(\cF_i) \}_{i \in I\op},  \{ \cG_{i, [n]} \}_{i \in I\op_{[n]}, [n]}) \\
-            \lim_{[n] \in \bDelta \op} \lim_{j \in J\op_{[n]}} \mathrm{colim}_{i \in I} \Map_{\Coh^+(Y^{[n]})} ( f_{[n]}^\bullet(\cF_i),   \cG_{i, [n]}) & \simeq \lim_{[n] \in \bDelta \op} \lim_{j \in J\op_{[n]}} \colim_{i \in I} \Map_{\Coh^+(X)} (\cF_i, f_{[n], *}(\cG_{i, [n]})) \\
+            \Map_{\lim_{\bDelta \op}(\pro^\mathrm{ps}(\Coh^+(Y^\bullet/X)))}( f_\bullet^*( \{ \cF_i \}_{i \in I\op}), \{ \cG_{j, [n]} \}_{j \in J\op_{[n]}, [n] \in \bDelta \op}) & \simeq \lim_{[n] \in \bDelta \op} \Map_{\pro^\mathrm{ps}(\Coh^+(Y^{[n]}))} ( \{f_{[n]}^\bullet(\cF_i) \}_{i \in I\op},  \{ \cG_{i, [n]} \}_{i \in I\op_{[n]}}) \\
+            \lim_{[n] \in \bDelta \op} \lim_{j \in J\op_{[n]}} \mathrm{colim}_{i \in I} \Map_{\Coh^+(Y^{[n]})} ( f_{[n]}^*(\cF_i),   \cG_{i, [n]}) & \simeq \lim_{[n] \in \bDelta \op} \lim_{j \in J\op_{[n]}} \colim_{i \in I} \Map_{\Coh^+(X)} (\cF_i, f_{[n], *}(\cG_{i, [n]})) \\
             \lim_{[n] \in \bDelta \op} \Map_{\pro(\Coh^+(X))}( \{\cF_i\}_{i \in I\op}, \{f_{[n], *}(\cG_{i, [n]}) \}_{i \in I_{[n]} \op}) & \simeq \Map_{\pro(\Coh^+(X))}( \{\cF_i\}_{i \in I\op}, \lim_{[n] \in \bDelta \op} \{f_{[n], *}(\cG_{i, [n]}) \}_{i \in I_{[n]} \op}),
         \end{align*}
     as desired. 
     It is clear that the functor $f_{\bullet
     }^*$ above factors through the full subcategory
         \[
-            \mathrm{Tot}'(\pro( \Coh^+(Y^\bullet / X)))  \subseteq \mathrm{Tot}(\pro(\Coh^+(Y^\bullet/X))).
+            \lim_{\bDelta \op}'(\pro^\mathrm{ps}( \Coh^+(Y^\bullet / X)))  \subseteq \lim_{\bDelta \op}(\pro(\Coh^+(Y^\bullet/X))).
         \]
-    For this reason, the pair $(f_\bullet^*, \lim_{[n] \in \bDelta \op} f_{\bullet, *})$ restricts to a well defined adjunction
+    For this reason, the pair $(f_\bullet^*, f_{\bullet, *})$ restricts to a well defined adjunction
         \[
-            f^*_{\bullet} \colon \pro(\Coh^+(X))  \rightleftarrows  \mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/ X))) \colon \lim_{[n] \in \bDelta \op} f_{\bullet, *}.  
+            f^*_{\bullet} \colon \pro(\Coh^+(X))  \rightleftarrows  \mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/ X))) \colon f_{\bullet, *}.  
         \]
     In order to conclude, we will show that the functor
         \[
-            \lim_{[n] \in \bDelta \op} f_{\bullet, *} \colon  \mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/X))) \to \pro(\Coh^+(X)) ,  
+            f_{\bullet, *} \colon  \mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/X))) \to \pro(\Coh^+(X)) ,  
         \]
-    is conservative. Since both the \infcats $\pro(\Coh^+(X))$ and $\mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/X)))$ are stable, we are reduced to prove that given any
+    is conservative. Since both the \infcats $\pro(\Coh^+(X))$ and $\lim_{\bDelta \op}'(\pro^\mathrm{ps}(\Coh^+(Y^\bullet/X)))$ are stable, we are reduced to prove that given any
         \[
-            \{ \cG_{i, [n]} \}_{i \in I\op} \in \mathrm{Tot}'(\pro(\Coh^+(Y^\bullet/X))),  
+            \{ \cG_{i, [n]} \}_{i \in I\op} \in \lim_{\bDelta \op}'(\pro^\mathrm{ps}(\Coh^+(Y^\bullet/X))),  
         \]
     such that 
         \begin{equation} \label{eq:conservativity_of_lim_f_bullet_*}
@@ -1239,25 +1504,26 @@ the former as an analytic formal moduli problem over $X$.
         \[
             \{ \cG_{i, [n]} \}_{i \in I\op} \simeq 0  ,
         \]
-    in $\mathrm{Tot}'(\pro(\Coh^+(Y^\bullet / X)))$.
-    Assume then \eqref{eq:conservativity_of_lim_f_bullet_*}. Since the the object $\{ \cG_{i, [n]} \}_{i \in I \op, [n] \in \bDelta \op}$ has fixed cofiltered \infcat $I \op$
-    at the pro-level, we have an equivalence
-        \begin{align*}
-            \lim_{[n] \in \bDelta \op} \{ \cG_{i [n]} \}_{i \in I\op}   & \simeq \{ \lim_{[n] \in \bDelta \op} \cG_{i, [n]} \}_{i \in I\op} \\
-                                                                        & \simeq \{ \cG_i \}_{i \in I\op},                                      
-        \end{align*}
-    in the \infcat $\pro(\Coh^+(X))$, where the $\cG_i \in \Coh^+(X)$, for each $i \in I$, satisfying
+    in $\lim_{\bDelta \op}'(\pro^\mathrm{ps}(\Coh^+(Y^\bullet / X)))$.
+    Assume then \eqref{eq:conservativity_of_lim_f_bullet_*}. Under our hypothesis, for each index $i \in I$, the object
+    $\{ \cG_{i, [n]} \}_{ [n] \in \bDelta \op}$ satisfies descent datum and thanks to \cref{prop:nil_descent_for_Coh^+} it produces a uniquely well defined object
         \[
-            f_{[n]}^* (\cG_i) \simeq \cG_{i , [n]} \in \Coh^+(Y^{[n]}),  
+            \cG_i \in \pro(\Coh^+(X)),  
         \]
-    thanks to \cref{prop:nil_descent_for_Coh^+}. For this reason, we conclude that  
+    such that for every $[n] \in \bDelta \op$, one has a natural equivalence of the form
         \begin{align*}
-            f^*_{\bullet}(\{ \cG_i \}_{i \in I\op}) \simeq \{\cG_{i, [n]} \}_{i \in I\op, [n]} \simeq 0,  
+            f_{[n]}^* (\cG_i) & \simeq \cG_{i , [n]} \\
+                              & \in \Coh^+(Y^{[n]}).
         \end{align*}
-    as desired.
+    We deduce then that  
+        \begin{align*}
+            f^*_{\bullet}(\{ \cG_i \}_{i \in I\op}) & \simeq \{\cG_{i, [n]} \}_{i \in I\op, [n]} \\
+                                                    & \simeq 0,  
+        \end{align*}
+    in $\lim'_{\bDelta \op} \pro^\mathrm{ps}(\Coh^+(Y^\bullet/ X))$, as desired.
 \end{proof}
 
-We now use the \emph{pseudo-nil-descent} for $\pro(\Coh^+(X))$ \todo{define what this means}, to compute relative cotangent complexes of
+We now use the pseudo-pro-nil-descent for $\pro(\Coh^+(X))$ to compute relative analytic cotangent complexes of
 analytic formal moduli problems over $X$:
 
 \begin{cor} \label{cor:analytic_relative_cotangent_complex_defines_cartesian_sections_in_the_totalization}
@@ -1268,44 +1534,45 @@ analytic formal moduli problems over $X$:
             Z \ar{r} & X,
         \end{tikzcd}
         \]
-    in the \infcat $\anPreStk$, where $( Y \to X) \in \anFMP_{/X}$ and $(g \colon\tZ \to Z) \in \anFMP_{/Z}$. Then the lax-limit object
+    in the \infcat $\dAnSt_k$, where $( Y \to X) \in \anFMP_{/X}$ and $(g \colon\tZ \to Z) \in \anFMP_{/Z}$. Then the lax-limit object
         \[
-            \{ \bbL\an_{\tZ^{[n]} / Y^{[n]}} \} \in \mathrm{Tot}^\mathrm{lax}(\pro(\Coh^+(\tZ^\bullet/Z))),  
+            \{ \bbL\an_{\tZ^{[n]} / Y^{[n]}} \} \in \lim^\mathrm{lax}(\pro^\mathrm{ps}(\Coh^+(\tZ^\bullet/Z))),  
         \]
     defines an actual cartesian section
         \[
-            \{ \bbL\an_{(\tZ)^{[n]}/ Y^{[n]}} \} \in \mathrm{Tot}(\pro(\Coh^+((\tZ)^\bullet /Z))),
+            \{ \bbL\an_{\tZ^{[n]}/ Y^{[n]}} \} \in \lim_{\bDelta \op}\pro(\Coh^+((\tZ)^\bullet /Z)),
         \]
-    which furthermore belongs to the essential image of the natural functor
+    which belongs to the essential image of the natural functor
         \[
-            g^*_\bullet \colon \pro(\Coh^+(Z)) \to \mathrm{Tot}(\pro(\Coh^+(\tZ^\bullet / Z)))
+            g^*_\bullet \colon \pro(\Coh^+(Z)) \to \lim_{\bDelta \op}\pro(\Coh^+(\tZ^\bullet / Z)).
         \]
 \end{cor}
 
 \begin{proof}
-    We first show that the $\{ \bbL\an_{(\tZ)^{[n]}/ Y^{[n]}} \}  \in \mathrm{Tot}^\mathrm{lax}(\pro(\Coh^+((\tZ)^\bullet/ Z)))$
-    defines a cartesian section in the totalizations
+    We first show that the object
+        \[\{ \bbL\an_{(\tZ)^{[n]}/ Y^{[n]}} \}  \in \lim_{\bDelta \op}^\mathrm{lax}\pro^\mathrm{ps}(\Coh^+((\tZ)^\bullet/ Z)),\]
+    defines a cartesian section in
         \[
-            \mathrm{Tot}(\pro(\Coh^+((\tZ)^\bullet / Z))).  
+            \lim_{\bDelta \op} \pro(\Coh^+((\tZ)^\bullet / Z)).  
         \]
-    In order to show this assertion, it is sufficient to prove for every $[n ] \in \bDelta \op$ we have a natural equivalence
+    In order to show this assertion, it is sufficient to prove for every $[n ] \in \bDelta \op$, that we have a natural equivalence
         \[
-            h^*(\bbL\an_{(\tZ)^{[n]} / Y^{[n]}}) \simeq \bbL\an_{(\tZ)^{[n+1]}/ Y^{[n+1]}},  
+            h^*(\bbL\an_{\tZ^{[n]} / Y^{[n]}}) \simeq \bbL\an_{\tZ^{[n+1]}/ Y^{[n+1]}},  
         \]
-    in the \infcat $\pro(\Coh^+((\tZ)^{[n+1]}))$. The latter claim is an immediate consequence of the base change property for the analytic
+    in the \infcat $\pro^\mathrm{ps}(\Coh^+((\tZ)^{[n+1]}))$. The latter claim is an immediate consequence of the base change property for the analytic
     cotangent complex in the case where $Y \in \anNil_{/X}$ (and thus so do $\tZ \in \anNil_{/Z})$), which follows readily from
-    \cite[Proposition 5.12]{Porta_Yu_Representability}. In the general case where $Y \in \anFMP_{/X}$, we reduce to the case
-    where $Y \in \anNil_{/X}$ by combining \cref{prop:required_conditions_for_formal_moduli_problems} with the observation that filtered colimits
-    commute with finite limits in the \infcat $\anPreStk$. 
+    \cite[Proposition 5.12]{Porta_Yu_Representability}. In the general case where $Y \in \anFMP_{/X}$, we reduce to the previous case
+    by combining \cref{prop:required_conditions_for_formal_moduli_problems} with the observation that filtered colimits
+    commute with finite limits in the \infcat $\dAnSt_k$. 
 
-    We now prove the second assertion. Thanks to characterization of the essential image of natural functor
+    We now prove the second assertion of the Corollary. Thanks to the characterization of the essential image of natural functor
         \[
-            g^*_{\bullet} \colon \pro(\Coh^+(Z)) \to \mathrm{Tot}(\pro(\Coh^+((\tZ)^\bullet /Z))),  
+            g^*_{\bullet} \colon \pro(\Coh^+(Z)) \to \lim_{\bDelta \op} \pro^\mathrm{ps}(\Coh^+((\tZ)^\bullet /Z)),  
         \]
     provided in \cref{cor:pseudo_nil-descent_for_pro_Coh^+}, we are reduced to show that for each $[n] \in \bDelta \op$, we have a natural
     equivalence of pro-objects
         \[
-            \bbL\an_{\tZ^{[n]} / Y^{[n]}} \simeq \{ \bbL\an_{\tS^{[n]}/ S^{[n]}} \}_{\tS \in (\anNil_{/ Z})_{/\tZ}, S \in (\anNil_{/X})_{/ Y}}.
+            \bbL\an_{\tZ^{[n]} / Y^{[n]}} \simeq \{ \bbL\an_{\tS^{[n]}/ S^{[n]}} \}_{\tS \in (\anNil_{/ Z})_{/\tZ}, \ S \in (\anNil_{/X})_{/ Y}}.
         \]
     The latter statement follows readily from the first part of the proof by a direct inductive argument.
 \end{proof}
@@ -1333,7 +1600,7 @@ We start with the definition of the notion of \emph{analytic formal groupoids ov
 \end{defin}
 
 \begin{rem}
-    Note that \cref{prop:required_conditions_for_formal_moduli_problems} implies that the the fiber products exist in $\anFMP_{/X}$. Therefore, the previous
+    Note that \cref{prop:required_conditions_for_formal_moduli_problems} implies that fiber products exist in $\anFMP_{/X}$. Therefore, the previous
     definition is reasonable.
 \end{rem}
 
@@ -1350,7 +1617,7 @@ where $Y^\wedge_X \in \anFGrpd(X)$ denotes the analytic formal groupoid over $X$
       \dots \ar[r, shift left=2] \ar[r, shift left=0.75] 
       \ar[r, shift left=-0.75] \ar[r, shift left=-2]
       & X \times_Y X \times_Y X \ar[r, shift left=-1] \ar[r, shift left=1] \ar[r] 
-      & X \times_Y X \ar[r, shift left=-0.25ex] \ar[r, shift left=0.25ex] 
+      & X \times_Y X \ar[r, shift left=-0.5ex] \ar[r, shift left=0.5ex] 
       & X 
     \end{tikzcd},
     \] 
@@ -1358,10 +1625,10 @@ as simplicial presentation.
 \end{construction}
 
 \begin{construction} \label{const:formal_classifying_stack_construction}
-    Let $\cG \in \anFGrpd(X)$. Consider the \emph{$k$-analytic classifying pre-stack}, $\rB_X(\cG)^{\mathrm{pre}} \in \anPreStk$, obtained as the geometric realization
-    of the simplicial object
+    Let $\cG \in \anFGrpd(X)$. Consider the \emph{$k$-analytic classifying pre-stack}, $\rB_X(\cG)^{\mathrm{pre}} \in \dAnSt_k$, obtained as the geometric realization
+    of the simplicial object $\cG$, regarded naturally as a functor
         \[
-            \cG \colon \bDelta \op \to \anPreStk.  
+            \cG \colon \bDelta \op \to \dAnSt_k.  
         \]
     Given any $Z \in \dAfd_k$, the \emph{space of $Z$-points of $\rB_X(\cG)^{\mathrm{pre}}$},
         \[
@@ -1369,14 +1636,17 @@ as simplicial presentation.
         \]
     can be identified with the space whose objects correspond to the datum of:
         \begin{enumerate}
-            \item A morphism $\tZ \to X$, where $\tZ \in \anPreStk$, such that
+            \item A morphism $\tZ \to X$, where $\tZ \in \dAnSt_k$, such that
                 \[
                     \tZ \simeq Z \times_{\rB_X(\cG)^\mathrm{pre}} X;  
                 \]
-            \item A morphism of groupoid-objects in $\anPreStk$ $\tZ \times_Z \tZ \to \cG$.
+            \item A morphism of groupoid-objects
+                \[\tZ \times_Z \tZ \to \cG,\]
+                in the \infcat $\dAnSt_k$.
         \end{enumerate}
-    We now define $\rB_X(\cG)$ as the sub-object spanned by those connected components of $\rB_X(\cG)^\mathrm{pre}$ corresponding to
-    $\tZ \to Z$ which exhibit $\tZ \in \anFMP_{/Z}$. Denote by
+    We now define $\rB_X(\cG) \to \rB^\mathrm{pre}_X(\cG)$ as the sub-object spanned by those connected components of $\rB_X(\cG)^\mathrm{pre}$ corresponding to
+    morphisms $\tZ \to Z$ in \cref{const:formal_classifying_stack_construction} (i)
+    which exhibit $\tZ \in \anFMP_{/Z}$. Denote by
         \[
             \mathrm{can} \colon \rB_X(\cG) \to \rB_X(\cG)^\mathrm{pre},  
         \]
@@ -1396,18 +1666,22 @@ as simplicial presentation.
     Thanks to \cref{prop:sufficient_conditions_for_a_prestack_to_be_equiv_to_an_analytic_FMP} it suffices to prove that $\rB_X(\cG)$ is
     infinitesimally cartesian and it admits furthermore a pro-cotagent complex. The fact that $\rB_X(\cG)$ is infinitesimally cartesian follows from the
     modular description
-    of $\rB_X(\cG)$ combined with the fact that $\cG$ is infinitesimally cartesian, as well. We are thus required to show that $\rB_X(\cG)$ admits
+    of $\rB_X(\cG)$ combined with the fact that $\cG$ is infinitesimally cartesian, as well. Similarly, $\rB_X(\cG)$ being nilcomplete follows again from its
+    modular description combined with the fact that analytic formal moduli problems are nilcomplete.
+    
+    
+    We are thus required to show that $\rB_X(\cG)$ admits
     a \emph{global} pro-cotangent complex. Let $Z \in \dAnk$ and suppose we are given an arbitrary morphism
         \[
             q \colon Z \to \rB_X(\cG),    
         \]
-    in the \infcat $\anPreStk$.
+    in the \infcat $\dAnSt_k$.
     Thanks to \cref{cor:pseudo_nil-descent_for_pro_Coh^+} combined with \cref{cor:analytic_relative_cotangent_complex_defines_cartesian_sections_in_the_totalization}
     it follows that the object
         \[
-            \{ \bbL\an_{\tZ^{[n]} / \cG^{[n]}} \}_{[n] \in \bDelta \op} \in \mathrm{Tot}(\pro(\Coh^+((\tZ)^\bullet / Z)))), 
+            \{ \bbL\an_{\tZ^{[n]} / \cG^{[n]}} \}_{[n] \in \bDelta \op} \in \lim_{\bDelta \op} \pro^\mathrm{ps}(\Coh^+(\tZ^\bullet / Z)), 
         \]
-    defines a well defined object $ \bbL^{\mathrm{an} ' }_{Z/ \rB_X(\cG)} \in \pro(\Coh^+(Z))$. Moreover, it is clear that we there exists a natural morphism
+    defines a well defined object $ \bbL^{\mathrm{an}'}_{Z/ \rB_X(\cG)} \in \pro(\Coh^+(Z))$. Moreover, it is clear that there exists a natural morphism
         \[
             \theta \colon \bbL\an_Z \to \bbL^{\mathrm{an} '}_{Z /  \rB_X(\cG)},
         \]
@@ -1432,7 +1706,7 @@ as simplicial presentation.
             Z \ar{r} & Z'
         \end{tikzcd}
         \]
-    where the morphism $\tZ \to \tZ'$ is a square-zero extension in the \infcat $\anPreStk$ is equivalent to the space of factorizations
+    where the morphism $\tZ \to \tZ'$ is a square-zero extension in the \infcat $\dAnSt_k$ is equivalent to the space of factorizations
         \[
             d \colon g^*  \bbL\an_Z \to \bbL\an_{\tZ} \xrightarrow{{d'}} g^*(\cF)[1],
         \]
@@ -1449,24 +1723,24 @@ as simplicial presentation.
         \[
             d' \colon \bbL\an_{\tZ} \to \bbL\an_{\tZ/ \cG} \to g^*(\cF)[1],
         \]  
-    in the \infcat $\pro(\Coh^+(\tZ))$. By pseudo-pro-nildescent we then deduce that the above factorization space identified with the space
+    in the \infcat $\pro(\Coh^+(\tZ))$. By pseudo-pro-nil-descent we then deduce that the above factorization space identified with the space
     of factorizations
         \[
-            d \colon \bbL\an_Z \to \bbL\an_{Z/ \rB_X(\cG)} \to \cF[1],
+            d \colon \bbL\an_Z \to \bbL^{\mathrm{an}, '}_{Z/ \rB_X(\cG)} \to \cF[1].
         \]
-    as desired.
+    This implies that $\bbL^{\mathrm{an}, '}_{Z/ \rB_X(\cG)}$ satisfies the universal property of the relative analytic pro-cotangent complex, as desired.
 \end{proof}
 
-\begin{thm}
+\begin{thm} \label{thm:Phi_is_an_equivalence}
     The functor $\Phi \colon \anFMP_{/X} \to \anFGrpd(X)$ of \cref{const:formal_completion_construction_Phi} is an equivalence of \infcats.
 \end{thm}
 
-\begin{proof} Let $\cG \in \anFGrpd$.
+\begin{proof} Let $\cG \in \anFGrpd(X)$.
     Thanks to (1) in \cref{const:formal_classifying_stack_construction} it follows that one has a canonical equivalence
         \[
             X \times_{\rB_X(\cG)} X \simeq \cG,
         \]
-    in $\anPreStk$. This shows that the construction
+    in $\dAnSt_k$. This shows that the construction
         \[
             \rB_X(\cG) \colon \anFGrpd(X) \to \anFMP_{X/},  
         \]
@@ -1475,8 +1749,1075 @@ as simplicial presentation.
         \[
               Y \to \rB_X(Y \times_X Y),
         \]
-    is also an equivalence in $\anPreStk$.
+    is also an equivalence in $\dAnSt_kDERIVED NON-ARCHIMEDEAN ANALYTIC HILBERT SPAC$.
 \end{proof}
+
+\subsection{The affinoid case} Let $X \in \dAfdk$ denote a derived $k$-affinoid space.
+Thanks to derived Tate aciclycity theorem, cf. \cite[Theorem 3.1]{Porta_Yu_Derived_Hom_spaces}
+the \emph{global sections functor}
+    \[
+        \Gamma \colon \Coh^+(X) \to  \Coh^+(A),
+    \]
+where $A \coloneqq \Gamma(X, \cO_X \alg) \in \CAlg_k$, is an equivalence of \infcats. Since ordinary $k$-affinoid algebras are Noetherian, we deduce that
+$A \in \CAlg_k$ is a Noetherian derived $k$-algebra.
+
+\begin{notation}
+    Let $X \in \dAfd_k$ and $A \coloneqq \Gamma(X, \cO_X)$. We denote by
+        \[
+            \mathrm{FMP}_{/\Spec A} \in \Catinf,  
+        \]
+    the \infcat of \emph{algebraic formal moduli problems over $\Spec A$}, (c.f. \cite[Definition 6.11]{Porta_Yu_NQK}).
+\end{notation}
+
+\begin{thm}$\mathrm{(}$\cite[Theorem 6.12]{Porta_Yu_NQK}$\mathrm )$ \label{thm:equivalence_between_analytic_and_algebraic_formal_moduli_problems_over}
+    Let $X \in \dAfdk$ and $A \coloneqq \Gamma(X, \cO_X\alg) \in \CAlg_k$. Then the induced functor
+        \[
+            (-) \an \colon \mathrm{FMP}_{/ \Spec A} \to \anFMP_{/X},
+        \]
+    is an equivalence of \infcats.
+\end{thm}
+
+As an immediate consequence, we obtain the following result:
+
+\begin{cor} \label{cor:equivalence_between_pointed_analytic_and_algebraic_formal_moduli_problems_over}
+    Let $X \in \dAfd_k$ and $A \coloneqq \Gamma(X, \cO_X\alg)$. Then one has an equivalence of \infcats
+        \[
+            \mathrm{FMP}_{\Spec A/ /\Spec A} \to \anFMP_{X/ /X} ,
+        \]
+    of pointed algebraic formal moduli problems over $\Spec A$ and pointed analytic formal moduli problems over $X$, respectively.
+\end{cor}
+
+\begin{proof}
+    It is an immediate consequence of \cref{thm:equivalence_between_analytic_and_algebraic_formal_moduli_problems_over}. Indeed, equivalences of \infcats with final objects
+    induce natural equivalences on the associated \infcats of pointed objects.
+\end{proof}
+
+
+\begin{cor}
+    Let $X \in \dAfd_k$. Then both the \infcats $\anFGrpd(X)$ and $\anFMP_{X/}$ admit sifted colimits.
+\end{cor}
+
+\begin{proof}
+    Thanks to \cref{thm:Phi_is_an_equivalence} we are reduced to prove solely that $\anFGrpd(X)$ admits sifted colimits. Let $F \colon I \to \anFGrpd(X)$
+    denote a functor, where $I$ is a sifted \infcat. Then, for each $i \in I$ and $[n] \in \bDelta \op$ we have that
+        \[
+            F(i)_{[n]} \in \mathrm{Ptd}(\anFMP_{/X}).  
+        \]
+    Since the \infcat $\mathrm{Ptd}(\mathrm{FMP}_{/ \Spec A})$ admits sifted colimits, see for instance \cite[\S 5, Corollary1.6.6]{Gaitsgory_Study_II}, we deduce
+    thanks to \cref{cor:equivalence_between_pointed_analytic_and_algebraic_formal_moduli_problems_over} that so does the \infcat $\mathrm{Ptd}(\anFMP_{/ X})$.
+    For this reason, we deduce that for each $[n] \in \bDelta \op$, the object
+        \[
+            Y_{[n]} \coloneqq \colim_{i \in I} F(i)_{[n]} \in \mathrm{Ptd}(\anFMP_{/X}),  
+        \]
+    is well defined. Moreover, the simplicial object
+        \[
+            \{ Y_{[n]} \}_{[n] \in \bDelta \op},  
+        \]
+    in the \infcat $\mathrm{Ptd}(\anFMP_{/X})$ forms an analytic formal groupoid over $X$, since sifted colimits commute with finite products. Moreover, it follows from the
+    definitions that the object $\{Y_{[n]} \}_{[n]}$ is a sifted colimit of the diagram $F \colon I \to \anFGrpd(X)$, as desired.
+\end{proof}
+
+Let $Y \in \anFMP_{X/}$, we can thus identify
+the associated relative pro-cotangent complex
+    \[
+        \bbL\an_{X/Y} \in \pro(\Coh^+(A)).  
+    \]
+Consider the diagram
+    \[
+    \begin{tikzcd}
+        X \ar{r}{\Delta}  \ar{rd}[swap]{=} & X \times_Y X \arrow[d, "p_0", shift left=2] \arrow{d}[swap]{p_1} \\
+        &   X  
+    \end{tikzcd}
+    \]
+in the \infcat $\anPreStk$, where $\Delta \colon X \to X \times_Y X$ denotes the usual \emph{diagonal embedding}. We then obtain a natural
+fiber sequence associated to the above diagram of the form
+    \begin{equation} \label{eq:fiber_sequence_for_rel_cot_complexes_along_diagonal_and_projections}
+        \Delta^* \bbL\an_{X \times_Y X/ X} \to \bbL\an_{X/X} \to \bbL\an_{X/ X \times_Y X}.
+    \end{equation}
+Notice further that by \cite[Proposition 5.12]{Porta_Yu_Representability} one has an equivalence
+    \[
+        \bbL\an_{X \times_Y X/ X} \simeq p_i^* \bbL\an_{X/Y},  
+    \]
+for $i =0, 1$. We further deduce that
+    \[\bbL\an_{X \times_Y X/ X} \simeq \bbL\an_{X/Y},\]
+in the \infcat $\pro(\Coh^+(A))$. Moreover, since $\bbL\an_{X/ X} \simeq 0$, we obtain from the fiber sequence \eqref{eq:fiber_sequence_for_rel_cot_complexes_along_diagonal_and_projections}
+a natural equivalence
+    \[
+        \bbL\an_{X/ X \times_Y X} \simeq \bbL\an_{X / Y} [1],    
+    \]
+in $\pro(\Coh^+(A))$. Moreover, we can identify the $\bbL\an_{X \times_Y X / X}$ with the pro-object  
+    \[
+        \bbL\an_{X/ X \times_Y X } \simeq \{ \bbL\an_{X/ X \times_S X} \}_{S \in \anNil_{X//Y}^\cl} ,
+    \]
+where $\bbL\an_{X/ X\times_S X} \in \Coh^+(A)$ denotes the relative analytic cotangent complex associated to the closed embedding
+    \[
+        X \to X \times_S X,  
+    \]
+for $S \in \anNil_{X/Y}^\cl$. Thanks to \cite[Corollary 5.33]{Porta_Yu_Representability} we deduce that
+    \[
+        \bbL\an_{X/X\times_SX} \simeq \bbL_{A/ A \widehat{\otimes}_{B_S} A} ,
+    \]
+in $\Coh^+(A)$, where $B_S = \Gamma(S, \cO\alg_S)$. \personal{Notice that we can remove the hat in the previous tensor product
+since under our assumptions $A \in \Coh^+(B_S)$, for every such considered $S$.}
+
+\begin{notation}
+    Let $X \in \dAfd_k$. We shall denote by
+        \[
+            \QCoh(X) \coloneqq \Mod_A,  
+        \]
+    where $A \coloneqq \Gamma(X, \cO_X\alg)$. The latter can be naturally identified with the stable \infcat $\Ind(\Perf(A))$.
+\end{notation}
+
+\begin{notation}
+    Let $X \in \dAfd_k$. We shall denote the \emph{plain duality functor} as
+        \[
+            (-)^\vee \colon \Coh^+(X) \op  \to \QCoh(X), 
+        \]
+    which is given on objects by the formula
+        \[
+            \cF \in \Coh(X)\op \mapsto \Map_{\QCoh(X)}(\cF, \cO_X\alg) \in \Perf(X).  
+        \]
+    We can extend the latter functor via filtered colimits to a functor on ind-completions:
+        \begin{align*}
+            (-)^\vee \colon \pro(\Coh^+(X)) \op & \simeq \Ind(\Coh^+(X)\op) \\
+                                                & \simeq \QCoh(X).
+        \end{align*}
+    The latter associates to each ind-colimit
+        \begin{align*}
+            \cF     & \simeq \colim_{i \in I } \cF_i \\
+                    & \in \Ind(\Coh^+(X)\op),  
+        \end{align*}
+    where $I$ is a filtered \infcat and for each $i \in I$, $\cF_i \in \Coh^+(X)$, the filtered colimit object
+        \[
+            \colim_{i \in I} \cF_i^\vee   
+        \]
+    computed in the presentable \infcat $\QCoh(X)$.
+\end{notation}
+
+\begin{defin}[Tangent complex] Let $Y \in \anFMP_{X/}$. We define the \emph{relative analytic tangent complex} of $X \to Y$ as the object
+    \begin{align*}
+        \bbT\an_{X/ Y}  & \coloneqq (\bbL\an_{X/Y})^\vee \\
+                        & \simeq \colim_{S \in \anNil^\cl_{X/ /Y}} (\bbL\an_{X/S})^\vee,
+    \end{align*}
+    in $\QCoh(X)$.
+\end{defin}
+
+The following result will play a major role in the study of the deformation to the normal bundle:
+
+\begin{prop} \label{prop:conservativity_and_preservation_of_sifted_colimits_of_tangent_complex}
+    The functor $\bbT\an_{X/ \bullet} \colon \anFMP_{X/} \to \QCoh(X)$ given on objects by the formula
+        \[
+            (X \to Y) \in \anFMP_{X/} \mapsto \bbT\an_{X/Y} \in \QCoh(X), 
+        \]
+    is conservative and commutes with sifted colimits.
+\end{prop}
+
+\begin{proof}
+    We start by first proving that $\bbT\an_{X/ \bullet}$ is conservative. Let $Y \in \anFMP_{X/}$ and let $F \in \Perf(X)$ be a perfect complex on $X$
+    (as an immediate consequence
+    of derived Tate aciclycity one has that $\Perf(X) \simeq \Perf(A)$). In this case, we have a chain of natural equivalences
+        \begin{align*}
+            \Map_{\QCoh(X)}(F, \bbT\an_{X/Y}) & \simeq \colim_{S \in \anNil^\cl_{X/ /Y}} \Map_{\QCoh(X)}(F, \bbT\an_{X/S} ) \\
+                                              & \simeq \colim_{S \in \anNil^\cl_{X/ /Y}} \Map_{\QCoh(X)}(F \otimes_{\cO_X} \bbL\an_{X/S}, \cO_X) \\
+                                              & \simeq \colim_{S \in \anNil^\cl_{X/ /Y}} \Map_{\QCoh(X)}(\bbL\an_{X/S}, F^\vee) \\
+                                              & \simeq \colim_{S \in \anNil^\cl_{X/ /Y}} \Map_{\Coh^+(X)}(\bbL\an_{X/S}, F^\vee) \\
+                                              & \simeq \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/ /Y}, F^\vee), 
+        \end{align*}
+    in the \infcat $\cS$. Let $f \colon Y \to Z$ be a morphism in the \infcat $\anFMP_{X/}$ such that $f$ induces an equivalence at the level of the relative
+    analytic tangent complexes
+        \[
+            f_* \colon \bbT\an_{X/Y} \to \bbT\an_{X/Z}.  
+        \]
+    Then, from the previous considerations we deduce that for every $F \in \Perf(X)$ the induced morphism of mapping spaces
+        \[
+              \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/ Y}, F) \simeq \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/Z}, F)
+        \]
+    is an equivalence. Moreover, thanks to \cite[Corollary 5.5.6.22]{HTT} we deduce that for every $m \in \bbZ$ and every $F \in \Perf(X)$ we have a chain
+    of natural equivalences
+        \begin{align*}
+            \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/Y}, \tau_{\le m}(F)) & \simeq \colim_{S \in \anNil^\cl_{X/ /Y}} \Map_{\Coh^+(X)}(\bbL\an_{X/S}, \tau_{\le m}(F)) \\
+                                                                   & \simeq \colim_{S \in \anNil^\cl_{X/ /Y}} \tau_{\le m} \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/S}, F) \\
+                                                                   & \simeq \tau_{\le m} \big( \colim_{S \in \anNil^\cl_{X/ /Y}} \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/ S}, F) \big) \\
+                                                                   & \simeq \tau_{\le m} \big( \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/Y}, F) \big) \\
+                                                                   & \simeq \tau_{\le m} \big( \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/Z}, F) \big) \\
+                                                                   & \simeq \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/Z}, F),
+        \end{align*}
+    of mapping spaces. Since every bounded almost perfect $\cO_X$-module $\cF \in \Coh^+(X)$ is a retract of a truncation of a perfect $\cO_X$-module we deduce that
+    one has an equivalence of mapping spaces
+        \[
+            \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/ Y}, \cF) \simeq \Map_{\pro(\Coh^+(X))}(\bbL\an_{X/Z}, \cF),
+        \]
+    for every $\cF \in \Coh^\mathrm{b}(X)$. Conservativity of the functor $\bbT\an_{X/ \bullet}$ now follows immediately from \cref{cor:universal_property_of_relative_cotangent_complex_for_morphisms_between_analytic_FMP}
+    combined with \cite[Corollary 5.40]{Porta_Yu_Representability} and the fact that both $Y, Z \in \anFMP_{X/}$ are nilcomplete.
+    We shall now prove that $\bbT\an_{X/ \bullet}$ commutes with sifted colimits.
+    Thanks to \cref{thm:Phi_is_an_equivalence} we are reduced to show that
+        \[
+            \bbT\an_{X/ X \times_\bullet X} \colon \anFMP_{X/} \to \Ind(\Coh^+(A)),  
+        \]
+    preserves sifted colimits. Moreover, given any $Y \in \anFMP_{X/}$, each projection morphism
+        \[
+            p_i \colon X \times_Y X \to X,  
+        \]
+    exhibits the latter as an object in $\anFMP_{/X}$. Since $X \in \dAfd_k$, \cite[Theorem 6.12]{Porta_Yu_NQK} implies that one has an equivalence of \infcats
+        \[
+            (-)\an \colon \mathrm{FMP}_{/\Spec A} \simeq \anFMP_{/X} .
+        \]
+    By \eqref{eq:fiber_sequence_for_rel_cot_complexes_along_diagonal_and_projections} we are reduced to show that
+        \[
+            \Delta^! \bbT_{X \times_{\bullet} X/ X}  ,  
+        \]
+    commutes with sifted colimits. functor $\bbT\an_{X/ \bullet}$ can be identified with the functor
+        \[
+            \bbT\an_{X/ \bullet}  
+        \]
+    But $\bbT\an_{X/ X \times_Y X}$ is defined as the Serre dual of
+        \[
+            \bbL\an_{X/ X\times_\bullet X } \simeq \bbL_{A/ A \otimes_\bullet A},  
+        \]
+    in $\Ind(\Coh^+(A))$. It follows from \cite[\S 5, Corollary 2.2.4]{Gaitsgory_Study_II} that the latter preserves sifted colimits. The assertion
+    now follows from the fact that the analytification functor
+        \[
+            (-)\an \colon \Ind(\Coh^+(A)) \to \Ind(\Coh^+(A)),
+        \]
+    is a left adjoint, and thus commutes with sifted colimits.
+\end{proof}
+
+
+
+
+\section{Non-archimedean Deformation to the normal bundle}
+
+In this \S \ we introduce the construction of the deformation to the normal cone in the setting of derived $k$-analytic geometry. This has
+already been studied in \cite{Porta_Yu_NQK} in the case where we consider the natural morphism $f \colon X_\red \to X$, for some $X \in \dAnk$.
+The situation in the algebraic case was extensively studied in \cite{Gaitsgory_Study_II}.
+
+\subsection{General construction in the algebraic case} Consider the object
+    \[
+        \mathrm{B}^\bullet_{\mathrm{scaled}} \in \Fun(\Delta \op, \mathrm{dSt}_k),
+    \]
+introduced in
+\cite[\S 9.2.2]{Gaitsgory_Study_II}. Recall that $\mathrm{B}^{n}_\mathrm{scaled}$ is obtained by gluing $n+1$ copies of $\bbA^1_k$ together along
+$0 \in \bbA^1_k$.
+
+\begin{construction} \label{construction:def_to_the_normal_bundle}
+    Let $f \colon X \to Y$ denote a morphism in the \infcat $\mathrm{dSt}_k^\laft$.
+    In \cite[\S 9.3]{Gaitsgory_Study_II}, the authors introduced the \emph{deformation to the normal bundle associated to the morphism $f \colon X \to Y$}, as the pullback
+        \[
+        \begin{tikzcd}
+            \cD^\bullet_{X/Y} \ar{r} \ar{d} &   Y \times \bbA^1_k \ar{d} \\
+            \Map_{/ \bbA^1_k}(\mathrm{B}^\bullet_{\mathrm{scaled}}, X \times \bbA^1_k) \ar{r} & \Map_{/ \bbA^1_k}(\mathrm{B}^\bullet_{\mathrm{scaled}}, Y \times \bbA^1_k),
+        \end{tikzcd}
+        \]
+    where both $X \times \bbA^1_k$ and $Y \times \bbA^1_k$ are considered as constant simplicial objects in the \infcat $\dSt^\laft_k$. Suppose now that
+    the morphism $f \colon X \to Y$ is a closed immersion in $\mathrm{dSt}^\laft_k$ such that both $X$ and $Y$ admit a \emph{deformation theory} in the sense of
+    \cite[\S 1]{Gaitsgory_Study_II}.
+    
+    The authors proved in \cite[Theorem 9.2.3.4]{Gaitsgory_Study_II} that each component of the simplicial object
+    $\cD_{X/Y}^\bullet$ admits a deformation theory itself. In particular, the object $\cD^\bullet_{X/ Y}$ defines a formal groupoid over
+    $X \times \bbA^1_k$. Moreover, Theorem 5.2.3.4 in loc. cit. allows us to associate to $\cD^\bullet_{X/Y}$ a
+    formal moduli problem under $X \times \bbA^1_k$
+           \[
+               \cD_{X/Y} \in \mathrm{FMP}_{X \times \bbA^1_k/ },
+           \]
+    obtained via the construction provided in \S 5.2.4 in loc. cit. Moreover, by construction the object $\cD_{X/Y} \in (\dSt^\laft_k)_{/\bbA^1_k}$.
+\end{construction}
+
+\begin{notation}
+    Notice that the object $\cD_{X/ Y} \in \mathrm{FMP}_{X \times \bbA^1_k/ }$ admits a natural morphism to $Y \times \bbA^1_k$. We shall denote from now on the \infcat
+    of formal moduli problems under $X \times \bbA^1_k$ together with a morphism to $Y \times \bbA^1_k$, in $\mathrm{dSt}_k^\laft$, by $\mathrm{FMP}_{X \times \bbA^1_k/ /Y \times \bbA^1_k}$.
+\end{notation}
+We shall now describe certain formal properties of the object $\cD_{X/Y} \in \mathrm{FMP}_{X \times \bbA^1_k/ /Y \times \bbA^1_k}$:
+
+\begin{prop} Let $f \colon X \to Y$ denote a closed immersion in the \infcat $\dSt_k^\laft$.
+    The following assertions hold:
+    \begin{enumerate}
+        \item The fiber $(\cD_{X/Y})_{0}$ at $0$ of the morphism structural morphism $\cD_{X/Y} \to \bbA^1_k$ identifies with
+        the formal moduli problem $\rT_{X/Y}[-1]^\wedge$ obtained from the shifted tangent bundle $\rT_{X/Y}[-1] \to X$ by completing along the
+        zero section
+            \[
+                s_0 \colon X \to \rT_{X/Y}[-1].  
+            \]
+        \item The fiber $(\cD_{X/Y})_{\lambda}$ for $\lambda \neq 0$ identifies with the formal completion
+            \[
+                Y^\wedge_X \in \dSt_k,  
+            \]
+        along the morphism $f$.
+        \item There exists a natural sequence of formal moduli problems
+            \[
+                X \times \bbA^1_k = \cD_{X/Y}^{(0)} \to \cD_{X/Y}^{(1)}  \to  \dots \to \cD_{X/Y}^{(n)} \to \dots \to \dots \to Y,
+            \]
+        in $\mathrm{FMP}_{X\times\bbA^1_k/ /Y\times\bbA^1_k}$ such that, for each $n \ge 0$, the morphism
+            \[
+                \cD^{(n)}_{X/Y} \to \cD^{(n+1)}_{X/Y},  
+            \]
+        has the structure of a square-zero extension by an element in $\Coh^+(\cD_{X/Y}^{(n)})^{\ge n}$. In particular, if $X \in \dSt_k^\laft$
+        is a geometric stack, then so it is each $\cD^{(n)}_{X/Y}$.
+        \item The natural morphism
+            \[\colim_{n} \cD^{(n)}_{X/Y} \to \cD_{X/Y},\]
+        in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ /Y\times\bbA^1_k}$ is an equivalence
+        (and thus so it is when computed in the \infcat $(\dSt_k^\laft)_{X\times\bbA^1_k/ /Y\times\bbA^k})$. In particular, if $X \in \dSt_k^\laft$
+        is a geometric stack then it follows by (iii) that the colimit 
+            \[\cD_{X/Y} \simeq \colim_n \cD_{X/Y}^{(n)},\]
+        is also geometric.
+    \end{enumerate}
+\end{prop}
+
+\begin{rem}
+    The existence of the object $\{ \cD^{(n)}_{X/ Y} \}_{n \ge 0}$ define a filtration on the global sections of the formal completion $Y^\wedge_X$, which we shall
+    refer to as the \emph{Hodge filtration associated to the morphism $f$}.
+\end{rem}
+
+\begin{rem} \todo{Probably it is better to have this as a Corollary.}
+As an immediate of the above Proposition we deduce that the relative algebraic de rham cohomology associated to the morphism $f \colon X \to Y$ can be computed
+as the derived adic completion global section of the formal completion $Y^\wedge_X$. In particular, the latter does not depend on the underlying derived structure
+on both $X$ and $Y$. Nonetheless, the \emph{Hodge filtration} considered depends heavily on the derived structure of hte latter objects in $\dSt^\laft_k$.
+\end{rem}
+
+\subsection{The construction of the deformation in the affinoid case} The goal in this section is to study the deformation to the normal cone in the non-archimedean
+setting. Let us assume that we are given a closed immersion
+    \[
+        f \colon X \to Y,
+    \]  
+in the \infcat $\dAfd_k$. Consider the object
+    \[
+        \mathbf{B}^{\mathrm{an}, \bullet}_{\mathrm{scaled}} \colon \bDelta \op \to (\dAnSt_k)_{/ \mathbf A^1_k(0)},
+    \]
+obtained as the analytification of the simplicial object $\mathrm{B}^\bullet_{\mathrm{scaled}} \in \Fun(\Delta \op, \mathrm{dSt}^\laft_k)$ described in the previous section.
+We define the deformation to the normal bundle via the pullback diagram
+    \[
+    \begin{tikzcd}
+        \cD_{X/Y}^{\mathrm{an}, \bullet} \ar{r} \ar{d} & Y \times \bA^1_k \ar{d} \\
+        \bfMap_{/ \bA^1_k}(\mathbf{B}^{\mathrm{an}, \bullet}, X \times \bA^1_k) \ar{r} & \bfMap_{/ \bA^1_k}(\mathbf{B}^{\mathrm{an, \bullet}}, Y \times \bA^1_k)
+    \end{tikzcd},
+    \]
+computed in the \infcat $\mathrm{Fun}(\bDelta \op, \dAnSt_k)$.
+Consider the natural projection map
+    \[
+        p \colon \cD_{X/Y}^{\mathrm{an}, \bullet} \to \bA^1_k. 
+    \]
+We now proceed to identifiy its fiber at $\lambda = 0$.
+
+\begin{notation}
+    Let $A \coloneqq \Gamma(Y, \cO_Y\alg)$ and $B \coloneqq \Gamma(X, \cO_X\alg)$ and define $Y\alg \coloneqq \Spec A$ and $X\alg \coloneqq \Spec B$.
+\end{notation}
+
+We have an induced closed immersion
+    \[
+        f\alg \colon X\alg \to Y\alg,  
+    \]
+of Noetherian affine schemes. Consider the object $\cD_{X\alg/ Y\alg}^\bullet \in \Fun(\bDelta \op, \dAff_k)$ as in \cref{construction:def_to_the_normal_bundle}.
+Thanks to \cite[Proposition 4.6.1.3]{Lurie_SAG} we can find a presentation
+    \[
+        \lim_{\alpha \in A\op} f_{\alpha } \colon \lim_{\alpha \in A\op} X_\alpha\alg \to \lim_{\alpha \in A\op} Y_\alpha\alg,  
+    \]
+such that $A$ is a filtered \infcat and for each $\alpha \in A$, the morphism
+    \[
+        f_\alpha \colon X_\alpha\alg \to Y_\alpha\alg,  
+    \]
+is a closed immersion of almost of finite presentation affine schemes
+    \[X_\alpha\alg , Y_\alpha\alg \in \dAff^\laft.\]
+It is clear from the descritption
+of $\cD_{X\alg/Y\alg}^\bullet$ given in \cref{construction:def_to_the_normal_bundle} that one has a natural equivalence of derived stacks
+    \[
+        \cD_{X\alg/Y\alg}^\bullet \simeq \lim_{\alpha \in A\op} \cD_{X_\alpha\alg/ Y_\alpha\alg}^\bullet,
+    \]
+in the \infcat $\mathrm{Fun}(\bDelta \op, \dSt_k)$.
+Recall further the notion of \emph{relative analytification} introduced in \cite[\S 6.1]{Porta_Yu_NQK}. We shall first need a preliminary lemma:
+
+\begin{lem} \label{lem:relative_anlaytification_of_closed_immersions_are_compatible_with_alg_construction}
+    Let $f \colon X \to Y$ be a closed immersion in $\dAfd_k$. Then one has a natural equivalence
+        \[
+            (f \alg)\an_Y \simeq f,  
+        \]
+    in the \infcat $\Fun(\Delta^1, \dAfd_k)$.
+\end{lem}
+
+\begin{proof}
+    Let $f \alg \colon \Spec B \to \Spec A$ be the induced morphism, where $B \coloneqq \Gamma(X, \cO_X\alg)$ and $A \coloneqq \Gamma(Y, \cO_Y\alg)$. It follows readily from the definitions
+    that the morphism $f\alg$ of derived affine schemes is a closed immersion. Moreover,
+    we have a natural
+    identification
+        \[(\Spec(A)\alg)\an_Y \simeq Y.\]
+    For this reason, the commutative diagram
+        \[
+        \begin{tikzcd}
+            X \ar{r}{f} \ar{d} & Y \ar{d}{\simeq} \\
+            (X\alg)\an_Y \ar{r}{(f\alg)\an_Y} & (Y\alg)\an_Y,  
+        \end{tikzcd}
+        \]
+    induces
+    an equivalence at the level of global sections
+        \[
+            \Gamma(X, \cO_X\alg) \simeq \Gamma((X\alg)_Y\an, \cO_{(X\alg)\an_Y}\alg).  
+        \]
+    The result now follows immediately from the fact that both $X$ and $(X\alg)_Y\an$ are derived $k$-affinoid spaces together with the derived Tate acyclity's theorem,
+    c.f. \cite[Theorem 3.1]{Porta_Yu_Derived_Hom_spaces}.
+\end{proof}
+
+\begin{lem} \label{lem:analytification_of_simplicial_object_deformation}
+    Let notations be as above. Then one has a natural equivalence
+        \[
+            \cD_{X/Y}^{\mathrm{an}, \bullet} \simeq (\cD_{X\alg/ Y\alg}^\bullet)\an_Y  ,
+        \]
+    where $(-)_Y\an$ denotes the relative analytification with respect to $Y$.
+\end{lem}
+
+\begin{proof}
+    As before, write the closed immersion of affine schemes
+        \[
+            f \colon X\alg \to Y\alg,  
+        \]
+    as a cofiltered limit 
+        \[\lim_\alpha f_\alpha \colon \lim_\alpha X_\alpha\alg \to \lim_\alpha Y_\alpha\alg,\]
+    where for each index $\alpha \in A$, both $X_\alpha$
+    and $Y_\alpha$ are affine schemes of almost of finite type. Since the natural projection morphism
+        \[
+            \mathrm{B}_\mathrm{scaled}^\bullet \to \bbA^1_k, 
+        \]
+    where we regard $\bbA^1_k$ as a constant simplicial object in the \infcat $\dSt_k$, is a proper morphism, we deduce from \cite[Theorem 6.13]{Holstein_Analytification_of_mapping_stacks}
+    that for every $\alpha$, the natural morphisms
+        \begin{align*}
+            \Map_{/\bbA^1_k}(\mathrm{B}^\bullet_\mathrm{scaled}, X_\alpha\alg \times \bbA^1_k)\an & \to \bfMap_{/ \bA^1_k}(\mathbf{B}^{\bullet, \mathrm{an}}_\mathrm{scaled} , (X_\alpha\alg)\an \times \bA^1_k) \\
+            \Map_{/\bbA^1_k}(\mathrm{B}^\bullet_\mathrm{scaled}, Y_\alpha\alg \times \bbA^1_k)\an & \to \bfMap_{/ \bA^1_k}(\mathbf{B}^{\bullet, \mathrm{an}}_\mathrm{scaled} , (Y_\alpha\alg)\an \times \bA^1_k)
+        \end{align*}
+    are equivalences in the \infcat $\dAnSt_k$. Therefore, the natural morphism
+        \[
+            (\cD_{X\alg_\alpha/Y\alg_\alpha}^\bullet )\an  \to \cD_{(X_\alpha \alg)\an/ (Y_\alpha \alg)\an}^{\bullet, \mathrm{an}},
+        \]
+    is an equivalence in the \infcat $\dAnSt_k$. Observe further that for every $\alpha \in A$ the mapping stacks
+        \[
+            \Map_{/ \bbA^1_k}(\mathrm{B}^\bullet_\mathrm{scaled}, X_\alpha\alg \times \bbA^1_k) \quad \mathrm{and} \quad \Map_{/ \bbA^1_k}(\mathrm{B}^\bullet_\mathrm{scaled}, Y_\alpha\alg \times \bbA^1_k)  
+        \]
+    are affine schemes and therefore it follows by the construction of the analytification functor
+        \[
+            (-)\an \colon \dAff_k \to \dAnSt_k,  
+        \]
+    as a right Kan extension of the usual analytification functor
+        \[
+            (-)\an \colon \dAff^\laft_k \to \dAn_k,  
+        \]
+    that we have natural equivalences
+        \begin{align*}
+           ( \lim_\alpha \Map_{/\bbA^1_k}(\mathrm{B}^\bullet_\mathrm{scaled}, X_\alpha\alg \times \bbA^1_k)) \an & \simeq \bfMap_{/\bbA^1_k}(\mathrm{B}^{\bullet, \mathrm{an}}_\mathrm{scaled}, (X\alg)\an_Y \times \bA^1_k) \\
+           ( \lim_\alpha \Map_{/\bbA^1_k}(\mathrm{B}^\bullet_\mathrm{scaled}, Y_\alpha\alg \times \bbA^1_k)) \an & \simeq \bfMap_{/\bbA^1_k}(\mathrm{B}^{\bullet, \mathrm{an}}_\mathrm{scaled}, (Y\alg)\an_Y \times \bA^1_k).
+        \end{align*}
+    in the \infcat $(\dAnSt_k)_{X \times \bbA^1/ /Y \times \bbA^1_k}$.
+    The result now follows from the existence of a commutative cube
+        \[
+        \begin{tikzcd}[column sep=0.125in,row sep=0.125in]
+            (\cD_{X\alg/ Y\alg}^\bullet)\an_Y \ar{rr} \ar{dd} \ar{rd} &  & Y \times \bA^1_k \ar{rd} \ar{dd} & \\
+            & (\cD_{X\alg/ Y\alg}^\bullet)\an \ar{rr} \ar{dd} &  & (Y\alg \times \bbA^1_k)\an \ar{dd} \\
+            \bfMap_{/\bA^1_k}(\mathbf{B}^\bullet, X \times \bA^1_k) \ar{rr} \ar{rd} & & \bfMap_{/\bA^1_k}(\mathbf{B}^\bullet, Y \times \bA^1_k) \ar{rd} \\
+            & \bfMap_{/\bA^1_k}(\mathbf{B}^\bullet, (X\alg)\an \times \bA^1_k) \ar{rr} &  & \bfMap_{/\bA^1_k}(\mathbf{B}^\bullet, (Y\alg)\an \times \bA^1_k)
+        \end{tikzcd}
+        \]
+    whose top and front squares are fiber products in $\dAnSt_k$, and thus so it is the back square, as desired.
+\end{proof}
+
+\begin{cor}
+    Let $f \colon X \to Y$ be a closed morphism in $\dAfdk$. Then one has a natural identification
+        \[
+            (\cD^{\bullet, \mathrm{an}}_{X/Y})_0 \simeq (\bT^{\mathrm{an}, \bullet}_{X/Y})^\wedge[-1] ,
+        \]
+    where the latter denotes the commutative group object associated to the formal completion of the tangent bundle of $f$ along the zero section $s_0 \colon
+    X \to \bT^{\mathrm{an}, \bullet}_{X/Y}[-1]$.
+\end{cor}
+
+\begin{proof}
+    The result follows from \cite[Proposition 9.2.3.6]{Gaitsgory_Study_II} combined with the fact that relative analytification is defined via objects of almost of finite type
+    plus the fact that analytification commutes with tangent bundles and formal completions, \cite[Corollary 5.20]{Holstein_Analytification_of_mapping_stacks}. \personal{I don't think the latter reference is completely
+    fit.}
+\end{proof}
+
+The following result is an immediate consequence of \cref{lem:analytification_of_simplicial_object_deformation}:
+
+\begin{lem} \label{lem:deformation_theory_for_D^an_bullet_X/Y}
+    For each $[n] \in \bDelta$, the object $\cD_{X/Y}^{\mathrm{an}, [n]} \in (\dAnSt_k)_{X \times \bA^1_k/ /Y \times \bA^1_k}$ admits a deformation theory and it is furthermore affinoid.
+\end{lem}
+
+\begin{proof}
+    We shall prove that $\cD^{ \mathrm{an}, \bullet}_{X/ Y} \in \Fun(\bDelta \op, \anFMP_{X \times \bA^1_k/ /Y\times\bA^1_k})$. By \cite[Lemma 2.3.2]{Gaitsgory_Study_II}, it follows
+    that $\cD^\bullet_{X\alg/ /Y\alg}$ is an object in $\mathrm{FMP}_{X\alg/ /Y\alg}$. The result now follows by applying the relative analytification functor $(-)_Y\an$ together with
+    \cite[Proposition 6.10]{Porta_Yu_NQK}. The fact that
+    $\cD^{\mathrm{an}, [n]}_{X/Y}$ is affinoid, for every $[n] \in \bDelta \op$, follows readily from the observation that for every $\lambda \in \bbA^1_k$ the fiber
+        \[
+            (\cD^{\bullet, \mathrm{an}}_{X/ Y})_\lambda \in \dAfd_k.  
+        \]
+\end{proof}
+
+
+\begin{construction}
+    As we proved in \S 2.5, the \infcat $\anFMP_{X\times\bA^1_k/ /Y\times\bA^1_k}$ admits sifted colimits. Thanks to \cref{lem:deformation_theory_for_D^an_bullet_X/Y},
+    it follows that we compute the sifted colimit
+        \[
+            \cD\an_{X/Y} \coloneqq \colim_{\bDelta \op} \cD^{\mathrm{an}, \bullet}_{X/Y} \in \anFMP_{X\times\bA^1_k/ /Y\times\bA^1_k}.  
+        \]
+    Similarly, we consider the sifted colimit
+        \[
+            \cD_{X\alg/ Y\alg} \coloneqq \colim_{\bDelta \op} \cD^\bullet_{X\alg/ Y\alg} \in \mathrm{FMP}_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k} ,
+        \]
+    computed in the \infcat $\mathrm{FMP}_{X\alg\times\bbA^1_k/ /Y\alg\times\bbA^1_k}$. We can consider the latter as an object in
+        \[
+            \cD_{X\alg/ Y\alg} \in \dSt_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k},  
+        \]
+    and therefore consider its relative analytification $(\cD_{X\alg/ Y\alg})\an_Y \in \dAnSt_{X\alg \times \bA^1_k/ /Y\alg \times \bA^1_k}$. Thanks to
+    \cref{lem:analytification_of_simplicial_object_deformation} it follows that we have a natural morphism
+        \[
+            \cD\an_{X/ Y} \to (\cD_{X\alg/ Y\alg})\an_Y,  
+        \]
+    in the \infcat $\dAnSt_{X \times \bA^1_k/ /Y \times \bA^1_k}$.
+\end{construction}
+
+\begin{lem} \label{lem:equivalence_of_anFMP_X/ /Y_and_anFMP_X/ /X}
+    Consider the base change functor
+        \[
+            (-)_X \colon \anFMP_{X/ /Y} \to \anFMP_{X/ /X},  
+        \]
+    given on objects by the formula
+        \[
+            F \in \anFMP_{X/ /Y} \mapsto F \times_Y X \in \anFMP_{X/ /X}.  
+        \]
+    Then the functor $(-)_X$ is an equivalence of \infcats.
+\end{lem}
+
+\begin{proof}
+    The functor is clearly a left adjoint to the usual forgetful functor along $f$
+        \[
+            \anFMP_{X/ /X} \to \anFMP_{X/ /Y} .
+        \]
+    It suffices to prove that for every $F \in \anFMP_{X/ /Y}$ and $U \in \anNil_{X/}$ we have a natural equivalence of mapping spaces
+        \[
+            \Map_{X/ /Y}(U, F) \to \Map_{X/ /X}(U\times_Y X, F \times_Y X),  
+        \]
+    which is an immediate consequence of the universal property of fiber products.
+\end{proof}
+
+\begin{prop} \label{prop:rel_analytification_preserves_the_deformation}
+    The natural morphism 
+        \[
+            \theta_{X/ Y}\colon\cD\an_{X/Y}\to(\cD_{X\alg/ Y\alg})\an_Y,
+        \]
+    is an equivalence of derived $k$-analytic stacks.
+\end{prop}
+
+\begin{proof}
+    Consider the object $(\cD_{X\alg/ /Y\alg})\an_Y \in \anFMP_{X/ /Y}$. Under the equivalence of \infcats provided in \cref{lem:equivalence_of_anFMP_X/ /Y_and_anFMP_X/ /X},
+    we observe that
+        \[
+            (\cD_{X\alg/ /Y\alg})\an_Y \times_Y X \simeq (\cD_{X\alg/ /Y\alg})\an_X ,
+        \]
+    where the latter denotes the relative analytification of $\cD_{X\alg/ /Y\alg}$ along the composite morphism
+        \[
+            \eta \colon X \times \bA^1_k \to Y \times \bA^1_k \to (Y\alg)\an \times \bA^1_k.  
+        \]
+    Thanks to \cref{lem:equivalence_of_anFMP_X/ /Y_and_anFMP_X/ /X} we are reduced to show that the natural morphism $\theta_{X/ Y}$ induces an equivalence
+        \[
+            \theta_{X/ Y} \times_Y X \colon (\cD_{X\alg/ Y\alg})\an_X \to \cD_{X/ Y}\an \times_Y X , 
+        \]
+    in the \infcat $\anFMP_{X \times \bA^1_k/ /X \times \bA^1_k} \simeq \mathrm{Ptd}(\anFMP_{/X\times\bA^1_k})$.
+    Moreover, the equivalence of \infcats provided in \cite[Theorem 6.12]{Porta_Yu_NQK} implies that 
+        \[
+            (-)_X\an \colon \mathrm{FMP}_{/ X\alg} \to \anFMP_{/ X}  ,
+        \]
+    is an equivalence of \infcats. In particular, we have an induced equivalence of \infcats
+        \[
+            (-)_X\an \colon \mathrm{Ptd}(\mathrm{FMP}_{/X \alg\times\bA^1_k}) \to \mathrm{Ptd}(\anFMP_{/X\times\bA^1_k}).
+        \]
+    Since $\cD_{X\alg/ Y\alg}$ is computed as the sifted colimit of the object $\cD^\bullet_{X\alg/ Y\alg}$ in $\anFMP_{X\alg \times \bA^1_k/ Y\alg \times \bA^1_k}$
+    and similarly $\cD\an_{X/ Y}$ is computed as the sifted colimit of $\cD^{\mathrm{an}, \bullet}_{X/ Y}$ in the \infcat $\anFMP_{X\times\bA^1_k/ /Y\times\bA^1_k}$.
+    
+    We deduce from \cref{lem:analytification_of_simplicial_object_deformation} that the natural morphism $\theta_{X/Y} \times_Y X$ is an equivalence in $\anFMP_{X \times \bA^1_k/ /X \times \bA^1_k}$,
+    and therefore $\theta_{X/ Y}$ is an equivalence in the \infcat $\anFMP_{X\times\bA^1_k/ /Y\times\bA^1_k}$, as desired.
+\end{proof}
+
+\begin{rem}
+    Consider the natural projection morphism
+        \[
+            q \colon \cD_{X/ Y}\an \to \bA^1_k.
+        \]
+    Its fiber at $\lambda \neq 0$ coincides with the formal completion
+        \[
+            Y^\wedge_X,  
+        \]
+    and its fiber at $0$ with the completion along the zero section $s_0 \colon X \to \bT\an_{X/ Y}[-1]$ of the shifted relative tangent bundle,
+        \[
+            \bT\an_{X/ Y} [-1]^{\wedge}.
+        \]
+\end{rem}
+
+
+\begin{construction} \label{const:pullbacks_of_deformations}
+    Let $g \colon U \to Y$ be a morphism in $\dAfd_k$. Consider the pullback diagram
+        \[
+        \begin{tikzcd}
+            X_U \ar{r} \ar{d} & U \ar{d} \\
+            X \ar{r}{f} & Y,  
+        \end{tikzcd}
+        \]
+    computed in the \infcat $\dAfd_k$. It follows from the definitions that we have a natural pullback square of simplicial objects
+        \[
+        \begin{tikzcd}
+            \cD_{X_U/ U}^{\mathrm{an}, \bullet} \ar{r} \ar{d} & \cD_{X/Y}^{\mathrm{an}, \bullet} \ar{d} \\
+            U \ar{r} & Y,
+        \end{tikzcd}
+        \]
+    in the \infcat $\dAnSt_k$. For this reason, we obtain a natural commutative diagram
+        \[
+        \begin{tikzcd}
+            \cD_{X_U/ U}\an \ar{r} \ar{d} & \cD_{X/ Y} \an \ar{d} \\
+            U \ar{r} & Y,
+        \end{tikzcd}
+        \]
+    in the \infcat $\dAnSt_k$. Similarly, consider the pullback diagram
+        \[
+        \begin{tikzcd}
+            X_U\alg \ar{r} \ar{d} & U \alg \ar{d} \\
+            X\alg \ar{r}{f\alg} & Y\alg
+        \end{tikzcd},
+        \]
+    in the \infcat $\dAff_k$. Reasoning as above, we have a natural commutative square
+      \[
+        \begin{tikzcd}
+        \cD_{X_U\alg/ U\alg} \ar{r} \ar{d} & \cD_{X\alg/ Y\alg} \ar{d} \\
+        U\alg \ar{r} & Y \alg,  
+       \end{tikzcd}
+      \]
+    in the \infcat $\dSt_k$.
+\end{construction}
+
+\begin{prop} \label{prop:gluing_the_deformation}
+    The commutative square
+        \[
+        \begin{tikzcd}
+            \cD_{X_U/ U}\an \ar{r} \ar{d} & \cD_{X/ Y} \an \ar{d} \\
+            U \ar{r} & Y, 
+        \end{tikzcd}
+        \]
+    of \cref{const:pullbacks_of_deformations}, is a pullback square in the \infcat $\dAnSt_k$.
+\end{prop}
+
+\begin{proof}
+    In order to show the assertion of the proposition, we are reduced to show that the natural morphism
+        \[
+            \cD_{X_U/ U}\an \to \cD\an_{X/ Y} \times_Y U,  
+        \]
+    is an equivalence in the \infcat $\anFMP_{X_U/ /U}$. Thanks to \cref{prop:conservativity_and_preservation_of_sifted_colimits_of_tangent_complex}, we are reduced to show
+    that the induced morphism
+        \[
+            \bT\an_{X_U/ \cD_{X_U/ U}\an} \to \bT\an_{X_U/ \cD_{X/ Y} \times_Y U},
+        \]
+    is an equivalence in the \infcat $\QCoh(X_U)$. By the fact that the relative analytic tangent complex commutes with sifted colimits we are reduced to show that
+    the natural morphism of simplicial objects
+        \[
+            \{ \bT\an_{X_U/ \cD_{X_U/ U}^{\mathrm{an}, \bullet}} \} \to \{ \bT\an_{X_U/ \cD_{X/ Y}^{\mathrm{an}, \bullet} \times_Y U} \},
+        \]
+    is an equivalence in $\Fun(\bDelta\op, \QCoh(X))$. We have a pullback square
+        \[
+        \begin{tikzcd}
+            \cD_{X_U/ U}^{\mathrm{an}, \bullet} \ar{r} \ar{d} & \cD_{X/ Y}^{\mathrm{an}, \bullet} \ar{d} \\
+            U \ar{r} & Y  
+        \end{tikzcd}
+        \]
+    in $\mathrm{Fun}(\bDelta \op, \dAfd_k)$ and therefore, \cite[Proposition 5.12]{Porta_Yu_Representability} implies that we have necessarily that
+        \[
+            \{ \bbL\an_{X_U/ \cD_{X_U/ U}^{\mathrm{an}, \bullet}} \} \simeq \{ \bbL\an_{X_U /\cD_{X/ Y}^{\mathrm{an}, \bullet} \times_Y U} \},    
+        \]
+    in the \infcat $\QCoh(X_U)$, and the result follows.
+\end{proof}
+
+
+
+
+
+\subsection{Gluing the Deformation} In this \S, we globalize the results proved so far in \S 3.2. Let $f \colon X \to Y$ be a closed immersion
+in the \infcat $\dAnSt_k$, where we assume $Y$ to be a geometric derived $k$-analytic stack.
+Then we can consider as before the \emph{deformation to the normal bundle of the morphism $f$} constructed via the pullback diagram
+    \[
+    \begin{tikzcd}
+        \cD^{\mathrm{an}, \bullet}_{X/ Y} \ar{r} \ar{d} & Y \times \bA^1_k \ar{d} \\
+        \bfMap_{/ \bA^1_k} (\rB^\bullet_\mathrm{scaled}, X \times \bA^1_k) \ar{r} & \bfMap_{/ \bA^1_k}(\rB^\bullet_{\mathrm{scaled}}, Y \times \bA^1_k),
+    \end{tikzcd}
+    \]
+in the \infcat $\dAnSt_k$. As in the previous \S, one can show that the simplicial object 
+    \[
+        \cD^{\mathrm{an}, \bullet}_{X/ Y} \in \anFMP_{X \times \bA^1_k/ /Y \times \bA^1_k},  
+    \]
+and in particular we have:
+
+\begin{prop}
+    The simplicial object
+        \[
+            \cD_{X/ Y}^{\mathrm{an}, \bullet} \colon \bDelta \op \to \anFMP_{X/ /Y},  
+        \]
+    admits a sifted colimit $\cD_{X/ Y}\an \in \anFMP_{X/ }$.
+\end{prop}
+
+\begin{proof} Let $U_\bullet \to Y$ be a derived $k$-affinoid admissible open covering of $Y$, in $\dAnSt_k$. We have a natural equivalence of \infcats
+        \[
+            \Psi \colon (\dAnSt_k)_{/ Y}  \to \lim_{\bDelta \op} (\dAnSt_k)_{/U_\bullet}.
+        \]
+    It is clear by the construction, that the simplicial object $\cD\an_{X/ Y}$ satisfies
+        \begin{align*}
+            \Psi(\cD^{\mathrm{an}, \bullet}_{X/ Y}) & \simeq \{ \cD^{\mathrm{an}, \bullet}_{X_{U_\bullet}/ U_\bullet} \} \\
+                                                    & \in \lim_{\bDelta \op} (\dAnSt_k)_{/ U_\bullet}.
+        \end{align*}
+    \cref{prop:gluing_the_deformation} implies that we have a canonically defined object
+        \[
+            \cD\an_{X/ Y} \in \dAnSt_k,  
+        \]
+    obtained by gluing the object
+        \[
+            \{ \cD\an_{X_{U_\bullet}/ U_\bullet} \} \in \lim_{\bDelta \op} (\dAnSt_k)_{/ U_\bullet}.
+        \]
+    It is clear from the definition that $\cD\an_{X/ Y} \in \anFMP_{X/ /Y}$. We claim that the latter is a colimit of the diagram
+        \[  
+            \cD^{\mathrm{an}, \bullet}_{X/ Y}.
+        \]
+    We need to show that for every $Z \in \anFMP_{X/ /Y}$ together with a morphism
+        \[
+            \cD^{\mathrm{an}, \bullet}_{X/ Y} \to Z,   
+        \]
+    then there exists a uniquely defined (up to a contractible space of choices) morphism
+        \[
+            \cD\an_{X/ Y} \to Z,  
+        \]
+    in the \infcat $\anFMP_{X/ /Y}$. Moreover, we are reduced to check this property locally on $Y$, in which case the assertion follows immediately
+    from the construction.
+\end{proof}
+
+
+\subsection{The Hodge filtration} In this \S, we will describe the construction of the Hodge filtration on the object $Y^\wedge_X$.
+
+
+\begin{construction} \label{const:construction_of_Hodge_filtration_in_the_lafp_case}
+    Let $f \colon X \to Y$ be a closed immersion in the \infcat $\dAfd_k$. Consider the induced morphism
+        \[
+            f \alg \colon X\alg \to Y\alg,   
+        \]
+    where one sets as usual $X \alg = \Spec A$ and $Y\alg = \Spec B$, where $A \coloneqq \Gamma(X, \cO_X\alg)$ and $B \coloneqq \Gamma(Y, \cO_Y \alg)$.
+    Moreover, the morphism $f\alg$ is a closed immersion. Consider the induced map
+        \[
+            g \coloneqq f \alg \times \id_{\bbA^1_k} \colon X \times \bbA^1_k \to Y \times \bbA^1_k,  
+        \]
+    in $\dAff_k$. By Noetherian approximation, we can write $g$ as an inverse limit of the form
+        \[
+            \lim_{\alpha \in A \op}  g_\alpha \colon \lim_{\alpha \in A \op} X_\alpha \times \bbA^1_k \to \lim_{\alpha \in A \op} Y_\alpha \times \bbA^1_k,  
+        \]
+    where $A$ is a filtered \infcat and for each index $\alpha \in A$, we have that
+        \[
+            g_\alpha \colon X_\alpha \times \bbA^1_k \to Y_\alpha \times \bbA^1_k,  
+        \]
+    is a closed immersion in the \infcat $\dAff_k^\laft$. Fix some $\alpha \in A$. Thanks to \cite[Theorem 9.5.1.3]{Gaitsgory_Study_II},
+    there exists a sequence of square-zero extensions of the form
+        \[
+            X_\alpha \times \bbA^1_k = X^{(0)} \hookrightarrow X_\alpha^{(1)} \hookrightarrow \dots \hookrightarrow X_\alpha^{(n)} \hookrightarrow \dots \to Y_\alpha \times \bbA^1_k,  
+        \]
+    defined inductively as follows: assume that for $n \ge 0$ we already have defined $X^{(0)}_\alpha \to X^{(n)}_\alpha$ together with a natural morphism
+    to $Y_\alpha \times \bbA^1_k$. Then \cite[Theorem 9.5.1.3]{Gaitsgory_Study_II} implies that we a naturally defined derivation
+        \[
+            d^{(n)} \colon \bbL_{X_\alpha^{(n)}} \to \bbL_{X_\alpha^{(n)}/ Y_\alpha} \to \cF^{(n)},
+        \]
+    where $\cF^{(n)} \in \Coh^{\ge n}(X_\alpha^{(n)})$. We then define $X^{(n)}_\alpha \to X_\alpha^{(n+1)}$ as the square-zero extension associated to $d^{(n)}$.
+    Moreover, as a consequence of the discussion followin \cite[\S 9.5.1]{Gaitsgory_Study_II}, it follows that
+    $X^{(n+1)}$ admits a natural morphism to $Y \times \bbA^1_k$. We further observe that for each $\alpha \in A$ and $n \ge 0$, the object
+    $X^{(n)}_\alpha$ is a derived affine scheme almost of finite presentation.
+\end{construction}
+
+\begin{rem} \label{rem:identification_of_equivalence_of_derivation_used_in_the_construction_of_the_Hodge_filtration}
+    With notations as in \cref{const:construction_of_Hodge_filtration_in_the_lafp_case}, we are able to explicitly identify $\cF^{(n)} \in \Coh^+{\ge n}(X^{(n)})$ as
+    follows: in \cite[\S 9.5.1]{Gaitsgory_Study_II} the authors construct the required derivation as the \emph{Serre dual} of a natural morphism of the form
+        \[
+            (i_{n-1}^*)^{\mathrm{IndCoh}}  \Sym^n(\bbT_{X/ Y}[-1])[1]) \to \bbT_{X^{(n)}/ Y} \to \bbT_{X^{(n)}},
+        \]
+    in the \infcat of \emph{ind-coherent sheaves on $X^{(n)}$}. Applying the Serre dual functor we obtain a natural morphism
+        \[
+            \bbL_{X^{(n)}} \to \bbL_{X^{(n)}/ Y} \to \bD^{\mathrm{Serre}}_{X^{(n)}} ( (i_{n-1}^*)^{\mathrm{IndCoh}}  \Sym^n(\bbT_{X/ Y}[-1])[1])) .
+        \]
+    Since the morphism $i_{n-1} \colon X \times \bbA^1_k \to X^{(n)}$ is a proper morphism, we are able to identify 
+        \[
+            \bD^{\mathrm{Serre}}_{X^{(n)}} ( (i_{n-1}^*)^{\mathrm{IndCoh}}  \Sym^n(\bbT_{X/ Y}[-1])[1])) \simeq i_{n-1, *} \Sym^n(\bbL_{X/ Y}[-1])[1]),
+        \]
+    in $\QCoh(X^{(n)})$, via \cite[Corollary 9.5.9 (b)]{Gaitsgory_IndCoh} combined with and \cite[\S 3.6.6]{Gaitsgory_IndCoh} and \cite[Corollary 1.4.4.2]{Gaitsgory_Study_II}.
+\end{rem}
+
+\begin{lem} \label{lem:naturality_of_Hodge_filtration_w.r.t_Noetherian_approximation}
+    Let  $n \ge 0$, and let $\alpha \to \beta$ be a morphism in $A \op$. Then the transition morphism
+        \[
+            X_\alpha \times \bbA^1_k \to X_\beta \times \bbA^1_k,  
+        \]
+    lifts to a well defined induced morphism
+        \[
+            X_\alpha^{(n)} \to X_\beta^{(n)},
+        \]
+    in $\dAff_k^\laft$.
+\end{lem}
+
+\begin{proof}
+    The result follows immediately from the naturality of the construction in \cite[\S 9.5.1]{Gaitsgory_Study_II}.
+\end{proof}
+
+\begin{prop}$\mathrm{(}$\cite[Corollary 9.5.2]{Gaitsgory_Study_II}$\mathrm{)}$ \label{prop:computation_of_filtered_colimit_of_the_X_alpha^n} Fix $\alpha \in A$. Then there exists a natural morphism
+    \[\colim_{n \ge 0} X_\alpha^{(n)} \to \cD_{X_\alpha/ Y_\alpha},\]
+    which is furthermore an equivalence in the \infcat $\mathrm{FMP}_{X_\alpha \times \bbA^1_k/ /Y_\alpha \times \bbA^1_k}$ (and thus in the \infcat $\dSt_k$).
+\end{prop}
+
+\begin{cor} \label{cor:commutation_between_limit_and_colimit_on_Hodge_filtration}
+    The derived stack $\lim_{\alpha} \colim_{n \ge 0} X_\alpha^{(n)}$ is an affine scheme. Moreover, the natural morphism
+        \[
+            \gamma \colon \colim_{n \ge 0} X^{(n), \mathrm{alg}} \to \lim_{\alpha \in A \op} \colim_{n \ge 0} X^{(n)}_\alpha,
+        \] 
+    is an equivalence of derived affine schemes.
+\end{cor}
+
+\begin{proof}
+    The first assertion follows immediately from \cref{lem:naturality_of_Hodge_filtration_w.r.t_Noetherian_approximation} together with the fact that
+    for each $n \ge 0$, $X^{(n+1)}_\alpha$ is a square-zero extension on $X^{(n)}_\alpha$ via an object
+        \begin{equation} \label{eq:n-th_part_of_the_Hodge_filtration_for_X_alpha}
+            \cF^{(n+1)} \in \Coh^{\ge n}(X^{(n)}_\alpha).  
+        \end{equation}
+    We further deduce that
+        \[
+            \colim_{n \ge 0} X^{(n), \mathrm{alg}} \in \mathrm{dAff}_k.  
+        \]
+    Indeed, the result follows immediately from the fact that for each $X^{(n+1), \mathrm{alg}}$ is a square-zero extension of $X^{(n), \mathrm{alg}}$ by an object
+        \begin{equation} \label{eq:n-th_part_of_the_Hodge_filtration_for_X}
+            \cG^{(n+1)} \in \Coh^{\ge n}(X^{(n), \mathrm{alg}}).  
+        \end{equation}
+    Let $A, B \in \CAlg_k$ denote the derived rings of derived global sections of both
+        \[
+            \colim_{n \ge 0} X^{(n), \mathrm{alg}} \quad \mathrm{and} \quad \lim_{\alpha \in A \op} \colim_{n \ge 0} X^{(n)}_\alpha.
+        \]
+    Thanks to \eqref{eq:n-th_part_of_the_Hodge_filtration_for_X_alpha} and \eqref{eq:n-th_part_of_the_Hodge_filtration_for_X} we deduce that
+        \[
+            \pi_i(A) \simeq \pi_i(A^{(n)}) \quad \mathrm{and} \quad \pi_i(B) \simeq \pi_i(B^{(n)}),  
+        \]
+    for $i \ge 0$. Moreover, we have by construction that
+        \[
+            \pi_i(A^{(n)}) \simeq \colim_{\alpha \in A \op} \pi_i(A_\alpha^{(n)}) \quad \mathrm{and} \quad \pi_i(B) \simeq \pi_i(A^{(n)}_\alpha),  
+        \]
+    and the result follows immediately.
+\end{proof}
+
+\begin{defin}
+    Consider the morphism $g \colon X\alg \times \bbA^1_k \to Y\alg \times \bbA^1_k$ above. \cref{lem:naturality_of_Hodge_filtration_w.r.t_Noetherian_approximation}
+    implies that for each $n \ge 0$, the object
+        \[
+            X^{(n), \mathrm{alg}} \coloneqq \lim_{\alpha \in A\op} X_\alpha^{(n)} \in \dAff,  
+        \]
+    is well defined and it fits into a sequence of square-zero extensions
+        \[
+            X\times \bbA^1_k = X^{(0), \mathrm{alg}} \hookrightarrow X^{(1), \mathrm{alg}}  \hookrightarrow \dots \hookrightarrow X^{(n), \mathrm{alg}} \hookrightarrow \dots \to Y\alg,
+        \]
+    in the \infcat $\dAff_k$. We shall refer to this sequence as the \emph{Hodge filtration} associated to the morphism $f$. Moreover, thanks to
+    \cref{prop:computation_of_filtered_colimit_of_the_X_alpha^n} it follows that we have a natural morphism
+        \begin{equation} \label{eq:map_Hodge_filtration_to_deformation}
+            \colim_{n \ge 0} X^{(n), \mathrm{alg}} \to \lim_{\alpha \in \op} \cD_{X_\alpha/ Y_\alpha},  
+        \end{equation}
+    in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ /Y \times \bbA^1_k}$.
+\end{defin}
+
+We will need the following auxiliary result:
+
+\begin{lem}
+    The object $\lim_{\alpha \in A \op} \cD_{X_\alpha / Y_\alpha} \in \mathrm{FMP}_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k}$ and moreover, the natural morphism
+        \[
+            \cD_{X\alg/ Y\alg} \to \lim_{\alpha \in A \op} \cD_{X_\alpha/ Y_\alpha},  
+        \]
+    is an equivalence in $\mathrm{FMP}_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k}$.
+\end{lem}
+
+\begin{proof}  For each $\alpha \in A$ let us denote by
+        \[
+            h_\alpha \colon X \to X_\alpha,
+        \]  
+    the structural morphism. Thanks to \cite[Corollary 4.4.1.3]{Lurie_SAG} combined with \cite[Corollary  4.5.1.3]{Lurie_SAG} we conclude that the natural morphisms
+        \[
+            \theta_\alpha \colon h_\alpha^* \bbL_{X_\alpha} \to \bbL_{X} , \quad \mathrm{for each } \alpha \in A,
+        \]
+    assemble to provide an equivalence
+        \[
+            \theta \colon \colim_{\alpha \in A} h_\alpha^* \bbL_{X_\alpha} \to \bbL_X,   
+        \]
+    in the \infcat $\QCoh(X\alg)$. As a consequence, given any pushout diagram
+        \[
+        \begin{tikzcd}
+            S \ar{r}{g_S} \ar{d} & S' \ar{d} \\
+            T \ar{r} & T',
+        \end{tikzcd}
+        \]
+    in the \infcat $\mathrm{Nil}_{X/ }$, where $g_S$ is a square-zero extension, we can write it as an inverse limit of pushout diagrams of the form
+        \[
+        \begin{tikzcd}
+            S_\alpha \ar{r}{g_{S_\alpha}} \ar{d} & S'_\alpha \ar{d} \\
+            T_\alpha \ar{r} & T'_\alpha,  
+        \end{tikzcd}
+        \]
+    in $\mathrm{Nil}_{X_\alpha/ }$, for each $\alpha \in A$. It then follows that we have a chain of natural equivalences of the form
+        \begin{align*}
+            \lim_{\alpha \in A\op}\cD_{X_\alpha/ Y_\alpha} (T') & \simeq \lim_{\alpha \in A\op}\cD_{X_\alpha/ Y_\alpha}(\lim_{\alpha \in A\op} T_\alpha ') \\
+                                                                & \simeq \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha}(T'_\alpha) \\
+                                                                & \simeq \lim_{\alpha \in A\op}\cD_{X_\alpha/ Y_\alpha}(S'_\alpha \times_{S_\alpha} T_\alpha) \\
+                                                                & \simeq \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha}(S'_\alpha) \times_{\underset{\alpha \in A\op}{\lim} \cD_{X_\alpha/ Y_\alpha}(S_\alpha)}  \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha}(T_\alpha),
+        \end{align*}
+    thus $\lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha} \in \mathrm{FMP}_{X/ /Y}$, as desired. Consider now the canonical morphism
+        \[\theta \colon \cD_{X\alg/ Y\alg} \to \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha},\]
+    in the \infcat $\mathrm{FMP}_{X/ Y}$. Thanks to the analogue of \cref{prop:conservativity_of_relative_an_cot_complex} in the algebraic setting, it suffices to show that
+    the morphism $\theta$ induces an equivalence at the level of cotangent complexes
+        \begin{equation} \label{eq:cot_complex_of_limit_of_deformations_on_Noetherian_approximation}
+            \bbL_{X \times \bbA^1_k / \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha}} \to \bbL_{X \times \bbA^1_k/ \cD_{X\alg/ Y\alg}},
+        \end{equation}
+    in the \infcat $\QCoh(X)$. Since both $\cD_{X/ Y}$ and $\cD_{X_\alpha/ Y_\alpha}$ for each $\alpha \in A$, are affine, it follows that we can identify both the left and right
+    hand sides of \eqref{eq:cot_complex_of_limit_of_deformations_on_Noetherian_approximation} canonically with
+        \begin{align*}
+            \bbL_{X \times \bbA^1_k/ \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha}} & \simeq \colim_{\alpha \in A} \bbL_{X_\alpha \times \bbA^1_k/ \cD_{X_\alpha/ Y_\alpha}} \\
+                                                                                      & \simeq  \colim_{\alpha \in A} \bbL_{X_\alpha \times \bbA^1_k/ Y_\alpha \times \bbA^1_k},
+        \end{align*}
+    and similarly we deduce that 
+        \begin{align*}
+            \bbL_{X \times \bbA^1_k/ \cD_{X/ Y}} & \simeq \bbL_{X \times \bbA^1_k/ Y \times \bbA^1_k}  \\
+                                                 & \simeq \colim_{\alpha \in A} \bbL_{X_\alpha \times \bbA^1_k/ Y_\alpha \times \bbA^1_k},
+        \end{align*}
+    and the result follows.
+\end{proof}
+
+Thanks to the above Lemma, we can consider the natural morphism in \eqref{eq:map_Hodge_filtration_to_deformation} as
+    \[
+        \beta \colon \colim_{n \ge 0} X^{(n), \mathrm{alg}} \to \cD_{X\alg/ Y\alg}  ,
+    \]
+in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ /Y\times \bbA^1_k}$. We have:
+
+\begin{prop} \label{prop:colim_n_ge_0_X^n_to_deformation_is_an_equivalence}
+    The morphism
+        \[
+            \beta \colon \colim_{n \ge 0} X^{(n), \mathrm{alg}} \to \cD_{X\alg/ Y\alg},  
+        \]
+    above is an equivalence in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ /Y \times \bbA^1_k}$.
+\end{prop}
+
+\begin{proof}
+    Thanks to \cref{prop:conservativity_of_relative_an_cot_complex}, it suffices to show that the natural morphism
+        \[
+            \bbL_{X/ \underset{n \ge 0}{\colim} X^{(n), \mathrm{alg}}} \to \bbL_{X/ \cD_{X\alg/ Y\alg}},  
+        \]
+    is an equivalence in $\QCoh(X)$. Moreover, \cref{cor:commutation_between_limit_and_colimit_on_Hodge_filtration} implies that we have a natural equivalence
+        \begin{align*}
+            \bbL_{X/ \underset{n \ge 0}{\colim} X^{(n), \mathrm{alg}}} & \simeq \colim_{\alpha \in A} \bbL_{X_\alpha/ \underset{n \ge 0}{\colim} X^{(n)_\alpha}} \\
+                                                                       & \simeq \colim_{\alpha \in A} \bbL_{X_\alpha/ \cD_{X_\alpha/ Y_\alpha}} \\
+                                                                       & \simeq \bbL_{X/ \cD_{X \alg/ Y \alg}},
+        \end{align*}
+    where the second equivalence follows from \cref{prop:computation_of_filtered_colimit_of_the_X_alpha^n}. The result is now an immediate consequence of
+    \cref{prop:conservativity_of_relative_an_cot_complex}.
+\end{proof}.
+
+
+\begin{defin}
+    Let $f \colon X \to Y$ be a closed immersion in the \infcat $\dAfd_k$. For each $n \ge 0$, we define the square-zero extension
+        \[
+            X \times \bA^1_k \hookrightarrow X^{(n)},  
+        \]
+    as the relative analytification, $(-) \an_Y$, of the natural square-zero extension
+        \[
+            X \alg \times \bbA^1_k \hookrightarrow X^{(n), \mathrm{alg}}.  
+        \]
+    By construction, for each $n \ge 0$, we have natural morphisms
+        \[
+            X^{(n)} \to Y \times \bA^1_k.  
+        \]
+\end{defin}
+
+Putting together the above results we can easily deduce:
+
+\begin{cor}
+    There exists a natural morphism
+        \[
+            \colim_{n \ge 0} X^{(n)} \to \cD\an_{X/ Y},  
+        \]
+    which is furthermore an equivalence in the \infcat $\anFMP_{X \times \bA^1_k/ /Y \times \bA^1_k}$.
+\end{cor}
+
+\begin{proof}
+    It is an immediate consequence of \cref{prop:colim_n_ge_0_X^n_to_deformation_is_an_equivalence} combined with \cref{prop:rel_analytification_preserves_the_deformation}.
+\end{proof}
+
+We now globalize the Hodge filtration on the deformation, $\cD\an_{X/ Y}$:
+
+\begin{construction}
+    Let $f \colon X \to Y$ be a closed immersion of derived $k$-analytic stacks, where $Y$ is assumed to be a geometric derived $k$-analytic stack. Suppose we are given a morphism
+        \[
+            U \to Y,  
+        \]
+    in $\dAnSt_k$, where $U \in \dAfd_k$ and form the pullback diagram
+        \[
+        \begin{tikzcd}
+            X_U \ar{r} \ar{d} & U \ar{d} \\
+            X \ar{r}{f} & Y  
+        \end{tikzcd}
+        \]
+    in $\dAnSt_k$. Suppose we are now given a morphism of derived $k$-affinoid spaces $V \to U$, then we have a natural pullback diagram
+        \[
+        \begin{tikzcd}
+            X_V \ar{r} \ar{d} & X_U \ar{d} \\
+            V \ar{r} & U,  
+        \end{tikzcd}
+        \]
+    in the \infcat $\dAfd_k$. This provides us for each $n \ge 0$, with natural commutative diagrams
+        \begin{equation} \label{eq:gluing_diagram_of_Hodge_filtrations}
+        \begin{tikzcd}
+            X_V^{(n)} \ar{r} \ar{d} & X_U^{(n)} \ar{d} \\
+            V \ar{r} & U,
+        \end{tikzcd}
+        \end{equation}
+    of the $n$-th pieces of the Hodge filtrations on $\cD_{X_U/ U}$ and $\cD_{X_V/ V}$, respectively.
+\end{construction}
+
+
+\begin{lem} \label{lem:preservation_of_Hodge_filtration_under_pullback}
+    The commutative square in \eqref{eq:gluing_diagram_of_Hodge_filtrations} is a pullback square in the \infcat $\dAfd_k$.
+\end{lem}
+
+\begin{proof} Thanks to \cref{lem:relative_anlaytification_of_closed_immersions_are_compatible_with_alg_construction}
+    it suffices to prove that the induced diagram
+        \[
+        \begin{tikzcd}
+            X_V\alg \ar{r} \ar{d} & X_U \alg \ar{d} \\
+            V \alg \ar{r} & U\alg  
+        \end{tikzcd},
+        \]
+    is a pullback square in $\dAff_k$. By a standard argument of Noetherian approximation, we might assume that $U' \coloneqq U\alg $ and $V' \coloneqq V\alg$ are
+    both almost of finite presentation derived affined $k$-schemes. The result is now a direct consequence of \cref{rem:identification_of_equivalence_of_derivation_used_in_the_construction_of_the_Hodge_filtration}
+    combined with \cite[Proposition 5.12]{Porta_Yu_Representability}.
+\end{proof}
+
+\begin{construction}
+    Consider the relative analytification functor
+        \begin{align*}
+            (-)\an_Y \colon \lim_{U \in Y^{\mathrm{afd}}_{\textrm{\'et}}} (\dSt_k)_{/ U\alg \times \bbA^1_k} & \to \lim_{U \in Y^{\mathrm{afd}}_\textrm{\'et}} (\dAnSt_k)_{/ U \times \bA^1_k}  \\
+                                                                                 & \simeq (\dAnSt_k)_{/ Y \times \bA^1_k}.
+        \end{align*}
+    Thanks to \cref{lem:preservation_of_Hodge_filtration_under_pullback}, for each $n \ge 0$ the object
+        \[
+            \{ X^{(n)}_{U} \}_{U \in Y^\mathrm{afd}_\textrm{\'et}}  \in \lim_{n \ge 0} (\dSt_k)_{/ U\alg}.
+        \]
+    Therefore, taking its relative analytification produces well defined objects $X^{(n)} \in (\dAnSt_k)_{Y \times \bA^1_k}$ which restricts to the usual
+    Hodge filtration for every morphism
+        \[
+            g \colon U \to Y,  
+        \]
+    in $Y^\mathrm{afd}_\textrm{\'et}$. Moreover, by construction we have a natural morphism
+        \[
+            \colim_{n \ge 0} X^{(n)} \to \cD_{X/ Y} \an,  
+        \]
+    which is an equivalence in the \infcat $\dAnSt_k$.
+\end{construction}
+
+
+
+
+
+
+
+
+
 
 
 \bibliographystyle{plain}
