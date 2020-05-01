@@ -41,7 +41,7 @@
 
 \begin{document}
 
-\title{Spreading out the Hodge filtration in rigid analytic geometry}
+\title{Spreading out the Hodge filtration in non-archimedean geometry}
 
 \author{Jorge ANT\'ONIO}
 \address{Jorge ANT\'ONIO, IRMA, UMR 7501
@@ -50,62 +50,79 @@
 \email{jorgeantonio@unistra.fr}
 \maketitle
 \begin{abstract}
-    The goal of the current text is to establish a comparison result between derived de Rham cohomology of (derived) $k$-analytic spaces
-    and the cohomology of global sections of formal completions. Our approach is inspired by the deformation to the normal cone provided in \cite{Gaitsgory_Study_II}.
+    The goal of the current text is to study non-archimedean analytic derived de Rham cohomology 
+    by means of formal completions. Our approach is inspired by the deformation to the normal cone provided in \cite{Gaitsgory_Study_II}.
     More specifically, given a morphism $f \colon X \to Y$ of (derived) $k$-analytic spaces we construct the \emph{non-archimedean deformation to the normal cone}
-    associated to $f$. We further show that such deformation can be endowed with a (Hodge) filtration, thus spreading out the usual Hodge filtration on the (completed shifted) analytic
-    tangent bundle to the formal completion. Such filtration agrees with the $I$-adic filtration in the case where $f$ is a closed immersion of (derived) $k$-affinoid spaces.
+    associated to $f$. The latter can be thought as an $\bA^1_k$-parametrized deformation whose fiber at $1 \in \bA^1_k$ coincides with the formal completion of $f$
+    and the fiber at $0 \in \bA^1_k$ with the (derived) normal cone associated to $f$.
+    We further show that such deformation can be endowed with a natural filtration which spreads out the usual Hodge filtration on the (completed shifted) analytic
+    tangent bundle to the formal completion. Such filtration agrees with the $I$-adic filtration in the case where $f$ is a locally complete intersection morphism
+    between (derived) $k$-affinoid spaces.
     Along the way we develop the theory of (ind-inf)-$k$-analytic spaces or in other words $k$-analytic formal moduli problems.
 \end{abstract}
 
 \tableofcontents
 
 \section{Introduction}
-\subsection{Background}
-In \cite{Bhatt_Derived_Completions}, B. Bhatt proved the existence of a natural isomorphism between \emph{algebraic derived de Rham cohomology}
-and Hartshorne's algebraic de Rham cohomology (c.f. \cite{hartshorne1975rham}), for possibly singular varieties $X$ over a field $k$ of characteristic $0$.
-This result can be summarized as follows: given an algebraic variety $X$ over $k$, we can consider the cohomology
-of the Hodge completed derived de Rham algebra
+\subsection{Background} Let $k$ be a field of characteristic zero and $X$ a variety over $k$. Following Illusie
+we can associate to $X$ its \emph{derived de Rham
+cohomology} as follows: we consider the
+(Hodge completed) derived de Rham algebra
     \[
-        \dR_{X/ k} \coloneqq  \Sym(\bbL_{X/ k}[-1])^\wedge \in \CAlg_k,  
+        \dR_{X/ k} \coloneqq  \Sym(\bbL_{X/ k}[-1])^\wedge 
     \]
-where $(-)^\wedge$ stands for the completion of the usual symmetric algebra $\Sym(\bbL_{X/ Y}[-1])$ with respect to its Hodge filtration. We can identify
-the graded pieces with exterior powers
+where $(-)^\wedge$ stands for the completion of the usual symmetric algebra 
+    \[\Sym(\bbL_{X/ Y}[-1]) \in \CAlg_k,\]
+with respect to its natural Hodge filtration. Furthermore, we can identify
+the graded pieces of the latter with exterior powers
     \[
-        \wedge^i \bbL_{X/ Y} [-i], \quad \mathrm{for} \ i \ge 0.  
+        \wedge^i \bbL_{X/ Y} [-i], \quad \mathrm{for} \ i \ge 0,
     \]
-Therefore, the derived de Rham algebra can be thought as a natural generalization of the usual de Rham complex to the singular case, where we replace the usual sheaf of differentials
+c.f. \cite[Vol. II, \S VIII]{Illusie_Complexe_1971}.
+The Hodge completed derived de Rham algebra is thus a natural generalization of the usual de Rham complex for singular varieties over $k$,
+where we replace the sheaf of differentials
     \[
         \Omega^1_{X/ k},  
     \]
-by the (algebraic) cotangent complex $\bbL_{X/ k}$ in the definition.
-On the other hand, Hartshorne provided, in \cite{hartshorne1975rham}, a construction of algebraic de Rham cohomology in terms
-of formal completions: assume the existence of a closed immersion
-$i \colon X \hookrightarrow Y$, where $Y$ is a smooth algebraic variety over $k$. Then one can form the \emph{formal completion}, $Y^\wedge_X$, of $Y$ at $X$ along the closed immersion $i$. Inspired by the theory of tubular neighborhoods, Hartshorne defined an algebraic cohomology theory
+by the (algebraic) cotangent complex $\bbL_{X/ k}$ and force a spectral sequence of the form Hodge-to-de Rham to converge.
+
+On the other hand, Hartshorne introduced in \cite{hartshorne1975rham} the \emph{algebraic de Rham cohomology} for singular varieties
+$X/ k$ in terms
+of formal completions: suppose we are given a closed immersion
+$i \colon X \hookrightarrow Y$, where $Y$ is a smooth algebraic variety over $k$. Then one can form the \emph{formal completion}, $Y^\wedge_X$, of $Y$ at $X$ along $i$. Inspired by the theory of tubular neighborhoods, Hartshorne defined an algebraic cohomology theory
 by taking global sections of $Y_X^\wedge$
     \[
         \Gamma(Y^\wedge_X, \cO_{Y^\wedge_X}).    
     \]
 Moreover, the cohomology groups so obtained are independent of the choice of the closed embedding $i \colon  X\to Y$.
-Bhatt's result amounts to prove a natural multiplicative equivalence of complexes
+In \cite{Bhatt_Derived_Completions},
+Bhatt proved a general comparison between the two mentioned notions. More precisely, the author proves a natural multiplicative
+equivalence of complexes
     \[
-        \dR_{X/k} \simeq  \Gamma(Y^\wedge_X, \cO_{Y^\wedge_X}).
+        \dR_{X/k} \simeq  \Gamma(Y^\wedge_X, \cO_{Y^\wedge_X}),
     \]
-Moreover, Bhatt further proved that the Hodge filtration on $\dR_{X/ k}$ induces a (natural) filtration on $Y^\wedge_X$, which is finer than the usual
-Hodge-infinitesimal or Hodge-Deligne filtrations on algebraic de Rham cohomology (see \cite{Bhatt_Derived_Completions}). When $f \colon X \to Y$ is a closed immersion of affine (derived) $k$-schemes, the
-former identifies with the usual $I$-adic filtration on the completion $Y^\wedge_X \simeq \mathrm{Spf} (B^\wedge_Y)$, where $B \coloneqq \Gamma(Y, \cO_Y)$,
-$A \coloneqq \Gamma(X, \cO_X)$ and $I \coloneqq \fib(B \to A)$.
-
-
-%This result allows us to define a natural filtration on global sections of $Y^\wedge_X$ given by the Hodge filtration on the derived de Rham complex.
+c.f. \cite[Proposition 4.16]{Bhatt_Derived_Completions}.
+In particular, the results of Bhatt imply that
+the algebraic de Rham cohomology is equipped with a \emph{Hodge filtration}, which is finer than the standard infinitesimal Hodge filtration
+and the Deligne-Hodge filtration.
+Futhermore, when $f \colon \Spec A \to \Spec B$ is a closed immersion of affine (derived) schemes, the Hodge filtration
+is finer than the $I$-adic filtration on the completion 
+    \[
+        Y^\wedge_X \simeq \mathrm{Spf} (B^\wedge_I),
+    \]
+where $I \coloneqq \fib(B \to A)$.
+In the particular case where $f$ is a locally complete intersection morphism both the $I$-adic filtration
+and the Hodge filtration coincide (c.f. \cite[Remark 4.13]{Bhatt_Derived_Completions}).
 
 \subsection{Main results}
-The main goal of the present text is to prove a non-archimedean analogue of the above. Namely, let $k$ be a non-archimedean field of characteristic $0$.
-We prove the following:
+The main goal of the present text is to prove a non-archimedean analogue of the above results. Namely, let $k$ be a non-archimedean field of characteristic $0$,
+we prove the following:
 
 \begin{thm} \label{intro-thm1}
-    Let $f \colon X \to Y$ be a morphism of (geometric) derived $k$-analytic stacks. Consider
-    the \emph{Hodge completed derived de Rham cohomology of $f$}, defined as the Hodge completion of the usual symmetric algebra $\dR_{X/ Y} \an \coloneqq \Sym(\bbL_{X/ Y} \an[-1])^\wedge \in \CAlg_k$.
+    Let $f \colon X \to Y$ be a morphism of (locally geometric) derived $k$-analytic stacks. Consider
+    the \emph{Hodge completed derived de Rham complex associated to $f$}, defined as 
+        \[\dR_{X/ Y} \an \coloneqq \Sym\an(\bbL_{X/ Y} \an[-1])^\wedge,\]
+    in $\CAlg_k$.
     Then one has a natural multiplicative equivalence
         \[
             \dR_{X/ Y} \an \simeq \Gamma(Y^\wedge_X, \cO_{Y^\wedge_X}),
@@ -114,17 +131,17 @@ We prove the following:
     where $Y^\wedge_X$ denotes the derived $k$-analytic stack corresponding to the formal completion of $X$ in $Y$ along the morphism $f$.
 \end{thm}
 
-Unfortunately, the methods of B. Bhatt are algebraic in nature and cannot be directly extrapolated to the non-archimedean setting. Instead, we follow the
-approach of Gaitsgory-Rozemblyum (see for instance \cite[\S 9]{Gaitsgory_Study_II}). The main idea consists of defining the \emph{non-archimedean deformation
+Unfortunately, the methods of B. Bhatt are algebraic in nature and cannot be directly extrapolated to the non-archimedean setting. Instead, we follow closely the
+approach of Gaitsgory-Rozemblyum given in \cite[\S 9]{Gaitsgory_Study_II}. The main idea consists of defining the \emph{non-archimedean deformation
 to the normal cone} as a derived $k$-analytic stack
     \[
         \cD\an_{X/ Y} \in \dAnSt_k,  
     \]
 mapping naturally to the $k$-analytic affine line $\bA^1_k$. Denote by $p \colon \cD_{X/ Y}\an \to \bA^1_k$ the natural morphism. Then
-\cref{intro-thm1} follows immediately from the following more precise result:
+\cref{intro-thm1} follows immediately from the following more precise result (see \cref{thm:main_thm}):
 
 \begin{thm} \label{intro-thm2}
-    Let $f \colon X \to Y$ be a morphism of geometric $k$-analytic stacks. Then the non-archimedean deformation to the normal cone satisfies the following
+    Let $f \colon X \to Y$ be a morphism of locally geometric derived $k$-analytic stacks. Then the non-archimedean deformation to the normal cone satisfies the following
     assertions:
     \begin{enumerate}
         \item The fiber of $p \colon \cD_{X/ Y}\an \to \bA^1_k$ at $\{ 0\} \subseteq \bA^1_k$ identifies naturally with the completion of the shifted analytic
@@ -137,7 +154,7 @@ mapping naturally to the $k$-analytic affine line $\bA^1_k$. Denote by $p \colon
                 (\cD_{X/ Y}\an)_\lambda  \simeq Y^\wedge_X,
             \]
         where $Y^\wedge_X$ denotes the formal completion of $Y$ at $X$ along $f$.
-        \item There exists a natural sequence of square-zero extensions
+        \item There exists a natural sequence of morphisms admitting a deformation theory
             \[
                 X \times \bA^1_k = X^{(0)} \to X^{(1)} \hookrightarrow \dots \hookrightarrow X^{(n)} \hookrightarrow \dots \to Y \times \bA^1_k, 
             \]
@@ -145,18 +162,23 @@ mapping naturally to the $k$-analytic affine line $\bA^1_k$. Denote by $p \colon
             \[
                 \colim_{n \ge 0} X^{(n)} \simeq \cD_{X/ Y}\an.  
             \]
-        In particular, the latter induces the usual Hodge filtration on (global sections of) $\bT\an_{X/ Y}[1]$ and it induces a further filtration
+        In particular, the latter induces the usual Hodge filtration on (global sections of) $\bT\an_{X/ Y}[1]^\wedge$ and it induces a further filtration
         on (global sections of) the formal completion $Y^\wedge_X$, which we shall also refer to as the \emph{Hodge filtration} on the formal completion $Y^\wedge_X$;
-        \item When $f \colon X \to Y$ is assumed to be a closed immersion of derived $k$-affinoid spaces, the Hodge filtration on $Y^\wedge_X$ identifies with the $I$-adic filtration.
-        More precisely, let $A \coloneqq \Gamma(X, \cO_X\alg)$ and $B \coloneqq \Gamma(Y, \cO_Y\alg)$ denote the corresponding derived global sections derived $k$-algebras. Then the induced morphism
-        $B \to A$ is a surjection on $\pi_0$ and the Hodge filtration on $Y^\wedge_X$ identifies with the $I$-adic filtration on the completion $B^\wedge_I \in \CAlg_k$, where
-        $I \coloneqq \fib(B \to A)$.
+        \item When $f \colon X \to Y$ is a locally complete intersection morphism of derived $k$-affinoid spaces, the Hodge filtration on $Y^\wedge_X$ identifies with the $I$-adic filtration on global sections.
+        More precisely, let
+            \[A \coloneqq \Gamma(X, \cO_X\alg) \quad \mathrm{and} \quad B \coloneqq \Gamma(Y, \cO_Y\alg),\]
+        denote the corresponding derived global sections derived $k$-algebras. Then the global sections of
+        $Y^\wedge_X$ agree with the completion
+            \[
+                B^\wedge_I \in \CAlg_k, \quad I \coloneqq \fib(B \to A),  
+            \]
+        and the Hodge filtration on $B^\wedge_I$ coincides with the usual $I$-adic filtration.
     \end{enumerate}
 \end{thm}
 
 In order to construct the deformation to the normal cone $\cD_{X/ Y}\an$ we shall need two main ingredients. Namely, a general theory of $k$-analytic
-formal moduli problems for general derived $k$-analytic spaces and the relative analytification functor introduced in \cite{Holstein_Analytification_of_mapping_stacks} (see also \cite[\S 6]{Porta_Yu_NQK}).
-So far, a general framework of $k$-analytic formal moduli problems was lacking in the literature. For this reason, we devote \S 3
+formal moduli problems and the relative analytification functor introduced in \cite{Holstein_Analytification_of_mapping_stacks} (see also \cite[\S 6]{Porta_Yu_NQK}).
+So far, a general theory of analytic formal moduli problems was lacking in the literature. For this reason, we devote the whole \S 2
 to develop such framework. Let $X \in \dAnk$ be a (derived) $k$-analytic space. Denote by $\anNil_{X/ }^\cl$ the \infcat of closed embeddings
     \[
         g\colon X \to S,  
@@ -167,25 +189,32 @@ under $X$ (resp. over $X$) as a functor
         Y \colon (\anNil^{\mathrm{cl}}_{X/ })^ \mathrm{op} \to \cS,  \quad \textrm{(resp. $Y \colon (\anNil^\cl_{/ X}) \op \to \cS$)}
     \]
 satisfying some additional requirements, see \cref{defin:analytic_formal_moduli_problems_under} (resp. \cref{defin:analytic_formal_problems_over_X}).
-Our main result concerning this theory can be summarized as follows:
-
-\begin{thm}
+It turns out that analytic formal moduli problems can be described in very explicit terms as follows:
+\begin{thm} \label{intro-thm3}
     Let $X \in \dAn_k$ denote a derived $k$-analytic space. Then the following assertions hold:
     \begin{enumerate}
-        \item The \infcat $\anNil_{X/ /Y}^\cl$ is filtered and we have a natural equivalence
+        \item The \infcat $\anNil_{X/ /Y}^\cl$ (resp. $(\anNil_{/ X}^\cl)_{/ Y}$) is filtered and we have a natural equivalence
             \[
-                \colim_{S \in \anNil^\cl_{X/ / Y}} S \simeq Y ; 
+                \colim_{S \in \anNil^\cl_{X/ / Y}} S \simeq Y \quad \textit{resp.} \quad \colim_{X \in (\anNil_{/ X}^\cl)_{/ Y}} S \simeq Y; 
             \]
-        \item The natural morphism $f \colon X \to Y$ admits a relative (pro-)cotangent complex $\bbL_{X/ Y} \in \pro(\Coh^+(X))$, which completely controls the deformation
+        \item The natural morphism $f \colon X \to Y$ (resp. $f \colon Y \to X$)
+        admits a relative (pro-)cotangent complex $\bbL_{X/ Y} \in \pro(\Coh^+(X))$, which completely controls the deformation
         theory of the morphism $f$;
         \item In the case where $X$ is a derived $k$-affinoid space, the \infcat of analytific formal moduli problems $\anFMP_{X/ }$ is presentable and
-        monadic over the usual \infcat of ind-coherent sheaves on $A \coloneqq \Gamma(X, \cO_X\alg)$, $\Ind\Coh(A)$ (see \cite{Gaitsgory_IndCoh}).
+        monadic over the usual \infcat of ind-coherent sheaves on 
+            \[A \coloneqq \Gamma(X, \cO_X\alg).\]
     \end{enumerate}
 \end{thm}
 
-We then define the deformation $\cD_{X/ Y}\an$ as a $k$-analytic formal moduli problem
-under $X$. We shall further extrapolate the main formal properties of the usual deformation to the normal cone in the algebraic setting proved in \cite[\S 9]{Gaitsgory_Study_II},
-via a careful analysis of the behaviour of the relative analytification functor, denoted $(-)\an_Y$, and Noetherian approximation.
+We refer the reader to \cref{cor:formal_moduli_problems_over_X_are_ind_inf_objects}, \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes},
+\cref{cor:universal_property_of_relative_cotangent_complex_for_morphisms_between_analytic_FMP} and \cref{prop:conservativity_and_preservation_of_sifted_colimits_of_tangent_complex},
+for a detailed treatment of \cref{intro-thm3}. 
+
+Granting a general deformation theory we are able to construct the deformation $\cD_{X/ Y}\an$
+as a $k$-analytic formal moduli problem
+under $X$. Furthermore, we are able to extrapolate the main formal properties of the derived deformation to the normal cone in the algebraic setting, proved in \cite[\S 9]{Gaitsgory_Study_II}.
+The latter is done via a careful analysis of the behaviour of the relative analytification functor, denoted $(-)\an_Y$, and by means of
+Noetherian approximation.
 
 In particular, when $f \colon X \to Y$ is a morphism of derived $k$-affinoid spaces, we have a natural identification
     \[
@@ -193,28 +222,38 @@ In particular, when $f \colon X \to Y$ is a morphism of derived $k$-affinoid spa
     \]
 where $X\alg \coloneqq \Spec A$ and $Y\alg \coloneqq \Spec B$, with $A$ and $B$ are as in \cref{intro-thm2}. 
 
-Our approach does not take into consideration the supposedly existence of a \emph{topology} on the derived $k$-algebras
-    \[
-        \dR_{X/Y}\an \quad \mathrm{and} \quad \Gamma(Y^\wedge_X, \cO_{Y^\wedge_X}).  
-    \]
-We expect nonetheless that the general framework of condensed mathematics can be used effectively in the realm of derived $k$-analytic geometry
-to enhance the algebraic objects considered in the current text with a condensed/topological structure.
+Along the way, we establish a precise comparison between the works of \cite{Bhatt_Derived_Completions} and \cite[\S 9]{Gaitsgory_Study_II},
+which we consider to be of relevance for experts in derived algebraic geometry. Moreover, we shall also explicit mention that the techniques employed in the current
+text, namely Noetherian approximation, allows to construct the deformation to the normal cone and its Hodge filtration
+as in \cite[\S 9]{Gaitsgory_Study_II} outside the the almost of finite presentation scope, provided that we work under Noetherian assumptions. The latter
+might be helpful even in purely algebraic contexts.
+
+\subsection{Relation with other works and future questions} As previously explained, the content of this text is build upon two major prior works,
+namely \cite[\S 9]{Gaitsgory_Study_II} and \cite{Bhatt_Derived_Completions}. It follows essentially from \cref{lem:identification_of_Hodge_and_adic_filtrations}
+that
+Bhatt's construction of the Hodge filtration on algebraic de Rham cohomology with the approach of Gaitsgory-Rozemblyum (c.f. \cite[\S 9]{Gaitsgory_Study_II}).
+Such comparison result is not completely obvious. Indeed, in \cite{Bhatt_Derived_Completions} the author produces the Hodge filtration in the general case, by left Kan extending the adic
+filtration from the case of local complete intersection morphisms, whereas the construction of \cite[\S 9]{Gaitsgory_Study_II} is completely canonical. Therefore,
+there are two main advantages provided by our comparison result: first it proves the canonicity of Bhatt's approach and secondly it enlightens many
+important aspects of \cite[\S 9]{Gaitsgory_Study_II}, which were not made completely explicitly. 
 
 
-\subsection{Relation with other works and future questions} In \cite{grosse2002finiteness} the author introduces an algebraic de Rham cohomology
-theory for rigid $k$-analytic spaces. Furthermore, it is proved finiteness of over-convergent de Rham cohomology for a large class of rigid $k$-analytic spaces.
-Let $X$ be a rigid $k$-analytic space, the construction above is related to the study of sections on the formal completion $Y^\wedge_X$ for a
-closed embedding $i \colon X \to Y$, where $Y$ is a smooth rigid $k$-analytic space.
-Therefore, we expect that our derived de Rham cohomology, $\dR_{X/ Y}\an$, can be compared to the main construction in \cite{grosse2002finiteness}. In particular,
-this would provide a proof of finiteness for derived (over-convergent) de Rham cohomology.
-Moreover, such a comparison result would equip us with a Hodge-to-de Rham
+In \cite{grosse2002finiteness}, Grosse-Kl\"onne introduces an \emph{analytic} de Rham cohomology
+theory for a very large class of rigid $k$-analytic spaces. Let $X$ be a rigid $k$-analytic space,
+Grosse-Kl\"onne's construction is related to \emph{over-convergent} global sections of formal completions
+along closed immersion $i \colon X \hookrightarrow Y$, where $Y$ is a smooth rigid $k$-analytic space.
+Furthermore, the author proves finiteness of over-convergent analytic de Rham cohomology under certain finiteness conditions on $X$.
+
+We expect that our derived de Rham cohomology theory, $\dR_{X/k}\an$, can be compared to the construction in \cite{grosse2002finiteness}. In particular,
+this would provide a proof of finiteness for derived (over-convergent) analytic de Rham cohomology.
+Such comparison result would equip us with a Hodge-to-de Rham
 spectral sequence for over-convergent de Rham cohomology, in great generality. 
 In order to achieve such a comparison one needs to extend
 the results in this text to the over-convergent setting. We hope to pursue this venue in a future project.
 
 
 Ideally, the deformation to the normal bundle would provide an important tool to study the relationship between de Rham cohomology and \'etale cohomology
-of $k$-analytic spaces, similar to the algebraic case (see \cite{Bhatt_Derived_Completions}). When $k$ is a field of equi-characteristic zero, we expect that the non-smooth extension of the main construction of \cite{achinger2019betti} in the non-archimedean setting, could be related to the formal
+of $k$-analytic spaces, similar to the algebraic case (see \cite[\S 1, Corollary]{Bhatt_Derived_Completions}). When $k$ is a field of equi-characteristic zero, we expect that a non-smooth extension of the main construction of \cite{achinger2019betti}, in the non-archimedean setting, could be related to the formal
 completion $Y^\wedge_X$. More interestingly, would be to study the $p$-adic setting. Even though the author currently does not have an idea of how to accomplish
 this, it might be useful to extrapolate certain results in \cite{bras2018overconvergent} to the singular case, via derived geometry.
 
@@ -228,19 +267,42 @@ in the current text. Another important ingredient is a $k$-analytic HKR theorem,
 for a sketch of proof of the latter statement).
 
 \subsection{Organization of the paper}
-In \S 2, we provide a general review of the main notions of importance for our work. The main notion is that of a nil-isomorphism in the $k$-analytic setting.
-We shall use the general framework of section 2 to develop a theory of $k$-analytic formal moduli problems in \S 3. Our approach follows closely the results
-in \cite{Gaitsgory_Study_II}. Section 4 is devoted to a detailed study of the deformation to the normal cone in the non-archimedean setting. We start with a review of the construction
-in the algebraic case (provided in \cite{Gaitsgory_Study_II}) and then proceed to establish the construction in the non-archimedean setting in the remaining of section 4.
+In \S 2, we develop a theory of formal moduli problems in the non-archimedean setting. We devote 2.1 to a brief review of the main notions in non-archimedean
+geometry that will be important for us. We then proceed to \S 2.2 where a careful study of the structure of \emph{nil-isomorphisms} is performed.
+The notion of nil-isomorphism is basic building block of the theory of analytic formal moduli problems \emph{under} (resp. \emph{over}) a given base.
+The latter notions are introduced and study at length in \S 2.3 (resp. \S 2.4). In \S 2.4, we establish \emph{pseudo}-nil-descent for pro-almost perfect complexes
+or in other words pro-coherent complexes. Given a morphism $X \to Y$ which exhibits $X$ as an analytic formal moduli problem, we prove that
+the \infcat of $\pro(\Coh^+(Y))$ does satisfy descent along the usual $*$-upper functoriality, that it is, it can be realized as the totalization of
+    \[\pro(\Coh^+(X^\bullet)),\]
+where $X^\bullet$ denotes the \v{C}ech nerve associated to $X \to Y$. The main novelty compared with the main result in \cite[\S 7.2]{Gaitsgory_Study_I}
+is that we use the entire $\Coh^+$ and the $*$-upper functoriality. Our nil-descent statement is based in the work of Halpern-Leistner and Preygel, c.f.
+see \cite[Theorem 3.3.1]{preygel_Leistner_Mapping_stacks_properness}. Section 2.6 is devoted to the study of the notion of formal groupoids over a base $X$.
+We will prove the existence of a natural equivalence between the
+\infcats of analytic formal moduli problems under $X$ and analytic formal groupoids over $X$ (see \cref{thm:Phi_is_an_equivalence}).
+The content of this equivalence can be interpreted as: every analytic formal moduli problem under $X$ arises as a \emph{classifying formal derived $k$-analytic stack}
+associated to an analytic formal groupoid (which corresponds to the associated \v{C}ech nerve).
+This equivalence of \infcats is based on the pseudo-nil-descent results, proved earlier. Notice that \cref{thm:Phi_is_an_equivalence},
+is a direct non-archimedean analogue
+of \cite[\S 5, Theorem 2.3.2]{Gaitsgory_Study_II}. In \S 2.6, we study the tangent complex associate to an analytic formal moduli problem
+under $X$. In particular, we prove that such a functor is monadic, see \cref{prop:conservativity_and_preservation_of_sifted_colimits_of_tangent_complex}.
 
+The main bulk of the text lies in \S 3, where we introduce the deformation to the normal cone, $\cD_{X/ Y}$, in the non-archimedean setting. In
+\S 3.1 we review the algebraic situation. We shall summarize the main algebraic formal properties of $\cD_{X/ Y}$ and then proceed to
+give a simplification of the formalism developped in \cite[\S 9]{Gaitsgory_Study_II}
+in the case of closed immersions of derived schemes, see \cref{lem:identification_of_Hodge_and_adic_filtrations}. This will enable us to prove a comparison statement between Bhatt's construction of the Hodge filtration in algebraic de Rham
+cohomology, c.f. \cite{Bhatt_Derived_Completions} and the work of Gaitsgory-Rozemblyum.
 
+In \S 3.2 we introduce the non-archimedean deformation in the local case, via the relative analyticification functor and Noetherian approximation. We
+devote \S 3.3 to gluing the deformation to the class of morphisms between locally geometric derived $k$-analytic stacks. In particular, our results hold for any derived $k$-analytic space.
+We then introduce the construction of the \emph{non-archimedean Hodge filtration} in the local, in \S 3.4. This is possible by extending the usual Hodge filtration of
+Gaitsgory-Rozemblyum to the non-archimedean setting as follows: we first extrapolate the main results in \cite[\S 9.5]{Gaitsgory_Study_II} to the Noetherian setting
+not necessarily of almost of finite presentation (which was the only case treated in \cite[\S 9]{Gaitsgory_Study_II}) and then to the non-archimedean setting via the relative analytification functor.
+Finally, in \S 3.4 we glue the non-archimedean Hodge filtration for general morphisms between locally geometric derived $k$-analytic stacks.
 
-
-\subsection{Notations and Conventions} Let $k$ be a field of characteristic zero. We let $\dAff_k$ and $\dAff_k^\laft$ denote
-the \infcats of affine derived $k$-schemes (resp. affine derived $k$-schemes almost of finite presentation).
+\subsection{Notations and Conventions} In this text, $k$ denotes a non-archimedean field of characteristic zero. We let $\dAff_k$ and $\dAff_k^\laft$ denote
+the \infcats of affine derived schemes (resp. affine derived schemes almost of finite presentation).
 We shall denote by $\dSt_k$ the \infcat of derived $k$-stacks. 
-We shall further denote by $\dSt^\laft_k \subseteq \dSt_k$ the full subcategory spanned by derived $k$-stacks locally almost of finite presentation. Similarly,
-if we assume that $k$ is a non-archimedean field of characteristic zero, we shall denote by $\dAnSt_k$ the \infcat of derived $k$-analytic stacks introduced in \cite{Porta_Yu_Derived_non-archimedean_analytic_spaces}.
+We shall further denote by $\dSt^\laft_k \subseteq \dSt_k$ the full subcategory spanned by derived $k$-stacks locally almost of finite presentation.
 Given derived $k$-stacks $X, Y \in \dSt_k$ we shall denote by
     \[
         \Map(X, Y) \in \dSt_k,    
@@ -249,6 +311,7 @@ the corresponding mapping stack. If $X$ and $Y$ live over $\bbA_k^1$, we then sh
     \[
         \Map_{/ \bbA^1_k}(X, Y) \in (\dSt_k)_{/ \bbA^1_k}.  
     \]
+We denote $\dAnSt_k$ the \infcat of derived $k$-analytic stacks introduced in \cite{Porta_Yu_Derived_non-archimedean_analytic_spaces}.
 We shall denote by $\dAnk$ and $\dAfd_k$ the \infcats of derived $k$-analytic spaces (resp., derived $k$-affinoid spaces). We will
 further denote by $\Ank$ the usual ordinary category of (discrete) $k$-analytic spaces as in \cite{Berkovich_Etale_1993}.
 We shall instead use bold letters for the corresponding notions in the non-archimedean setting. Therefore, we shall denote by
@@ -256,19 +319,22 @@ We shall instead use bold letters for the corresponding notions in the non-archi
         \bfMap(X, Y) \in \dAnSt_k,
     \]
 the corresponding $k$-analytic mapping stack, whenever $X, Y \in \dAnSt_k$.
-Let $\cX$ be an \inftopos. The notion of a \emph{local $\cTank$-structure on $\cX$} was first introduced in \cite[Definition 2.4]{Porta_Yu_Derived_non-archimedean_analytic_spaces},
-see also \cite[\S 2]{antonio2018p}.
-
+Let $\cC$ be a stable \infcat. We shall denote by $\cC^{\mathrm{fil}}$ the associated \infcat of \emph{filtered objects in $\cC$}.
+Similarly, we denote by $\cC^{\mathrm{gr}}$ the \infcat of graded objects in $\cC$. We shall employ the notations
+    \[
+        \cC^{\mathrm{gr}, \ge 0} \quad \mathrm{and} \quad \cC^{\mathrm{gr} , =n}, 
+    \]
+the respective full subcategories of positively indexed graded objects in $\cC$ and objects concentrated in a single degree $n$. Notice that the latter
+\infcat is equivalent to $\cC$ itself.
 
 \subsection{Acknowledgments} The author would like to express his deep gratitude to Mauro Porta for the encouragement to pursue this project and
-for many commentaries and suggestions during the realization of the present work. The author would also like to thank to Marco Robalo for a clarifying
+for many commentaries and suggestions during the realization of the present work. The author would also like to thank Marco Robalo for a clarifying
 remark.
 
 \section{Analytic formal moduli problems}
 
 \subsection{Preliminaries}
-
-In the present text, the basic notion consists of the definition of derived $k$-affinoid/analytic spaces given
+Recall the notions of $k$-affinoid/analytic spaces introduced
 in \cite[Definition 7.3 and Definition 2.5.]{Porta_Yu_Derived_non-archimedean_analytic_spaces}, respectively.
 
 %\begin{defin}
@@ -282,7 +348,7 @@ in \cite[Definition 7.3 and Definition 2.5.]{Porta_Yu_Derived_non-archimedean_an
 
 \begin{defin}
     Let $f \colon X \to Y$ be a morphism in the \infcat $\dAnk$. We shall say that $f$ is an \emph{affine morphism} if
-    for every morphism $Z \to Y$ in $\dAnk$ such that $Z$ is equivalent to a derived $k$-affinoid space, the pullback
+    for every morphism $Z \to Y$ in $\dAnk$ such that $Z$ is a derived $k$-affinoid space, the pullback
         \[
             Z' \coloneqq Z \times_X Y \in \dAnk,  
         \]
@@ -336,12 +402,12 @@ in \cite[Definition 7.3 and Definition 2.5.]{Porta_Yu_Derived_non-archimedean_an
 We now extend the construction $(-)_\red \colon \Ank \to \Ank^\mathrm{red}$ to the \infcat of derived $k$-analytic spaces:
 
 \begin{defin}
-    The \emph{underlying $k$-analytic space} functor $\dAnk \to \Ank^\mathrm{red}$ is defined as the composite
+    Consider the functor $\dAnk \to \Ank^\mathrm{red}$ defined as the composite
         \[
             (-)_\red \colon \dAnk \xrightarrow{\trunc(-)} \Ank \xrightarrow{(-)_\red} \Ank^\mathrm{red}.
         \]
     Given $X \in \dAnk$ a derived $k$-analytic space we denote by $X_\red \in \Ank^\red$ the \emph{underlying reduced $k$-analytic space}
-    associated wiht $X$. 
+    associated with $X$. 
 \end{defin}
 
 \begin{lem}
@@ -413,7 +479,7 @@ Recall the notion of the underlying algebra functor $(-)\alg \colon \Strloc_{\cT
 \begin{proof} The second claim of the Lemma follows readily from the first assertion together with the definitions.
     We are thus reduced to prove that $\trunc(Z)$ is isomorphic to an ordinary $k$-affinoid space.
     Let $\cJ \subseteq \pi_0(\cO_Z)$, denote the coherent ideal sheaf associated to the closed immersion $Z_\red \hookrightarrow Z$. Notice that the ideal $\cJ$
-    agrees with the Jacobson ideal of $\pi_0(\cO_Z)$. Thanks to our assumption that $\pi_0(\cO_Z)$ is a Noetherian derived $k$-algebra on $\cZ$, it follows that there exists
+    agrees with the nilradical ideal of $\pi_0(\cO_Z)$. Thanks to our assumption that $\pi_0(\cO_Z)$ is a Noetherian derived $k$-algebra on $\cZ$, it follows that there exists
     a sufficiently large integer $n \ge 2$ such that
         \[
             \cJ^n = 0.  
@@ -637,39 +703,41 @@ crucial importance to the study of analytic formal moduli problems.
     in the \infcat $\CAlg_k$.
 \end{lem}
 
-\begin{proof}
-    Consider the natural morphism of derived $k$-algebras
-        \[
-            \theta \colon A \otimes_B  C \to \Gamma(Z', \cO_{Z'} \alg).
-        \]
-    Our goal is to show that $\theta$ is an equivalence. We start by observing that
-    since the morphism $f \colon X \to Y$ is finite,
-    the induced morphism $B \to A$ in $\CAlg_k$ is finite as well. In particular, the (ordinary) complete tensor product coincides with the (ordinary) algebraic tensor product, i.e.,
-    the natural morphism
-        \[
-            \pi_0(A) \otimes_{\pi_0(B)} \pi_0(C) 
-            \to \pi_0(A) \widehat{\otimes}_{\pi_0(B)} \pi_0(C)   ,
-        \]
-    is an equivalence of ordinary rings. In particular, thanks to \cite[Proposition 6.2 (5) and Theorem 6.5]{Porta_Yu_Derived_non-archimedean_analytic_spaces} we deduce that
-        \[
-            \pi_0(A \otimes_B C) \to \pi_0(\Gamma(Z', \cO_{Z'}\alg)),  
-        \]
-    is an equivalence of derived rings, as well. In order to conclude, we shall prove that for every $i> 0$, the natural morphism
-        \[
-            \pi_i(A \otimes_B C) \to \pi_i(\Gamma(Z', \cO_{Z'})),   
-        \]
-    is an equivalence. Since the morphism $f \colon X \to Y$ is a finite morphism we deduce that
-    $\pi_i(\cO_X)$ is a coherent $\pi_0(\cO_Y)$-module, for every $i \ge 0$. By unwinding the definitions, we deduce then that
-        \[
-            \pi_0(\cO_Z) \widehat{\otimes}_{\pi_0(\cO_Y)}\pi_i(\cO_X) \simeq \pi_0(\cO_Z) \otimes_{\pi_0(\cO_Y)} \pi_i(\cO_X),
-        \]
-    as $\pi_0(\cO_Z)$-modules. We thus deduce that we have a spectral sequence
-        \[
-            \pi_*(\cO_Z) \otimes_{\pi_*(\cO_Y)} \pi_*(\cO_X) \rightarrow \pi_*(\cO_{Z'}),
-        \]
-    whose existence is guaranteed by \cite[1.2.2.14]{Lurie_Higher_algebra}. The result now follows from
-    derived Tate acyclicity theorem, c.f. \cite[Theorem 3.1]{Porta_Yu_Derived_Hom_spaces}.
+\begin{proof} 
+    The Lemma is a direct consequence of \cite[Proposition 3.17]{Porta_Yu_Derived_non-archimedean_analytic_spaces} (iii).
 \end{proof}
+%    Consider the natural morphism of derived $k$-algebras
+%        \[
+%            \theta \colon A \otimes_B  C \to \Gamma(Z', \cO_{Z'} \alg).
+%        \]
+%    Our goal is to show that $\theta$ is an equivalence. We start by observing that
+%    since the morphism $f \colon X \to Y$ is finite,
+%    the induced morphism $B \to A$ in $\CAlg_k$ is finite as well. In particular, the (ordinary) complete tensor product coincides with the (ordinary) algebraic tensor product, i.e.,
+%    the natural morphism
+%        \[
+%            \pi_0(A) \otimes_{\pi_0(B)} \pi_0(C) 
+%            \to \pi_0(A) \widehat{\otimes}_{\pi_0(B)} \pi_0(C)   ,
+%        \]
+%    is an equivalence of ordinary rings. In particular, thanks to \cite[Proposition 6.2 (5) and Theorem 6.5]{Porta_Yu_Derived_non-archimedean_analytic_spaces} we deduce that
+%        \[
+%            \pi_0(A \otimes_B C) \to \pi_0(\Gamma(Z', \cO_{Z'}\alg)),  
+%        \]
+%    is an equivalence of derived rings, as well. In order to conclude, we shall prove that for every $i> 0$, the natural morphism
+%        \[
+%            \pi_i(A \otimes_B C) \to \pi_i(\Gamma(Z', \cO_{Z'})),   
+%        \]
+%    is an equivalence. Since the morphism $f \colon X \to Y$ is a finite morphism we deduce that
+%    $\pi_i(\cO_X)$ is a coherent $\pi_0(\cO_Y)$-module, for every $i \ge 0$. By unwinding the definitions, we deduce then that
+%        \[
+%            \pi_0(\cO_Z) \widehat{\otimes}_{\pi_0(\cO_Y)}\pi_i(\cO_X) \simeq \pi_0(\cO_Z) \otimes_{\pi_0(\cO_Y)} \pi_i(\cO_X),
+%        \]
+%    as $\pi_0(\cO_Z)$-modules. We thus deduce that we have a spectral sequence
+%        \[
+%            \pi_*(\cO_Z) \otimes_{\pi_*(\cO_Y)} \pi_*(\cO_X) \rightarrow \pi_*(\cO_{Z'}),
+%        \]
+%    whose existence is guaranteed by \cite[1.2.2.14]{Lurie_Higher_algebra}. The result now follows from
+%    derived Tate acyclicity theorem, c.f. \cite[Theorem 3.1]{Porta_Yu_Derived_Hom_spaces}.
+%\end{proof}
 
 \begin{lem} \label{lem:Beck_Chevalley_natural_transformation_equivalence}
     Let $f \colon X \to Y$ be a finite morphism of derived $k$-affinoid spaces and $g \colon Z \to Y$ an admissible open immersion in $\dAfd_k$. Form the pullback diagram
@@ -917,11 +985,11 @@ We shall give some important examples of formal moduli problems under $X$:
         \item Let $f \colon X \to Y$ be a closed immersion in the \infcat $\dAnk$. Consider the shifted tangent bundle associated to $f$ together with the zero section
             \[
             \begin{tikzcd}
-                X \ar{r}{s_0} \ar{rd}{=} & \bT\an_{X/ Y}[1] \ar{d}{p} \\
+                X \ar{r}{s_0} \arrow[rd, equal] & \bT\an_{X/ Y}[1] \ar{d}{p} \\
                     & X.
             \end{tikzcd}
             \]
-        The completion $\bT\an_{X/Y} [1]^\wedge_X \in \anFMP_{X/ }$ along $s_0$ will play an important role in what follows.
+        The completion $\bT\an_{X/Y} [1]^\wedge \in \anFMP_{X/ }$ along $s_0$ will play an important role in what follows.
     \end{enumerate}
 \end{eg}
 
@@ -1945,7 +2013,7 @@ The latter defines a formal groupoid over $X$ admitting
       & X 
     \end{tikzcd},
     \] 
-as simplicial presentation. We shall denote the later simplicial object simply by $X^{\times_Y \times} \in \anFGrpd(X)$.
+as simplicial presentation. We shall denote the later simplicial object simply by $X^{\times_Y \bullet} \in \anFGrpd(X)$.
 \end{construction}
 
 \begin{rem}
@@ -2203,7 +2271,7 @@ As an immediate consequence, we obtain the following result:
 Consider the diagram
     \[
     \begin{tikzcd}
-        X \ar{r}{\Delta}  \ar{rd}[swap]{=} & X \times_Y X \arrow[d, "p_0", shift left=2] \arrow{d}[swap]{p_1} \\
+        X \ar{r}{\Delta}  \ar[rd, equal] & X \times_Y X \arrow[d, "p_0", shift left=2] \arrow{d}[swap]{p_1} \\
         &   X  
     \end{tikzcd}
     \]
@@ -2388,55 +2456,13 @@ The following result will play a major role in the study of the deformation to t
 
 \section{Non-archimedean Deformation to the normal bundle}
 
-In this \S, we introduce the construction of the deformation to the normal cone in the setting of derived $k$-analytic geometry. The construction has
-already been studied in \cite{Porta_Yu_NQK}, in the particular case of the natural morphism $\trunc(X) \to X$, for a general $X \in \dAnk$.
-On the other hand, the situation in the algebraic case was extensively studied in \cite{Gaitsgory_Study_II}.
-
-\subsection{General overview} Our main goal in this text can be summarized as follows: given a morphism
-$f \colon X \to Y$ in the \infcat $\dAnSt_k$, admitting a (relative) deformation theory, we wish to construct a family over the $k$-analytic affine linespread
+In this \S, we introduce the construction of the deformation to the normal cone in the setting of derived $k$-analytic geometry. This construction has
+already been performed in the literature in the particular case of the natural inclusion morphism
     \[
-        \cD_{X/ Y} \an \to \bA^1_k,  
+        i \colon \trunc(X) \to X,  \quad X \in \dAnk,
     \]
-which can be thought as a (natural) deformation of the formal completion of the morphism $Y^\wedge_X$ to the corresponding shifted
-tangent bundle $\bT\an_{X/ Y}[1]$. Moreover, we wish to canonically \emph{spread out} the Hodge filtration on $\bT\an_{X/ Y}[1]$ over $\bA^1_k$, or in other words
-to extend the Hodge filtration over the formal completion $Y^\wedge_X$.
-
-Our construction has two main properties, namely: it satisfies \'etale descent (by construction) and it is induced
-from the algebraic theory, via the relative analytification functor introduced in \cite{Holstein_Analytification_of_mapping_stacks}.
-
-As a general remark, we will be typically interested in the case where the morphism $f \colon X \to Y$ is a morphism between
-geometric derived $k$-analytic stacks. The reader can safely assume that $f$ is simply a morphism of (derived) $k$-analytic spaces.
-Nonetheless, the fact that our construction works in the general case of a morphism admitting relative deformation theory is
-useful in practice as we shall now explain: given a morphism $f \colon X \to Y$ admitting deformation theory, say a morphism between
-geometric derived $k$-analytic stacks, we can replace, without loss of generality, $f$ with the inclusion of $X$ in the formal completion
-    \[
-        i \colon X \to Y^\wedge_X,
-    \]  
-the latter being an (ind)-closed immersion, see \cref{prop:analytic_FMP_under_X_are_ind_inf_schemes}. This observation is useful
-in order to make the construction less obscure in technical terms. The underlying justification of this principle is the following:
-the morphism $q \colon Y^\wedge_X \to Y$ is formally \'etale in the sense that the natural morphism
-    \[
-        \bbL_{X/Y} \simeq  \bbL_{X/ Y^\wedge_X},
-    \]
-in the \infcat $\pro(\Coh^+(X))$. Indeed, this follows from the observation that the map $\bbL_{X} \simeq \bbL_{X/ X_\dR}$ (as
-$X_\dR$ is a final object in the \infcat $\anFMP_{X/ }$), in particular $\bbL_{X_\dR} \simeq 0$. Using the natural fiber sequence linking
-cotangent complexes of compositions, we obtain that
-    \[
-        \bbL_{Y_\dR} \to \bbL_{X_\dR} \to \bbL_{X_\dR/ Y_\dR}   ,
-    \]
-thus $\bbL_{X_\dR/ Y_\dR} \simeq 0$, and by using the pullback formula for the relative cotangent complex, we obtain that
-    \[
-        \bbL_{Y^\wedge_X/ Y} \simeq \bbL_{X_\dR / Y_\dR},  
-    \]
-thus the former is null-homotopic. The conclusion follows. 
-
-As a consequence, we have natural identifications
-    \[
-        \bT\an_{X/ Y}[1]^\wedge \simeq \bT\an_{X/ Y^\wedge_X}[1]^\wedge,  
-    \]
-and clearly $Y^\wedge_X \simeq (Y^\wedge_X)^\wedge_X$, the latter statement is a formal consequence of \cref{thm:Phi_is_an_equivalence}.
-For this reason, we shall assume from the start that $f \colon X \to Y$ is a closed-immersion admitting a relative deformation theory, or in other
-words an (ind)-closed embedding.
+c.f \cite{Porta_Yu_NQK}.
+On the other hand, the algebraic situation is largely understood mainly due to \cite{Gaitsgory_Study_II}.
 
 \subsection{General construction in the algebraic case} We start by recalling the definition of the simplicial object
     \[
@@ -2446,25 +2472,28 @@ introduced in
 \cite[\S 9.2.2]{Gaitsgory_Study_II}. Namely, for each $[n] \in \bDelta$, the object $\mathrm{B}^{n}_\mathrm{scaled}$ is obtained by gluing $n+1$ copies of $\bbA^1_k$ together along
 $0 \in \bbA^1_k$. Moreover, the transition morphisms
     \[
-        p_{i, n} \colon  \mathrm{B}^{n+1}_\mathrm{scaled} \to \mathrm{B}^n_{\mathrm{scaled}}, \quad \mathrm{for} \ i \in \{0, \dots, n\} 
+        p_{i, n} \colon  \mathrm{B}^{n+1}_\mathrm{scaled} \to \mathrm{B}^n_{\mathrm{scaled}}, \quad \mathrm{for} \ i \in \{0, \dots, n\} ,
     \]
-collapse two given different irreducible components of $\rB^{n+1}_\mathrm{scaled}$ into a fixed one in $\rB^n_{\mathrm{scaled}}$. More explicitly, for $n=0$, we have
+collapse two given different irreducible components of $\rB^{n+1}_\mathrm{scaled}$ into $\rB^n_{\mathrm{scaled}}$. More explicitly, for $n=0$, we have
     \[
         \rB_\mathrm{scaled}^0 = \bbA^1_k,  
     \]
 and, for $n = 1$, $\rB_\mathrm{scaled}^1 = \Spec k[x, y]/ (x^2 - y^2)$.
 
 \begin{construction} \label{construction:def_to_the_normal_bundle}
-    Let $f \colon X \to Y$ denote a morphism in the \infcat $\mathrm{dSt}_k$.
-    In \cite[\S 9.3]{Gaitsgory_Study_II}, the authors introduced the \emph{parametrized deformation to the normal bundle associated to $f \colon X \to Y$}, as the pullback
+    Let $f \colon X \to Y$ denote a morphism between locally geometric derived $k$-stacks in $\mathrm{dSt}^\laft_k$. Consider the formal completion of $Y$ on $X$ along
+    the morphism $f$
         \[
-        \begin{tikzcd}
-            \cD^\bullet_{X/Y} \ar{r} \ar{d} &   Y \times \bbA^1_k \ar{d} \\
-            \Map_{/ \bbA^1_k}(\mathrm{B}^\bullet_{\mathrm{scaled}}, X \times \bbA^1_k) \ar{r} & \Map_{/ \bbA^1_k}(\mathrm{B}^\bullet_{\mathrm{scaled}}, Y \times \bbA^1_k),
-        \end{tikzcd}
+            Y^\wedge_X \in \dSt_k  
         \]
-    where both $X \times \bbA^1_k$ and $Y \times \bbA^1_k$ are considered as constant simplicial objects in the \infcat $\dSt_k$. Assume further that
-    the morphism $f \colon X \to Y$ is a closed immersion admitting a (relative) deformation theory, in the \infcat $\mathrm{dSt}^\laft_k$.
+    In \cite[\S 9.3]{Gaitsgory_Study_II}, the authors introduced the \emph{parametrized deformation to the normal bundle associated to $f \colon X \to Y$}, as the pullback
+        \begin{equation} \label{eq:parametrized_deformation}
+        \begin{tikzcd}
+            \cD^\bullet_{X/Y} \ar{r} \ar{d} &   Y^\wedge_X \times \bbA^1_k \ar{d} \\
+            \Map_{/ \bbA^1_k}(\mathrm{B}^\bullet_{\mathrm{scaled}}, X \times \bbA^1_k) \ar{r} & \Map_{/ \bbA^1_k}(\mathrm{B}^\bullet_{\mathrm{scaled}}, Y^\wedge_X \times \bbA^1_k),
+        \end{tikzcd}
+        \end{equation}
+    where both $X \times \bbA^1_k$ and $Y^\wedge_X \times \bbA^1_k$ are considered as constant simplicial objects in the \infcat $\dSt_k$.
     As a consequence of \cite[Theorem 9.2.3.4]{Gaitsgory_Study_II}, it follows that
     each component of the simplicial object
     $\cD_{X/Y}^\bullet$ admits a deformation theory relative to $X$.
@@ -2473,30 +2502,38 @@ and, for $n = 1$, $\rB_\mathrm{scaled}^1 = \Spec k[x, y]/ (x^2 - y^2)$.
     $X \times \bbA^1_k$. Moreover, Theorem 5.2.3.4 in loc. cit. allows us to associate to $\cD^\bullet_{X/Y}$ a
     formal moduli problem under $X \times \bbA^1_k$
            \[
-               \cD_{X/Y} \in \mathrm{FMP}_{X \times \bbA^1_k/ / Y \times \bbA^1_k},
+               \cD_{X/Y} \in \mathrm{FMP}_{X \times \bbA^1_k/ / Y^\wedge_X \times \bbA^1_k},
            \]
-    obtained via the construction provided in \S 5.2.4 in loc. cit. Moreover, by construction the object $\cD_{X/Y} \in (\dSt^\laft_k)_{X \times \bbA^1_k/ / Y \times \bbA^1_k}$.
+    obtained via the construction provided in \S 5.2.4 in loc. cit.
     More explicitly, the object $\cD_{X/ Y} \in \mathrm{FMP}_{X \times \bbA^1_k/ }$ is computed as the sifted colimit of the simplicial diagram
         \[
             \cD_{X/ Y}^\bullet \in \Fun(\bDelta \op, \mathrm{FMP}_{X \times \bbA^1_k/ })  ,
         \]
-    the colimit being computed in $\mathrm{FMP}_{X \times \bbA^1_k/ }$.
+    the colimit being computed in $\mathrm{FMP}_{X \times \bbA^1_k/ }$. We can furthermore consider $\cD_{X/Y}$
+    naturally as an object in $(\dSt^\laft_k)_{X \times \bbA^1_k/ / Y^\wedge_X \times \bbA^1_k}$.
+\end{construction}
+
+\begin{construction}
+    Let $f \colon X \to Y$ a morphism of locally geometric derived $k$-stacks in $\dSt_k^\laft$. In \cite[\S 9.2.5]{Gaitsgory_Study_II} the authors
+    constructed an explicit left-lax action of the monoid-scheme object $\bbA^1_k$ (with respect to \emph{multiplication})
+    on the deformation to the normal bundle $\cD_{X/ Y}$. The above action
+    implies that the structure sheaf of $\cD_{X/ Y}$ is equipped with a (negatively indexed) filtration. 
 \end{construction}
 
 
 \begin{notation}
-    By construction, object $\cD_{X/ Y} \in \mathrm{FMP}_{X \times \bbA^1_k/ }$ admits a natural morphism to $Y \times \bbA^1_k$. We shall denote the \infcat
-    of formal moduli problems under $X \times \bbA^1_k$ equipped with a morphism of derived stacks to $Y \times \bbA^1_k$, by $\mathrm{FMP}_{X \times \bbA^1_k/ /Y \times \bbA^1_k}$.
+    We shall denote by $p \colon \cD_{X/ Y} \to \bbA^1_k$ the natural composite morphism 
+        \[
+            \cD_{X/ Y} \to Y^\wedge_X \times \bbA^1_k \to \bbA^1_k,  
+        \]
+    in the \infcat $\dSt_k^\laft$.
 \end{notation}
 
-\begin{notation}
-    Let $f \colon X \to Y$ be a closed morphism admitting a deformation theory in $\dSt_k^\laft$. We shall denote by $p \colon \cD_{X/ Y} \to \bbA^1_k$ the structural
-    morphism.
-\end{notation}
 
-We shall now describe certain formal properties of the object $\cD_{X/Y} \in \mathrm{FMP}_{X \times \bbA^1_k/ /Y \times \bbA^1_k}$:
 
-\begin{prop} \label{prop:algebraic_properties_of_deformation} Let $f \colon X \to Y$ denote a closed immersion in the \infcat $\dSt_k^\laft$ admitting a deformation theory.
+We shall now describe formal geometric properties of the deformation to the normal bundle $\cD_{X/Y} \in (\dSt^\laft_k)_{X \times \bbA^1_k/ /Y^\wedge_X \times \bbA^1_k}$:
+
+\begin{prop} \label{prop:algebraic_properties_of_deformation} Let $f \colon X \to Y$ denote a morphism of locally geometric derived $k$-stacks in the \infcat $\dSt_k^\laft$.
     The following assertions hold:
     \begin{enumerate}
         \item The fiber of the morphism $p \colon \cD_{X/Y} \to \bbA^1_k$ at the fiber $\{0 \} \subseteq \bbA^1_k$ identifies naturally with
@@ -2512,86 +2549,162 @@ We shall now describe certain formal properties of the object $\cD_{X/Y} \in \ma
                 Y^\wedge_X \in \dSt^\laft_k,  
             \]
         of $X$ in $Y$ along the morphism $f$.
-        \item (Hodge Filtration) There exists a natural sequence of square-zero extensions
+        \item (Hodge Filtration) There exists a natural sequence of morphisms
             \[
                 X \times \bbA^1_k = X^{(0)} \to X^{(1)}  \to  \dots \to X^{(n)} \to \dots \to Y,
             \]
-        in $(\dSt_k^\laft)_{X\times\bbA^1_k/ /Y\times\bbA^1_k}$ such that, for each $n \ge 0$, the morphism
+        admitting a deformation theory, in $(\dSt_k^\laft)_{X\times\bbA^1_k/ /Y\times\bbA^1_k}$. For each $n \ge 0$,
+        the relative tangent complex
+            \[
+                \bbT_{X^{(n)} / Y }   \in \Ind\Coh(X^{(n)}),
+            \]
+        has first non-zero associated graded piece in degree $n$ and the latter identifies naturally with
+            \[
+                i_{n, *}^{\Ind\Coh} ( \Sym^{n+1} (\bbT_{X/ Y} [1])[-1])) \in \Ind\Coh(X^{(n)}).
+            \]
+        Dually, the pro-relative cotangent complex $\bbL_{X/ Y} \in \pro(\Coh(X^{(n)}))$ is equipped with a decreasing filtration, starting in degree $n$,
+        and the corresponding associated $n$-th graded piece identifies naturally with
+            \[
+                i_{n, *}(\Sym^{n+1}(\bbL_{X/ Y}[-1])[1])  \in \pro(\Coh^b(X^{(n)})).
+            \]
+        \item Assume that $f \colon X \to Y$
+        is a closed immersion of derived schemes locally almost of finite presentation then, for each $n \ge 0$, the morphism
             \[
                 X^{(n)} \to X^{(n+1)},  
             \]
-        has the structure of a square-zero extension associated to the natural morphism
+        has the structure of a square-zero extension associated to a canonical morphism
             \[d \colon \bbL_{X^{(n)}} \to \bbL_{X^{(n)}/ Y} \to i_{n, *} (\Sym^{n+1}(\bbL_{X/ Y}[-1])[1]),\]
-        in the \infcat $\Coh^{\ge n}(X^{(n)})$, where $i_n \colon X \times \bbA^1_k$ denotes the composite map.
-        In particular, if $X$ is geometric derived $k$-stack almost of finite presentation then so are the $X^{(n)}$, for each $n \ge 0$.
+        in the \infcat $\Coh^+(X^{(n)})$, where 
+            \[
+                i_n \colon X \times \bbA^1_k \to X^{(n)}
+            \]
+        denotes the structural morphism.
+        In particular, if $X$ is a derived scheme almost of finite presentation, then so are the $X^{(n)}$, for each $n \ge 0$.
         \item There exists a natural morphism
             \[\colim_{n} X^{(n)} \to \cD_{X/Y},\]
-        in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ /Y\times\bbA^1_k}$. Moreover, the latter is an equivalence
-        (and thus so it is when computed in the \infcat $(\dSt_k^\laft)_{X\times\bbA^1_k/ /Y\times\bbA^k})$.
+        in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ /Y^\wedge_X \times\bbA^1_k}$. Moreover, the latter is an equivalence
+        of derived $k$-stacks almost of finite presentation.
     \end{enumerate}
 \end{prop}
 
 \begin{proof}
     Assertion (1) follows formally from \cite[\S 9, Proposition 2.3.6]{Gaitsgory_Study_II}. Assertion (2) follows from the observation that
-    the fiber of the simplicial object $\cD_{X/ Y}^\bullet$ at $\lambda \neq 0$ can be identified with the \v{C}ech nerve of the morphism $f$
+    the fiber of the simplicial object $\cD_{X/ Y}^\bullet$ at $\lambda \neq 0$ can be identified with the \v{C}ech nerve of the (completion) of the morphism $f$
         \[
-            X^{\times_Y \bullet} \in \Fun(\bDelta \op, \dSt_k^\laft).
+            X^{\times_{Y^\wedge_X} \bullet} \in \Fun(\bDelta \op, \dSt_k^\laft).
         \]
-    Therefore, its colimit taken in $\mathrm{FMP}_{X \times \bbA^1_k/}$ agrees with the formal completion $Y^\wedge_X \in \mathrm{FMP}_{X \times \bbA^1_k/ }$. Moreover, \cite[\S 9, Theorem 5.1.3]{Gaitsgory_Study_II}
-    allow us to construct, for each $n \ge 0$, a square-zero extension
-        \begin{equation} \label{eq:square_zero_ext_Hodge_filtration}
-            X^{(n)} \to X^{(n+1)},   
-        \end{equation}
-    with $X^{(0)} = X \times \bbA^1_k$ and such that
-        \[\cD_{X/ Y} \simeq \colim_{n \ge 0} X^{(n)},\]
-    in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ }$, see for instance \cite[\S 9, Proposition 5.2.2]{Gaitsgory_Study_II}. Denote by $i_n \colon X \times \bbA^1_k \to X^{(n)}$
-    the composite. Let us sketch how the construction of \eqref{eq:square_zero_ext_Hodge_filtration} procedes:
-    Theorem 9.5.1.3, in loc. cit., implies that the (Serre) tangent complex
+    Therefore, its colimit taken in $\mathrm{FMP}_{X \times \bbA^1_k/}$ agrees with the formal completion $Y^\wedge_X \in \mathrm{FMP}_{X \times \bbA^1_k/ }$. The first part of assertion (3) follows
+    formally from \cite[\S 9, Theorem 5.1.3]{Gaitsgory_Study_II}. For each $n \ge 0$, denote by 
+    \[i_n \colon X \times \bbA^1_k \to X^{(n)},\]
+    the structural morphism. The latter is a proper morphism due to \cite[\href{https://stacks.math.columbia.edu/tag/0CYK}{Tag 0CYK}]{stacks-project}.
+
+    The statement concerning the relative cotangent complex follows formally from
+    \cite[\S 9, Theorem 5.1.3]{Gaitsgory_Study_II} by applying the Serre duality functor and combining
+    \cite[Corollary 9.5.9 (b)]{Gaitsgory_IndCoh} with \cite[Proposition 3.1.3]{Gaitsgory_IndCoh} and \cite[Corollary 1.4.4.2]{Gaitsgory_Study_II}
+    to produce a natural identification
+        \[
+            \bD^\mathrm{Serre}_X \big((i_{n, *}^{\Ind\Coh}(\Sym(\bbT_{X/ Y}[1])[-1]) \big)   \simeq i_{n, *} \big(\Sym(\bbL_{X/ Y}[-1])[1] \big),
+        \]
+    in the \infcat $\pro(\Coh^b(X))$.
+    Assertion (5) is an immediate consequence of \cite[\S 9, Proposition 5.2.2]{Gaitsgory_Study_II}.
+    We shall now deduce claim (4) of the Proposition:
+    it follows from
+    Theorem 9.5.1.3, in loc. cit.,
+    that the (Serre) tangent complex
         \[
             \bbT_{X^{(n)}/ Y } \in \Ind\Coh(X^{(n)}),  
         \]
-    admits a natural filtration whose $n$-th piece identifies with $i_{n, *}^\mathrm{IndCoh}(\Sym^{n+1}(\bbT_{X/Y}[1]))[-1]$. For this reason, we have a structural morphism
+    admits a natural (increasing) filtration whose $n$-th piece identifies with 
+        \[i_{n, *}^\mathrm{IndCoh}(\Sym^{n+1}(\bbT_{X/Y}[1]))[-1] \in \Ind\Coh(X^{(n)}).\]
+    For this reason, we have a structural morphism
         \[
             i_{n, *}^\mathrm{IndCoh}(\Sym^{n+1}(\bbT_{X/Y}[1]))[-1] \to \bbT_{X^{(n)}/ Y},
         \]
-    in the \infcat $\Ind\Coh(X^{(n)})$. The authors then define,
-    for each $n \ge 0$, the square-zero extension displayed in \eqref{eq:square_zero_ext_Hodge_filtration} by means of the natural
-    composite
+    in the \infcat $\Ind\Coh(X^{(n)})$. Consider then the natural composite
         \[
             i_{n, *}^\mathrm{IndCoh}(  \Sym^{n+1}(\bbT_{X/ Y}[1])[-1])) \to \bbT_{X^{(n)}/ Y} \to \bbT_{X^{(n)}},
         \]
-    in the \infcat $\Ind\Coh(X)$. We shall now further identify the corresponding derivation in terms of the (usual) cotangent complex formalism.
+    in the \infcat $\Ind\Coh(X)$. Using the equivalence of \infcats between Lie algebroids in $\Ind\Coh(X)$ and the \infcat
+    $\mathrm{FMP}_{X/ }$, c.f. \cite[\S 8.5]{Gaitsgory_Study_II}, one produces then a canonical morphism
+        \[
+            X^{(n)} \to X^{(n+1)},
+        \]
+    in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ }$.
+    
+    In the case where $f \colon X \to Y$ is a closed immersion
+    of derived schemes locally almost of finite presentation the latter construction can be adapted in terms of the
+    (usual) cotangent complex
+    formalism: thanks to \cite[Corollary 8.4.3.2]{Lurie_Higher_algebra}, the relative cotangent complex
+        \[
+            \bbL_{X/ Y} \in \Coh^+(X),  
+        \]
+    is $1$-connective. In particular, the shift $\bbL_{X/ Y}[-1]$ is $0$-connective.
     By applying the usual Serre duality functor (c.f. \cite[\S 9]{Gaitsgory_IndCoh}) we obtain a well defined fiber sequence
+        \begin{equation} \label{eq:fiber_seq_cotangent_complex_for_Hodge_filtration2}
+            \bbL_{X^{(n)}} \to \bbL_{X^{(n)}/ Y} \to i_{n,*}\big(  \Sym^{n+1}(\bbL_{X/ Y}[1])[-1]) \big) ,
+        \end{equation}
+    in the \infcat $\pro(\Coh^b(X))$. Moreover, under our assumptions, it follows that \eqref{eq:fiber_seq_cotangent_complex_for_Hodge_filtration}
+    lies in the full subcategory 
+        \[\Coh^+(X) \subseteq \pro(\Coh^b(X)),\]
+    via the equivalence of \infcats provided in \cite[Corollary 1.4.4.2]{Gaitsgory_Study_II}.
+    Since the right hand side of \eqref{eq:fiber_seq_cotangent_complex_for_Hodge_filtration2}
+    is $1$-connective, it follows from \cite[\S 8, 5.5]{Gaitsgory_Study_II} that the extension
         \[
-            \bbL_{X^{(n)}} \to \bbL_{X^{(n)}/ Y} \to \bD^{\mathrm{Serre}}_{X^{(n)}} ( (i_{n}^*)^{\mathrm{IndCoh}}  \Sym^{n+1}(\bbT_{X/ Y}[1])[-1])) ,
+            X^{(n)} \to X^{(n+1)}, \quad \mathrm{for} \ n \ge 0,  
         \]
-    in the \infcat $\pro(\Coh^b(X))$, which actually takes place in the full subcategory $\Coh^+(X)$ via the equivalence of \infcats provided in \cite[Corollary 1.4.4.2]{Gaitsgory_Study_II}.
-    Since nil-isomorphisms are proper morphism (c.f. \cite[\href{https://stacks.math.columbia.edu/tag/0CYK}{Tag 0CYK}]{stacks-project}) we obtain in particular that 
-        \[i_{n-1} \colon X \times \bbA^1_k \to X^{(n)},\]
-    is a proper morphism. Combining \cite[Corollary 9.5.9 (b)]{Gaitsgory_IndCoh} with \cite[Proposition 3.1.3]{Gaitsgory_IndCoh} and \cite[Corollary 1.4.4.2]{Gaitsgory_Study_II}, we obtain
-    an equivalence
-        \[
-            \bD^{\mathrm{Serre}}_{X^{(n)}} \big( (i_{n, *})^{\mathrm{IndCoh}}  \Sym^{n+1}(\bbT_{X/ Y}[1])[-1]) \big) \simeq i_{n, *} \big( \Sym^{n+1}(\bbL_{X/ Y}[-1])[1] \big),
-        \]
-    in the \infcat $\Coh^+(X^{(n)})$. Combining the above considerations we are able to identify the derivation $d^{(n)}$ with the natural morphism
-        \[
-            \bbL_{X^{(n)}} \to \bbL_{X^{(n)}/ Y} \to i_{n, *} \big( \Sym^{n+1}(\bbL_{X/ Y}[1])[-1] \big),
-        \]
-    in $\Coh^+(X_\alpha^{(n)})$. It follows further from \cite[Lemma 5.36]{Porta_Yu_Representability} that
-        \[i_{n, *} \big( \Sym^{n+1}(\bbL_{X/ Y}[1])[-1] \big) \in \Coh^{\ge n}(X^{(n)}).\]
-    Assertion (4) follows immediately from \cite[\S 9, Proposition 5.2.2]{Gaitsgory_Study_II}.
+    can be identified with the (usual) square-zero extension of $X^{(n)}$ by means of the derivation \eqref{eq:fiber_seq_cotangent_complex_for_Hodge_filtration2}. This proves the second part
+    of claim (3) and the proof of the proposition is thus concluded.
 \end{proof}
 
-\begin{construction}
-    Let $f \colon X \to Y$ denote a closed immersion admitting a deformation theory in the \infcat $\dSt_k^\laft$. In \cite[\S 9.2.5]{Gaitsgory_Study_II} the authors
-    construct an explicit left-lax action of the monoid-scheme object $\bbA^1_k$ (with respect to \emph{multiplication})
-    on the deformation to the normal bundle $\cD_{X/ Y}$. The above action
-    implies that the structure sheaf of $\cD_{X/ Y}$ is equipped with a (positively indexed) filtration. This filtration
-    can be made explicit at the fiber at $\{0 \} \subseteq \bbA^1_k$. Indeed, under the natural identification
+\begin{rem} \label{rem:simplification_of_deformation_in_the_closed_immersion}
+    Assume that $f \colon X \to Y$ is a closed immersion of derived schemes locally almost of finite presentation.
+    Then \cref{construction:def_to_the_normal_bundle} can be simplified by taking directly $Y$ instead of the formal completion $Y^\wedge_X$
+    in the defining pullback square for \eqref{eq:parametrized_deformation}. Indeed, we claim that the simplicial object
+    obtained as the fiber product
         \[
-            (\cD_{X/ Y})_0 \simeq \bbT_{X/ Y}^\wedge[1] ,
+        \begin{tikzcd}
+            (\cD_{X/ Y}^\bullet) ' \ar{r} \ar{d} & Y \times \bbA^1_k \ar{d}\\
+            \Map_{/ \bbA^1_k}(\rB^\bullet_\mathrm{scaled}, X\times \bbA^1_k) \ar{r} & \Map_{/ \bbA^1_k} (\rB^\bullet_\mathrm{scaled}, Y \times \bbA^1_k),
+        \end{tikzcd}
         \]
-    we obtain that the filtration on $\cD_{X/ Y}$ induces the natural filtration on $\bbT_{X/ Y}^\wedge[1]$ which is obtained by considering
+    in $\Fun(\bDelta \op, \dSt_k^\laft)$, agrees with $\cD^\bullet_{X/ Y}$. Observe that we have a natural identification
+        \[
+            (\cD_{X/ Y}^\bullet)' \times_{\bbA^1_k} \bbG_m \simeq X^{\times_Y \bullet} ,
+        \]
+    and the latter agrees with the formal groupoid associated with $(X \to Y^\wedge_X) \in \mathrm{FMP}_{X \times \bbA^1_k}$. Moreover, we
+    have a natural identification
+        \[
+            \cD_{X/ Y}' \times_{\bbA^1_k} \{0 \} \simeq \rT^\bullet_{X/ Y},
+        \]
+    where $\rT^\bullet_{X/ Y}$ denotes the groupoid object associated to the usual shifted relative tangent bundle $\rT_{X/ Y}[1]$.
+    Under our assumption that $f \colon X \to Y$ is a closed immersion it follows from \cite[Corollary 8.4.3.2]{Lurie_Higher_algebra} that the relative cotangent complex
+        \[  
+            \bbL_{X/ Y} \in \Coh^+(X),
+        \]
+    is $1$-connective. As a consequence, we deduce that the natural morphism $X \to \rT^\bullet_{X/Y}$ is a termwise nil-isomorphism. As a consequence,
+    we conclude immediately that $\rT^\bullet_{X/ Y}$
+    agrees with the formal groupoid,
+    over $X$, associated to the formal moduli problem
+        \[  
+            (X \to \bbT_{X/ Y}[1]^\wedge) \in \mathrm{FMP}_{X/ }.
+        \]
+\end{rem}
+
+\begin{rem}
+    Consider the sequence of deformations in \cref{prop:algebraic_properties_of_deformation}, $\{ X^{(n)} \}_{n \ge 0}$.
+    The latter defines a filtration on the global sections of the formal completion $Y^\wedge_X$, which we shall
+    refer to as the \emph{Hodge filtration associated to the morphism $f$}. Therefore, \cref{prop:algebraic_properties_of_deformation}
+    can be interpreted as a spreading out result of the Hodge filtration
+    from de Rham cohomology to the global sections of the formal completion.
+\end{rem}
+
+\begin{rem}
+    The left-lax action of the multiplicative monoid $\bbA^1_k$ can be made explicit at the fiber of the morphism $p \colon \cD_{X/ Y} \to \bbA^1_k$
+    at $\{ 0\} \subseteq \bbA^1_k$. Indeed, under the natural identification
+        \[
+            (\cD_{X/ Y})_0 \simeq \rT_{X/ Y}^\wedge[1] ,
+        \]
+    we obtain that the filtration on $\cD_{X/ Y}$ induces the natural filtration on $\rT_{X/ Y}^\wedge[1]$ which is obtained by considering
         \[
             \bbT_{X/ Y}  \in \Ind\Coh(X)^{\mathrm{gr}, =1} \subseteq \Ind\Coh(X)^{\mathrm{gr}, \ge 0},
         \]
@@ -2599,288 +2712,610 @@ We shall now describe certain formal properties of the object $\cD_{X/Y} \in \ma
     is naturally $\bbA^1_k$ left-lax equivariant and the equivalence in \cref{prop:algebraic_properties_of_deformation} (4) is $\bbA^1_k$ left-lax equivariant, as well.
     %We shall consider
     %thus both the deformation to the normal bundle and the Hodge filtration as objects living over the quotient stack $[\bbA^1_k/ \bbG_m]$, see \cite{moulinos2019geometry}.
-\end{construction}
-
-\begin{rem}
-    Notice that we can identify $\bbT_{X/ Y}[1] \simeq \Spec_X(\Sym(\bbL_{X/ Y}[-1]))$, therefore the deformation $\cD_{X/ Y}$ is a derived analogue
-    of the usual deformation to the normal cone associated to a smooth morphism.
 \end{rem}
 
-\begin{rem}
-    Consider the sequence of square-zero extensions constructed in \cref{prop:algebraic_properties_of_deformation}, $\{ X^{(n)} \}_{n \ge 0}$.
-    The latter defines a filtration on the global sections of the formal completion $Y^\wedge_X$, which we shall
-    refer to as the \emph{Hodge filtration associated to the morphism $f$}. Therefore, \cref{prop:algebraic_properties_of_deformation}
-    can be interpreted as a spreading out result of the Hodge filtration
-    from de Rham cohomology to the global sections of the formal completion.
-\end{rem}
+Our goal now is to identify the Hodge filtration on $Y^\wedge_X$, in the case where $f \colon X \to Y$ is a closed immersion:
 
-\begin{rem} \label{rem:sifted_colimits_and_Hodge_filtration}
-    Let $g \colon  B \to A$ be a morphism in $\CAlg_k$ such that the induced ring homomorphism
-        \[
-            \pi_0(B) \to \pi_0(A),  
-        \]
-    is surjective. Assume that we can find a simplicial polynomial resolution $P_\bullet \to B$, together with a simplicial ideal
-    $I_\bullet \subseteq P_\bullet$ such that the simplicial object $P_\bullet / I_\bullet$ given by the formula
-        \[
-            [n] \in \bDelta \op \mapsto P_n/I_n,  
-        \]
-    is a simplicial resolution for $A$, by ordinary $k$-algebras. Then we equivalences
-        \[
-            \colim_{\bDelta \op} \bbL_{P_\bullet} \simeq \bbL_B \quad \mathrm{and} \quad \colim_{\bDelta \op} \bbL_{P_\bullet / I_\bullet} \simeq \bbL_A,  
-        \]
-    in $\Mod_B$, resp. in $\Mod_A$. By taking the cone of the natural morphism $A \otimes_B \bbL_B \to \bbL_A$ we obtain an equivalence
-        \[
-            \colim_{\bDelta \op} \bbL_{(P_\bullet/ I_\bullet)/ P_\bullet} \simeq \bbL_{A/ B}.  
-        \]
-    \cite[\S 9, Proposition 5.1.3]{Gaitsgory_Study_II} implies that the natural deformation of the (spectrum of) $g \colon B \to A$ is stable
-    under sifted colimits. More precisely, for each $m \ge 0$ we denote $P_\bullet^{(m)}$ the derived global sections of the $m$-th piece of the Hodge filtration applied componentwise to $P_\bullet$, and
-    consider similarly $(P_\bullet/ I_\bullet)^{(m)} \in \Fun(\bDelta \op, \CAlg_k)$ and $A^{(m)} \in \CAlg_k$.
-    We then have a natural identification
-        \[
-            \colim_{\bDelta \op} \Sym^{m}(\bbL_{(P_\bullet/ I_\bullet)/ P_\bullet}) \simeq \Sym^{m}(\bbL_{A/ B}),
-        \] 
-    and similarly
-        \[
-            \colim_{\bDelta \op} \bbL_{(P_\bullet/ I_\bullet)^{(m)}/ P_\bullet^{(m)}} \simeq \bbL_{A^{(m)}/ B},  
-        \]
-    as $A^{(m)}$-modules. By the naturality of \cite[\S 9, Proposition 5.1.3]{Gaitsgory_Study_II} we obtain that the geometric realization of
-    the natural composites
-        \[
-            d^{(m)}_{[n]} \colon \bbL_{(P_{[n]}/ I_{[n]})^{(m)}}  \to \bbL_{(P_{[n]} / I_{[n]})^{(m)}/ P_{[n]}} \to \Sym^{m+1}(\bbL_{(P_{[n]}/ I_{[n]})/ P_{[n]}}[-1])[1],
-        \]
-    for $[n] \in \bDelta$, identifies with the natural derivation
-        \[
-            d^{(m)} \colon \bbL_{A^{(m)}} \to \bbL_{A^{(m)}/ B} \to \Sym^{m+1}(\bbL_{A/ B}[-1])[1],
-        \]
-    of \cite[\S 9.5.1]{Gaitsgory_Study_II}.
-\end{rem}
+%\begin{rem} \label{rem:sifted_colimits_and_Hodge_filtration}
+%    Let $g \colon  B \to A$ be a morphism in $\CAlg_k$ such that the induced ring homomorphism
+%        \[
+%            \pi_0(B) \to \pi_0(A),  
+%        \]
+%    is surjective. Assume that we can find a simplicial polynomial resolution $P_\bullet \to B$, together with a simplicial ideal
+%    $I_\bullet \subseteq P_\bullet$ such that the simplicial object $P_\bullet / I_\bullet$ given by the formula
+%        \[
+%            [n] \in \bDelta \op \mapsto P_n/I_n,  
+%        \]
+%    is a simplicial resolution for $A$, by ordinary $k$-algebras. Then we equivalences
+%        \[
+%            \colim_{\bDelta \op} \bbL_{P_\bullet} \simeq \bbL_B \quad \mathrm{and} \quad \colim_{\bDelta \op} \bbL_{P_\bullet / I_\bullet} \simeq \bbL_A,  
+%        \]
+%    in $\Mod_B$, resp. in $\Mod_A$. By taking the cone of the natural morphism $A \otimes_B \bbL_B \to \bbL_A$ we obtain an equivalence
+%        \[
+%            \colim_{\bDelta \op} \bbL_{(P_\bullet/ I_\bullet)/ P_\bullet} \simeq \bbL_{A/ B}, 
+%        \]
+%    in the derived stable \infcat $\Mod_A$.
+%    Moreover, \cite[\S 9, Proposition 5.1.3]{Gaitsgory_Study_II} implies that the natural deformation of the (spectrum of) $g \colon B \to A$ is stable
+%    under sifted colimits. For each $m \ge 0$, consider $P_\bullet^{(m)}$ the derived global sections of the $m$-th piece of the Hodge filtration applied componentwise to $P_\bullet$, and
+%    consider similarly $(P_\bullet/ I_\bullet)^{(m)} \in \Fun(\bDelta \op, \CAlg_k)$ and $A^{(m)} \in \CAlg_k$.
+%    We then have a natural identification
+%        \[
+%            \colim_{\bDelta \op} \Sym^{m}(\bbL_{(P_\bullet/ I_\bullet)/ P_\bullet}) \simeq \Sym^{m}(\bbL_{A/ B}),
+%        \] 
+%    in $\Mod_{A}$, and similarly
+%        \[
+%            \colim_{\bDelta \op} \bbL_{(P_\bullet/ I_\bullet)^{(m)}/ P_\bullet^{(m)}} \simeq \bbL_{A^{(m)}/ B},  
+%        \]
+%    as $A^{(m)}$-modules. As in the proof of (3) \cref{prop:algebraic_properties_of_deformation} it follows that, for each $[n] \in \bDelta$, we have natural morphisms
+%        \begin{equation} \label{eq:Hodge_filtration_under_sifted_colimits}
+%            \bbL_{(P_{[n]} / I_{[n]})^{(m)}/ P_{[n]}} \to \Sym^{m+1}(\bbL_{(P_{[n]}/ I_{[n]})/ P_{[n]}}[-1])[1],
+%        \end{equation}
+%    which identify the right hand side with the $n$-th graded piece of a natural (decreasing) filtration on $\bbL_{(P_{[n]}/ I_{[n]})/ P_{[n]}}$.
+%    By the naturality of \cite[\S 9, Proposition 5.1.3]{Gaitsgory_Study_II} we obtain that the geometric realization of
+%    \eqref{eq:Hodge_filtration_under_sifted_colimits} corresponds to a morphism 
+%        \[
+%            \bbL_{A^{(m)}/ B} \to \Sym^{m+1}(\bbL_{A/ B}[-1])[1],
+%        \]
+%    identifying the right hand side with the $n$-th graded piece of a (decreasing) filtration on $\bbL_{A^{(m)}/ B}$. By the fact that the above filtrations are induced by (geometrical)
+%    left-lax $\bbA^1_k$-actions under the functor $\Spec$, we obtain by naturality
+%    of \cite[\S 9, Theorem 5.1.2]{Gaitsgory_Study_II} that the latter corresponds to the Hodge filtration corresponding to
+%    the morphism $B \to A$. In particular, the sifted colimit of the composites
+%        \[
+%            d^{(m)}_{[n]} \colon \bbL_{(P_{[n]}/ I_{[n]})^{(m)}}  \to \bbL_{(P_{[n]} / I_{[n]})^{(m)}/ P_{[n]}} \to \Sym^{m+1}(\bbL_{(P_{[n]}/ I_{[n]})/ P_{[n]}}[-1])[1],
+%        \]
+%    for $[n] \in \bDelta$, identifies with the natural derivation
+%        \[
+%            d^{(m)} \colon \bbL_{A^{(m)}} \to \bbL_{A^{(m)}/ B} \to \Sym^{m+1}(\bbL_{A/ B}[-1])[1],
+%        \]
+%    of \cite[\S 9.5.1]{Gaitsgory_Study_II}.
+%\end{rem}
 
-It turns out that for closed immersions the Hodge filtration on $Y^\wedge_X$ can be naturally identified with the corresponding $I$-adic
-filtration:
+\begin{prop} \label{lem:identification_of_Hodge_and_adic_filtrations}
+    Let $f \colon X \to Y$ be a morphism of affine derived schemes. Denote by $A = \Gamma(X, \cO_X)$ and $B = \Gamma(Y, \cO_Y)$, the corresponding derived
+    global sections and let $I \coloneqq \fib(B \to A)$ denote the fiber of the induced morphism of derived $k$-algebras $B \to A$. The following assertions hold:
+    \begin{enumerate}
+        \item If $f \colon X \to Y$ be a locally of complete intersection closed morphism in the \infcat $(\dAff_k)^\laft$,
+        then the Hodge filtration on the formal completion $Y^\wedge_X$ constructed in
+        \cref{prop:algebraic_properties_of_deformation} identifies with the usual $I$-adic filtration on $B^\wedge_I$, by taking derived global sections.
+        \item Assume that $f \colon X \to Y$ is a closed immersion. Then the Hodge filtration, $\{ \mathrm{Fil}^n_H \}$,
+        on the derived global sections 
+            \[\Gamma(Y^\wedge_X,\cO_{Y^\wedge_X}) \simeq B^\wedge_I,\]
+        produces, for each $n \ge 1$, natural equivalences
+            \[
+                B/ \mathrm{Fil}_H^n \simeq \dR_{A/ B}/ \mathrm{Fil}_H^n,
+            \]
+        of derived $k$-algebras.
+        In particular, we obtain a natural equivalence of derived $k$-algebras
+            \[
+                B^\wedge_I \simeq \lim_{n \ge 1} \dR_{A/ B} / \mathrm{Fil}_H^n.  
+            \]
+    \end{enumerate}
+\end{prop}
 
-\begin{lem} \label{lem:identification_of_Hodge_and_adic_filtrations}
-    Let $f \colon X \to Y$ be a closed morphism in the \infcat $(\dAff_k)^\laft$. Denote by $A = \Gamma(X, \cO_X)$ and $B = \Gamma(Y, \cO_Y)$, the corresponding derived
-    global sections. Let $I \coloneqq \fib(B \to A)$ denote the fiber of the induced morphism of derived $k$-algebras $B \to A$. Then the Hodge filtration on the formal completion $Y^\wedge_X$ constructed in
-    \cref{prop:algebraic_properties_of_deformation} identifies with the $I$-adic filtration on $B$, by taking derived global sections.
-\end{lem}
-
-\begin{proof}
-    We first observe that the statement of \cite[Corollary 9.5.2.5]{Gaitsgory_Study_II} implies, taking the Serre dual in $\Ind\Coh$, that one has an equivalence
+\begin{proof} We first prove claim (2) of the Proposition.
+    Since $f \colon X \to Y$ is a closed immersion between affines we deduce that the relative cotangent complex $\bbL_{X/ Y} \in \Coh^+(X)$ is $1$-connective.
+    For this reason, the sequence morphisms
         \[
-            \cO_{Y^\wedge_X} \simeq \lim_{n \ge 0} \cO_{X^{(n)}},  
+            X \times \bbA^1_k = X^{(0)} \hookrightarrow X^{(1)} \hookrightarrow \dots \hookrightarrow X^{(n)} \hookrightarrow \dots,  
         \]
-    and thus, by taking derived global sections, one obtains a natural identification   
+    of \cref{prop:algebraic_properties_of_deformation} (4) correspond to successive square-zero extensions.
+    Moreover,
+    it follows from \cite[Corollary 9.5.2.5]{Gaitsgory_Study_II} that, after applying the Serre duality functor on $\Ind\Coh$, one has an equivalence
         \[
-            B^\wedge_I \simeq \lim_{n \ge 0} \Gamma(X^{(n)}, \cO_{X^{(n)}}),  
+            \cO_{Y^\wedge_X} \simeq \lim_{n \ge 0} \cO_{(X^{(n)})_\lambda},  
         \]
-    in the \infcat $\CAlg_k$. Let us first prove the statement in the case where $A$ and $B$ are assumed to be ordinary $k$-algebras and the (classical) ideal $I \subseteq B$ is generated by a regular sequence.
+    in $\CAlg_k$, for any
+    for $\lambda \neq 0$. Henceforth,
+    at the level of derived global sections, one obtains a natural identification   
+        \[
+            B^\wedge_I \simeq \lim_{n \ge 0} \Gamma((X^{(n)})_\lambda, (\cO_{X^{(n)}})_\lambda),  
+        \]
+    in the \infcat $\CAlg_k$. Similarly, thanks to
+    the proof of \cite[\S 9, Theorem 5.1.3]{Gaitsgory_Study_II} in the case of vector groups (c.f. \cite[\S 9.5.5]{Gaitsgory_Study_II})
+    we deduce a natural equivalence
+        \[
+            \dR_{A/ B} \simeq \lim_{n \ge 0}\Gamma((X^{(n)})_0, \cO_{(X^{(n)})_0}),
+        \]
+    in $\CAlg_k$. By the naturality of the construction of \cite[\S 9.5.1]{Gaitsgory_Study_II} combined with the argument provided in \cite[\S 9.5.5]{Gaitsgory_Study_II} to the reduction to the case of vector groups,
+    we deduce that
+        \[
+            p \colon X^{(n)} \to   \bbA^1_k,
+        \]
+    has constant fibers. Indeed, for $n = 0$, the natural morphism
+        \[
+            X^{(0)} \to X^{(1)},  
+        \]
+    corresponds, by construction, to the natural square-zero extension
+        \[
+            \bbL_A \to \bbL_{A/ B} ,  
+        \]
+    classifying the extension
+        \[
+            \bbL_{A/ B}[-1] \to \Sym^{\le 1}(\bbL_{A/ B}[-1])  \to A,
+        \]
+    of $A$-modules.
+    Assuming the result for $n \ge 0$, we have that
+        \[
+            \bbL_{A^{(n)}/ B} \in \Coh^+(A^{(n)}),    
+        \]
+    where $A^{(n)} \coloneqq \Gamma(X^{(n)}, \cO_{X^{(n)}})$,
+    identifies with the relative cotangent complex of the natural morphism
+        \[
+            B \to \Sym^{\le n}(\bbL_{A/ B}[-1]),  
+        \]
+    produced by induction and the naturality of the construction. Moreover, thanks to \cite[\S 9.5.5]{Gaitsgory_Study_II}
+    the relative cotangent complex
+        \[
+            \bbL_{\Sym^{\le n}(\bbL_{A/ B}[-1])/ B} \in \Coh^+(\Sym^{\le n}(\bbL_{A/ B}[-1])),
+        \]  
+    is equipped with a decreasing filtration, starting in degree $n$, whose $n$-th piece identifies with
+        \[
+            \Sym^{n+1}(\bbL_{A/ B}[-1])[1] \in \Coh^+(\Sym^{\le n}(\bbL_{A/ B}[-1])).  
+        \]
+    For this reason, the derivation
+        \[
+            \bbL_{A^{(n)}} \to \bbL_{A^{(n)}/ B} \to \Sym^{n+1}(\bbL_{A/ B}[-1])[1] ,
+        \]
+    identifies with the natural derivation
+        \[
+            \bbL_{\Sym^{\le n}(\bbL_{A/ B}[-1])[1])/ B} \to \Sym^{n+1}(\bbL_{A/ B} [1])  ,
+        \]
+    classifying the extension
+        \[
+            \Sym^{n+1}(\bbL_{A/ B}[-1]) \to \Sym^{\le n+1}(\bbL_{A/ B}[-1])   \to \Sym^{\le n}(\bbL_{A/ B}[-1]).
+        \]
+    The claim now follows by induction on $n \ge 0$.
+    As a consequence of the previous considerations we deduce that
+        \[
+            \Gamma((X^{(n)})_\lambda, (\cO_{X^{(n)}})_\lambda) \simeq \Gamma((X^{(n)})_0, (\cO_{X^{(n)}})_0),
+        \]
+    for every $\lambda \in \bbA^1_k$, and therefore we have natural equivalences
+        \[
+            B^\wedge_I \simeq \dR_{A/ B} \quad \mathrm{and} \quad B/ \mathrm{Fil}_H^n \simeq \dR_{A/ B}/ \mathrm{Fil}^n_H,
+        \]
+    in $\CAlg_k$, as desired.
+    We now prove statement (1) of the Proposition.
+    Assume first that $A$ and $B$ are ordinary $k$-algebras and the (classical) ideal $I \subseteq B$
+    is generated by a regular sequence.
     In this case, we have an identification
         \[
             \bbL_{A/ B} \simeq I/ I^2 [1],
         \]
     see for instance \cite[\href{https://stacks.math.columbia.edu/tag/08SJ}{Tag 08SJ}]{stacks-project}.
-    In particular, the $n$-th piece of the filtration of the Hodge filtration in \cref{prop:algebraic_properties_of_deformation} (3) can be identified with
+    In particular, the $n$-th graded piece of the Hodge filtration in \cref{prop:algebraic_properties_of_deformation} (3) can be identified with
         \[
             \Sym^n(\bbL_{A/ B}[-1]) \simeq I^n/ I^{n+1}, 
         \]
-    where the latter equivalence follows again by the fact that $I$ is generated by a regular sequence in $\pi_0(B)$. In particular, we deduce, by induction, a natural identification between
+    where the latter equivalence follows again by the fact that $I$ is generated by a regular sequence in $\pi_0(B)$. In particular, we deduce, by induction on $n \ge 1$, a natural identification between
     the fiber sequence
         \[
             \Sym^{n+1}(\bbL_{A/ B}[-1]) \to \Sym^{\le n+1}(\bbL_{A/ B}[-1]) \to \Sym^{\le n}(\bbL_{A/ B}[-1]),
         \]
-    and the the fiber sequence
+    and the the $I$-adic one
         \[  
             I^n/ I^{n+1} \to B/ I^{n+1} \to B/ I^n,
         \]
-    of $B$-modules. It then follows from \cite[Theorem 9.5.1.3]{Gaitsgory_Study_II} that, for each $n \ge 0$, we have a natural identification
+    as $B$-modules. By naturality of \cite[Theorem 9.5.1.3]{Gaitsgory_Study_II} and induction on $n \ge 1$ it follows that we have natural identifications
         \[
             X^{(n)} \simeq \Spec (A/ I^{n+1}) ,
         \]
-     as desired. Let us now prove the assertion in general. \cite[\S II. 4, Theorem 4]{Quillen_Homotopical_1967} implies that the \emph{simplicial} category of pairs
-     $(A, I)$ where $A$ is a simplicial $k$-algebra and $I$ a simplicial ideal of $A$ admits a model structure such that:
-     a pair $(A, I)$ is a fibration (resp., trivial fibration) if and only if both $A$ and $I$ are simultaneously fibrations (resp., trivial fibrations)
-     of simplicial sets. Moreover, the cofibrant objects correspond to pairs $(P, J)$ where, for each $[n] \in \bDelta$, $P_n$ is a polynomial $k$-algebra on a set $X_n$
-     and $J_n$ an ideal defined by a subset $Y_n \subseteq X_n$, both preserved by degeneracies. 
-     
-     In particular, if $(P, J)$ is cofibrant then $J_n$ is termwise
-     generated by a regular sequence.
-     As a consequence, we deduce that the every object of the full subcategory $\Fun_{\mathrm{closed}}(\Delta^1, \CAlg_k) \subseteq \Fun(\Delta^1, \CAlg_k)$
-    spanned by those morphisms $B \to A$ for which $\pi_0(B) \to \pi_0(A)$ is a surjection of ordinary $k$-algebras, can be realized as a sifted colimit of local complete intersection
-    morphisms between ordinary $k$-algebras. In particular, we can find a simplicial pair $(P_\bullet, I_\bullet)$ where $P_\bullet$ is polynomial and $I_n \subseteq P_n$ a regular ideal
-    together with equivalences
+     of affine derived schemes, as desired. The assertion in general follows along the same reasoning noticing that
         \[
-            \colim_{\bDelta \op} P_\bullet \simeq B \quad \mathrm{and} \quad \colim_{\bDelta \op} P_\bullet/ I_\bullet \simeq A,  
+            \bbL_{A/ B} \in \Mod_A,  
         \]
-    in $\CAlg_k$. Thanks to \cref{rem:sifted_colimits_and_Hodge_filtration}, the Hodge filtration constructed in \cref{prop:algebraic_properties_of_deformation} (3)
-    satisfies, for each $n \ge 0$,
-        \begin{align*}
-            A^{(n)} & \coloneqq \Gamma(X^{(n)}, \cO_{X^{(n)}}) \\
-                    & \simeq  \colim_{\bDelta \op} (P_{\bullet}/I_\bullet)^{(n)},
-        \end{align*}
-    where $(P_\bullet/ I_\bullet)^{(n)}$ denotes the global sections of the $n$-th piece of the Hodge filtration for the simplicial morphism
-        \[
-            P_\bullet \to P_\bullet/ I_\bullet,  
-        \]
-    in the \infcat $\Fun(\bDelta \op, \CAlg_k)$. Therefore,
-    we deduce the statement in the general case by the local complete intersection one by observing that
-        \[
-            B/ I^n \simeq \colim_{\bDelta \op} P_\bullet / I^n_\bullet.
-        \]
-    We thus conclude that $X^{(n)} \simeq \Spec(B/ I^n)$, for each $n \ge 0$, as desired.
-\end{proof}
+    is concentrated in homological degrees $[1, 0]$.
+%
+%    Let us now prove the assertion in general. \cite[\S II. 4, Theorem 4]{Quillen_Homotopical_1967} implies that the \emph{simplicial} category of pairs
+%    $(A, I)$ where $A$ is a simplicial $k$-algebra and $I$ a simplicial ideal of $A$ admits a simplicial model structure such that:
+%    a pair $(A, I)$ is a fibration (resp., trivial fibration) if and only if both $A$ and $I$ are simultaneously fibrations (resp., trivial fibrations)
+%    of simplicial sets. Moreover, the cofibrant objects correspond to pairs $(P, J)$ where, for each $[n] \in \bDelta$, $P_n$ is a polynomial $k$-algebra on a set $X_n$
+%    and $J_n$ an ideal defined by a subset $Y_n \subseteq X_n$, both preserved by degeneracies and the relative situation.
+%    If $f \colon B \to A$ is a local complete intersection then we can represent $f$ by a pair of the form $(B', I')$ where $B'$ is a simplicial $k$-algebra
+%    and $I' \subseteq B'$ a regular ideal term-wise. Then we can identify $\bbL_{B/ X}$ with the geometric realization
+%        \[
+%            \bbL_{B/ A} \simeq \colim_{\bDelta \op} I' / (I')^2,  
+%        \]
+%    in $\Mod_B$. The argument now follows as in the previous case.
+\end{proof}     
+%    In particular, if $(P, J)$ is cofibrant then $J_n$ is termwise
+%    generated by a regular sequence.
+%    As a consequence, we deduce that the every object of the full subcategory $\Fun_{\mathrm{closed}}(\Delta^1, \CAlg_k) \subseteq \Fun(\Delta^1, \CAlg_k)$
+%    spanned by those morphisms $B \to A$ for which $\pi_0(B) \to \pi_0(A)$ is a surjection of ordinary $k$-algebras, can be realized as a sifted colimit of local complete intersection
+%    morphisms between ordinary $k$-algebras. In particular, we can find a simplicial pair $(P_\bullet, I_\bullet)$ where $P_\bullet$ is polynomial and $I_n \subseteq P_n$ a regular ideal
+%    together with equivalences
+%        \[
+%            \colim_{\bDelta \op} P_\bullet \simeq B \quad \mathrm{and} \quad \colim_{\bDelta \op} P_\bullet/ I_\bullet \simeq A,  
+%        \]
+%    in $\CAlg_k$. Thanks to \cref{rem:sifted_colimits_and_Hodge_filtration}, the Hodge filtration constructed in \cref{prop:algebraic_properties_of_deformation} (3)
+%    satisfies, for each $n \ge 0$,
+%        \begin{align*}
+%            A^{(n)} & \coloneqq \Gamma(X^{(n)}, \cO_{X^{(n)}}) \\
+%                    & \simeq  \colim_{\bDelta \op} (P_{\bullet}/I_\bullet)^{(n)},
+%        \end{align*}
+%    where $(P_\bullet/ I_\bullet)^{(n)}$ denotes the global sections of the $n$-th piece of the Hodge filtration for the simplicial morphism
+%        \[
+%            P_\bullet \to P_\bullet/ I_\bullet,  
+%        \]
+%    in the \infcat $\Fun(\bDelta \op, \CAlg_k)$. Therefore,
+%    we deduce the statement in the general case by the local complete intersection one by observing that $(P_\bullet/ I_\bullet)^{(n)} \simeq P_\bullet / I_\bullet^n$
+%    together with the fact that
+%        \[
+%            B/ \mathrm{Fil}_H^n \simeq \colim_{\bDelta \op} (P_\bullet / I_\bullet)^\bullet,
+%        \]
+%    due to \cref{rem:sifted_colimits_and_Hodge_filtration}.
+%    Again by the local complete intersection in the discrete case we deduce a chain of natural equivalences
+%        \begin{align*}
+%            \dR_{B/ A} / \mathrm{Fil}^n_H & \simeq \colim_{\bDelta \op} \dR_{P_\bullet/ (P_\bullet/ I_\bullet)} / \mathrm{Fil}^n_H \\
+%                                          & \simeq \colim_{\bDelta \op} P_\bullet/ I^n_\bullet.
+%        \end{align*}
+%    By the previous considerations, we further conclude the existence of a natural equivalence of the form
+%        \[
+%            B/ \mathrm{Fil}_H^n \simeq \dR_{B/ A} / \mathrm{Fil}_H^n,
+%        \]
+%    as desired.
+%\end{proof}
 
-\subsection{The construction of the deformation in the affinoid case} The goal in this section is to study the deformation to the normal cone in the non-archimedean
-setting. Let us assume that we are given a closed immersion
+\begin{rem} It follows from \cite[\S 9, Theorem 5.5.4]{Gaitsgory_Study_II}, that in the situation of \cref{lem:identification_of_Hodge_and_adic_filtrations}, the natural composite morphism
+        \[
+            \Sym^n(\bbL_{A/ B} [-1]) \to \Sym^{ \le n}(\bbL_{A/ B}[-1]) \to \Sym^{n+1}(\bbL_{A/ B}[-1]), 
+        \]
+    corresponds to the usual de Rham differential,
+    where $\Sym^{ \le n}(\bbL_{A/ B}[-1]) \to \Sym^{n+1}(\bbL_{A/ B}[-1])$ classifies the natural extension
+        \[
+            \Sym^{n+1}(\bbL_{A/ B} [-1]) \to \Sym^{ \le n +1 }(\bbL_{A/ B}[-1]) \to \Sym^{\le n}(\bbL_{A/ B}[-1]),
+        \]
+    associated to the $n$-th piece of the Hodge filtration,
+\end{rem}
+
+\begin{rem}
+    Let $ f\colon X \to Y$ be a closed immersion of affine derived schemes. Let $A \coloneqq \Gamma(X, \cO_X)$ and $B \coloneqq \Gamma(Y, \cO_Y)$.
+    In \cite[Proposition 4.16]{Bhatt_Derived_Completions}, the author proves a similar statement to \cref{lem:identification_of_Hodge_and_adic_filtrations}.
+    It turns out that both filtrations on $B^\wedge_I$ agree in the case of \cite{Bhatt_Derived_Completions} or in the situation of \cite[\S 9]{Gaitsgory_Study_II}.
+    A comparison can be stated as follows: it is immediate that both the filtrations of Bhatt and Gaitsgory-Rozemblyum on $B^\wedge_I$, denoted respectively
+        \[
+            \mathrm{Fil}^n_B \quad \mathrm{and} \quad \mathrm{Fil}^n_H,  
+        \]
+    agree in the case where $f$ is a local complete intersection morphism.
+    Moreover, it follows from the fact that the cotangent complex commutes with sifted colimits that, for each $n \ge 0$, the natural morphisms
+        \begin{equation} \label{eq:de_Rham_differential}
+            \Sym^{\le n}(\bbL_{A/ B}[-1]) \to \Sym^{n+1} (\bbL_{A/ B}[-1])  [1]
+        \end{equation}
+    are stable under sifted colimits as well. Consider the simplicial model structure in the simplicial category of pairs $(A, I)$
+    where $A$ is a simplicial $k$-algebra and $I \subseteq A$ a simplicial ideal given by the description:
+    a pair $(A, I)$ is a fibration (resp., trivial fibration) if and only if both $A$ and $I$ are simultaneously fibrations (resp., trivial fibrations)
+    of simplicial sets. Moreover, the cofibrant objects correspond to pairs $(P, J)$ where, for each $[n] \in \bDelta$, $P_n$ is a polynomial $k$-algebra on a set $X_n$
+    and $J_n$ an ideal defined by a subset $Y_n \subseteq X_n$, both preserved by degeneracies and the relative situation. The $\infty$-categorical
+    localization at the class of weak equivalences agrees furthermore with the \infcat $\Fun_\mathrm{closed}(\Delta^1, \CAlg_k)$. In particular,
+    considering a simplicial resolution $(P_\bullet, I_\bullet)$ for the morphism $B \to A$ consisting of polynomial algebras and regular ideals
+    we deduce that
+        \[
+            \mathrm{Fil}^n_H \simeq \mathrm{Fil}^n_B,  \quad \mathrm{for} \ n \ge 0,
+        \]  
+    in the general case, as well.
+\end{rem}
+
+\subsection{The construction of the deformation in the affinoid case} Consider the object
+\[
+    \mathbf{B}^{\mathrm{an}, \bullet}_{\mathrm{scaled}} \colon \bDelta \op \to (\dAnSt_k)_{/ \mathbf A^1_k},
+\]
+obtained as the analytification of the simplicial object $\mathrm{B}^\bullet_{\mathrm{scaled}} \in \Fun(\bDelta \op, \mathrm{dSt}^\laft_k)$ described in the previous section.
+
+Our goal in this section, is to construct the deformation to the normal cone in the non-archimedean
+setting, in the case where $Y$ is derived $k$-affinoid. We shall further assume that
     \[
         f \colon X \to Y,
     \]  
-in the \infcat $\dAfd_k$. Consider the object
+exhibits $X$ as an analytic formal moduli problem over $Y$. In particular, $X$ admits a deformation theory and we can
+consider the relative cotangent complex
     \[
-        \mathbf{B}^{\mathrm{an}, \bullet}_{\mathrm{scaled}} \colon \bDelta \op \to (\dAnSt_k)_{/ \mathbf A^1_k},
+        \bbL\an_{X/ Y} \in \pro^\mathrm{ps}(\Coh^+(X)).  
     \]
-obtained as the analytification of the simplicial object $\mathrm{B}^\bullet_{\mathrm{scaled}} \in \Fun(\bDelta \op, \mathrm{dSt}^\laft_k)$ described in the previous section.
 
 \begin{defin}
-    We define the \emph{non-archimedean parametrized deformation to the normal bundle} via the pullback diagram
+    We define the \emph{parametrized non-archimedean deformation to the normal bundle} via the pullback diagram
     \[
     \begin{tikzcd}
         \cD_{X/Y}^{\mathrm{an}, \bullet} \ar{r} \ar{d} & Y \times \bA^1_k \ar{d} \\
-        \bfMap_{/ \bA^1_k}(\mathbf{B}^{\mathrm{an}, \bullet}, X \times \bA^1_k) \ar{r} & \bfMap_{/ \bA^1_k}(\mathbf{B}^{\mathrm{an, \bullet}}, Y \times \bA^1_k)
+        \bfMap_{/ \bA^1_k}(\mathbf{B}_\mathrm{scaled}^{\mathrm{an}, \bullet}, X \times \bA^1_k) \ar{r} & \bfMap_{/ \bA^1_k}(\mathbf{B}_{\mathrm{scaled}}^{\mathrm{an, \bullet}}, Y \times \bA^1_k)
     \end{tikzcd},
     \]
     computed in the \infcat $\mathrm{Fun}(\bDelta \op, \dAnSt_k)$.
 \end{defin}
 
 \begin{rem}
-    As in the algebraic case, the object $\cD_{X/ Y}^{\mathrm{an}, \bullet}$ admits a natural left-lax action of the multiplicative monoid object $\bA^1_k \in \dAnSt_k$.
+    As in the algebraic case, the object $\mathbf{B}^{\mathrm{an}, \bullet}_{\mathrm{scaled}}$ admits a left-lax action of the multplicative monoid $\bA^1_k \in \dAnSt_k$.
+    This action induces a natural left-lax action of $\bA^1_k$ on the deformation $\cD_{X/ Y}^{\mathrm{an}, \bullet}$, as well.
 \end{rem}
 
-\begin{rem} \label{rem:factorizations}
-    Notice that the natural morphism
-        \[
-            \cD_{X/ Y}^{\mathrm{an}, \bullet} \to Y \times \bA^1_k,   
+\begin{rem} \label{rem:reduction_step_closed_ims}
+    It follows immediately from the definition of $\cD_{X/ Y}^{\mathrm{an}, \bullet}$ that the latter commutes with filtered colimits in $X \in \dAnSt_k$.
+    Moreover, \cref{prop:required_conditions_for_formal_moduli_problems} implies that the natural morphism
+        \[  
+            \colim_{S \in (\anNil^\cl_{/ X})_{/ Y}} \cD_{S/ Y}^{\mathrm{an}, \bullet} \to \cD_{X/ Y}^{\mathrm{an}, \bullet},
         \]
-    factors naturally via a uniquely defined induced morphism
-        \[\cD_{X/ Y}^{\mathrm{an}, \bullet} \to X \times \bA^1_k \xrightarrow{f \times \mathrm{id}} Y \times \bA^1_k.\] 
+    is an equivalence in $\dAnSt_k$. For this reason, we will often reduce the construction to the case where $f \colon X \to Y$ is a nil-isomorphism of derived $k$-affinoid
+    spaces.
 \end{rem}
 
-\begin{notation} Let $f \colon X \to Y$ be as above.
-    We shall denote by $A \coloneqq \Gamma(Y, \cO_Y\alg)$, $B \coloneqq \Gamma(X, \cO_X\alg)$ and
-    furthermore $Y\alg \coloneqq \Spec A$ and $X\alg \coloneqq \Spec B$.
-\end{notation}
+\begin{rem}
+    Let $f\colon X \to Y$ be a nil-isomorphism in the \infcat $\dAfd_k$. Then we can consider the diagram
+        \[
+            \mathrm{id}_Y \colon Y \to X \bigsqcup_{X_\red} Y \to Y,  
+        \]
+    which exhibits $(X \xrightarrow{f} Y)$ as a retrat of the induced morphism $(X \xrightarrow{g} X \underset{X_\red}{\sqcup}Y)$, both regarded as objects in $\anFMP_{X/ }$.
+    In this case, it follows by the naturality of the parametrized Hodge filtration that we have a retract diagram
+        \[
+            \cD^\bullet_{X/ Y} \to \cD^\bullet_{X/ X \underset{X_\red}{\bigsqcup} Y} \to \cD^\bullet_{X/ Y},   
+        \]
+    of simplicial objects in $\anFMP_{X \times \bA^1_k/ }$. This observation will allow us to perform reduction arguments by replacing the nil-isomorphism
+    $f\colon X \to Y$ by the nil-embedding $g \colon X \to X \underset{X_\red}{\sqcup} Y$.
+\end{rem}
 
-Thanks to \cite[Proposition 3.14]{Porta_Yu_Derived_non-archimedean_analytic_spaces}, we deduce that the induced morphism
+Let $f \colon X \to Y$ be a nil-isomorphism in the \infcat $\dAfd_k$.
+Thanks to \cite[Lemma 6.9.]{Porta_Yu_NQK}, we deduce that the induced morphism
     \[
         f\alg \colon X\alg \to Y\alg,  
     \]
-is a closed immersion
-of Noetherian affine derived $k$-schemes. Our next goal is to show that the parametrized deformation associated to the morphism
-$f\alg$ recovers the non-archimedean one for $f$ via the relative analytification functor $(-)\an_Y$, see \cite[Definition 6.4.]{Porta_Yu_NQK}
-for a definition of the latter notion.
+is again a nil-isomorphism of affine derived schemes. We shall need a few preparations:
 
-We shall need a preliminary lemma:
-
-
-\begin{lem}
-    Consider the closed immersion $f\alg \colon X\alg \to Y\alg$, above. There exists a filtered \infcat $\cI$ and a diagram
-        \[
-            F \colon \cI \op \to \Fun(\Delta^1, \dAff^\laft_k),  
-        \]
-    such that, for each $\alpha \in \cI$, we have that
-        \[
-            F(\alpha) \coloneqq (f_\alpha \colon X_\alpha \to Y_\alpha),  
-        \]
-    is a closed immersion in the \infcat $\dAff_k^\laft$ and such that
-        \[
-            f \simeq \lim_{\cI\op} F,  
-        \]
-    in the \infcat $\Fun(\Delta^1, \dAff_k)$.
-\end{lem}
-
-\begin{proof}
-    Consider the model structure on the simplicial category of pairs $(A, I)$ where $A$ is a simplicial $k$-algebra and $I$ a
-    simplicial ideal of $A$ provided by \cite[\S II. 4, Theorem 4]{Quillen_Homotopical_1967}, also described in the proof of \cref{prop:algebraic_properties_of_deformation}.
-
-    Let $B \coloneqq \Gamma(Y, \cO_Y)$ and $A \coloneqq \Gamma(X, \cO_X)$ be as usual and consider the induced morphism $B \to A$ in $\CAlg_k$.
-    Denote by $I \coloneqq \fib(B \to A)$. By our assumption on $f$ we conclude that $I$ is $1$-connective as a $B$-module.
-    
-    We can find a simplicial resolution $(P_\bullet, I_\bullet) \to (B, I)$ by pairs of polynomial $k$-algebras $P_n$ on sets $X_n$ together with an ideal $I_n \subseteq P_n$
-    on a subset $Y_n \subseteq X_n$
-    (possibly infinite). We further have that
-        \[
-            \colim_{\bDelta \op} P_\bullet / I_\bullet \simeq A,  
-        \]
-    in the \infcat $\CAlg_k$. For each $n \ge 0$, We can approximate the pairs $(X_n, Y_n)$ by finite sets $(X_{n, \alpha}, Y_{n, \alpha})$
-    for $\alpha \in \cI$ where $\cI$ is a filtered category. In this manner, by taking the respective polynomial resolutions we obtain a filtered diagram
-        \[
-            F \colon \cJ \to \Fun(\Delta^1, \CAlg_k)  ,
-        \]
-    such that $\colim_I F \simeq (B \to A)$ and, for each $\alpha \in \cJ$, we have that
-        \[
-            (f_\alpha \colon B_\alpha \to A_\alpha)  \coloneqq F(\alpha), 
-        \]
-    is surjective on $\pi_0$ and both $B_\alpha, A_\alpha \in \CAlg_k^\laft$. The result now follows.
-\end{proof}
-
-\begin{construction}
-    Consider the object $\cD_{X\alg/ Y\alg}^\bullet \in \Fun(\bDelta \op, \dAff_k)$ as in \cref{construction:def_to_the_normal_bundle}.
-    It is clear from the descritption
-    of $\cD_{X\alg/Y\alg}^\bullet$ given in \cref{construction:def_to_the_normal_bundle} that one has a natural equivalence of derived stacks
-        \[
-            \cD_{X\alg/Y\alg}^\bullet \simeq \lim_{\alpha \in I\op} \cD_{X_\alpha\alg/ Y_\alpha\alg}^\bullet,
-        \]
-    in the \infcat $\mathrm{Fun}(\bDelta \op, \dSt_k)$.
-\end{construction}
-
-We are now able to prove the following easy lemma:
-
-\begin{lem} \label{lem:relative_anlaytification_of_closed_immersions_are_compatible_with_alg_construction}
-    Let $f \colon X \to Y$ be a closed immersion in $\dAfd_k$. Then one has a natural equivalence
+\begin{lem} \label{lem:relative_anlaytification_of_closed_immersions_are_compatible_with_alg_construction} Let $Y \in \dAfd_k$ and
+    $(f \colon X \to Y) \in \anFMP_{/Y}$. Then one has a natural equivalence
         \[
             (f \alg)\an_Y \simeq f,  
         \]
     in the \infcat $\Fun(\bDelta\op, \dAfd_k)$.
 \end{lem}
 
-\begin{proof}
-    Let $f \alg \colon \Spec B \to \Spec A$ be the induced morphism, where $B \coloneqq \Gamma(X, \cO_X\alg)$ and $A \coloneqq \Gamma(Y, \cO_Y\alg)$. It follows readily from the definitions
-    that the morphism $f\alg$ of derived affine schemes is a closed immersion. Moreover,
-    we have a natural
-    identification
-        \[(\Spec(A)\alg)\an_Y \simeq Y.\]
-    For this reason, the commutative diagram
-        \[
-        \begin{tikzcd}
-            X \ar{r}{f} \ar{d} & Y \ar{d}{\simeq} \\
-            (X\alg)\an_Y \ar{r}{(f\alg)\an_Y} & (Y\alg)\an_Y,  
-        \end{tikzcd}
-        \]
-    induces
-    an equivalence at the level of global sections
-        \[
-            \Gamma(X, \cO_X\alg) \simeq \Gamma((X\alg)_Y\an, \cO_{(X\alg)\an_Y}\alg).  
-        \]
-    The result now follows immediately from the fact that both $X$ and $(X\alg)_Y\an$ are derived $k$-affinoid spaces together with the derived Tate acyclity's theorem,
-    c.f. \cite[Theorem 3.1]{Porta_Yu_Derived_Hom_spaces}.
+\begin{proof} 
+    The statement of the Lemma is a direct consequence of \cite[Theorem 6.12]{Porta_Yu_NQK}.
 \end{proof}
+%    We first observe that the relative analytification functor commutes with filtered colimits of derived $k$-stacks, as it is defined as the composite of the left Kan extension of the functor $(-)\an_Y \colon \dAff_k \to \dAnSt_k$,
+%    along the inclusion $\dAff_k \to \dSt_k$, together with the pullback functor
+%        \[
+%            - \times_{(Y\alg)\an} Y \colon \dAnSt_k)_{/ (Y\alg)\an} \to (\dAnSt_k)_{/ Y}, 
+%        \]
+%    both of which commute with filtered colimits. For the same reason, also the functor $(-)\alg$ commutes with filtered colimits in $X$. 5
+%    Therefore, thanks to \cref{rem:reduction_step_closed_ims} we reduce ourselves to prove the statement in the case
+%    where $f \colon X \to Y$ is a nil-embedding in $\dAfd_k$.
+%
+%    Let $f \alg \colon \Spec B \to \Spec A$ be the induced morphism, where $B \coloneqq \Gamma(X, \cO_X\alg)$ and $A \coloneqq \Gamma(Y, \cO_Y\alg)$. It follows readily from \cite[Lemma 6.9]{Porta_Yu_NQK}
+%    that the morphism $f\alg$ of derived affine schemes is a nil-isomorphism. Moreover,
+%    we have a natural
+%    identification
+%        \[(\Spec(A)\alg)\an_Y \simeq Y.\]
+%    We have a commutative diagram of the form
+%        \[
+%        \begin{tikzcd}
+%            X \ar{r}{f} \ar{d} & Y \ar{d}{\simeq} \\
+%            (X\alg)\an_Y \ar{r}{(f\alg)\an_Y} & (Y\alg)\an_Y,  
+%        \end{tikzcd}
+%        \]
+%    in $\dAnSt_k$. Thus, we obtain a natural morphism $X \to (X\alg)_Y\an$ in $\dAnSt_k$, we wish to prove that such morphism is an equivalence
+%    of derived $k$-affinoid spaces. The result now follows immediately from \cite[Proposition 6.11]{Porta_Yu_NQK}.
+%\end{proof}
+
+
+
+\begin{lem} \label{lem:Noetherian_approximation_of_nil_isomorphisms}
+    Let $f\alg \colon X\alg \to Y\alg$ be a closed embedding of derived schemes. There exists a filtered \infcat $\cI$ and a diagram
+        \[
+            F \colon \cI \op \to \Fun(\Delta^1, \dAff^\laft_k),  
+        \]
+   such that, for each $\alpha \in \cI$, we have that
+        \[
+            F(\alpha) \coloneqq (f_\alpha \colon X_\alpha \to Y_\alpha),  
+        \]
+    is a closed immersion in the \infcat $\dAff_k^\laft$ and such that
+        \[
+            f \simeq \lim_{\cI\op} F,  
+       \]
+    in the \infcat $\Fun(\Delta^1, \dAff_k)$.
+\end{lem}
+
+\begin{proof}
+    Consider the full subcategory $\Fun_\mathrm{closed}(\Delta^1, \CAlg_k) \subseteq \Fun (\Delta^1, \CAlg_k)$ spanned by morphisms $A \to B$
+    such that the induced homomorphism of ordinary rings
+        \[
+            \pi_0(A) \to \pi_0(B),  
+        \]
+    is surjective. As in the proof of \cref{prop:algebraic_properties_of_deformation} the \infcat $\Fun_\mathrm{closed}(\Delta^1, \CAlg_k)$
+    is obtained as an $\infty$-categorical localization at weak equivalences of the simplicial model category whose objects correspond to pairs $(C, I)$ where $C$ is a simplicial $k$-algebra
+    and $I \subseteq C$ a simplicial ring. Moreover, thanks to \cite[\S 2 IV, Theorem 4]{Quillen_Homotopical_1967} it follows that
+    finite projective generators in the latter correspond to pairs of the form $(P, I)$ where $P$ is some polynomial algebra in a finite number of generators
+    (concentrated in non-negatively homologically degrees)
+    and $I$ an ideal spanned by a regular sequence. 
+    
+    In particular, finite projective generators in $\Fun_\mathrm{closed}(\Delta^1, \CAlg_k)$ correspond
+    to morphisms $g \colon P \to Q$ where $P$ is a finite free derived $k$-algebra and the morphism $g$ is a complete intersection morphism.
+    As in the proof of \cite[Proposition 8.2.5.27]{Lurie_Higher_algebra} we then deduce that the \infcat $\mathrm{Fun}_\mathrm{closed}(\Delta^1, \CAlg_k)$ is compactly generated by
+    morphisms $g \colon P \to Q$ which can be obtained from finite projective generators via a finite sequence of retracts and finite colimits.
+
+    Arguing as in \cite[Proposition 8.2.5.27]{Lurie_Higher_algebra}, we are able to describe the set of compact generators of $\Fun_\mathrm{closed}(\Delta^1, \CAlg_k)$: they correspond to
+    locally of finite presentation morphisms between locally finite presentation derived $k$-algebras. In particular, we can find a presentation
+    of
+        \[
+            f\alg \colon X\alg \to Y\alg,  
+        \]
+    by closed immersions between almost finite presentation affine derived schemes
+        \[
+            f_\alpha \colon X_\alpha \to Y_\alpha, \quad \mathrm{for \ } \alpha \in \cI\op,  
+        \]
+    where $\cI$ is a filtered \infcat, as desired.
+\end{proof}
+%
+%
+%
+%    Consider the model structure on the simplicial category of pairs $(A, I)$ where $A$ is a simplicial $k$-algebra and $I$ a
+%    simplicial ideal of $A$ provided by \cite[\S II. 4, Theorem 4]{Quillen_Homotopical_1967}, also described in the proof of \cref{prop:algebraic_properties_of_deformation}.
+%
+%   Let $B \coloneqq \Gamma(Y, \cO_Y)$ and $A \coloneqq \Gamma(X, \cO_X)$ be as usual and consider the induced morphism $B \to A$ in $\CAlg_k$.
+%    Denote by $I \coloneqq \fib(B \to A)$. By our assumption on $f$ we conclude that $I$ is $1$-connective as a $B$-module.
+%    
+%    We can find a simplicial resolution $(P_\bullet, I_\bullet) \to (B, I)$ by pairs of polynomial $k$-algebras $P_n$ on sets $X_n$ together with an ideal $I_n \subseteq P_n$%
+%    on a subset $Y_n \subseteq X_n$
+%    (possibly infinite). We further have that
+%        \[
+%            \colim_{\bDelta \op} P_\bullet / I_\bullet \simeq A,  
+%        \]
+%    in the \infcat $\CAlg_k$. For each $n \ge 0$, We can approximate the pairs $(X_n, Y_n)$ by finite sets $(X_{n, \alpha}, Y_{n, \alpha})$
+%    for $\alpha \in \cI$ where $\cI$ is a filtered category, as follows: approximate $(X_0, Y_0)$ by finite sets $(X_{0, \alpha}, Y_{0, \alpha})$,
+%    for $\alpha \in \cJ$ where $\cJ$ is a filtered category. Having defined the pair $(X_{i, \alpha}, Y_{i, \alpha})$ for $i \ge 0$ we let
+%        \[
+%            (X_{i+1, \alpha}, Y_{i+1, \alpha}),   
+%        \]
+%    denote the pair of subsets $X_{i+1, \alpha} \subseteq X_{i+1}$ and $Y_{i+1, \alpha} \subseteq Y_{i+1}$ formed by those elements
+%    in $X_{i+1}$ (resp., $Y_{i+1}$) whose image via the face maps lie in $X_{i, \alpha}$ (resp., $Y_{i, \alpha}$). In this was, we form
+%    a simplicial pair $(X_{\bullet, \alpha}, Y_{\bullet, \alpha})$, indexed by $\alpha \in \cJ$, such that the colimit
+%        \[
+%            \colim_{\alpha \in \cJ}   (X_{\bullet, \alpha}, Y_{\bullet, \alpha}) \simeq (X_\bullet, Y_\bullet),
+%        \]
+%    and we are done.
+%    In this manner, by taking the respective polynomial resolutions we obtain a filtered diagram
+%        \[
+%            F \colon \cJ \to \Fun(\Delta^1, \CAlg_k)  ,
+%        \]
+%    such that $\colim_I F \simeq (B \to A)$ and, for each $\alpha \in \cJ$, we have that
+%       \[
+%            (f_\alpha \colon B_\alpha \to A_\alpha)  \coloneqq F(\alpha), 
+%        \]
+%    is surjective on $\pi_0$ and both $B_\alpha, A_\alpha \in \CAlg_k^\laft$. The result now follows.
+%\end{proof}
+
+%\begin{lem} \label{lem:Noetherian_approximation_of_nil_isomorphisms}
+%    Let $f \colon X \to Y$ be a nil-embedding in $\dAfd_k$. Then there exists a filtered \infcat $I$ and, for each $\alpha \in I$,
+%    nil-embeddings
+%        \[
+%            f_\alpha \colon X_\alpha \to Y_\alpha  
+%        \]
+%    in the \infcat $\dAff_k^\laft$, such that the inverse limit
+%        \[
+%            \lim_{\alpha \in I\op} (f_\alpha \colon X_\alpha \to Y_\alpha)  
+%        \]
+%    agrees with $f\alg$, in $\dAff_k$.
+%\end{lem}
+%
+%\begin{proof} Let $A \coloneqq \Gamma(X, \cO_X\alg)$ so that $X\alg \simeq \Spec A$. 
+%    Since $X\alg \in \dAff_k$ we can find by Noetherian approximation a presentation of the form
+%        \[
+%            X\alg \simeq \lim_{\alpha \in I} X_\alpha,  
+%        \]
+%    where $I$ is a filtered \infcat and for each $\alpha \in I$, 
+%        \[X_\alpha \coloneqq \Spec A_\alpha \in \dAff_k^\laft,\]
+%    for $A_\alpha \in \CAlg_k$ almost of finite presentation derived $k$-algebras. Suppose further that the induced morphisms
+%        \[
+%            A_\alpha   \to A,
+%        \]
+%    induce monomorphisms of ordinary rings at the level of $\pi_0(-)$. For each $\alpha \in I$, consider the
+%    pushout diagram
+%        \[
+%        \begin{tikzcd}
+%            X \alg \ar{r} \ar{d} & X_\alpha \ar{d} \\
+%            Y \alg \ar{r} & Y_\alpha
+%        \end{tikzcd},
+%        \]
+%    computed in the \infcat $\dAff_k$. At the level of derived global sections we obtain a pullback square
+%        \[
+%        \begin{tikzcd}
+%            B_\alpha \ar{r} \ar{d} & B \ar{d} \\
+%            A_\alpha \ar{r} & A,
+%        \end{tikzcd}
+%        \]
+%    in the \infcat $\CAlg_k$, where $B \coloneqq \Gamma(Y, \cO_Y\alg)$. The morphism $B_\alpha \to A_\alpha$ is surjective on $\pi_0$.
+%    Indeed, it follows from the equivalence of fibers
+%        \[
+%            \fib(B_\alpha \to A_\alpha) \simeq \fib(B \to A).
+%        \]
+%    We claim that the morphism $X_\alpha \to Y_\alpha$ is a nil-isomorphism.
+%    We start by observing that the induced morphism $\pi_0(B_\alpha) \to \pi_0(B)$ is an injective ring homomorphism, since 
+%        \[
+%            \fib(B_\alpha \to B) \simeq \fib(A_\alpha \to A) , 
+%        \]
+%    and $\pi_0(A_\alpha) \to \pi_0(A)$ was assumed to be so.
+%    Therefore we have an exact sequence
+%        \[
+%            0 \to \pi_0(B_\alpha) \to \pi_0(A_\alpha) \oplus \pi_0(B) \to \pi_0(A) \to 0,  
+%        \]
+%    of discrete $k$-modules.
+%    Since the morphism $\pi_0(B_\alpha) \to \pi_0(A_\alpha)$ is surjective so it is the quotient
+%        \[
+%            \pi_0(B_\alpha)_\red \to \pi_0(A_\alpha)_\red.    
+%        \]
+%    Moreover, the morphism $\pi_0(B)_\red \to \pi_0(A)_\red$ is an isomorphism of discrete rings. For this reason, it follows that
+%    the kernel of the morphism
+%       \[
+%            \pi_0(A_\alpha)_\red \oplus \pi_0(B)_\red \to \pi_0(A)_\red,
+%        \]
+%    coincides with $\pi_0(A_\alpha)_\red$ itself. Since the morphism
+%    $\pi_0(B_\alpha) \to \pi_0(B)$ is injective (and thus so it is $\pi_0(B_\alpha)_\red \to \pi_0(B)_\red$)
+%    we deduce that 
+%        \[\pi_0(B_\alpha))_\red \to \pi_0(A_\alpha)_\red \oplus \pi_0(B)_\red,\]
+%    is injective, as well. Moreover, the latter must necessarily factor through the injective natural morphism
+%        \[
+%            \pi_0(A_\alpha)_\red \to \pi_0(A_\alpha)_\red \oplus \pi_0(B)_\red.  
+%        \]
+%    We thus deduce that $\pi_0(B_\alpha)_\red \simeq \pi_0(A_\alpha)_\red$ and the claim that $X_\alpha \to Y_\alpha$ is nil-isomorphism follows. 
+%    
+%    It remains to prove that $Y_\alpha \in \dAff^\laft_k$. By our previous considerations,
+%    it follows that $\pi_0(B_\alpha)_\red$ is of finite presentation over $k$. The same is thus true for $\pi_0(B_\alpha)$ as the latter can be obtained by a finite sequence
+%   of extensions of $\pi_0(B_\alpha)_\red$ by $\pi_0(B_\alpha) \cap \cI$, where $\cI \subseteq \pi_0(B)$ denotes the nilradical of $\pi_0(B)$. Moreover, the latter satisfies
+%       \[
+%           \cI^n =0,  
+%       \]
+%    for some sufficiently large $n \ge 0$. The conclusion that $\pi_0(B_\alpha)$ is a finitely presented ordinary $k$-algebra follows.
+%   By the derived Hilbert basis theorem, c.f. \cite[Proposition 8.2.5.31]{Lurie_Higher_algebra}, we are left to show that, for each $i>0$,
+%    the $\pi_0(B_\alpha)$-modules
+%        \[  
+%            \pi_i(B_\alpha),
+%        \]
+%    are finitely presented. But this follows immediately from the existence of exact sequences of finitely presented modules
+%        \[
+%            \pi_{i+1}(A)\to \pi_i(B_\alpha) \to \pi_i(A_\alpha) \oplus \pi_i(B) \to \pi_i(A),  
+%        \]
+%    and the claim is thus concluded.
+%\end{proof}
+
+
+\begin{rem} Let $f \colon X \to Y$ be a nil-embedding in the \infcat $\dAfd_k$. Find a presentation of $f\alg$ by closed immersions between almost of finite presentation affine derived schemes of the form
+        \[
+            \lim_{\alpha \in I\op}(f_\alpha \colon X_\alpha \to Y_\alpha).  
+        \]
+    Consider the object $\cD_{X\alg/ Y\alg}^\bullet \in \Fun(\bDelta \op, \dAff_k)$ as in \cref{construction:def_to_the_normal_bundle}.
+    It is clear from the descritption
+    of $\cD_{X\alg/Y\alg}^\bullet$ given in \cref{construction:def_to_the_normal_bundle} combined with \cref{rem:simplification_of_deformation_in_the_closed_immersion}
+    that one has a natural equivalence of derived stacks
+        \[
+            \cD_{X\alg/Y\alg}^\bullet \simeq \lim_{\alpha \in I\op} \cD_{X_\alpha\alg/ Y_\alpha\alg}^\bullet,
+        \]
+    in the \infcat $\mathrm{Fun}(\bDelta \op, \dSt_k)$.
+\end{rem}
+
 
 \begin{lem} \label{lem:analytification_of_simplicial_object_deformation}
-    Let notations be as above. Then one has a natural equivalence
+    Let $Y \in \dAfd_k$. Consider a morphism $f \colon X \to Y$ in $\dAnSt_k$ which exhibits $X$ as an analytic formal moduli problem
+    over $Y$. Then one has a natural equivalence
         \[
-            \cD_{X/Y}^{\mathrm{an}, \bullet} \simeq (\cD_{X\alg/ Y\alg}^\bullet)\an_Y  ,
+            \theta_{X/ Y} \colon \cD_{X/Y}^{\mathrm{an}, \bullet} \simeq (\cD_{X\alg/ Y\alg}^\bullet)\an_Y  ,
         \]
     where $(-)_Y\an$ denotes the relative analytification with respect to $Y$.
 \end{lem}
 
 \begin{proof}
-    As before, write the closed immersion of affine schemes
+    We first observe that both $\cD_{X/Y}^{\mathrm{an}, \bullet}$ and $(\cD_{X\alg/ Y\alg}^\bullet)\an_Y$ are stable under filtered
+    colimits in $X$. For this reason, we reduce ourselves to the case where $f \colon X \to Y$ itself is a nil-isomorphism in the \infcat
+    $\dAfd_k$. Similarly, $\theta_{X/ Y}$ is stable under retracts. Therefore, we are allowed to replace the morphism $X \to Y$
+    by
+        \[  
+            X \to Y \underset{X_\red}{\bigsqcup} X,
+        \]
+    and therefore assume that $f \colon X \to Y$ is a nil-embedding.
+    As in \cref{lem:Noetherian_approximation_of_nil_isomorphisms}, write the nil-embedding between affine derived schemes
         \[
             f \colon X\alg \to Y\alg,  
         \]
-    as a cofiltered limit 
+    as a cofiltered limit of closed immersions
         \[\lim_{\alpha \in I\op} f_\alpha \colon \lim_{\alpha \in I\op} X_\alpha\alg \to \lim_{\alpha \in I\op} Y_\alpha\alg,\]
     where for each index $\alpha \in I$, both $X_\alpha$
-    and $Y_\alpha$ are affine schemes of almost of finite presentation. Since the natural projection morphism
+    and $Y_\alpha$ are affine derived schemes almost of finite presentation. Since the natural projection morphism
         \[
             \mathrm{B}_\mathrm{scaled}^\bullet \to \bbA^1_k, 
         \]
@@ -2927,8 +3362,7 @@ We are now able to prove the following easy lemma:
 
 
 
-\begin{cor}
-    Let $f \colon X \to Y$ be a closed morphism in $\dAfdk$. Then one has a natural identification
+\begin{cor} \label{cor:analytic_def_fiber_at_0_is_tangent} With notations as above, one has a canonical equivalence
         \[
             (\cD^{\bullet, \mathrm{an}}_{X/Y})_0 \simeq (\bT^{\mathrm{an}, \bullet}_{X/Y})^\wedge ,
         \]
@@ -2938,13 +3372,14 @@ We are now able to prove the following easy lemma:
 
 \begin{proof}
     The result follows from \cite[Proposition 9.2.3.6]{Gaitsgory_Study_II} combined with the fact that relative analytification
-    commutes with tangent bundles and formal completions, \cite[Corollary 5.20]{Holstein_Analytification_of_mapping_stacks}.
+    commutes with tangent bundles and formal completions, see the proof of \cite[Lemma 5.31]{Holstein_Analytification_of_mapping_stacks}
+    and \cite[Corollary 5.20]{Holstein_Analytification_of_mapping_stacks}.
 \end{proof}
 
 The following result is an immediate consequence of \cref{lem:analytification_of_simplicial_object_deformation}:
 
 \begin{lem} \label{lem:deformation_theory_for_D^an_bullet_X/Y}
-    For each $[n] \in \bDelta$, the object $\cD_{X/Y}^{\mathrm{an}, [n]} \in (\dAnSt_k)_{X \times \bA^1_k/ /Y \times \bA^1_k}$ admits a deformation theory and it is furthermore affinoid.
+    For each $[n] \in \bDelta$, the object $\cD_{X/Y}^{\mathrm{an}, [n]} \in (\dAnSt_k)_{X \times \bA^1_k/ /Y \times \bA^1_k}$ admits a deformation theory.
 \end{lem}
 
 \begin{proof}
@@ -2953,19 +3388,15 @@ The following result is an immediate consequence of \cref{lem:analytification_of
     admits a deformation theory.
     By \cite[Lemma 2.3.2]{Gaitsgory_Study_II}, it follows
     that $\cD^\bullet_{X\alg/ /Y\alg}$ is an object in $\mathrm{FMP}_{X\alg/ /Y\alg}$. The result now follows by applying the relative analytification functor $(-)_Y\an$ together with
-    \cite[Proposition 6.10]{Porta_Yu_NQK}. The fact that
-    $\cD^{\mathrm{an}, [n]}_{X/Y}$ is affinoid, for every $[n] \in \bDelta \op$, follows readily from the observation that for every $\lambda \in \bbA^1_k$ the fiber
-        \[
-            (\cD^{\mathrm{an}, \bullet}_{X/ Y})_\lambda \in \dAfd_k.  
-        \]
+    \cite[Proposition 6.10]{Porta_Yu_NQK}.
 \end{proof}
 
-\begin{rem} \label{rem:D_X/Y_lives_over_and_under_XxA^1_as_anFMP}
-    It follows immediately from \cref{lem:deformation_theory_for_D^an_bullet_X/Y} together with the definitions that the object
+\begin{rem} \label{rem:D_X/Y_lives_over_and_under_XxA^1_as_anFMP} Let $(X \xrightarrow{f} Y) \in \anFMP_{/ Y}$, with $Y \in \dAfd_k$.
+    It follows immediately from \cref{lem:deformation_theory_for_D^an_bullet_X/Y} that the datum
         \[
-            (X \times \bA^1_k \to \bD^{\bullet, \mathrm{an}}_{X/ Y} \to X \times \bA^1_k) \in (\dAnSt_k)_{X \times \bA^1_k/ /X\times\bA^1_k},  
+            (X \times \bA^1_k \to \cD^{\bullet, \mathrm{an}}_{X/ Y} \to Y \times \bA^1_k) \in (\dAnSt_k)_{X \times \bA^1_k/ /Y\times\bA^1_k},  
         \]
-    belongs to the full subcategory $\anFMP_{X\times\bA^1_k/ /X\times\bA^1_k}$.
+    belongs to the full subcategory $\anFMP_{X\times\bA^1_k/ /Y\times\bA^1_k}$.
 \end{rem}
 
 \begin{construction}
@@ -2986,24 +3417,80 @@ The following result is an immediate consequence of \cref{lem:analytification_of
     and therefore consider its relative analytification $(\cD_{X\alg/ Y\alg})\an_Y \in \dAnSt_{X\alg \times \bA^1_k/ /Y\alg \times \bA^1_k}$. Thanks to
     \cref{lem:analytification_of_simplicial_object_deformation} it follows that we have a natural morphism
         \[
-            \cD\an_{X/ Y} \to (\cD_{X\alg/ Y\alg})\an_Y,  
+            \theta_{X/ Y} \colon \cD\an_{X/ Y} \to (\cD_{X\alg/ Y\alg})\an_Y,  
         \]
     in the \infcat $(\dAnSt_k)_{X \times \bA^1_k/ /Y \times \bA^1_k}$.
 \end{construction}
 
+Our next goal is to prove that the morphism $\theta_{X/ Y}$ is an equivalence of deformations. In order to prove the latter statement, we shall
+need a preliminary lemma:
 
+\begin{lem} \label{lem:Noetherian_approximation_of_the_deformation_to_the_normal_bundle}
+    Let $f \colon X \to Y$ be a nil-embedding in the \infcat $\dAfd_k$. Consider approximation of the nil-embedding morphism $f\alg$
+        \[
+            \lim_{\alpha \in I\op} f_\alpha \colon \lim_{\alpha \in I\op} X_\alpha \to \lim_{\alpha \in I\op} Y_\alpha,
+        \]
+    as in \cref{lem:Noetherian_approximation_of_nil_isomorphisms}. Then, we have a natural morphism of the form
+        \begin{equation} \label{eq:morphism_theta}
+            \theta \colon \cD_{X\alg/ Y\alg}  \to \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha},
+        \end{equation}
+    which is furthermore an equivalence in the \infcat $\anFMP_{X \times \bbA^1_k / Y \alg \times \bbA^1_k}$
+\end{lem}
+
+\begin{proof}
+    It is clear that the natural morphisms $X_\alpha \to \cD_{X_\alpha/ Y_\alpha}$ assemble into a morphism
+        \[
+            X \alg \simeq \lim_{\alpha \in I\op} X_\alpha \to \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha},
+        \]
+    which admits a deformation theory, therefore the morphism 
+        \[X\alg \to \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha},\]
+    exhibits $\lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha}$ as an object
+    in the \infcat $\mathrm{FMP}_{X\alg \times \bbA^1_k/ }$. Notice that \cref{thm:Phi_is_an_equivalence} holds true in this setting, proved in
+    an analogous way, to provide us
+    with an equivalence of \infcats
+        \[  
+            \rB_X(\bullet) \colon \mathrm{FGrpd}(X\alg \times \bbA^1_k) \to \mathrm{FMP}_{X\alg \times \bbA^1_k/ },
+        \]
+    where $\mathrm{FGrp}(X\alg \times \bbA^1_k)$ denotes the \infcat of formal groupoids over $X\alg \times \bbA^1_k \in \dSt_k$. For this reason, we are reduced to show
+    the existence of a natural equivalence between formal groupoids over $X\alg \times \bbA^1_k$,
+        \[
+            \cD_{X\alg/ Y\alg}^\bullet \simeq X^{\times_{\lim_\alpha \cD_{X_\alpha/ Y_\alpha}} \bullet},
+        \]
+    where the right hand side denotes the \v{C}ech nerve of the morphism $X \to \lim_\alpha \cD_{X_\alpha/ Y_\alpha}$.
+    Since limits
+    commute with limits in the \infcat $\dAnSt_k$, we obtain a chain of natural equivalences of the form
+        \begin{align*}
+            (X\alg)^{\times_{\lim_{\alpha} \cD_{X_\alpha/ Y_\alpha}}\bullet}    & \simeq \lim_{\alpha } \big(X_\alpha^{\times_{\cD_{X_\alpha/ Y_\alpha}} \bullet} \big) \\
+                                                                                & \simeq \lim_{\alpha } \cD_{X_\alpha/ Y_\alpha}^\bullet \\
+                                                                                & \simeq \cD_{X\alg/ Y\alg}^\bullet,
+        \end{align*}
+    in the \infcat $\mathrm{FGrp}(X)$. Only the the second equivalence needs a justification:
+    for each $\alpha \in I$, we have natural identifications
+        \[
+            \cD_{X_\alpha/ Y_\alpha} \simeq \rB_{X_\alpha}( \cD_{X_\alpha/ Y_\alpha}^\bullet) , 
+        \]
+    by construction, where $\rB_{X_\alpha} (-)$ is as in \cite[\S 5.2]{Gaitsgory_Study_II}. Therefore, we deduce by adjunction that
+        \[
+            X^{\times_{\cD_{X_\alpha/ Y_\alpha} }\bullet} \simeq \cD_{X_\alpha/ Y_\alpha}^\bullet,
+        \]
+    is an equivalence in the \infcat $\mathrm{FGrpd}(X_\alpha)$, as well. The proof is thus concluded.
+\end{proof}
 
 The following result implies that the relative analytification commutes with the deformation to the normal bundle:
 
 \begin{prop} \label{prop:rel_analytification_preserves_the_deformation}
-    The natural morphism 
+    The natural morphism of \eqref{eq:morphism_theta},
         \[
             \theta_{X/ Y}\colon\cD\an_{X/Y}\to(\cD_{X\alg/ Y\alg})\an_Y,
         \]
     is an equivalence of derived $k$-analytic stacks.
 \end{prop}
 
-\begin{proof} Let us first assume that the closed immersion $f \colon X \to Y$ is an actual nil-embedding. In this case, we have that $Y \times \bA^1_k \in \anFMP_{X \times \bA^1_k/ }$.
+\begin{proof} Since the morphism $\theta_{X/ Y}$ commutes with filtered colimits in $X$, we reduce the statement of the Proposition to the
+    case where $X \in \anNil_{/ Y}$.
+    In this case, we have that $Y \times \bA^1_k \in \anFMP_{X \times \bA^1_k/ }$. By naturality of the morphism $\theta_{X/ Y}$
+    we are allowed to prove the statement of the Proposition up to a retract. For this reason,
+    we can replace $Y$ by $Y \underset{X_\red}{\sqcup} X$ and therefore assume that $f \colon X\to Y$ is a nil-embedding.
     Consider now the relative analytification functor
         \[
             (-)\an_Y \colon \mathrm{FMP}_{/ Y\alg \times \bbA^1_k}   \to \anFMP_{/ Y \times \bA^1_k}, 
@@ -3028,47 +3515,49 @@ The following result implies that the relative analytification commutes with the
         \[
             \anFMP_{X \times \bA^1_k/ /Y \times \bA^1_k} \to \anFMP_{X \times \bA^1_k/ }  ,
         \]
-    commutes with colimits and it is moreover conservative, thus it reflects sifted colimits. Let us assume now that $f \colon X \to Y$
-    is a general closed immersion in $\dAfd_k$. We have a natural equivalence
-        \[
-            \colim_{S \in \anNil_{X/ /Y^\wedge_X}} \cD_{X/ S} \simeq \cD_{X/ Y},  
-        \]
-    in the \infcat $\anFMP_{X \times \bA^1_k/ /Y \times \bA^1_k}$. Let 
-    
-    
-    
-    
-    We first observe that, as a consequence of \cref{rem:D_X/Y_lives_over_and_under_XxA^1_as_anFMP} and \cref{rem:computing_def_over_Y_or_X_is_equivalent}, it suffices to prove that the natural morphism
-        \[
-            \theta_{X/ Y} \colon \cD\an_{X/ Y} \to (\cD_{X\alg/ Y\alg})\an_Y,
-        \]
-    is an equivalence in $\anFMP_{X \times \bA^1_k/ / X \times \bA^1_k}$. By construction, we can compute $\cD\an_{X/ Y}$ (resp., $(\cD_{X\alg/ Y\alg}) \an_Y$)
-    as the sifted colimit of the simplicial object
-        \[
-            \cD^{\mathrm{an}, \bullet}_{X/ Y} \in \Fun(\bDelta \op, \anFMP_{X \times \bA^1_k/ }).
-        \]
-    Thanks to \cref{lem:analytification_of_simplicial_object_deformation}, we deduce that the latter is equivalent to the relative analytification
-        \[
-            (\cD^\bullet_{X\alg/ Y\alg})\an_Y \in \Fun(\bDelta\op, \anFMP_{X \times \bA^1_k/ }).
-        \]
-    We further observe that \cite[Theorem 6.12]{Porta_Yu_NQK} implies that the relative analytification functor
-        \[
-            (-)\an_{X \times \bA^1_k} \colon \mathrm{FMP}_{ /X\alg \times \bA^{1, \mathrm{alg}}_k} \to \anFMP_{ /X \times \bA^1_k},  
-        \]
-    is an equivalence. In particular, we deduce that the relative analytification functor at the level of pointed \infcats
-        \[
-            (-)\an_{X \times \bA^1_k} \colon \mathrm{FMP}_{X\alg \times \bA^{1, \mathrm{alg}}_k/ /X\alg \times \bA^{1, \mathrm{alg}}_k} \to \anFMP_{X \times \bA^1_k/ /X \times \bA^1_k}, 
-        \]
-    is an equivalence of \infcats as well. In particular, taking into consideration the above statements we deduce a chain of natural equivalences
-        \begin{align*}
-            (\cD_{X\alg/ Y\alg})\an_Y  &  \simeq (\cD_{X\alg/ Y\alg})\an_X \\
-                                       &  \simeq (\colim_{\bDelta\op} \cD_{X\alg/ Y\alg}^\bullet)\an_X \\
-                                       &  \simeq \colim_{\bDelta \op} (\cD_{X\alg/ Y\alg}^{\bullet})\an_X \\
-                                       &  \simeq \colim_{\bDelta \op} \cD_{X/ Y}^{\mathrm{an}, \bullet} \\
-                                       &  \simeq \cD_{X/ Y},
-        \end{align*}
-    in $\anFMP_{X \times \bA^1_k/ /X\times\bA^1_k}$, as desired.
+    commutes with colimits and it is moreover conservative, thus it reflects sifted colimits.
 \end{proof}
+    %Let us assume now that $f \colon X \to Y$
+    %is a general closed immersion in $\dAfd_k$. We have a natural equivalence
+    %    \[
+    %        \colim_{S \in \anNil_{X/ /Y^\wedge_X}} \cD_{X/ S} \simeq \cD_{X/ Y},  
+    %    \]
+    %in the \infcat $\anFMP_{X \times \bA^1_k/ /Y \times \bA^1_k}$. Let 
+    
+    
+    
+    
+    %We first observe that, as a consequence of \cref{rem:D_X/Y_lives_over_and_under_XxA^1_as_anFMP} and \cref{rem:computing_def_over_Y_or_X_is_equivalent}, it suffices to prove that the natural morphism
+    %    \[
+    %        \theta_{X/ Y} \colon \cD\an_{X/ Y} \to (\cD_{X\alg/ Y\alg})\an_Y,
+    %    \]
+    %is an equivalence in $\anFMP_{X \times \bA^1_k/ / X \times \bA^1_k}$. By construction, we can compute $\cD\an_{X/ Y}$ (resp., $(\cD_{X\alg/ Y\alg}) \an_Y$)
+    %as the sifted colimit of the simplicial object
+    %    \[
+    %        \cD^{\mathrm{an}, \bullet}_{X/ Y} \in \Fun(\bDelta \op, \anFMP_{X \times \bA^1_k/ }).
+    %    \]
+    %Thanks to \cref{lem:analytification_of_simplicial_object_deformation}, we deduce that the latter is equivalent to the relative analytification
+    %    \[
+    %        (\cD^\bullet_{X\alg/ Y\alg})\an_Y \in \Fun(\bDelta\op, \anFMP_{X \times \bA^1_k/ }).
+    %    \]
+    %We further observe that \cite[Theorem 6.12]{Porta_Yu_NQK} implies that the relative analytification functor
+    %    \[
+    %        (-)\an_{X \times \bA^1_k} \colon \mathrm{FMP}_{ /X\alg \times \bA^{1, \mathrm{alg}}_k} \to \anFMP_{ /X \times \bA^1_k},  
+    %    \]
+    %is an equivalence. In particular, we deduce that the relative analytification functor at the level of pointed \infcats
+    %    \[
+    %        (-)\an_{X \times \bA^1_k} \colon \mathrm{FMP}_{X\alg \times \bA^{1, \mathrm{alg}}_k/ /X\alg \times \bA^{1, \mathrm{alg}}_k} \to \anFMP_{X \times \bA^1_k/ /X \times \bA^1_k}, 
+    %    \]
+    %is an equivalence of \infcats as well. In particular, taking into consideration the above statements we deduce a chain of natural equivalences
+    %    \begin{align*}
+    %       (\cD_{X\alg/ Y\alg})\an_Y  &  \simeq (\cD_{X\alg/ Y\alg})\an_X \\
+    %                                   &  \simeq (\colim_{\bDelta\op} \cD_{X\alg/ Y\alg}^\bullet)\an_X \\
+    %                                   &  \simeq \colim_{\bDelta \op} (\cD_{X\alg/ Y\alg}^{\bullet})\an_X \\
+    %                                   &  \simeq \colim_{\bDelta \op} \cD_{X/ Y}^{\mathrm{an}, \bullet} \\
+    %                                   &  \simeq \cD_{X/ Y},
+    %    \end{align*}
+    %in $\anFMP_{X \times \bA^1_k/ /X\times\bA^1_k}$, as desired.
+%\end{proof}
 
 \begin{lem} \label{lem:identification_of_non-archimedean_fibers}
     Consider the natural projection morphism
@@ -3079,26 +3568,24 @@ The following result implies that the relative analytification commutes with the
         \[
             Y^\wedge_X,  
         \]
-    and its fiber at $\{ 0 \} \subseteq \bA^1_k$ with the completion of the shifted tangent bundle $\bT\an_{X/ Y}[1]$ along the zero section $s_0 \colon X \to \bT\an_{X/ Y}[1]$ of the shifted relative tangent bundle,
-        \[
-            \bT\an_{X/ Y} [1]^{\wedge} \in \anFMP_{X \times \bA^1_k/ /X \times \bA^1_k}.
-        \]
+    and its fiber at $\{ 0 \} \subseteq \bA^1_k$ with the completion of the shifted tangent bundle $\bT\an_{X/ Y}[1]$ along the zero section $s_0 \colon X \to \bT\an_{X/ Y}[1]$.
 \end{lem}
 
 \begin{proof}
-    The above assertions follow immediately from \cref{prop:rel_analytification_preserves_the_deformation} together with \cref{prop:algebraic_properties_of_deformation}.
+    The above assertions follow immediately from \cref{prop:rel_analytification_preserves_the_deformation}, \cref{cor:analytic_def_fiber_at_0_is_tangent} and \cref{prop:algebraic_properties_of_deformation}.
 \end{proof}
 
 
-\begin{construction} \label{const:pullbacks_of_deformations}
-    Let $g \colon U \to Y$ be an \'etale morphism in $\dAfd_k$. Consider the pullback diagram
+\begin{construction} \label{const:pullbacks_of_deformations} Let $Y \in \dAfd_k$ and $(X \xrightarrow{f} Y) \in \anFMP_{/ Y}$.
+    Denote by $g \colon U \to Y$ an \'etale morphism in $\dAfd_k$. Consider the pullback diagram
         \[
         \begin{tikzcd}
             X_U \ar{r} \ar{d} & U \ar{d} \\
             X \ar{r}{f} & Y,  
         \end{tikzcd}
         \]
-    computed in the \infcat $\dAfd_k$. It follows from the definitions that we have a natural pullback square of simplicial objects
+    computed in the \infcat $\dAfd_k$. It follows from the definitions that the morphism $X_U \to U$ admits a deformation theory and
+    that we have a natural pullback square of simplicial objects
         \[
         \begin{tikzcd}
             \cD_{X_U/ U}^{\mathrm{an}, \bullet} \ar{r} \ar{d} & \cD_{X/Y}^{\mathrm{an}, \bullet} \ar{d} \\
@@ -3141,7 +3628,11 @@ The following result implies that the relative analytification commutes with the
     of \cref{const:pullbacks_of_deformations}, is a pullback square in the \infcat $\dAnSt_k$.
 \end{prop}
 
-\begin{proof}
+\begin{proof} Since the pullback diagram above is preserved under filtered colimits in $X$, we can assume without loss of generality that
+    $f \colon X\to Y$ is a nil-isomorphism. Similarly, we are allowed to replace the retract $ \colon X \to Y$ by the nil-embedding
+        \[
+            g \colon \to X \to Y \underset{X_\red}{\bigsqcup} X.  
+        \]
     In order to show the assertion of the proposition, we are reduced to show that the natural morphism
         \[
             \cD_{X_U/ U}\an \to \cD\an_{X/ Y} \times_Y U,  
@@ -3151,13 +3642,16 @@ The following result implies that the relative analytification commutes with the
         \[
             \cD_{X_U\alg/ U\alg} \to \cD_{X\alg/ Y\alg} \times_{Y\alg}U\alg,
         \]
-    is an equivalence in $\dSt_k$ (see also \cref{prop:rel_analytification_preserves_the_deformation}). Find an approximation of the morphism $f \colon X \alg \to Y\alg$
-    of the form
+    is an equivalence in $\dSt_k$ (see also \cref{prop:rel_analytification_preserves_the_deformation}). 
+    Moreover, \cref{lem:Noetherian_approximation_of_the_deformation_to_the_normal_bundle} allows us to perform Noetherian approximation on the
+    nil-isomorphism $f \alg \colon X\alg \to Y\alg$.
+    For this reason, we can find an approximation of the morphism $f \colon X \alg \to Y\alg$
+    an approximation of the form
         \[
-            \lim_{\alpha \in I\op} f_\alpha \colon X_\alpha \to Y_\alpha,  
+            \lim_{\alpha \in I\op} ( f_\alpha \colon X_\alpha \to Y_\alpha ),  
         \]
-    where $I$ is a filtered \infcat and for each $\alpha \in I$, the morphism $f_\alpha$ is a closed immersion of affine derived $k$-schemes
-    almost of finite presentation. Similarly, find an approximation
+    where $I$ is a filtered \infcat and for each $\alpha \in I$, the morphism $f_\alpha$ is a closed immersion of affine derived schemes
+    almost of finite presentation over $k$. Similarly, find an almost of finite presentation approximation
         \[
             U \alg \simeq \lim_{\beta \in J\op} U_\beta.  
         \]
@@ -3187,44 +3681,97 @@ The following result implies that the relative analytification commutes with the
         \]
     of derived $k$-stacks almost of finite presentation. Indeed, by conservativity of the relative tangent complex, c.f. \cite[\S 5, Theorem 2.3.5]{Gaitsgory_Study_II}, it suffices to show that 
         \[
-            \bbT_{X_{U_{\gamma_1}}/ \cD_{X_{U_{\gamma_1}}/ U_{\gamma_1}} \to \bbT_{X_{U_{\gamma_1}}/ \cD_{X_{\gamma_2}/ Y_{\gamma_2}} \times_{Y_{\gamma_2}} U_{\gamma_1}}},
+            \bbT_{X_{U_{\gamma_1}}/ \cD_{X_{U_{\gamma_1}}/ U_{\gamma_1}}} \to \bbT_{X_{U_{\gamma_1}}/ \cD_{X_{\gamma_2}/ Y_{\gamma_2}} \times_{Y_{\gamma_2}} U_{\gamma_1}},
         \]
     is an equivalence in the \infcat $\Ind\Coh(X_{U_{\gamma_1}})$. Thanks to \cite[\S 5, Corollary 2.3.6]{Gaitsgory_Study_II}, we are reduced to show that
     the natural morphism of simplicial objects
         \[
             \{ \bbT_{X_{U_{\gamma_1}}/ \cD_{X_{U_{\gamma_1}}/ U_{\gamma_1}}^{\bullet}} \} \to \{ \bbT_{X_{U_{\gamma_1}}/ \cD_{X_{\gamma_2}/ Y_{\gamma_2}}^{\bullet} \times_{Y_{\gamma_2}} U_{\gamma_1}} \},
         \]
-    is an equivalence in $\Fun(\bDelta\op, \Ind\Coh(X_{U_{\gamma_1}}))$. Passing to the corresponding Serre duals, we obtain an assertion at the level
-    of cotangent complexes. The claim now follows from the fact that the commutative diagram
+    is an equivalence in $\Fun(\bDelta\op, \Ind\Coh(X_{U_{\gamma_1}}))$. The latter assertion further reduce us to show that the commutative
+    diagram
         \[
         \begin{tikzcd}
             \cD_{X_{U_{\gamma_1}}/ U_{\gamma_1}}^{ \bullet} \ar{r} \ar{d} & \cD_{X_{\gamma_2}/ Y_{\gamma_2}}^{\bullet} \ar{d} \\
             U_{\gamma_1} \ar{r} & Y_{\gamma_2} 
         \end{tikzcd}
         \]
-    is a pullback diagram component-wise in $\dAff_k^\laft$. The proof is now concluded.
+    is a pullback diagram component-wise in $\dAff_k^\laft$. By unwinding the definitions, it suffices to prove that the commutative diagram
+    of simplicial objects
+        \[
+        \begin{tikzcd}
+            \bfMap_{/ \bA^1_k}(\mathbf B_\mathrm{scaled}^\bullet,  X_{U_{\gamma_1}} \times \bA^1_k) \ar{r} \ar{d} & \bfMap_{/ \bA^1_k}(\mathbf B_\mathrm{scaled}^\bullet, U_{\gamma_1} \times \bA^1_k) )  \ar{d} \\
+            \bfMap_{/ \bA^1_k}(\mathbf B_\mathrm{scaled}^\bullet, X_{{\gamma_2}} \times \bA^1_k) \ar{r} & \bfMap_{/ \bA^1_k}(\mathbf B_\mathrm{scaled}^\bullet, Y_{\gamma_2} \times \bA^1_k) )
+        \end{tikzcd}
+        \]
+    is a pullback square. But the latter assertion is obvious as derived $k$-analytic mapping stacks commute with fiber products in $\dAnSt_k$.
 \end{proof}
 
 
 
 
 
-\subsection{Gluing the Deformation} In this \S, we globalize the results proved so far in \S 3.2. Let $f \colon X \to Y$ be a nil-embedding of derived $k$-analytic stacks admitting a deformation theory
-in the \infcat $\dAnSt_k$, assume further that $X$ is a geometric derived $k$-analytic stack.
-Then we can consider as before the \emph{deformation to the normal bundle of the morphism $f$} constructed via the pullback diagram
+\subsection{Gluing the Deformation} In this \S, we globalize the results proved so far in \S 3.2.
+Let $f \colon X \to Y$ be a morphism of locally geometric derived $k$-analytic stacks.
+Consider as before the \emph{deformation to the normal bundle of the morphism $f$} constructed via the pullback diagram
     \[
     \begin{tikzcd}
-        \cD^{\mathrm{an}, \bullet}_{X/ Y} \ar{r} \ar{d} & Y \times \bA^1_k \ar{d} \\
-        \bfMap_{/ \bA^1_k} (\bB^{\mathrm{an}, \bullet}_\mathrm{scaled}, X \times \bA^1_k) \ar{r} & \bfMap_{/ \bA^1_k}(\bB^{\mathrm{an},\bullet}_{\mathrm{scaled}}, Y \times \bA^1_k),
+        \cD^{\mathrm{an}, \bullet}_{X/ Y} \ar{r} \ar{d} & Y^\wedge_X \times \bA^1_k \ar{d} \\
+        \bfMap_{/ \bA^1_k} (\bB^{\mathrm{an}, \bullet}_\mathrm{scaled}, X \times \bA^1_k) \ar{r} & \bfMap_{/ \bA^1_k}(\bB^{\mathrm{an},\bullet}_{\mathrm{scaled}}, Y^\wedge_X \times \bA^1_k),
     \end{tikzcd}
     \]
 in the \infcat $\dAnSt_k$. As in the previous \S, one can show that the simplicial object 
     \[
-        \cD^{\mathrm{an}, \bullet}_{X/ Y} \in \anFMP_{X \times \bA^1_k/ /Y \times \bA^1_k},  
+        \cD^{\mathrm{an}, \bullet}_{X/ Y} \in \anFMP_{X \times \bA^1_k/ /Y^\wedge_X \times \bA^1_k}.
     \]
-and in particular we have:
+Let now $g \colon U \to Y^\wedge_X$ be an \'etale morphism in $\dAnSt_k$ where $U \in \dAfd_k$. Consider the pullback diagram
+    \[
+    \begin{tikzcd}
+        X_U \ar{r}{g'} \ar{d} & X \ar{d}{f} \\
+        U \ar{r}{g} & Y^\wedge_X,
+    \end{tikzcd}
+    \]
+in the \infcat $\dAnSt_k$. We have:
 
-\begin{prop}
+\begin{lem}
+    The morphism $X_U \to U$ admits a deformation theory, and thus exhibits $X_U$ as an object in $\anFMP_{/U}$.
+\end{lem}
+
+\begin{proof}
+    It is clear that $X_U$ is both nilcomplete and infinitesimally cartesian as a derived $k$-analytic stack. It suffices thus to show that
+    the structural morphism $X_U \to U$ admits a cotangent complex. We claim that $\bbL_{X_U/ U}$ identifies with
+        \[
+            (g')^* \bbL_{X/ Y} \in \Coh^+(X_U).
+        \]
+    Indeed, let $Z \to X_U$ be any morphism with $h \colon Z \in \dAfd_k$. Then we obtain that
+        \[
+            h^* (g')^* \bbL_{X/ Y} \simeq (g' \circ h)^* (\bbL_{X/ Y}),  
+        \]
+    in $\Coh^+(Z)$, which corepresents the functor
+        \[
+            \mathrm{Der}_{X/ Y}(Z, -) \colon \Coh^+(Z) \to \cS,  
+        \]
+    see \cite[Definition 7.6]{Porta_Yu_Representability} for the definition of the latter. Since fiber products commute with fibers, we have a natural identification
+        \[
+            \mathrm{Der}_{X_U}(Z, -) \simeq \mathrm{Der}_{X} (Z, -) \times_{\mathrm{Der}_{Y}(Z, -)} \mathrm{Der}_U(Z, -).
+        \]
+    We thus conclude that 
+        \[
+            \mathrm{Der}_{X_U/ U}(Z, -) \simeq \fib \big(\mathrm{Der}_{X_U}(Z, -) \to \mathrm{Der}_{U}(Z, -)\big)  ,
+        \]
+    identifies naturally with
+        \[
+            \mathrm{Der}_{X/ Y}(Z, -) \simeq \fib \big(\mathrm{Der}_{X}(Z, -) \to \mathrm{Der}_{Y}(Z, -)\big)  .          
+        \]
+    The claim of the lemma now follows from the fact that $\mathrm{Der}_{X/ Y}(Z, -) \colon \Coh^+(Z) \to \cS$ is corepresentable
+    by $h^* (g')^*\bbL_{X/ Y}$, as desired. 
+\end{proof}
+
+Thanks to the above lemma we conclude that the canonical map $X_U \to U$ exhibits $X_U$ as an analytic formal moduli problem
+over $U$. We are thus in the case of the previous section. The following result implies that the deformation to the normal bundle in the non-archimedean
+setting glues:
+
+\begin{prop} \label{prop:gluing_def}
     The simplicial object
         \[
             \cD_{X/ Y}^{\mathrm{an}, \bullet} \colon \bDelta \op \to \anFMP_{X/ /Y},  
@@ -3271,20 +3818,26 @@ and in particular we have:
     from the construction.
 \end{proof}
 
+\begin{defin}
+    Let $f\colon X \to Y$ be a morphism of locally geometric derived $k$-analytic stacks. Then the \emph{deformation to the normal bundle associated to $f$}
+    is by definition the object $\cD_{X/ Y} \in \anFMP_{X\times \bA^1_k/ /Y\times\bA^1_k}$, as in \cref{prop:gluing_def}. 
+\end{defin}
 
-\subsection{The Hodge filtration} Let $f \colon X \to Y$ be a closed immersion in $\dAnSt_k$.
+\subsection{The Hodge filtration} Let $f \colon X \to Y$ be a morphism between locally geometric derived $k$-analytic stacks.
 In this \S, we will describe the construction of the Hodge filtration on the deformation to the normal bundle $\cD_{X/ Y}\an$ associated to $f$.
 We first deal with the $k$-affinoid case:
 
 
 \begin{construction} \label{const:construction_of_Hodge_filtration_in_the_lafp_case}
-    Let $f \colon X \to Y$ be a closed immersion in the \infcat $\dAfd_k$. Consider the induced morphism
+    Let $f \colon X \to Y$ be a nil-embedding in the \infcat $\dAfd_k$.
+    Consider the induced morphism
         \[
             f \alg \colon X\alg \to Y\alg,   
         \]
     where $X \alg = \Spec A$ and $Y\alg = \Spec B$, with
     \[A \coloneqq \Gamma(X, \cO_X\alg) \quad \mathrm{and} \quad B \coloneqq \Gamma(Y, \cO_Y \alg).\]
-    The morphism $f\alg$ is a closed immersion of affine derived schemes. Consider also the closed immersion
+    The morphism $f\alg$ is a nil-embedding of affine derived schemes (combined \cite[Lemma 6.9]{Porta_Yu_NQK} and
+    \cite[Proposition 3.17]{Porta_Yu_Derived_non-archimedean_analytic_spaces}). Consider then the nil-embedding
         \[
             g \coloneqq f \alg \times \id_{\bbA^1_k} \colon X \times \bbA^1_k \to Y \times \bbA^1_k,  
         \]
@@ -3301,14 +3854,11 @@ We first deal with the $k$-affinoid case:
         \[
             X_\alpha \times \bbA^1_k = X^{(0)}_\alpha \hookrightarrow X_\alpha^{(1)} \hookrightarrow \dots \hookrightarrow X_\alpha^{(n)} \hookrightarrow \dots \to Y_\alpha \times \bbA^1_k,  
         \]
-    such that each term comes equipped with a natural action of the quotient stack 
-        \[
-            [\bbA^1_k / \bbG_m] \in \dSt_k.
-        \]
+    such that each term comes equipped with a natural left-lax action of multiplicative monoid $\bbA^1_k \in \dSt_k$.
 \end{construction}
 
 \begin{lem} \label{lem:naturality_of_Hodge_filtration_w.r.t_Noetherian_approximation}
-    Let  $n \ge 0$, and let $\alpha \to \beta$ be a morphism in $A \op$. Then the transition morphism
+    Let  $n \ge 0$, and let $\alpha \to \beta$ be a morphism in $I \op$. Then the transition morphism
         \[
             X_\alpha \times \bbA^1_k \to X_\beta \times \bbA^1_k,  
         \]
@@ -3325,8 +3875,8 @@ We first deal with the $k$-affinoid case:
 
 We now introduce the (algebraic) Hodge filtration associated with the closed immersion $f\alg \colon X\alg \to Y\alg$:
 
-\begin{defin} \label{defin:algebraic_Hodge_filtration}
-    Consider the morphism $g \colon X\alg \times \bbA^1_k \to Y\alg \times \bbA^1_k$ above. \cref{lem:naturality_of_Hodge_filtration_w.r.t_Noetherian_approximation}
+\begin{defin} \label{defin:algebraic_Hodge_filtration} Let $f \colon X \to Y$ be a nil-isomorphism in the \infcat $\dAfd_k$.
+    Consider the morphism $g \coloneqq f \times \mathrm{id} \colon X\alg \times \bbA^1_k \to Y\alg \times \bbA^1_k$ above. \cref{lem:naturality_of_Hodge_filtration_w.r.t_Noetherian_approximation}
     implies that for each $n \ge 0$, we have a well defined object
         \[
             X^{\mathrm{alg}, (n)} \coloneqq \lim_{\alpha \in I\op} X_\alpha^{(n)} \in \dAff_k,  
@@ -3335,124 +3885,257 @@ We now introduce the (algebraic) Hodge filtration associated with the closed imm
         \[
             X\times \bbA^1_k = X^{ \mathrm{alg}, (0)} \hookrightarrow X^{\mathrm{alg}, (1)}  \hookrightarrow \dots \hookrightarrow X^{\mathrm{alg}, (n)} \hookrightarrow \dots \to Y\alg,
         \]
-    in $\dAff_k$. We shall refer to the sequence of the $X^{\mathrm{alg}, (n)}$ as the \emph{algebraic Hodge filtration} associated to the morphism $f\alg$. Moreover, thanks to
-    \cref{prop:algebraic_properties_of_deformation} (4) it follows that we have a natural morphism
-        \begin{equation} \label{eq:map_Hodge_filtration_to_deformation}
-            \colim_{n \ge 0} X^{\mathrm{alg}, (n)} \to \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha},  
-        \end{equation}
-    in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ /Y \times \bbA^1_k}$.
+    in $\dAff_k$. We shall refer to the sequence of the $X^{\mathrm{alg}, (n)}$ as the \emph{algebraic Hodge filtration} associated to the morphism $f\alg$. 
+    In the more general case, where $f \colon X \to Y$ exhibits $X$ as an analytic formal moduli problem we define, for each $n \ge 0$,
+    the \emph{$n$-th piece of the Hodge filtration} as 
+        \[
+            X^{(n)} \coloneqq \colim_{S \in (\anNil^\cl_{X/ /Y})} S^{\mathrm{alg}, (n)}, 
+        \]
+    the filtered colimit being computed in the \infcat $\anFMP_{X \times \bA^1_k/ }$.
 \end{defin}
+
+\begin{construction} Let $f \colon X \to Y$ be a nil-embedding in the \infcat $\dAfd_k$. 
+    It follows from \cref{prop:algebraic_properties_of_deformation} (4) that we have a natural morphism
+        \begin{align} \label{eq:map_Hodge_filtration_to_deformation}
+            \theta_{X/ Y} \colon \colim_{n \ge 0} X^{\mathrm{alg}, (n)} & \to \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha} \\
+                                                                        & \simeq \cD_{X\alg/ Y\alg},
+        \end{align}
+    in the \infcat $\mathrm{FMP}_{X \times \bbA^1_k/ /Y \times \bbA^1_k}$. Passing to filtered colimits we produce a natural
+    morphism as in \eqref{eq:map_Hodge_filtration_to_deformation} in the case where $(X \xrightarrow{f} Y) \in \anFMP_{/ Y}$ and $Y \in \dAfd_k$.
+\end{construction}
 
 The following result implies that the Hodge filtration associated to $f\alg$ does not depend on choices:
 
-\begin{cor} \label{cor:commutation_between_limit_and_colimit_on_Hodge_filtration}
-    The derived stack 
-        \[\lim_{\alpha} \colim_{n \ge 0} X_\alpha^{(n)} \simeq \lim_{\alpha} \cD_{X_\alpha/ Y_\alpha},\]
-    is an affine scheme. Moreover, the natural morphism
+\begin{prop} \label{cor:commutation_between_limit_and_colimit_on_Hodge_filtration}
+    Let $(X \xrightarrow{f} Y) \in \anFMP_{/ Y}$ and $Y \in \dAfd_k$. Then the natural morphism
         \[
-            \gamma \colon \colim_{n \ge 0} X^{\mathrm{alg}, (n)} \to \lim_{\alpha \in I \op} \colim_{n \ge 0} X^{(n)}_\alpha,
+            \theta_{X/ Y} \colon \colim_{n \ge 0} X^{\mathrm{alg}, (n)} \to \cD_{X\alg/ Y\alg},
         \] 
-    is an equivalence of derived affine schemes.
-\end{cor}
+    is an equivalence of derived $k$-stacks.
+\end{prop}
 
 \begin{proof}
-    The first assertion follows immediately from \cref{lem:naturality_of_Hodge_filtration_w.r.t_Noetherian_approximation} combined with \cref{prop:algebraic_properties_of_deformation} (4)
-    and the fact that
-    for each $n \ge 0$, $X^{(n+1)}_\alpha$ is a square-zero extension on $X^{(n)}_\alpha$ via an object
-        \begin{equation} \label{eq:n-th_part_of_the_Hodge_filtration_for_X_alpha}
-            \cF^{(n+1)} \in \Coh^{\ge n}(X^{(n)}_\alpha).  
+    Since both sides of $\theta_{X/ Y}$ are stable under filtered colimits it suffices to treat the case where $f \colon X \to Y$
+    is a nil-isomorphism of derived $k$-affinoid spaces. We observe that $X \to Y$ exhibits $Y$ as a retract of the morphism
+        \[
+            X \to X \underset{X_\red}{\bigsqcup} Y.
+        \]
+    Since $\theta_{X/ Y}$ is stable under retracts, we are further reduced to the case where $f$ is a nil-embedding. In this case,
+    the relative cotangent complex
+        \[
+            \bbL_{X\alg/ Y\alg} \simeq \bbL\an_{X/ Y},  
+        \]
+    is $1$-connective, see \cite[Lemma 6.9]{Porta_Yu_NQK}. The proof of \cref{lem:Noetherian_approximation_of_nil_isomorphisms} allow us to produce a presentation
+        \[
+            \lim_{\alpha \in I\op} (f_\alpha \colon X_\alpha \to Y_\alpha),  
+        \]
+    of the morphism $f\alg$ by closed immersions $f_\alpha \colon X_\alpha \to Y_\alpha$ of affine
+    derived schemes almost of finite presentation parametrized by a filtered \infcat $I$. The proof of \cref{lem:identification_of_Hodge_and_adic_filtrations},
+    implies that, for each $\alpha \in I$, the natural morphism
+        \[
+            X_\alpha^{(n)} \to X_\alpha^{(n+1)},
+        \]
+    exhibits $X_\alpha^{(n+1)}$ as a square-zero extension of $X_\alpha^{(n)}$ via a natural morphism
+        \[
+            \bbL_{X_\alpha^{(n)}} \to i_{n, *} \Sym^{n+1}(\bbL_{X_\alpha/ Y_\alpha}[-1])[1],  
+        \]
+    in the \infcat $\Coh^+(X_\alpha^{(n)})$. In particular, we deduce that, for each $n \ge 0$, the natural morphisms
+        \[
+            X_\alpha \times \bbA^1_k \to X_\alpha^{(n)},  
+        \]
+    are nil-embeddings of affine derived schemes and so are the natural morphisms
+        \[
+            X \alg \times \bbA^1_k \to X^{\mathrm{alg}, (n)}.  
+        \]
+    We are now able to show that $\theta_{X/ Y}$ is an equivalence in the \infcat $\dSt_k$.
+    Thanks to \cite[Corollary 4.4.1.3]{Lurie_SAG} combined with \cite[Corollary 4.5.1.3]{Lurie_SAG}, the relative cotangent complex satisfies
+        \[
+            \bbL_{X\alg \times \bbA^1_k/ X^{(n)}} \simeq \colim_{\alpha \in I} h_\alpha^* \bbL_{X_\alpha \times \bbA^1_k/ X^{(n)}_\alpha} ,
+        \]
+    in the \infcat $\QCoh(X\alg \times \bbA^1_k)$, where $h_\alpha \colon X \to X_\alpha$ denotes the corresponding transition morphisms. Similarly, we have that
+        \[
+            \bbL_{X\alg \times \bbA^1_k/ Y \times \bbA^1_k} \simeq \colim_{\alpha \in I} h_\alpha^* \bbL_{X_\alpha \times \bbA^1_k / Y_\alpha \times \bbA^1_k} ,
+        \]
+    in the \infcat $\QCoh(X\alg \times \bbA^1_k)$. Moreover, the latter equivalences are compatible with the left-lax actions of the multiplicative monoid $\bbA^1_k \in \dSt_k$
+    on
+        \[
+            X^{\mathrm{alg}, (n)} \quad \mathrm{and} \quad X^{(n)}_\alpha, \quad \mathrm{for \ each} \ \alpha \in I,  
+        \]
+    over $X\alg \times \bbA^1_k$ (resp. $X_\alpha \times \bbA^1_k$). Let $\lambda \in \bbA^1_k$ be such that $\lambda \neq 0$.
+    By passing to Serre duals, we deduce from \cref{lem:identification_of_Hodge_and_adic_filtrations}
+    that, for each $\alpha \in I$ and $n \ge 0$, the morphism
+        \begin{equation} \label{eq:cot_complex_for_alpha}
+            \bbL_{ (X_\alpha^{(n)})_\lambda} \to \Sym^{n+1}(\bbL_{X_\alpha / Y_\alpha}[-1])[1],
         \end{equation}
-    We further deduce that
+    classifies the square-zero extension associated to the fiber sequence
         \[
-            \colim_{n \ge 0} X^{\mathrm{alg}, (n)} \in \mathrm{dAff}_k.  
+            \Sym^{n+1}(\bbL_{X_\alpha/ Y_\alpha}[-1]) \to \Sym^{\le n+1} (\bbL_{X_\alpha/ Y_\alpha}[-1]) \to \Sym^{\le n} ( \bbL_{X_\alpha/ Y_\alpha}[-1]).
         \]
-    Indeed, it follows immediately from the construction that $X^{(n+1), \mathrm{alg}}$ is a square-zero extension of $X^{\mathrm{alg}, (n)}$ 
-    by some
-        \begin{equation} \label{eq:n-th_part_of_the_Hodge_filtration_for_X}
-            \cG^{(n+1)} \in \Coh^{\ge n}(X^{\mathrm{alg}, (n)}).  
-        \end{equation}
-    We conclude thus that the filtered colimit $\colim_{n \ge 0} X^{\mathrm{alg}, (n)}$ is an affine derived $k$-scheme, as well.
-    In a similar vein, we also deduce that the inverse limit
+    Since \eqref{eq:cot_complex_for_alpha} are stable under filtered colimits, we deduce, for each $n \ge 0$, that the morphism
         \[
-            \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha} \in \dAff_k.  
+            \bbL_{X^{\mathrm{alg}, (n)}} \to \Sym^{n+1}(\bbL_{X\alg/ Y\alg}[-1])[1],
         \]
-    Let $A, B \in \CAlg_k$ denote the derived rings of derived global sections of both
+    classifies the square-zero extension given by
         \[
-            \colim_{n \ge 0} X^{\mathrm{alg}, (n)} \quad \mathrm{and} \quad \lim_{\alpha \in I \op} \cD_{X_\alpha/ Y_\alpha}.
+            \Sym^{n+1}(\bbL_{X\alg/ Y\alg}[-1]) \to \Sym^{\le n+1}(\bbL_{X\alg/ Y\alg}[-1]) \to \Sym^{\le n}(\bbL_{X\alg/ Y\alg} [-1]).
         \]
-    Similarly, denote by $A^{(n)} \coloneqq \Gamma(X^{\mathrm{alg}, (n)}, \cO_{X^{\mathrm{alg}, (n)}})$ and, for each $\alpha \in I$,
-    let $B^{(n)}_\alpha \coloneqq \Gamma(X_{\alpha}^{(n)}, \cO_{X^{(n)}_\alpha})$.
-    Thanks to \eqref{eq:n-th_part_of_the_Hodge_filtration_for_X_alpha} and \eqref{eq:n-th_part_of_the_Hodge_filtration_for_X} we deduce that,
-    for each $i \ge 0$, one has equivalences
+    Thanks to \cite[\S 9.5.5.2]{Gaitsgory_Study_II} combined with an analogous Noetherian approximation reasoning as the one employed
+    before we obtain a natural equivalence
         \[
-            \pi_i(A) \simeq \pi_i(A^{(n)}_{\alpha})  \quad \mathrm{and} \quad \pi_i(B) \simeq \colim_{\alpha \in I} \pi_i(B^{(n)}_\alpha),
+            \bbL_{\colim_{n \ge 0}X^{\mathrm{alg}, (n)}_\lambda} \simeq \bbL_{X\alg/ Y\alg}.
         \]
-    for all $n \ge i$ sufficiently large. In particular, by the construction of $X^{\mathrm{alg}, (n)}$ we deduce that
+    In particular, thanks to the algebraic version of \cref{prop:conservativity_of_relative_an_cot_complex} we deduce that the natural morphism
         \[
-            \pi_i(A^{(n)}) \simeq \colim_{\alpha \in I} \pi_i(B_\alpha^{(n)}),
+            \colim_{n \ge 0} X^{\mathrm{alg}, (n)}  \to \cD_{X\alg/ Y\alg}, 
         \]
-    which concludes the proof.
+    is an equivalence in $\mathrm{FMP}_{X \alg}$, for any $\lambda \bbA^1_k$ such that $\lambda \neq 0$. For $\lambda = 0$, the
+    precise same reasoning applies using \cite[\S 9, Theorem 5.5.4]{Gaitsgory_Study_II} for the case of vector groups. The proof is thus concluded.
 \end{proof}
+%    Moreover, it follows from 
+%    have fiber
+%        \[i_n^* \bbL_{(X^{(n)}_\alpha)_\lambda/ Y_\alpha} \in \pro(\Coh(X_\alpha))^{\mathrm{fil}, \le - n}.\] 
+%    By assemblying the morphism \eqref{eq:cot_complex_for_alpha} together we deduce that, for each $n \ge 0$, the natural morphism
+%        \[
+%            \bbL_{X^{\mathrm{alg}, (n)}/ (X_\alpha^{(n)})_\lambda} \to \bbL_{X^{\mathrm{alg}, (n)} / Y_\alpha},
+%        \]
+%    has fiber equivalent to
+%        \[i_n^* \bbL_{X\alg /Y\alg} \in \pro(\Coh(X \alg))^{\mathrm{fil},\le  - n}.\]
+%    In particular, we deduce that the fiber at $\lambda \in \bbA^1_k$ of $\colim_{n \ge 0} X^{\mathrm{alg}, (n)}$ can under the morphism
+%    the base change $(\theta_{X/ Y})_\lambda$ with
+%        \[
+%            Y\alg \in \anFMP_{X\alg/ }  ,
+%        \]
+%    which identifies naturally with $(\cD_{X\alg/ Y\alg})_\lambda$ thanks to \cite[\S 9, Proposition 5.2.2]{Gaitsgory_Study_II} combined with
+%    \cref{lem:Noetherian_approximation_of_the_deformation_to_the_normal_bundle}. Suppose now that $\lambda = 0$ in $\bbA^1_k$.
+%    In this case, it follows from \cref{lem:Noetherian_approximation_of_nil_isomorphisms} that
+%        \[
+%            (\cD_{X\alg/ Y\alg}  )_0 \simeq \bbT_{X\alg/ Y\alg}[1]^\wedge.
+%        \]
+%    It follows from \cite[\S 9, Proposition 5.5.4]{Gaitsgory_Study_II} and the proof of \cite[\S 9, Proposition 5.1.3]{Gaitsgory_Study_II}
+%    for the case of vector groups that, for each $n \ge 0$ and each $\alpha \in I$, we have a natural equivalence
+%        \[
+%              (X_\alpha^{(n)})_0 \simeq \Spec_{X_\alpha}(\Sym^{\le n}(\bbL_{X_\alpha/ Y_\alpha}[-1])),
+%        \]
+%    in $\mathrm{FMP}_{X_\alpha/ }$. By passing to the limit over $\alpha \in I\op$, we deduce that
+%        \[
+%            (X^{\mathrm{alg}, (n)})_0 \simeq \Spec_{X\alg}(\Sym^{\le n}(\bbL_{X\alg /Y\alg}[-1])),  
+%        \]
+%    using \cite[Corollary 4.4.1.3]{Lurie_SAG} combined with \cite[Corollary 4.5.1.3]{Lurie_SAG}. It thus follows that
+%        \[  
+%            (\theta_{X/ Y})_0 \colon (\colim_{n \ge 0} X^{\mathrm{alg}, (n)})_0 \to \bbT_{X\alg/ Y\alg}[1]^\wedge,
+%        \]
+%    as desired. The conclusion that $\theta_{X/ Y}$ is an equivalence in the \infcat $\dSt_k$ follows.
+%\end{proof}
+%    Therefore,
+%    by passing to the inverse limit we deduce that the relative cotangent complex of the morphism
+%        \[
+%            X \to \colim_{n \ge 0} X^{\mathrm{alg}, (n)},
+%        \]
+%    agrees with $\bbL_{X/ Y} \in \pro(\Coh^(X))$.
+%    We have a chain of natural equivalences
+%        \begin{align*}
+%            (\colim_{n \ge 0} X^{\mathrm{alg}, (n)})_{\lambda} & \simeq \colim_{n \ge 0} (X^{\mathrm{alg}, (n)})_\lambda  \\
+%                                                               & \simeq \colim_{n \ge 0} \lim_{\alpha} (X_\alpha^{(n)})_\lambda \\
+%                                                               & \simeq \colim_{n \ge 0} \lim_{\alpha}()
+%        \end{align*}
+%
+%    The first assertion follows immediately from \cref{lem:naturality_of_Hodge_filtration_w.r.t_Noetherian_approximation} combined with \cref{prop:algebraic_properties_of_deformation} (4)
+%    and the fact that
+%    for each $n \ge 0$, $X^{(n+1)}_\alpha$ is a square-zero extension on $X^{(n)}_\alpha$ via an object
+%        \begin{equation} \label{eq:n-th_part_of_the_Hodge_filtration_for_X_alpha}
+%            \cF^{(n+1)} \in \Coh^{\ge n}(X^{(n)}_\alpha).  
+%        \end{equation}
+%    We further deduce that
+%        \[
+%            \colim_{n \ge 0} X^{\mathrm{alg}, (n)} \in \mathrm{dAff}_k.  
+%        \]
+%    Indeed, it follows immediately from the construction that $X^{(n+1), \mathrm{alg}}$ is a square-zero extension of $X^{\mathrm{alg}, (n)}$ 
+%    by some
+%        \begin{equation} \label{eq:n-th_part_of_the_Hodge_filtration_for_X}
+%            \cG^{(n+1)} \in \Coh^{\ge n}(X^{\mathrm{alg}, (n)}).  
+%        \end{equation}
+%    We conclude thus that the filtered colimit $\colim_{n \ge 0} X^{\mathrm{alg}, (n)}$ is an affine derived scheme, as well.
+%    In a similar vein, we also deduce that the inverse limit
+%        \[
+%            \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha} \in \dAff_k.  
+%        \]
+%    Let $A, B \in \CAlg_k$ denote the derived rings of derived global sections of both
+%        \[
+%            \colim_{n \ge 0} X^{\mathrm{alg}, (n)} \quad \mathrm{and} \quad \lim_{\alpha \in I \op} \cD_{X_\alpha/ Y_\alpha}.
+%        \]
+%    Similarly, denote by $A^{(n)} \coloneqq \Gamma(X^{\mathrm{alg}, (n)}, \cO_{X^{\mathrm{alg}, (n)}})$ and, for each $\alpha \in I$,
+%    let $B^{(n)}_\alpha \coloneqq \Gamma(X_{\alpha}^{(n)}, \cO_{X^{(n)}_\alpha})$.
+%    Thanks to \eqref{eq:n-th_part_of_the_Hodge_filtration_for_X_alpha} and \eqref{eq:n-th_part_of_the_Hodge_filtration_for_X} we deduce that,
+%    for each $i \ge 0$, one has equivalences
+%        \[
+%            \pi_i(A) \simeq \pi_i(A^{(n)}_{\alpha})  \quad \mathrm{and} \quad \pi_i(B) \simeq \colim_{\alpha \in I} \pi_i(B^{(n)}_\alpha),
+%        \]
+%    for all $n \ge i$ sufficiently large. In particular, by the construction of $X^{\mathrm{alg}, (n)}$ we deduce that
+%        \[
+%            \pi_i(A^{(n)}) \simeq \colim_{\alpha \in I} \pi_i(B_\alpha^{(n)}),
+%        \]
+%    which concludes the proof.
+%\end{proof}
 
-\begin{defin}
-    Let $f \colon X \to Y$ be a closed immersion in the \infcat $\dAfd_k$. We shall define the \emph{algebraic deformation to the normal
-    bundle associated to $f\alg$} as the colimit
-        \[
-            \cD_{X\alg/ Y\alg}\coloneqq \colim_{n \ge 0} X^{\mathrm{alg}, (n)},  
-        \]
-    computed in the \infcat $\mathrm{FMP}_{X/ /Y}$.
-\end{defin}
-
-We will need the following auxiliary result:
-
-\begin{lem} \label{prop:colim_n_ge_0_X^n_to_deformation_is_an_equivalence}
-    The object 
-        \[\lim_{\alpha \in I \op} \cD_{X_\alpha / Y_\alpha} \in (\mathrm{dSt_k})_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k},\]
-    belongs to the full subcategory $\mathrm{FMP}_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k}$. In particular, the natural morphism
-        \[
-            \cD_{X\alg/ Y\alg} \to \lim_{\alpha \in I \op} \cD_{X_\alpha/ Y_\alpha},  
-        \]
-    is an equivalence in $\mathrm{FMP}_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k}$.
-\end{lem}
-
-\begin{proof}  For each $\alpha \in I$ let us denote by
-        \[
-            h_\alpha \colon X \to X_\alpha,
-        \]  
-    the structural morphism. Thanks to \cite[Corollary 4.4.1.3]{Lurie_SAG} combined with \cite[Corollary  4.5.1.3]{Lurie_SAG} we conclude that the natural morphisms
-        \[
-            \theta_\alpha \colon h_\alpha^* \bbL_{X_\alpha} \to \bbL_{X} , \quad \textrm{for each } \alpha \in I,
-        \]
-    assemble to provide an equivalence
-        \[
-            \theta \colon \colim_{\alpha \in I} h_\alpha^* \bbL_{X_\alpha} \to \bbL_X,   
-        \]
-    in the \infcat $\QCoh(X\alg)$. As a consequence, given any pushout diagram
-        \[
-        \begin{tikzcd}
-            S \ar{r}{g_S} \ar{d} & S' \ar{d} \\
-            T \ar{r} & T',
-        \end{tikzcd}
-        \]
-    in the \infcat $\mathrm{Nil}_{X/ }$, where $g_S$ is a square-zero extension, we can write it as an inverse limit of pushout diagrams of the form
-        \[
-        \begin{tikzcd}
-            S_\alpha \ar{r}{g_{S_\alpha}} \ar{d} & S'_\alpha \ar{d} \\
-            T_\alpha \ar{r} & T'_\alpha,  
-        \end{tikzcd}
-        \]
-    in $\mathrm{Nil}_{X_\alpha/ }$, for large enough $\alpha \in I$. It then follows that we have a chain of natural equivalences of the form
-        \begin{align*}
-            \lim_{\alpha \in I\op}\cD_{X_\alpha/ Y_\alpha} (T') & \simeq (\lim_{\alpha \in I\op}\cD_{X_\alpha/ Y_\alpha})(\lim_{\alpha \in A\op} T_\alpha ') \\
-                                                                & \simeq \lim_{\alpha \in I\op} (\cD_{X_\alpha/ Y_\alpha}(T'_\alpha) )\\
-                                                                & \simeq \lim_{\alpha \in I\op}\cD_{X_\alpha/ Y_\alpha}(S'_\alpha \times_{S_\alpha} T_\alpha) \\
-                                                                & \simeq \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha}(S'_\alpha) \times_{\underset{\alpha \in A\op}{\lim} \cD_{X_\alpha/ Y_\alpha}(S_\alpha)}  \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha}(T_\alpha),
-        \end{align*}
-    and we deduce that $\lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha} \in \mathrm{FMP}_{X/ /Y}$, as desired. \cref{cor:commutation_between_limit_and_colimit_on_Hodge_filtration} implies that
-    the canonical morphism
-        \[\theta \colon \cD_{X\alg/ Y\alg} \to \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha},\]
-    is an equivalence in $\dSt_k$. The second part of the Lemma follows from the first part since it implies that $\theta$ lies in the the full subcategory \infcat $\mathrm{FMP}_{X/ /Y}$.
-    %the morphism $\theta$ induces an equivalence at the level of cotangent complexes
+%\begin{defin}
+%    Let $f \colon X \to Y$ be a closed immersion in the \infcat $\dAfd_k$. We shall define the \emph{algebraic deformation to the normal
+%    bundle associated to $f\alg$} as the colimit
+%        \[
+%            \cD_{X\alg/ Y\alg}\coloneqq \colim_{n \ge 0} X^{\mathrm{alg}, (n)},  
+%        \]
+%    computed in the \infcat $\mathrm{FMP}_{X/ /Y}$.
+%\end{defin}
+%
+%We will need the following auxiliary result:
+%
+%\begin{lem} \label{prop:colim_n_ge_0_X^n_to_deformation_is_an_equivalence}
+%    The object 
+%        \[\lim_{\alpha \in I \op} \cD_{X_\alpha / Y_\alpha} \in (\mathrm{dSt_k})_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k},\]
+%    belongs to the full subcategory $\mathrm{FMP}_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k}$. In particular, the natural morphism
+%        \[
+%            \cD_{X\alg/ Y\alg} \to \lim_{\alpha \in I \op} \cD_{X_\alpha/ Y_\alpha},  %
+%       \]
+%    is an equivalence in $\mathrm{FMP}_{X\alg \times \bbA^1_k/ /Y\alg \times \bbA^1_k}$.
+%\end{lem}
+%
+%\begin{proof}  For each $\alpha \in I$ let us denote by
+%        \[
+%            h_\alpha \colon X \to X_\alpha,
+%        \]  
+%    the structural morphism. Thanks to \cite[Corollary 4.4.1.3]{Lurie_SAG} combined with \cite[Corollary  4.5.1.3]{Lurie_SAG} we conclude that the natural morphisms
+%        \[
+%            \theta_\alpha \colon h_\alpha^* \bbL_{X_\alpha} \to \bbL_{X} , \quad \textrm{for each } \alpha \in I,
+%        \]
+%    assemble to provide an equivalence
+%        \[
+%           \theta \colon \colim_{\alpha \in I} h_\alpha^* \bbL_{X_\alpha} \to \bbL_X,   
+%        \]
+%    in the \infcat $\QCoh(X\alg)$. As a consequence, given any pushout diagram
+%        \[
+%        \begin{tikzcd}
+%            S \ar{r}{g_S} \ar{d} & S' \ar{d} \\
+%            T \ar{r} & T',
+%        \end{tikzcd}
+%        \]
+%    in the \infcat $\mathrm{Nil}_{X/ }$, where $g_S$ is a square-zero extension, we can write it as an inverse limit of pushout diagrams of the form
+%        \[
+%        \begin{tikzcd}
+%            S_\alpha \ar{r}{g_{S_\alpha}} \ar{d} & S'_\alpha \ar{d} \\
+%            T_\alpha \ar{r} & T'_\alpha,  
+%        \end{tikzcd}
+%        \]
+%    in $\mathrm{Nil}_{X_\alpha/ }$, for large enough $\alpha \in I$. It then follows that we have a chain of natural equivalences of the form
+%        \begin{align*}
+%            \lim_{\alpha \in I\op}\cD_{X_\alpha/ Y_\alpha} (T') & \simeq (\lim_{\alpha \in I\op}\cD_{X_\alpha/ Y_\alpha})(\lim_{\alpha \in A\op} T_\alpha ') \\
+%                                                                & \simeq \lim_{\alpha \in I\op} (\cD_{X_\alpha/ Y_\alpha}(T'_\alpha) )\\
+%                                                                & \simeq \lim_{\alpha \in I\op}\cD_{X_\alpha/ Y_\alpha}(S'_\alpha \times_{S_\alpha} T_\alpha) \\
+%                                                                & \simeq \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha}(S'_\alpha) \times_{\underset{\alpha \in A\op}{\lim} \cD_{X_\alpha/ Y_\alpha}(S_\alpha)}  \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha}(T_\alpha),
+%        \end{align*}
+%    and we deduce that $\lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha} \in \mathrm{FMP}_{X/ /Y}$, as desired. \cref{cor:commutation_between_limit_and_colimit_on_Hodge_filtration} implies that
+%    the canonical morphism
+%        \[\theta \colon \cD_{X\alg/ Y\alg} \to \lim_{\alpha \in I\op} \cD_{X_\alpha/ Y_\alpha},\]
+%    is an equivalence in $\dSt_k$. The second part of the Lemma follows from the first part since it implies that $\theta$ lies in the the full subcategory \infcat $\mathrm{FMP}_{X/ /Y}$.
+%    %the morphism $\theta$ induces an equivalence at the level of cotangent complexes
     %    \begin{equation} \label{eq:cot_complex_of_limit_of_deformations_on_Noetherian_approximation}
     %        \bbL_{X \times \bbA^1_k / \lim_{\alpha \in A\op} \cD_{X_\alpha/ Y_\alpha}} \to \bbL_{X \times \bbA^1_k/ \cD_{X\alg/ Y\alg}},
     %    \end{equation}
@@ -3468,7 +4151,7 @@ We will need the following auxiliary result:
     %                                             & \simeq \colim_{\alpha \in A} \bbL_{X_\alpha \times \bbA^1_k/ Y_\alpha \times \bbA^1_k},
     %    \end{align*}
     %and the result follows.
-\end{proof}
+%\end{proof}
 
 %Thanks to the above Lemma, we can consider the natural morphism in \eqref{eq:map_Hodge_filtration_to_deformation} as
 %    \[
@@ -3502,7 +4185,7 @@ We will need the following auxiliary result:
 We now introduce the \emph{non-archimedean Hodge filtration:}
 
 \begin{defin}
-    Let $f \colon X \to Y$ be a closed immersion in the \infcat $\dAfd_k$. For each $n \ge 0$, we define the square-zero extension
+    Let $Y \in \dAfd_k$ and $(X \xrightarrow{f} Y) \in \anFMP_{/Y}$. For each $n \ge 0$, we define the square-zero extension
         \[
             X \times \bA^1_k \hookrightarrow X^{(n)},  
         \]
@@ -3535,28 +4218,46 @@ Putting together the above results we can easily deduce:
 \begin{proof}
     Since the natural functor
         \[
-            \anFMP_{X \times \bA^1_k/ /Y \times \bA^1_k} \to \dAnSt_k)_{X \times \bA^1_k/ /Y \times \bA^1_k},
+            \anFMP_{X \times \bA^1_k/ /Y \times \bA^1_k} \to (\dAnSt_k)_{X \times \bA^1_k/ /Y \times \bA^1_k},
         \]
     commutes with filtered colimits, we are reduced to prove the statement of the Corollary in the \infcat $(\dAnSt_k)_{X \times \bA^1_k/ /Y \times \bA^1_k}$.
-    The result is now an immediate consequence of \cref{prop:colim_n_ge_0_X^n_to_deformation_is_an_equivalence} combined with \cref{prop:rel_analytification_preserves_the_deformation}
+    The result is now an immediate consequence of \cref{prop:rel_analytification_preserves_the_deformation}
     and the fact that relative analytification commutes with filtered colimits (as it is defined as left Kan extension).
 \end{proof}
 
+\begin{cor}
+    Let $f \colon X \to Y$ be a closed immersion of derived $k$-affinoid spaces. Denote by $A \coloneqq \Gamma(X, \cO_X\alg)$
+    and $B \coloneqq \Gamma(Y, \cO_Y\alg)$ and $I \coloneqq \fib(B \to A)$. Then the Hodge filtration on $\cD_{X/ Y}\an$
+    induces a natural filtration on $B^\wedge_I$, \{$\mathrm{Fil}_H^{n, \mathrm{an}} \}_{n \ge 0}$, together with natural equivalences
+        \[
+            B/ \mathrm{Fil}^n_H  \simeq \Sym^{\le n, \mathrm{an}}(\bbL_{X/ Y}\an[-1]),  
+        \]
+    in the \infcat $\CAlg_k$.
+\end{cor}
+
+\begin{proof}
+    The claim of the proof follows from \cref{lem:identification_of_Hodge_and_adic_filtrations} (2) combined with Noetherian approximation
+    and the fact that the relative analytification functor sends the relative cotangent complex $\bbL_{X/ Y}$ to $\bbL_{X/ Y}\an$, c.f. \cite[Theorem 5.21]{Porta_Yu_Representability}.
+\end{proof}
 We now globalize the Hodge filtration to geometric derived $k$-analytic stacks:
 
 \begin{construction}
-    Let $f \colon X \to Y$ be a closed immersion, admitting a deformation theory, of derived $k$-analytic stacks, where we further assume that $X$ is a geometric derived $k$-analytic stack. Suppose we are given a morphism
+    Let $f \colon X \to Y$ be a morphism of locally geometric derived $k$-analytic stacks. Consider the formal completion
         \[
-            U \to Y,  
+            X \to Y^{\wedge}_X \to Y,  
+        \] 
+    of the morphism $f$. Let 
+        \[
+            g \colon U \to Y^\wedge_X,  
         \]
-    in $\dAnSt_k$, where $U \in \dAfd_k$. Form the pullback diagram
+    be an \'etale morphism in the \infcat $\dAnSt_k$, such that $U \in \dAfd_k$. Form the pullback diagram
         \[
         \begin{tikzcd}
             X_U \ar{r} \ar{d} & U \ar{d} \\
-            X \ar{r}{f} & Y  
+            X \ar{r}{f} & Y^\wedge_X
         \end{tikzcd}
         \]
-    in $\dAnSt_k$. Suppose we are now given a morphism of derived $k$-affinoid spaces $V \to U$. Consider the pullback diagram
+    in $\dAnSt_k$. Let $V \to U$ be an \'etale morphism of derived $k$-affinoid spaces. Consider the pullback diagram
         \[
         \begin{tikzcd}
             X_V \ar{r} \ar{d} & X_U \ar{d} \\
@@ -3578,7 +4279,9 @@ We now globalize the Hodge filtration to geometric derived $k$-analytic stacks:
     The commutative square in \eqref{eq:gluing_diagram_of_Hodge_filtrations} is a pullback square in the \infcat $\dAfd_k$.
 \end{lem}
 
-\begin{proof} Thanks to \cref{lem:relative_anlaytification_of_closed_immersions_are_compatible_with_alg_construction}
+\begin{proof} As in the proof of \cref{cor:commutation_between_limit_and_colimit_on_Hodge_filtration}, we can reduce the statement to the case where $X_U \to U$ is a nil-embedding in the \infcat $\dAfd_k$
+    in which case so it is $X_V \to V$.
+    Thanks to \cref{lem:relative_anlaytification_of_closed_immersions_are_compatible_with_alg_construction}
     it suffices to prove that for each $n \ge 0$, the induced diagram
         \[
         \begin{tikzcd}
@@ -3586,16 +4289,17 @@ We now globalize the Hodge filtration to geometric derived $k$-analytic stacks:
             V \alg \ar{r} & U\alg  
         \end{tikzcd},
         \]
-    is a pullback square in $\dAff_k$. By a standard argument of Noetherian approximation, we might assume that $U' \coloneqq U\alg $ and $V' \coloneqq V\alg$ are
-    both affine derived affined $k$-schemes almost of finite presentation. We observe that for each $n \ge 0$, the morphisms
+    is a pullback square in $\dAff_k$.
+    By a standard argument of Noetherian approximation, we might assume that $U' \coloneqq U\alg $ and $V' \coloneqq V\alg$ are
+    both affine derived schemes almost of finite presentation. We observe that for each $n \ge 0$, the morphisms
         \[
             g_n \colon X_{V'}^{(n)} \to X_{U'}^{(n)},
         \]
-    are $[\bbA^1_k/ \bbG_m]$-equivariant. For this reason, they induce morphisms
+    are left-lax $\bbA^1_k$-equivariant. For this reason, they induce morphisms
         \[
             g_{n, *}^\mathrm{IndCoh}( \bbT_{X^{(n)}_{V'}/ V'})) \to \bbT_{X^{(n)}_{U'} / U'}  ,
         \]
-    in the \infcat $\Ind\Coh(X_{V'}^{(n)})$ respecting the natural filtrations. In particular, we have an induced morphism
+    in the \infcat $\Ind\Coh(X_{V'}^{(n)})^\mathrm{fil}$. In particular, we have an induced morphism
     at the $n$-th piece of the filtration
         \[
                 g_{n, *}^\mathrm{IndCoh}\big( \mathrm{Sym}^{n+1}(\bbT_{X^{(n)}_{U'}/ U'}[-1])[1]\big) \to  \Sym^{n+1}\big( \bbT_{X^{(n)}_{V'} / V'}[-1]\big)[1],
@@ -3605,21 +4309,29 @@ We now globalize the Hodge filtration to geometric derived $k$-analytic stacks:
     combined with \cite[Proposition 5.12]{Porta_Yu_Representability} and \cite[Proposition 2.5.4.5]{Lurie_SAG}.
 \end{proof}
 
-\begin{construction}
+\begin{construction} Let $f \colon X \to Y$ be a locally geometric derived $k$-analytic stack. Denote by $(Y^\wedge_X)^\mathrm{afd}_\textrm{\'et}$ the \infcat
+    of \'etale morphisms
+        \[
+            U \to Y^\wedge_X,  
+        \]
+    where $U$ is derived $k$-affinoid.
     Consider the relative analytification functor
         \begin{align*}
-            (-)\an_Y \colon \lim_{U \in Y^{\mathrm{afd}}_{\textrm{\'et}}} (\dSt_k)_{/ U\alg \times \bbA^1_k} & \to \lim_{U \in Y^{\mathrm{afd}}_\textrm{\'et}} (\dAnSt_k)_{/ U \times \bA^1_k}  \\
-                                                                                 & \simeq (\dAnSt_k)_{/ Y \times \bA^1_k}.
+            \lim_{U \in (Y^\wedge_X)^\mathrm{afd}_\textrm{\'et}} (-)\an_U \colon\lim_{U \in (Y^\wedge_X)^{\mathrm{afd}}_{\textrm{\'et}}} (\dSt_k)_{/ U\alg \times \bbA^1_k} & \to \lim_{U \in Y^{\mathrm{afd}}_\textrm{\'et}} (\dAnSt_k)_{/ U \times \bA^1_k}  \\
+                                                                                                                                                                            & \simeq (\dAnSt_k)_{/ Y^\wedge_X \times \bA^1_k}.
         \end{align*}
-    Thanks to \cref{lem:preservation_of_Hodge_filtration_under_pullback}, for each $n \ge 0$ the object
+    Thanks to \cref{lem:preservation_of_Hodge_filtration_under_pullback}, for each $n \ge 0$, the algebraic Hodge filtration defines a well defined object in the limit
         \[
             \{ X^{\mathrm{alg}, (n)}_{U} \}_{U \in Y^\mathrm{afd}_\textrm{\'et}}  \in \lim_{n \ge 0} (\dSt_k)_{/ U\alg}.
         \]
-    Therefore, after taking its relative analytification we produce well defined objects $X^{(n)} \in (\dAnSt_k)_{Y \times \bA^1_k}$. Moreover, 
-    it follows essentially by construction that the latter restrict to the usual
-    Hodge filtration for each \'etale morphism in $\dAnSt_k$
+    Therefore, after taking its relative analytification we produce well defined objects 
+        \[X^{(n)} \in (\dAnSt_k)_{Y^\wedge_X \times \bA^1_k},\]
+    which we shall refer to as the \emph{Hodge filtration associated to the morphism $f$}.
+    Moreover, 
+    it follows essentially by construction that the latter restricts to the usual
+    Hodge filtration, for each
         \[
-            g \colon U \to Y,  
+            g \colon U \to Y^\wedge_X,  
         \]
     in $Y^\mathrm{afd}_\textrm{\'et}$. Moreover, by construction we have a natural morphism
         \[
@@ -3630,8 +4342,8 @@ We now globalize the Hodge filtration to geometric derived $k$-analytic stacks:
 
 We can thus summarize the previous results in the form of a main theorem:
 
-\begin{thm}
-    Let $f \colon X \to Y$ be a closed immersion of derived $k$-analytic stacks admitting a deformation theory and $X$ is geometric. Then the following assertions hold:
+\begin{thm} \label{thm:main_thm}
+    Let $f \colon X \to Y$ be a morphism of locally geometric derived $k$-analytic stacks. Then the following assertions hold:
     \begin{enumerate}
         \item There exists a deformation to the normal bundle $\cD_{X/ Y}\an \in (\dAnSt_k)_{\bA^1_k}$ such that its fiber at $\{0 \} \subseteq \bA^1_k$
         coincides with the shifted $k$-analytic tangent bundle
@@ -3640,19 +4352,20 @@ We can thus summarize the previous results in the form of a main theorem:
             \]
         completed at the zero section $s_0 \colon X \to \bbT\an_{X/ Y}[1]$. Moreover, its fiber at $\lambda \neq 0$ coincides with the formal completion $Y^\wedge_X$ of $Y$ at $X$ along $f$;
         \item The object $\cD_{X/ Y}\an$ admits a left-lax equivariant action of the (multiplicative) monoid-object $\bA^1_k$ in $\dAnSt_k$;
-        \item There exists a sequence of left-lax $\bA^1_k$-equivariant square-zero extensions
+        \item There exists a sequence of left-lax $\bA^1_k$-equivariant morphisms admitting a deformation theory
             \[
                 X \times \bA^1_k = X^{(0)} \hookrightarrow X^{(1)} \hookrightarrow \dots \hookrightarrow X^{(n)} \hookrightarrow \dots \to Y \times \bA^1_k.
             \]
-        Moreover, for each $n \ge 0$, the the relative $k$-analytic cotangent complex
+        Assume further that $f\colon X \to Y$ is a closed immersion of derived $k$-analytic spaces then, for each $n \ge 0$,
+        the relative $k$-analytic cotangent complex
             \[
-                \bbL_{X^(n)/ Y} \in \Coh^+(X^{(n)}),  
+                \bbL\an_{X^{(n)}/ Y} \in \Coh^+(X^{(n)}),  
             \]
-        is equipped with a (decreasing) filtration such that its $n$-th piece identifies canonically with $\Sym^{n+1}(\bbL_{X/ Y}[-1])[1]$.
-        In particular, the square-zero extension
-        $X^{(n)} \to X^{(n+1)}$ is obtained via the the canonical composite
+        is equipped with a (decreasing) filtration such that its $n$-th piece identifies canonically with $\Sym^{n+1}(\bbL\an_{X/ Y}[-1])[1]$.
+        Moreover, for each $n \ge 0$, the morphisms
+        $X^{(n)} \to X^{(n+1)}$ are square-zero extensions obtained via a canonical composite
             \[
-                \bbL_{X^{(n)}} \to \bbL_{X^{(n)}/ Y} \to   \Sym^{n+1}(\bbL_{X/ Y}\an[-1])[1],
+                \bbL\an_{X^{(n)}} \to \bbL\an_{X^{(n)}/ Y} \to   \Sym^{n+1}(\bbL_{X/ Y}\an[-1])[1],
             \]
         in $\Coh^+(X^{(n)})$;
         \item We have a natural morphism
@@ -3660,9 +4373,9 @@ We can thus summarize the previous results in the form of a main theorem:
                 \colim_{n \ge 0} X^{(n)} \to \cD_{X/ Y}\an,   
             \]
         which is furthermore an equivalence in the \infcat $\dAnSt_k$;
-        \item Assume that $f \colon X \to Y$ is a closed immersion of derived $k$-affinoid spaces with $A \coloneqq \Gamma(X, \cO_X\alg)$
+        \item Assume that $f \colon X \to Y$ is a locally complete intersection morphism of derived $k$-affinoid spaces with $A \coloneqq \Gamma(X, \cO_X\alg)$
         and $B \coloneqq \Gamma(Y, \cO_Y\alg)$. Then the corresponding filtration on (derived)
-        global sections of the formal completion $Y^\wedge_X$ (via points (1) and (3)) identifies canonically with the $I$-adic filtration on
+        global sections of the formal completion $Y^{\wedge}_X$ (via points (1) and (3)) identifies canonically with the $I$-adic filtration on
         $B$, where $I \coloneqq \fib(B \to A)$.
     \end{enumerate}
 \end{thm}
